@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Mascota } from '../mascota';
+import { MascotaDetailComponent } from '../mascota-detail/mascota-detail.component';
+
+
 
 @Component({
   selector: 'app-mascota-table',
