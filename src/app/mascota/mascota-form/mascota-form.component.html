@@ -1,0 +1,30 @@
+
+<form (ngSubmit)="registrarMascota()">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" [(ngModel)]="formMascota.nombre" required />
+
+    <label for="raza">Raza:</label>
+    <input type="text" id="raza" name="raza" [(ngModel)]="formMascota.raza" required />
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" [(ngModel)]="formMascota.edad" min="0" required />
+
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" name="peso" [(ngModel)]="formMascota.peso" step="0.1" required />
+
+    <label for="enfermedad">Enfermedad:</label>
+    <input type="text" id="enfermedad" name="enfermedad" [(ngModel)]="formMascota.enfermedad" />
+
+    <label for="cliente">Seleccionar Cliente:</label>
+    <select id="cliente" name="clienteId" [(ngModel)]="formMascota.clienteId" required>
+        <option value="">Seleccione un cliente</option>
+        <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</option>
+    </select>
+
+    <label for="foto">Foto (URL):</label>
+    <input type="url" id="foto" name="foto" [(ngModel)]="formMascota.foto" />
+
+    <button type="submit" (click)="addMascotaForm($event)">Agregar Mascota</button>
+</form>
+
+{{formMascota.nombre}}
