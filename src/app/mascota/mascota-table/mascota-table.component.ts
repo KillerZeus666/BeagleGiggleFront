@@ -66,6 +66,12 @@ export class MascotaTableComponent {
   agregarMascota(mascota: Mascota){
     this.mascotaList.push(mascota); 
   }
+
+  //eliminar 
+  eliminarMascota(mascota: Mascota){
+    var index = this.mascotaList.indexOf(mascota);
+    this.mascotaList.splice(index,1); 
+  }
 }
 
 
