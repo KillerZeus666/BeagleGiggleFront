@@ -1,1 +1,38 @@
-<p>mascota-table works!</p>
+<h3>Mascota Table Component</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Raza</th>
+      <th>Edad</th>
+      <th>Peso (kg)</th>
+      <th>Enfermedad</th>
+      <th>Foto</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Fecha de Ingreso</th>
+      <th>Fecha de Salida</th>
+      <th>Estado</th>
+      <th>Cliente ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mascota of mascotaList">
+      <td>{{ mascota.idMascota }}</td>
+      <td>{{ mascota.nombre }}</td>
+      <td>{{ mascota.raza }}</td>
+      <td>{{ mascota.edad }}</td>
+      <td>{{ mascota.peso }}</td>
+      <td>{{ mascota.enfermedad }}</td>
+      <td>
+        <img [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" width="100">
+      </td>
+      <td>{{ mascota.fechaNacimiento | date:'yyyy-MM-dd' }}</td>
+      <td>{{ mascota.fechaIngreso | date:'yyyy-MM-dd' }}</td>
+      <td>{{ mascota.fechaSalida | date:'yyyy-MM-dd' }}</td>
+      <td>{{ mascota.estado }}</td>
+      <td>{{ mascota.clienteId }}</td>
+    </tr>
+  </tbody>
+</table>
