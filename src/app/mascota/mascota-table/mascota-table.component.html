@@ -28,9 +28,9 @@
       <td>
         <img [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" width="100">
       </td>
-      <td>{{ mascota.fechaNacimiento | date:'yyyy-MM-dd' }}</td>
-      <td>{{ mascota.fechaIngreso | date:'yyyy-MM-dd' }}</td>
-      <td>{{ mascota.fechaSalida | date:'yyyy-MM-dd' }}</td>
+      <td>{{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</td>
+      <td>{{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</td>
+      <td>{{ mascota.fechaSalida | date:'yyyy/MM/dd' }}</td>
       <td>{{ mascota.estado }}</td>
       <td>{{ mascota.clienteId }}</td>
     </tr>
