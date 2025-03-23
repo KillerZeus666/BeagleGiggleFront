@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Beagle Giggle';
+  userType = 'Administrador';
 
-  userType='Administrador';
+  constructor() {
+    console.log("User Type:", this.userType); // Verifica el valor en la consola
+  }
 }
+

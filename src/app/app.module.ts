@@ -10,6 +10,8 @@ import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
 import { FormsModule } from '@angular/forms';
 import { EmoticonPipe } from './pipe/emoticon.pipe';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { ErrorsPageComponent } from './errors/errors-page/errors-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EmoticonPipe } from './pipe/emoticon.pipe';
     MascotaTableComponent,
     MascotaDetailComponent,
     MascotaFormComponent,
-    EmoticonPipe
+    EmoticonPipe,
+    AdminPageComponent,
+    ErrorsPageComponent
   ],
   imports: [
     BrowserModule,

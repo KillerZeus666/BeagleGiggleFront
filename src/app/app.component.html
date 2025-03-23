@@ -4,22 +4,21 @@
 <app-mascota-table></app-mascota-table>
 
 
-<!-- El switch case muestra ciertas etiquetas dependiendo del userType -->
-<ng-container [ngSwitch]="userType">
-  
+<div [ngSwitch]="userType">
+
   <ng-container *ngSwitchCase="'Cliente'">
-    <button>Acciones básicas</button>
+    <a>Acciones básicas</a>
   </ng-container>
 
   <ng-container *ngSwitchCase="'Veterinario'">
-    <button>Acciones Profesor</button>
+    <a>Acciones Profesor</a>
   </ng-container>
 
   <ng-container *ngSwitchCase="'Administrador'">
-    <button>Acciones básicas</button>
-    <button>Acciones Profesor</button>
-    <button>Acciones Administrador</button>
+    <a [routerLink]="['/home']">Acciones básicas</a>
+    <a [routerLink]="['/admin']">Acciones Profesor</a>
+    <a [routerLink]="['/admin']">Acciones Administrador</a>
   </ng-container>
 
-</ng-container>
+</div>
 
