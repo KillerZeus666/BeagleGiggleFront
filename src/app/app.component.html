@@ -2,3 +2,24 @@
 <!--Agregando componente del Header-->
 <app-header></app-header>
 <app-mascota-table></app-mascota-table>
+
+
+<!-- El switch case muestra ciertas etiquetas dependiendo del userType -->
+<ng-container [ngSwitch]="userType">
+  
+  <ng-container *ngSwitchCase="'Cliente'">
+    <button>Acciones básicas</button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'Veterinario'">
+    <button>Acciones Profesor</button>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'Administrador'">
+    <button>Acciones básicas</button>
+    <button>Acciones Profesor</button>
+    <button>Acciones Administrador</button>
+  </ng-container>
+
+</ng-container>
+
