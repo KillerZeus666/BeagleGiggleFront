@@ -1,1 +1,22 @@
-<p>mascota-detail works!</p>
+<div class="mascota-detail">
+    <h4>Detalle de la Mascota</h4>
+
+    <ng-container *ngIf="mascota">
+        <ul>
+            <li>Nombre: {{ mascota.nombre }}</li>
+            <li>Raza: {{ mascota.raza }}</li>
+            <li>Edad: {{ mascota.edad }} años</li>
+            <li>Peso: {{ mascota.peso }} kg</li>
+            <li>Enfermedad: {{ mascota.enfermedad ? mascota.enfermedad : 'Ninguna' }}</li>
+            <li>Fecha de Nacimiento: {{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</li>
+            <li>Fecha de Ingreso: {{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</li>
+            <li>Fecha de Salida: {{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : 'Aún en la clínica' }}</li>
+            <li>Estado: {{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</li>
+            <li>ID del Cliente: {{ mascota.clienteId }}</li>
+        </ul>
+    </ng-container>
+
+    <ng-container *ngIf="!mascota">
+        <p>Seleccione una Mascota de la tabla</p>
+    </ng-container>
+</div>

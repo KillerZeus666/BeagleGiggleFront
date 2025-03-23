@@ -33,8 +33,16 @@
       <td>{{ mascota.fechaSalida | date:'yyyy/MM/dd' }}</td>
       <td>{{ mascota.estado }}</td>
       <td>{{ mascota.clienteId }}</td>
+
+      <td>
+        <button class="btn btn-primary" (click)="mostrarMascota(mascota)">
+            Select
+        </button>
+    </td>
+    
+
     </tr>
   </tbody>
 </table>
 
-<app-mascota-detail></app-mascota-detail>
+<app-mascota-detail *ngIf="selectedMascota" [mascota]="selectedMascota"></app-mascota-detail>

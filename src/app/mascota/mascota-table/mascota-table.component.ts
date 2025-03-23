@@ -11,6 +11,8 @@ import { MascotaDetailComponent } from '../mascota-detail/mascota-detail.compone
 })
 
 export class MascotaTableComponent {
+  selectedMascota: Mascota | null = null; // Variable para almacenar la mascota seleccionada
+
   mascotaList: Mascota[] = [
     {
       idMascota: 1,
@@ -55,6 +57,10 @@ export class MascotaTableComponent {
       clienteId: 103
     }
   ];
+
+  mostrarMascota(mascota: Mascota){
+    this.selectedMascota = mascota;
+  }
 }
 
 
