@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Mascota } from '../mascota';
 import { MascotaDetailComponent } from '../mascota-detail/mascota-detail.component';
+import { MascotaCL } from 'src/app/model/mascota-cl';
 
 
 
@@ -13,7 +14,7 @@ import { MascotaDetailComponent } from '../mascota-detail/mascota-detail.compone
 export class MascotaTableComponent {
   selectedMascota: Mascota | null = null; // Variable para almacenar la mascota seleccionada
 
-  mascotaList: Mascota[] = [
+  mascotaList: MascotaCL[] = [
     {
       idMascota: 1,
       nombre: "Rex",
