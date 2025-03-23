@@ -1,5 +1,4 @@
-
-<form (ngSubmit)="registrarMascota()">
+<form>
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" [(ngModel)]="formMascota.nombre" required />
 
@@ -24,7 +23,22 @@
     <label for="foto">Foto (URL):</label>
     <input type="url" id="foto" name="foto" [(ngModel)]="formMascota.foto" />
 
-    <button type="submit" (click)="addMascotaForm($event)">Agregar Mascota</button>
-</form>
+    <!-- Nueva sección para fechas -->
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="formMascota.fechaNacimiento" />
 
-{{formMascota.nombre}}
+    <label for="fechaIngreso">Fecha de Ingreso:</label>
+    <input type="date" id="fechaIngreso" name="fechaIngreso" [(ngModel)]="formMascota.fechaIngreso" required />
+
+    <label for="fechaSalida">Fecha de Salida:</label>
+    <input type="date" id="fechaSalida" name="fechaSalida" [(ngModel)]="formMascota.fechaSalida" />
+
+    <!-- Estado de la mascota -->
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado" [(ngModel)]="formMascota.estado">
+        <option value="1">Activo</option>
+        <option value="0">Inactivo</option>
+    </select>
+
+    <button type="submit" (click)="addMascotaForm()">Agregar Mascota</button>
+</form>

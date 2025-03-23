@@ -61,6 +61,11 @@ export class MascotaTableComponent {
   mostrarMascota(mascota: Mascota){
     this.selectedMascota = mascota;
   }
+
+  //Cuando se emite un evento desde el hijo, push para agregar Mascota a la tabla
+  agregarMascota(mascota: Mascota){
+    this.mascotaList.push(mascota); 
+  }
 }
 
 

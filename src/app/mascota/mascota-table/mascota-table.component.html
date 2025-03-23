@@ -46,4 +46,5 @@
 </table>
 
 <app-mascota-detail *ngIf="selectedMascota" [mascota]="selectedMascota"></app-mascota-detail>
-<app-mascota-form></app-mascota-form>
+<!-- recibir evento desde el hijo-->
+ <app-mascota-form (addMascotaEvent)=" agregarMascota($event)"></app-mascota-form>
