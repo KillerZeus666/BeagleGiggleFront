@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { EmoticonPipe } from './pipe/emoticon.pipe';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorsPageComponent } from './errors/errors-page/errors-page.component';
+import { FooterComponent } from './veterinaria/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ErrorsPageComponent } from './errors/errors-page/errors-page.component'
     MascotaFormComponent,
     EmoticonPipe,
     AdminPageComponent,
-    ErrorsPageComponent
+    ErrorsPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
