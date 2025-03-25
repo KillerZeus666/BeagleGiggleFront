@@ -1,4 +1,5 @@
 .detail-container {
+  background: white;
   padding: 1.5rem;
   width: 100%;
   max-width: 800px;
@@ -6,6 +7,7 @@
   position: relative;
   z-index: 1;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 1.5rem;
 }
@@ -39,7 +41,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  display: block; /* Elimina espacio fantasma debajo de la imagen */
 }
 
 .pet-data {
