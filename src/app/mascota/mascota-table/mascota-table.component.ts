@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 
+
 @Component({
   selector: 'app-mascota-table',
   templateUrl: './mascota-table.component.html',

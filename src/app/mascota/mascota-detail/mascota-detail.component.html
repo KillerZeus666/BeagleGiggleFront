@@ -1,22 +1,64 @@
-<div class="mascota-detail">
-    <h4>Detalle de la Mascota</h4>
-
-    <ng-container *ngIf="mascota">
-        <ul>
-            <li>Nombre: {{ mascota.nombre }}</li>
-            <li>Raza: {{ mascota.raza }}</li>
-            <li>Edad: {{ mascota.edad }} años</li>
-            <li>Peso: {{ mascota.peso }} kg</li>
-            <li>Enfermedad: {{ mascota.enfermedad ? mascota.enfermedad : 'Ninguna' }}</li>
-            <li>Fecha de Nacimiento: {{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</li>
-            <li>Fecha de Ingreso: {{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</li>
-            <li>Fecha de Salida: {{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : 'Aún en la clínica' }}</li>
-            <li>Estado: {{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</li>
-            <li>ID del Cliente: {{ mascota.clienteId }}</li>
-        </ul>
+<div class="detail-container">
+    <h2 class="detail-title">Detalle de Mascota</h2>
+    
+    <ng-container class="detail-content" *ngIf="mascota; else noMascotaSelected">
+      <!-- Imagen de la mascota -->
+      <div class="pet-image-container">
+        <img
+          [src]="mascota.foto || 'assets/default-pet.jpg'"
+          alt="Foto de {{mascota.nombre}}"
+          class="pet-image"
+        />
+      </div>
+      
+      <!-- Datos de la mascota -->
+      <div class="pet-data">
+        <div class="data-item">
+          <span class="data-label">Nombre:</span>
+          <span class="data-value">{{ mascota.nombre }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Raza:</span>
+          <span class="data-value">{{ mascota.raza }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Edad:</span>
+          <span class="data-value">{{ mascota.edad }} años</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Peso:</span>
+          <span class="data-value">{{ mascota.peso | number:'1.1-1' }} kg</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Enfermedad:</span>
+          <span class="data-value">{{ mascota.enfermedad || 'Ninguna' }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Fecha Nacimiento:</span>
+          <span class="data-value">{{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Fecha Ingreso:</span>
+          <span class="data-value">{{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Fecha Salida:</span>
+          <span class="data-value">{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : 'Aún en la clínica' }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">Estado:</span>
+          <span class="data-value">{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</span>
+        </div>
+        <div class="data-item">
+          <span class="data-label">ID Cliente:</span>
+          <span class="data-value">{{ mascota.clienteId }}</span>
+        </div>
+      </div>
     </ng-container>
-
-    <ng-container *ngIf="!mascota">
-        <p>Seleccione una Mascota de la tabla</p>
-    </ng-container>
-</div>
+    
+    <ng-template #noMascotaSelected>
+      <div class="no-selection-message">
+        <p>Seleccione una mascota de la tabla para ver sus detalles</p>
+      </div>
+    </ng-template>
+  </div>

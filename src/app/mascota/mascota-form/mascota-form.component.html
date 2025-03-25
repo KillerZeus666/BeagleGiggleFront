@@ -1,44 +1,141 @@
-<form>
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" [(ngModel)]="formMascota.nombre" required />
+<form #mascotaForm="ngForm" (ngSubmit)="addMascotaForm()">
+  <label for="nombre">Nombre:</label>
+  <input
+    type="text"
+    id="nombre"
+    name="nombre"
+    [(ngModel)]="formMascota.nombre"
+    required
+    #nombre="ngModel"
+  />
+  <div
+    *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+    class="error-message"
+  >
+    El nombre es requerido
+  </div>
 
-    <label for="raza">Raza:</label>
-    <input type="text" id="raza" name="raza" [(ngModel)]="formMascota.raza" required />
+  <label for="raza">Raza:</label>
+  <input
+    type="text"
+    id="raza"
+    name="raza"
+    [(ngModel)]="formMascota.raza"
+    required
+    #raza="ngModel"
+  />
+  <div
+    *ngIf="raza.invalid && (raza.dirty || raza.touched)"
+    class="error-message"
+  >
+    La raza es requerida
+  </div>
 
-    <label for="edad">Edad:</label>
-    <input type="number" id="edad" name="edad" [(ngModel)]="formMascota.edad" min="0" required />
+  <label for="edad">Edad:</label>
+  <input
+    type="number"
+    id="edad"
+    name="edad"
+    [(ngModel)]="formMascota.edad"
+    min="1"
+    required
+    #edad="ngModel"
+  />
+  <div
+    *ngIf="edad.invalid && (edad.dirty || edad.touched)"
+    class="error-message"
+  >
+    La edad es requerida y debe ser mayor a 0
+  </div>
 
-    <label for="peso">Peso (kg):</label>
-    <input type="number" id="peso" name="peso" [(ngModel)]="formMascota.peso" step="0.1" required />
+  <label for="peso">Peso (kg):</label>
+  <input
+    type="number"
+    id="peso"
+    name="peso"
+    [(ngModel)]="formMascota.peso"
+    step="0.1"
+    min="0.1"
+    required
+    #peso="ngModel"
+  />
+  <div
+    *ngIf="peso.invalid && (peso.dirty || peso.touched)"
+    class="error-message"
+  >
+    El peso es requerido y debe ser mayor a 0
+  </div>
 
-    <label for="enfermedad">Enfermedad:</label>
-    <input type="text" id="enfermedad" name="enfermedad" [(ngModel)]="formMascota.enfermedad" />
+  <label for="enfermedad">Enfermedad:</label>
+  <input
+    type="text"
+    id="enfermedad"
+    name="enfermedad"
+    [(ngModel)]="formMascota.enfermedad"
+  />
 
-    <label for="cliente">Seleccionar Cliente:</label>
-    <select id="cliente" name="clienteId" [(ngModel)]="formMascota.clienteId" required>
-        <option value="">Seleccione un cliente</option>
-        <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</option>
-    </select>
+  <label for="cliente">Seleccionar Cliente:</label>
+  <select
+    id="cliente"
+    name="clienteId"
+    [(ngModel)]="formMascota.clienteId"
+    required
+    #clienteId="ngModel"
+  >
+    <option value="">Seleccione un cliente</option>
+    <option *ngFor="let cliente of clientes" [value]="cliente.id">
+      {{ cliente.nombre }}
+    </option>
+  </select>
+  <div
+    *ngIf="clienteId.invalid && (clienteId.dirty || clienteId.touched)"
+    class="error-message"
+  >
+    Debe seleccionar un cliente
+  </div>
 
-    <label for="foto">Foto (URL):</label>
-    <input type="url" id="foto" name="foto" [(ngModel)]="formMascota.foto" />
+  <label for="foto">Foto (URL):</label>
+  <input type="url" id="foto" name="foto" [(ngModel)]="formMascota.foto" />
 
-    <!-- Nueva sección para fechas -->
-    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-    <input type="date" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="formMascota.fechaNacimiento" />
+  <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+  <input
+    type="date"
+    id="fechaNacimiento"
+    name="fechaNacimiento"
+    [(ngModel)]="formMascota.fechaNacimiento"
+  />
 
-    <label for="fechaIngreso">Fecha de Ingreso:</label>
-    <input type="date" id="fechaIngreso" name="fechaIngreso" [(ngModel)]="formMascota.fechaIngreso" required />
+  <label for="fechaIngreso">Fecha de Ingreso:</label>
+  <input
+    type="date"
+    id="fechaIngreso"
+    name="fechaIngreso"
+    [(ngModel)]="formMascota.fechaIngreso"
+    required
+    #fechaIngreso="ngModel"
+  />
+  <div
+    *ngIf="fechaIngreso.invalid && (fechaIngreso.dirty || fechaIngreso.touched)"
+    class="error-message"
+  >
+    La fecha de ingreso es requerida
+  </div>
 
-    <label for="fechaSalida">Fecha de Salida:</label>
-    <input type="date" id="fechaSalida" name="fechaSalida" [(ngModel)]="formMascota.fechaSalida" />
+  <label for="fechaSalida">Fecha de Salida:</label>
+  <input
+    type="date"
+    id="fechaSalida"
+    name="fechaSalida"
+    [(ngModel)]="formMascota.fechaSalida"
+  />
 
-    <!-- Estado de la mascota -->
-    <label for="estado">Estado:</label>
-    <select id="estado" name="estado" [(ngModel)]="formMascota.estado">
-        <option value="1">Activo</option>
-        <option value="0">Inactivo</option>
-    </select>
+  <label for="estado">Estado:</label>
+  <select id="estado" name="estado" [(ngModel)]="formMascota.estado">
+    <option value="1">Activo</option>
+    <option value="0">Inactivo</option>
+  </select>
 
-    <button type="submit" (click)="addMascotaForm()">Agregar Mascota</button>
+  <button type="submit" [disabled]="!mascotaForm.form.valid">
+    Agregar Mascota
+  </button>
 </form>

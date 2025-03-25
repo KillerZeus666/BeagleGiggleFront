@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Mascota } from '../mascota';
 
 @Component({
@@ -7,14 +8,64 @@ import { Mascota } from '../mascota';
   styleUrls: ['./mascota-form.component.css']
 })
 export class MascotaFormComponent {
-  mascotas: Mascota[] = [];
-  //Evento
-  @Output()
-  addMascotaEvent = new EventEmitter<Mascota> (); 
-  sendMascota! : Mascota;
+  @ViewChild('mascotaForm') mascotaForm!: NgForm;
+  @Output() addMascotaEvent = new EventEmitter<Mascota>();
 
-  //modelo
-    formMascota: Mascota = {
+  formMascota: Mascota = {
+    idMascota: 0,
+    nombre: '',
+    raza: '',
+    edad: 0,
+    peso: 0,
+    enfermedad: '',
+    foto: '',
+    fechaNacimiento: undefined,
+    fechaIngreso: undefined,
+    fechaSalida: undefined,
+    estado: 1,
+    clienteId: 0
+  };
+
+  clientes = [
+    { id: 1, nombre: 'Juan Pérez' },
+    { id: 2, nombre: 'María González' },
+    { id: 3, nombre: 'Carlos Ramírez' }
+  ];
+
+  addMascotaForm() {
+    // Marcar todos los campos como touched para mostrar errores
+    this.markAllAsTouched();
+    
+    if (this.mascotaForm.valid) {
+      // Validación adicional para valores numéricos
+      if (this.formMascota.edad <= 0 || this.formMascota.peso <= 0) {
+        return;
+      }
+
+      this.addMascotaEvent.emit({...this.formMascota});
+      this.resetForm();
+    }
+  }
+
+  private markAllAsTouched() {
+    Object.keys(this.mascotaForm.controls).forEach(field => {
+      const control = this.mascotaForm.controls[field];
+      control.markAsTouched();
+    });
+  }
+
+  resetForm() {
+    // Resetear el formulario y su estado
+    this.mascotaForm.resetForm({
+      idMascota: 0,
+      estado: 1,
+      clienteId: 0,
+      edad: null,
+      peso: null
+    });
+    
+    // Resetear el modelo
+    this.formMascota = {
       idMascota: 0,
       nombre: '',
       raza: '',
@@ -22,36 +73,11 @@ export class MascotaFormComponent {
       peso: 0,
       enfermedad: '',
       foto: '',
-      fechaNacimiento: undefined,  // Puede ser opcional
-      fechaIngreso: undefined,     // Puede ser opcional
-      fechaSalida: undefined,      // Puede ser opcional
-      estado: 1,                   
+      fechaNacimiento: undefined,
+      fechaIngreso: undefined,
+      fechaSalida: undefined,
+      estado: 1,
       clienteId: 0
     };
-    
-    clientes = [
-      { id: 1, nombre: 'Juan Pérez' },
-      { id: 2, nombre: 'María González' },
-      { id: 3, nombre: 'Carlos Ramírez' }
-    ];
-    
-  
-
-  //Agregar Mascota a parit del formulario
-  addMascotaForm() {
-    console.log('Enviando mascota:', this.formMascota);
-    this.sendMascota = { ...this.formMascota };
-    this.addMascotaEvent.emit(this.sendMascota);
   }
-  
-
-  registrarMascota() {
-    console.log('Mascota registrada:', this.formMascota);
-  }
-  
-    // Método para agregar una mascota a la tabla
-    agregarMascota(nuevaMascota: Mascota) {
-      console.log('Mascota recibida:', nuevaMascota);
-      this.mascotas.push(nuevaMascota);
-    }
 }

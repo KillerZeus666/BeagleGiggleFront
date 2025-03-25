@@ -1,53 +1,56 @@
-<h3>Mascota Table Component</h3>
+<div class="container-principal">
+  <h1>Listado de Mascotas</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Raza</th>
-      <th>Edad</th>
-      <th>Peso (kg)</th>
-      <th>Enfermedad</th>
-      <th>Foto</th>
-      <th>Fecha de Nacimiento</th>
-      <th>Fecha de Ingreso</th>
-      <th>Fecha de Salida</th>
-      <th>Estado</th>
-      <th>Cliente ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let mascota of mascotaList">
-      <td>{{ mascota.idMascota }}</td>
-      <td>{{ mascota.nombre }}</td>
-      <td>{{ mascota.raza }}</td>
-      <td>{{ mascota.edad }}</td>
-      <td>{{ mascota.peso }}</td>
-      <td>{{ mascota.enfermedad }}</td>
-      <td>
-        <img [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" width="100">
-      </td>
-      <td>{{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</td>
-      <td>{{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</td>
-      <td>{{ mascota.fechaSalida | date:'yyyy/MM/dd' }}</td>
-      <td>{{ mascota.estado }}</td>
-      <td>{{ mascota.clienteId }}</td>
+  <div class="tabla-container">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Peso (kg)</th>
+          <th>Enfermedad</th>
+          <th>Foto</th>
+          <th>Nacimiento</th>
+          <th>Ingreso</th>
+          <th>Salida</th>
+          <th>Estado</th>
+          <th>Cliente</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotaList" (click)="mostrarMascota(mascota)">
+          <td>{{ mascota.idMascota }}</td>
+          <td>{{ mascota.nombre }}</td>
+          <td>{{ mascota.raza }}</td>
+          <td>{{ mascota.edad }}</td>
+          <td>{{ mascota.peso | number:'1.1-1' }}</td>
+          <td>{{ mascota.enfermedad || '-' }}</td>
+          <td>
+            <img *ngIf="mascota.foto" [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" class="foto-tabla">
+            <span *ngIf="!mascota.foto">-</span>
+          </td>
+          <td>{{ mascota.fechaNacimiento ? (mascota.fechaNacimiento | date:'yyyy/MM/dd') : '-' }}</td>
+          <td>{{ mascota.fechaIngreso ? (mascota.fechaIngreso | date:'yyyy/MM/dd') : '-' }}</td>
+          <td>{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : '-' }}</td>
+          <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
+          <td>{{ mascota.clienteId }}</td>
+          <td class="action-buttons">
+            <button class="btn-detalles" (click)="mostrarMascota(mascota); $event.stopPropagation()">
+              Ver Detalles
+            </button>
+            <button class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <td>
-        <button class="btn btn-primary" (click)="mostrarMascota(mascota)">
-            Ver Detalles
-        </button>
-        <button class="btn btn-danger" (click)="eliminarMascota(mascota)">
-          Eliminar
-      </button>
-    </td>
-    
+  <app-mascota-detail *ngIf="selectedMascota" [mascota]="selectedMascota"></app-mascota-detail>
 
-    </tr>
-  </tbody>
-</table>
-
-<app-mascota-detail *ngIf="selectedMascota" [mascota]="selectedMascota"></app-mascota-detail>
-<!-- recibir evento desde el hijo-->
- <app-mascota-form (addMascotaEvent)=" agregarMascota($event)"></app-mascota-form>
+  <app-mascota-form (addMascotaEvent)="agregarMascota($event)"></app-mascota-form>
+</div>
