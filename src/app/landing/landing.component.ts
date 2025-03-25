@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
-/*
 interface ITestimonial {
   text: string;
   name: string;
@@ -32,7 +31,6 @@ class Testimonial implements ITestimonial {
     return text.replace(/(\S{15,})/g, "$1- ");
   }
 }
-*/
 
 @Component({
   selector: 'app-landing',
@@ -40,8 +38,6 @@ class Testimonial implements ITestimonial {
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-  /*
-  // Poner las imagenes con url, igual en el html
   testimonials: Testimonial[] = [
     new Testimonial(
       "¡Excelente servicio, muy atentos con mi mascota!",
@@ -90,12 +86,10 @@ export class LandingComponent implements OnInit {
     { id: 'vet2', name: 'Patitas Felices', image: 'https://i.postimg.cc/nzcBNFPN/vet2.png' }, // URL temporal
     { id: 'vet3', name: 'Huellas', image: 'https://i.postimg.cc/gJS8p99j/vet3.png' } // URL temporal
   ];
-  */
-
+  
   ngOnInit(): void {
     // this.initCarousel();
   }
-  /*
   ngOnDestroy(): void {
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
@@ -166,5 +160,4 @@ export class LandingComponent implements OnInit {
     };
     this.selectedVet = '';
   }
-  */
 }

@@ -1,3 +1,5 @@
+import { ClienteCL } from "./cliente-cl";
+
 export class MascotaCL {
     public idMascota: number;
     constructor(
@@ -12,7 +14,7 @@ export class MascotaCL {
         fechaIngreso: Date,
         fechaSalida: Date,
         estado: number,
-        clienteId: number
+        cliente: ClienteCL
     ) {
         this.idMascota = idMascota
         this.nombre = nombre
