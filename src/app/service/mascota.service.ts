@@ -68,4 +68,9 @@ export class MascotaService {
   findAllSync(): Mascota[] {
     return [...this.mascotaList]; // Devuelve una copia del array para evitar modificaciones accidentales
   }
+
+  getMascotaById(id: number): Observable<Mascota> {
+    const mascota = this.mascotaList.find(m => m.idMascota === id);
+    return of(mascota!);
+  }
 }

@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let mascota of mascotaList" (click)="mostrarMascota(mascota)">
+        <tr *ngFor="let mascota of mascotaList" (click)="mostrarMascota(mascota.idMascota)">
           <td>{{ mascota.idMascota }}</td>
           <td>{{ mascota.nombre }}</td>
           <td>{{ mascota.raza }}</td>
@@ -38,7 +38,7 @@
           <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
           <td>{{ mascota.clienteId }}</td>
           <td class="action-buttons">
-            <button class="btn-detalles" (click)="mostrarMascota(mascota); $event.stopPropagation()">
+            <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">
               Ver Detalles
             </button>
             <button class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">
@@ -49,8 +49,6 @@
       </tbody>
     </table>
   </div>
-
-  <app-mascota-detail *ngIf="selectedMascota" [mascota]="selectedMascota"></app-mascota-detail>
 
   <app-mascota-form (addMascotaEvent)="agregarMascota($event)"></app-mascota-form>
 </div>

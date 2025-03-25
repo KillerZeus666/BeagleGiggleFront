@@ -1,27 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Mascota } from '../mascota';
-
+import { MascotaService } from 'src/app/service/mascota.service';
 @Component({
   selector: 'app-mascota-detail',
   templateUrl: './mascota-detail.component.html',
   styleUrls: ['./mascota-detail.component.css']
 })
-export class MascotaDetailComponent {
-  //Hacer que llegue la Mascota desde componente padre al
-  selectedMascota: Mascota | null = null; // Debe estar definida
-  @Input() mascota!:Mascota; 
+export class MascotaDetailComponent implements OnInit {
+  mascota!: Mascota; // La mascota seleccionada
 
+  constructor(
+    private route: ActivatedRoute,
+    private mascotaService: MascotaService // Inyectar servicio para obtener datos
+  ) {}
 
-  //Inyectas dependencias
-  constructor(){}
-  
-  //Se llama una unica vez cuando el componente se renderiza en Pantalla
-  ngOnInit():void{
-    console.log("ngOnInit de detail"); 
-    //Llamar una api
+  ngOnInit(): void {
+    console.log("ngOnInit de detail");
+    
+    // Obtener el ID desde la URL
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    
+    // Buscar la mascota por ID (simulado con un servicio)
+    this.mascotaService.getMascotaById(id).subscribe(mascota => {
+      this.mascota = mascota;
+    });
   }
-  ngOnChanges():void{
-    console.log("ngOnChanges de detail"); 
-  }
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class MascotaTableComponent implements OnInit {
   selectedMascota: Mascota | null = null;
   mascotaList: Mascota[] = [];
 
-  constructor(private mascotaService: MascotaService) {}
+  constructor(private mascotaService: MascotaService, private router: Router) {}
 
   ngOnInit(): void {
     this.mascotaService.findAll().subscribe({
@@ -25,8 +26,8 @@ export class MascotaTableComponent implements OnInit {
     });
   }
   
-  mostrarMascota(mascota: Mascota) {
-    this.selectedMascota = mascota;
+  mostrarMascota(id: number) {
+    this.router.navigate(['/detalles-mascota', id]);
   }
 
   agregarMascota(mascota: Mascota) {

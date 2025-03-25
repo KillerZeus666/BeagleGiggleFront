@@ -2,22 +2,4 @@
 <!--Agregando componente del Header-->
 <app-header></app-header>
 <app-mascota-table></app-mascota-table>
-
-
-<div [ngSwitch]="userType">
-
-  <ng-container *ngSwitchCase="'Cliente'">
-    <a>Acciones básicas</a>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="'Veterinario'">
-    <a>Acciones Profesor</a>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="'Administrador'">
-    <a [routerLink]="['/home']">Acciones Básicas</a><br>
-    <a [routerLink]="['/admin']">Acciones Profesor</a><br>
-    <a [routerLink]="['/admin']">Acciones Administrador</a><br>
-  </ng-container>
-</div>
 <app-footer></app-footer>
