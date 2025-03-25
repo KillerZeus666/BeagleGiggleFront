@@ -13,6 +13,7 @@ import { EmoticonPipe } from './pipe/emoticon.pipe';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorsPageComponent } from './errors/errors-page/errors-page.component';
 import { FooterComponent } from './veterinaria/footer/footer.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './veterinaria/footer/footer.component';
     EmoticonPipe,
     AdminPageComponent,
     ErrorsPageComponent,
-    FooterComponent
+    FooterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

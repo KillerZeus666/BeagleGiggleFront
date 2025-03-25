@@ -1,0 +1,304 @@
+<!---- Poner las imagenes con url, igual en el typescript
+<section class="description-section">
+  <div class="overlay"></div>
+  <div class="description-text">
+    <h1>Bienvenido a Nuestra Plataforma</h1>
+    <p>
+      Descubre un espacio diseñado para brindarte los mejores servicios en salud
+      y bienestar. Con tecnología de vanguardia y profesionales altamente
+      capacitados, estamos aquí para ti.
+    </p>
+  </div>
+</section>
+
+<main>
+  <section id="servicios" class="services-section-title">
+    <h2>Servicios</h2>
+    <div class="services-section">
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Consulta General</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Realizamos chequeos completos para garantizar la salud de tu
+              mascota.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Cirugía</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Contamos con quirófanos equipados para procedimientos seguros.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Estética y Peluquería</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Ofrecemos servicios de baño, cortes de pelo y cuidado estético.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Hospitalización</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Brindamos hospitalización para garantizar la recuperación de tu
+              mascota.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Monitoreo</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Seguimiento continuo para supervisar el estado de salud de tu
+              mascota.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Vacunación</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Ofrecemos una amplia gama de vacunas para mantener a tu mascota
+              protegida y saludable.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <h3>Laboratorio Clínico</h3>
+          </div>
+          <div class="service-card-back">
+            <p>
+              Realizamos pruebas de laboratorio para diagnosticar y prevenir
+              enfermedades.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conocenos" class="testimonials-section">
+    <h2>Testimonios de clientes</h2>
+    <div class="testimonial-grid"></div>
+  </section>
+  <section id="contactanos" class="appointment-section">
+    <h2>Agenda tu cita</h2>
+    <div class="appointment-container">
+      <div class="form-container">
+        <form id="appointment-form">
+          <label for="appointment-name">Tu nombre</label>
+          <input
+            type="text"
+            id="appointment-name"
+            placeholder="Ejemplo: Juan Pérez"
+            required
+          />
+
+          <label for="appointment-details">Detalles de la cita</label>
+          <textarea
+            id="appointment-details"
+            placeholder="Describe el motivo de la consulta..."
+            required
+          ></textarea>
+
+          <label for="appointment-service">Tipo de servicio</label>
+          <select id="appointment-service" required>
+            <option value="">Selecciona un servicio</option>
+            <option value="Consulta general">Consulta general</option>
+            <option value="Cirugía">Cirugía</option>
+            <option value="Estética">Estética</option>
+            <option value="Vacunación">Vacunación</option>
+            <option value="Otro">Otro</option>
+          </select>
+
+          <label for="appointment-image">Foto de tu mascota (URL)</label>
+          <input
+            type="url"
+            id="appointment-image"
+            placeholder="https://ejemplo.com/mascota.jpg"
+            required
+          />
+
+          <input type="hidden" id="selected-vet" required />
+          <button type="submit" id="appointment-btn" disabled>
+            Agendar cita
+          </button>
+        </form>
+      </div>
+
+      <div class="map-container">
+        <h3>Ubicación</h3>
+        <div class="vet-map">
+          <div class="vet-option" id="vet1" data-vet="Veterinaria Los Pinos">
+            <img
+              src="https://i.postimg.cc/431p87Bz/vet1.png"
+              alt="Veterinaria Los Pinos"
+            />
+            <span>Los Pinos</span>
+          </div>
+          <div
+            class="vet-option"
+            id="vet2"
+            data-vet="Veterinaria Patitas Felices"
+          >
+            <img
+              src="https://i.postimg.cc/nzcBNFPN/vet2.png"
+              alt="Veterinaria Patitas Felices"
+            />
+            <span>Patitas Felices</span>
+          </div>
+          <div class="vet-option" id="vet3" data-vet="Veterinaria Huellas">
+            <img
+              src="https://i.postimg.cc/gJS8p99j/vet3.png"
+              alt="Veterinaria Huellas"
+            />
+            <span>Huellas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="associated-foundations">
+    <h2>Fundaciones Asociadas</h2>
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="foundation-card">
+            <img
+              src="https://img.lalr.co/cms/2019/09/04155109/2016112523195825802.jpg?size=xl"
+              alt="Fundación 1"
+            />
+            <div class="info">
+              <h3>Fundación Animal Save</h3>
+              <p>
+                Rescatamos y cuidamos animales en situación de calle, dándoles
+                una segunda oportunidad de vida.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://blog.oxfamintermon.org/wp-content/uploads/2018/06/voluntariado-con-animales-1.jpg"
+              alt="Fundación 2"
+            />
+            <div class="info">
+              <h3>Fundación Protectora de Animales Sucre</h3>
+              <p>
+                Brindamos refugio, alimentación y atención veterinaria a
+                mascotas abandonadas hasta que encuentren un hogar.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://www.fundacionperroamor.com/urongeec/elementor/thumbs/Fundacion-pmamwc5jrxnbx4mf3m7znwm0hnua1ulv0gcd7xbthk.jpeg"
+              alt="Fundación 3"
+            />
+            <div class="info">
+              <h3>Patrulla Animal</h3>
+              <p>
+                Luchamos contra el maltrato animal y promovemos la adopción
+                responsable de perros y gatos.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://oem.com.mx/elsoldetlaxcala/img/16371591/1672780987/BASE_LANDSCAPE/1200/Colitas%20felices.jpg"
+              alt="Fundación 4"
+            />
+            <div class="info">
+              <h3>Fundación de Ayuda a los Animales</h3>
+              <p>
+                Nos enfocamos en rescatar animales en peligro, rehabilitarlos y
+                encontrarles familias amorosas.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://miredvista.co/wp-content/uploads/2022/11/liliana-morales-26.jpg"
+              alt="Fundación 5"
+            />
+            <div class="info">
+              <h3>Vida Animal</h3>
+              <p>
+                Organizamos campañas de esterilización y educación sobre el
+                respeto y cuidado de los animales.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://stakeholders.com.pe/wp-content/uploads/2023/04/trained-dogs-2022-11-10-18-03-18-utc-scaled.jpg"
+              alt="Fundación 6"
+            />
+            <div class="info">
+              <h3>Peluditos en Apuros</h3>
+              <p>
+                Nos dedicamos a la protección de animales vulnerables y la
+                promoción de la tenencia responsable.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://elcomercio.pe/resizer/sYS7edz0yuMj1-10gQgnZVftjrY=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/UWCUD6LJS5FQXLQTAASALWYALA.jpg"
+              alt="Fundación 7"
+            />
+            <div class="info">
+              <h3>Ayúdame</h3>
+              <p>
+                Rescatamos, curamos y rehabilitamos animales que han sufrido
+                abandono o maltrato.
+              </p>
+            </div>
+          </div>
+          <div class="foundation-card">
+            <img
+              src="https://estaticos-cdn.prensaiberica.es/clip/97046842-7a83-496a-b573-35c1e9b4d53e_mobile-ep-aspect-ratio_640w_0.jpg"
+              alt="Fundación 8"
+            />
+            <div class="info">
+              <h3>Patitas al Rescate</h3>
+              <p>
+                Conectamos animales sin hogar con familias responsables y
+                brindamos apoyo veterinario a quienes lo necesitan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main> -->

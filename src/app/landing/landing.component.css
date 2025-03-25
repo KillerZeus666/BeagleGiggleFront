@@ -1,0 +1,698 @@
+/* Estilos para el index 
+.description-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: url("https://i.postimg.cc/KYgCr3Td/pexels-lum3n-44775-406014.jpg")
+      center/cover no-repeat;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(
+      0,
+      0,
+      0,
+      0.5
+    );
+    z-index: -2;
+  }
+  
+  .description-text {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fadeInDrop 1.2s ease-out forwards;
+  }
+  
+  @keyframes fadeInDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  .services-section-title {
+    text-align: center;
+    padding: 10px 10px;
+    background-color: #dde2e4;
+    font-size: 20px;
+    color: black;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .services-section-title h2 {
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+  
+  .services-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    padding: 0 10px;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 900px) {
+    .services-section {
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .services-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .services-section {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  .service-card {
+    width: 210px;
+    min-height: 250px;
+    perspective: 1000px;
+  }
+  
+  .service-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    transform-origin: center;
+  }
+  
+  .service-card:hover .service-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .service-card-front,
+  .service-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+  }
+  
+  .service-card:nth-child(1) .service-card-front {
+    background-image: url("../images/consulta.bmp");
+  }
+  
+  .service-card:nth-child(2) .service-card-front {
+    background-image: url("../images/cirugia.bmp");
+  }
+  
+  .service-card:nth-child(3) .service-card-front {
+    background-image: url("../images/hospital.bmp");
+  }
+  
+  .service-card:nth-child(4) .service-card-front {
+    background-image: url("../images/estetica.bmp");
+  }
+  
+  .service-card:nth-child(5) .service-card-front {
+    background-image: url("../images/monitoreo.bmp");
+  }
+  
+  .service-card:nth-child(6) .service-card-front {
+    background-image: url("../images/vacunacion.bmp");
+  }
+  
+  .service-card:nth-child(7) .service-card-front {
+    background-image: url("../images/lab.bmp");
+  }
+  
+  .service-card-front {
+    background-size: cover;
+    background-position: center;
+    color: black;
+    transform: rotateY(0deg);
+    font-size: 17px;
+  }
+  
+  .service-card-front h3 {
+    width: 100%;
+    background: rgba(
+      141,
+      201,
+      236,
+      0.8
+    );
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: none;
+  }
+  
+  .service-card-back {
+    background-size: cover;
+    background-position: center;
+    color: black;
+    transform: rotateY(180deg);
+    text-align: center;
+    font-size: 17px;
+    text-transform: none;
+    position: relative;
+  }
+  
+  .service-card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(141, 201, 236, 0.8);
+    border-radius: 10px;
+  }
+  
+  .service-card-back p {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    font-size: 20px;
+    text-decoration: bolder;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .service-card:nth-child(1) .service-card-back {
+    background-image: url("../images/consulta.bmp");
+  }
+  
+  .service-card:nth-child(2) .service-card-back {
+    background-image: url("../images/cirugia.bmp");
+  }
+  
+  .service-card:nth-child(3) .service-card-back {
+    background-image: url("../images/hospital.bmp");
+  }
+  
+  .service-card:nth-child(4) .service-card-back {
+    background-image: url("../images/estetica.bmp");
+  }
+  
+  .service-card:nth-child(5) .service-card-back {
+    background-image: url("../images/monitoreo.bmp");
+  }
+  
+  .service-card:nth-child(6) .service-card-back {
+    background-image: url("../images/vacunacion.bmp");
+  }
+  
+  .service-card:nth-child(7) .service-card-back {
+    background-image: url("../images/lab.bmp");
+  }
+  
+  .about-testimonials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 60px;
+    align-items: center;
+  }
+  
+  .about-us {
+    background: linear-gradient(135deg, #ffffff, #f8f8f8);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonials-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #eaeaea);
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonials-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .testimonial {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .testimonial img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 4px solid #ffcc00;
+  }
+  
+  .testimonial-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .testimonial p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .testimonial strong {
+    font-size: 18px;
+    color: #222;
+  }
+  
+  .stars {
+    font-size: 18px;
+    color: #ffcc00;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .appointment-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #8cd1f6;
+    border-radius: 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+  }
+  
+  .appointment-section h2 {
+    font-size: 30px;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .appointment-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .form-container {
+    width: 45%;
+    text-align: left;
+  }
+  
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-container input,
+  .form-container select,
+  .form-container textarea {
+    width: 95%;
+    padding: 12px;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  
+  .form-container input:focus,
+  .form-container select:focus,
+  .form-container textarea:focus {
+    border-color: #a57768;
+    background: #ffffff;
+    outline: none;
+  }
+  
+  .form-container button {
+    margin-top: 15px;
+    padding: 12px;
+    background: #3c5b6f;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .form-container button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .form-container button:enabled:hover {
+    background: #5e7e92;
+    transform: scale(1.05);
+  }
+  
+  .map-container {
+    width: 50%;
+  }
+  
+  .map-container h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .vet-map {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: url("https://i.postimg.cc/x1JsFRzL/mapa.png") no-repeat
+      center/cover;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .vet-option {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  .vet-option img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  
+  .vet-option span {
+    position: absolute;
+    bottom: -25px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none;
+  }
+  
+  .vet-option:hover {
+    transform: scale(1.2);
+    background: rgba(110, 168, 254, 0.8);
+  }
+  
+  .vet-option:hover img {
+    transform: scale(1.1);
+  }
+  
+  .vet-option:hover span {
+    display: block;
+  }
+  
+  .vet-option.selected {
+    background: #3c5b6f;
+    transform: scale(1.3);
+  }
+  
+  #vet1 {
+    top: 20%;
+    left: 30%;
+  }
+  #vet2 {
+    top: 50%;
+    left: 60%;
+  }
+  #vet3 {
+    bottom: 10%;
+    right: 50%;
+  }
+  
+  .associated-foundations {
+    background-image: url("https://i.postimg.cc/kMVv77kk/175618270-camino-y-sendero-de-huellas-de-perros-que-se-alejan-patr-n-de-huella-animal-silueta-de-hue.png"),
+      url("https://i.postimg.cc/kMVv77kk/175618270-camino-y-sendero-de-huellas-de-perros-que-se-alejan-patr-n-de-huella-animal-silueta-de-hue.png");
+    background-size: 200px, 190px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top left, bottom right;
+    padding: 50px 0;
+  }
+  
+  .associated-foundations h2 {
+    text-align: center;
+    padding-top: 40px;
+    font-size: 30px;
+    color: black;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    padding: 20px;
+    scroll-behavior: smooth;
+    width: 80%;
+    white-space: nowrap;
+  }
+  
+  .foundation-card {
+    flex: 0 0 auto;
+    width: 260px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  
+  .foundation-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .foundation-card .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  .foundation-card:hover .info {
+    transform: translateY(0);
+  }
+  
+  .foundation-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .prev-btn,
+  .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  
+  .prev-btn:hover,
+  .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .prev-btn {
+    left: 0;
+  }
+  
+  .next-btn {
+    right: 0;
+  }
+  
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+  }
+  
+  .foundation-card {
+    flex: 0 0 auto;
+    width: 260px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  
+  .foundation-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .foundation-card .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(52, 112, 173, 0.7);
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    white-space: normal;
+    word-wrap: break-word;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .foundation-card:hover .info {
+    transform: translateY(0);
+  }
+  
+  .foundation-card:hover {
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .user-menu {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .user-menu.active .dropdown-menu {
+    display: block;
+  }
+*/

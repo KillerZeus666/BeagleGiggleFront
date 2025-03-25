@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos generales */
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Alice", serif;
+    margin: 0;
+    padding: 0;
+    background: #dde2e4;
+    color: #333;
+    overflow: visible;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+
+  h1 {
+    color: #205375;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
