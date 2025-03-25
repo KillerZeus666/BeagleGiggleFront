@@ -1,5 +1,5 @@
 <h1>Agregar Mascota</h1>
-<form #mascotaForm="ngForm" (ngSubmit)="addMascotaForm()">
+<form #mascotaForm="ngForm" (ngSubmit)="guardarMascota()">
   <label for="nombre">Nombre:</label>
   <input
     type="text"
@@ -136,7 +136,5 @@
     <option value="0">Inactivo</option>
   </select>
 
-  <button type="submit" [disabled]="!mascotaForm.form.valid">
-    Agregar Mascota
-  </button>
+  <button type="submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
 </form>

@@ -39,4 +39,8 @@ export class MascotaTableComponent implements OnInit {
     this.mascotaService.eliminarMascota(mascota);
     this.mascotaList = this.mascotaService.findAllSync();
   }
+
+  abrirFormularioMascota(){
+    this.router.navigate(['/crear-mascota']);
+  }
 }

@@ -1,5 +1,9 @@
+<app-header></app-header>
+
 <div class="container-principal">
   <h1>Listado de Mascotas</h1>
+
+  <button class="btn-detalles" (click)="abrirFormularioMascota()">Crear Mascota</button>
 
   <div class="tabla-container">
     <table class="tabla">
@@ -49,6 +53,7 @@
       </tbody>
     </table>
   </div>
-
-  <app-mascota-form (addMascotaEvent)="agregarMascota($event)"></app-mascota-form>
 </div>
+<app-footer></app-footer>
+
+

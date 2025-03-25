@@ -61,6 +61,13 @@ export class MascotaService {
     this.mascotaList.push(mascota);
   }
 
+  actualizarMascota(mascota: Mascota): void {
+    const index = this.mascotaList.findIndex(m => m.idMascota === mascota.idMascota);
+    if (index !== -1) {
+      this.mascotaList[index] = mascota;
+    }
+  }
+
   eliminarMascota(mascota: Mascota): void {
     this.mascotaList = this.mascotaList.filter(m => m !== mascota);
   }

@@ -1,13 +1,15 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Mascota } from '../mascota';
+import { MascotaService } from 'src/app/service/mascota.service';
 
 @Component({
   selector: 'app-mascota-form',
   templateUrl: './mascota-form.component.html',
   styleUrls: ['./mascota-form.component.css']
 })
-export class MascotaFormComponent {
+export class MascotaFormComponent implements OnInit {
   @ViewChild('mascotaForm') mascotaForm!: NgForm;
   @Output() addMascotaEvent = new EventEmitter<Mascota>();
 
@@ -26,24 +28,43 @@ export class MascotaFormComponent {
     clienteId: 0
   };
 
+  editMode = false;
+
   clientes = [
     { id: 1, nombre: 'Juan Pérez' },
     { id: 2, nombre: 'María González' },
     { id: 3, nombre: 'Carlos Ramírez' }
   ];
 
-  addMascotaForm() {
-    // Marcar todos los campos como touched para mostrar errores
+  constructor(
+    private mascotaService: MascotaService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.editMode = true;
+      this.mascotaService.getMascotaById(+id).subscribe(mascota => {
+        if (mascota) {
+          this.formMascota = mascota;
+        }
+      });
+    }
+  }
+
+  guardarMascota() {
     this.markAllAsTouched();
-    
+
     if (this.mascotaForm.valid) {
-      // Validación adicional para valores numéricos
-      if (this.formMascota.edad <= 0 || this.formMascota.peso <= 0) {
-        return;
+      if (this.editMode) {
+        this.mascotaService.actualizarMascota(this.formMascota);
+      } else {
+        this.mascotaService.agregarMascota(this.formMascota);
       }
 
-      this.addMascotaEvent.emit({...this.formMascota});
-      this.resetForm();
+      this.router.navigate(['/mascotas']);  // Redirige después de guardar
     }
   }
 
@@ -55,7 +76,6 @@ export class MascotaFormComponent {
   }
 
   resetForm() {
-    // Resetear el formulario y su estado
     this.mascotaForm.resetForm({
       idMascota: 0,
       estado: 1,
@@ -63,8 +83,7 @@ export class MascotaFormComponent {
       edad: null,
       peso: null
     });
-    
-    // Resetear el modelo
+
     this.formMascota = {
       idMascota: 0,
       nombre: '',
