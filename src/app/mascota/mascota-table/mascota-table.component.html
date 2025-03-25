@@ -45,6 +45,9 @@
             <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">
               Ver Detalles
             </button>
+            <button class="btn-detalles" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">
+              editar
+            </button>
             <button class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">
               Eliminar
             </button>

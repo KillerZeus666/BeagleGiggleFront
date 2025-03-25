@@ -43,4 +43,8 @@ export class MascotaTableComponent implements OnInit {
   abrirFormularioMascota(){
     this.router.navigate(['/crear-mascota']);
   }
+
+  abrirFormularioMascotaEdicion(id:number){
+    this.router.navigate(['/editar-mascota',id]);
+  }
 }

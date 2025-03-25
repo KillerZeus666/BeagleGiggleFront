@@ -16,6 +16,7 @@ const routes: Routes = [
   {path: 'mascotas', component: MascotaTableComponent},
   {path: 'detalles-mascota/:id', component: MascotaDetailComponent },
   {path: 'crear-mascota', component:MascotaFormComponent},
+  {path: 'editar-mascota/:id', component:MascotaFormComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 
