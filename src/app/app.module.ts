@@ -14,6 +14,7 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { ErrorsPageComponent } from './errors/errors-page/errors-page.component';
 import { FooterComponent } from './veterinaria/footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
+import { FundacionesComponent } from './landing/fundaciones/fundaciones.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LandingComponent } from './landing/landing.component';
     AdminPageComponent,
     ErrorsPageComponent,
     FooterComponent,
-    LandingComponent
+    LandingComponent,
+    FundacionesComponent
   ],
   imports: [
     BrowserModule,
