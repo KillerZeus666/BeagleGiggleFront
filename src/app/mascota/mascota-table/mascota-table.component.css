@@ -1,173 +1,194 @@
 /* Estilos para las lista de clientes y mascotas */
 .container-principal {
-    display: flex;
-    flex-direction: column;
-    margin: 2rem auto;
-    background: white;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  margin-bottom: 0;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Tabla */
+.tabla-container {
+  margin-top: 1.5rem;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabla {
+  width: auto;
+  min-width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  table-layout: auto;
+}
+
+.tabla th {
+  background-color: #40a8c4;
+  color: white;
+  padding: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+  white-space: nowrap;
+}
+
+.tabla td {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e0e7ec;
+  color: #333;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Columnas específicas con ancho fijo donde sea necesario */
+.tabla th:nth-child(1),
+.tabla td:nth-child(1) {
+  width: 50px;
+} /* ID */
+.tabla th:nth-child(2),
+.tabla td:nth-child(2) {
+  width: 100px;
+} /* Nombre */
+.tabla th:nth-child(7),
+.tabla td:nth-child(7) {
+  width: 70px;
+} /* Foto */
+.tabla th:nth-child(13),
+.tabla td:nth-child(13) {
+  width: 150px;
+  white-space: nowrap;
+} /* Acciones */
+
+.tabla tr:nth-child(even) td {
+  background-color: #f5f9fa;
+}
+
+.tabla tr:nth-child(odd) td {
+  background-color: #ffffff;
+}
+
+.tabla tbody tr:hover {
+  background-color: rgba(64, 168, 196, 0.1);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Estilos de imagen */
+.foto-tabla {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #40a8c4;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.foto-tabla:hover {
+  transform: scale(1.1);
+}
+
+/* Botones */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Asegura alineación vertical */
+  gap: 8px; /* Espaciado entre botones */
+}
+
+.btn-editar,
+.btn-eliminar,
+.btn-detalles {
+  display: flex;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin: 0.2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-editar {
+  background-color: #205375;
+  color: white;
+}
+
+.btn-eliminar {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.btn-detalles {
+  background-color: #40a8c4;
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #112d4e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-eliminar:hover {
+  background-color: #e60000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-detalles:hover {
+  background-color: #2e86ab;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contenedor-boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Responsive */
+@media (max-width: 1200px) {
+  .container-principal {
+    padding: 0.5rem;
   }
-  
-  /* Tabla */
-  .tabla-container {
-    margin-top: 1.5rem;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .tabla {
-    width: auto;
-    min-width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    table-layout: auto;
-  }
-  
-  .tabla th {
-    background-color: #40a8c4;
-    color: white;
-    padding: 0.75rem;
-    font-weight: 600;
-    text-align: center;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03rem;
-    white-space: nowrap;
-  }
-  
+
+  .tabla th,
   .tabla td {
-    padding: 0.75rem;
-    text-align: center;
-    font-size: 0.85rem;
-    border-bottom: 1px solid #e0e7ec;
-    color: #333;
-    white-space: normal;
-    word-break: break-word;
-  }
-  
-  /* Columnas específicas con ancho fijo donde sea necesario */
-  .tabla th:nth-child(1), .tabla td:nth-child(1) { width: 50px; } /* ID */
-  .tabla th:nth-child(2), .tabla td:nth-child(2) { width: 100px; } /* Nombre */
-  .tabla th:nth-child(7), .tabla td:nth-child(7) { width: 70px; } /* Foto */
-  .tabla th:nth-child(13), .tabla td:nth-child(13) { width: 150px; white-space: nowrap; } /* Acciones */
-  
-  .tabla tr:nth-child(even) td {
-    background-color: #f5f9fa;
-  }
-  
-  .tabla tr:nth-child(odd) td {
-    background-color: #ffffff;
-  }
-  
-  .tabla tbody tr:hover {
-    background-color: rgba(64, 168, 196, 0.1);
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  /* Estilos de imagen */
-  .foto-tabla {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #40a8c4;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .foto-tabla:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Botones */
-  .btn-eliminar,
-  .btn-detalles,
-  .btn-crear {
-    display: block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    padding: 0.5rem;
     font-size: 0.8rem;
-    margin: 0.1rem;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
   }
-  
-  .btn-eliminar {
-    background-color: #ff4d4d;
-    color: white;
+
+  .foto-tabla {
+    width: 40px;
+    height: 40px;
   }
-  
+
+  .btn-eliminar,
   .btn-detalles {
-    background-color: #40a8c4;
-    color: white;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
   }
-  
-  .btn-eliminar:hover {
-    background-color: #e60000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .btn-detalles:hover {
-    background-color: #2e86ab;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  .contenedor-boton {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-  }  
-
-  .btn-crear{
-    background-color: #40a8c4;
-    color: white;
+@media (max-width: 992px) {
+  .tabla th,
+  .tabla td {
+    font-size: 0.75rem;
   }
-
-  .btn-crear:hover{
-    background-color: #2e86ab;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Responsive */
-  @media (max-width: 1200px) {
-    .container-principal {
-      padding: 0.5rem;
-    }
-    
-    .tabla th,
-    .tabla td {
-      padding: 0.5rem;
-      font-size: 0.8rem;
-    }
-    
-    .foto-tabla {
-      width: 40px;
-      height: 40px;
-    }
-    
-    .btn-eliminar,
-    .btn-detalles {
-      padding: 0.3rem 0.6rem;
-      font-size: 0.7rem;
-    }
-  }
-  
-  @media (max-width: 992px) {
-    .tabla th,
-    .tabla td {
-      font-size: 0.75rem;
-    }
-  }
+}

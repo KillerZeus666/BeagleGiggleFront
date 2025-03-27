@@ -1,7 +1,7 @@
 import { VeterinarioCL } from "./veterinario-cl";
 import { MascotaCL } from "./mascota-cl";
 import { ServicioCL } from "./servicio-cl";
-import { TratamientoMedicamentoCL } from "./tratamiento-medicamento-cl";
+
 
 export class TratamientoCL {
     public idTratamiento: number;
@@ -11,7 +11,6 @@ export class TratamientoCL {
     public veterinario?: VeterinarioCL;
     public mascota?: MascotaCL;
     public servicio?: ServicioCL;
-    public tratamientoMedicamentos: TratamientoMedicamentoCL[];
 
     constructor();
     constructor(
@@ -21,8 +20,7 @@ export class TratamientoCL {
         detalles: string,
         veterinario: VeterinarioCL,
         mascota: MascotaCL,
-        servicio: ServicioCL,
-        tratamientoMedicamentos: TratamientoMedicamentoCL[]
+        servicio: ServicioCL
     );
     constructor(
         idTratamiento?: number,
@@ -31,8 +29,7 @@ export class TratamientoCL {
         detalles?: string,
         veterinario?: VeterinarioCL,
         mascota?: MascotaCL,
-        servicio?: ServicioCL,
-        tratamientoMedicamentos?: TratamientoMedicamentoCL[]
+        servicio?: ServicioCL
     ) {
         this.idTratamiento = idTratamiento || 0;
         this.codigo = codigo || "";
@@ -41,6 +38,5 @@ export class TratamientoCL {
         this.veterinario = veterinario;
         this.mascota = mascota;
         this.servicio = servicio;
-        this.tratamientoMedicamentos = tratamientoMedicamentos || [];
     }
 }

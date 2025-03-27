@@ -4,7 +4,7 @@
   <h1>Listado de Mascotas</h1>
   
   <div class="contenedor-boton">
-  <button class="btn-crear" (click)="abrirFormularioMascota()">Crear Mascota</button>
+  <button class="btn-detalles" (click)="abrirFormularioMascota()">Crear Mascota</button>
 </div>
   
 
@@ -48,8 +48,8 @@
             <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">
               Ver Detalles
             </button>
-            <button class="btn-detalles" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">
-              editar
+            <button class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">
+              Editar
             </button>
             <button class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">
               Eliminar
