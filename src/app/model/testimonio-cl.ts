@@ -1,5 +1,5 @@
-import { Cliente } from './cliente-cl';
-import { Servicio } from './servicio';
+import { ClienteCL } from './cliente-cl';
+import { ServicioCL } from './servicio-cl';
 
 export class TestimonioCL {
   idTestimonio: number;
@@ -7,8 +7,8 @@ export class TestimonioCL {
   imagen: string;
   calificacion: number;
   fecha: Date;
-  cliente: Cliente;
-  servicio: Servicio;
+  cliente: ClienteCL;
+  servicio: ServicioCL;
 
   constructor(
     idTestimonio: number = 0,
@@ -16,8 +16,8 @@ export class TestimonioCL {
     imagen: string = '',
     calificacion: number = 0,
     fecha: Date = new Date(),
-    cliente: Cliente = new Cliente(),
-    servicio: Servicio = new Servicio()
+    cliente: ClienteCL = new ClienteCL(),
+    servicio: ServicioCL = new ServicioCL()
   ) {
     this.idTestimonio = idTestimonio;
     this.texto = texto;
