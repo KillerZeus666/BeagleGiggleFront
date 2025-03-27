@@ -1,3 +1,4 @@
+
 /* Estilos base del formulario */
 form {
   max-width: 500px;
@@ -68,6 +69,10 @@ select {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1rem;
+}
+
+h1{
+  text-align: center;
 }
 
 /* Responsive */

@@ -88,7 +88,8 @@
   
   /* Botones */
   .btn-eliminar,
-  .btn-detalles {
+  .btn-detalles,
+  .btn-crear {
     display: block;
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
@@ -119,6 +120,22 @@
   }
   
   .btn-detalles:hover {
+    background-color: #2e86ab;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .contenedor-boton {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+  }  
+
+  .btn-crear{
+    background-color: #40a8c4;
+    color: white;
+  }
+
+  .btn-crear:hover{
     background-color: #2e86ab;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -1,20 +1,23 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-fundaciones',
   templateUrl: './fundaciones.component.html',
   styleUrls: ['./fundaciones.component.css']
 })
-export class FundacionesComponent implements OnInit, OnDestroy {
-
-  carouselPosition: number = 0;
-  carouselSpeed: number = 1;
+export class FundacionesComponent implements OnInit, AfterViewInit, OnDestroy {
+  
+  @ViewChild('carousel', { static: false }) carousel!: ElementRef;
+  
+  carouselSpeed: number = 1;  // Velocidad del carrusel (ajústala si es necesario)
   animationFrameId: number | null = null;
-  totalWidth: number = 0;
 
   ngOnInit(): void {
-    this.calculateCarouselWidth();
-    this.initCarousel();
+    this.startCarousel();
+  }
+
+  ngAfterViewInit(): void {
+    this.startCarousel();
   }
 
   ngOnDestroy(): void {
@@ -23,19 +26,15 @@ export class FundacionesComponent implements OnInit, OnDestroy {
     }
   }
 
-  private calculateCarouselWidth(): void {
-    const carouselElement = document.querySelector('.carousel') as HTMLElement;
-    if (carouselElement) {
-      this.totalWidth = carouselElement.scrollWidth / 2;
-    }
-  }
-
-  private initCarousel(): void {
+  private startCarousel(): void {
+    const carouselElement = this.carousel.nativeElement;
+    
     const animate = () => {
-      this.carouselPosition -= this.carouselSpeed;
+      carouselElement.scrollLeft += this.carouselSpeed;
 
-      if (Math.abs(this.carouselPosition) >= this.totalWidth) {
-        this.carouselPosition = 0;
+      // Si llega al final, regresa al inicio para un bucle infinito
+      if (carouselElement.scrollLeft >= carouselElement.scrollWidth - carouselElement.clientWidth) {
+        carouselElement.scrollLeft = 0;
       }
 
       this.animationFrameId = requestAnimationFrame(animate);

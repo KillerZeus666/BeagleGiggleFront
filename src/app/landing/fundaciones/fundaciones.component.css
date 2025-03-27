@@ -158,8 +158,9 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     width: 100%;
+    white-space: nowrap;
   }
-  
+
   .carousel-track {
     display: flex;
     gap: 20px;
