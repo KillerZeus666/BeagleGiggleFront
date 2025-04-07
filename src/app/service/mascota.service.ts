@@ -1,83 +1,62 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Mascota } from '../mascota/mascota';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
-  private mascotaList: Mascota[] = [
-    {
-      idMascota: 1,
-      nombre: "Rex",
-      raza: "Pastor Alemán",
-      edad: 4,
-      peso: 30.5,
-      enfermedad: "Ninguna",
-      foto: "https://upload.wikimedia.org/wikipedia/commons/9/94/Cane_da_pastore_tedesco_adulto.jpg",
-      fechaNacimiento: new Date("2020-03-10"),
-      fechaIngreso: new Date("2023-08-15"),
-      fechaSalida: new Date("2023-08-25"),
-      estado: 1,
-      clienteId: 101
-    },
-    {
-      idMascota: 2,
-      nombre: "Michi",
-      raza: "Siamés",
-      edad: 3,
-      peso: 4.2,
-      enfermedad: "Alergia",
-      foto: "https://picartpetcare.com/wp-content/uploads/2021/01/gato-siames.jpg",
-      fechaNacimiento: new Date("2021-08-22"),
-      fechaIngreso: new Date("2023-07-01"),
-      fechaSalida: new Date("2023-07-15"),
-      estado: 1,
-      clienteId: 102
-    },
-    {
-      idMascota: 3,
-      nombre: "Firulais",
-      raza: "Labrador Retriever",
-      edad: 5,
-      peso: 28.0,
-      enfermedad: "Ninguna",
-      foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaLlmNmIUsSC1KxgyDD37sF1M6PCDWEzjGw&s",
-      fechaNacimiento: new Date("2019-06-15"),
-      fechaIngreso: new Date("2023-06-10"),
-      fechaSalida: new Date("2023-06-25"),
-      estado: 1,
-      clienteId: 103
-    }
-  ];
 
-  constructor() {}
+  private baseUrl = 'http://localhost:8082/mascota';
 
+  constructor(private http: HttpClient) {}
+
+  // Obtener todas las mascotas
   findAll(): Observable<Mascota[]> {
-    return of(this.mascotaList);
+    return this.http.get<Mascota[]>(`${this.baseUrl}/all`);
   }
 
-  agregarMascota(mascota: Mascota): void {
-    this.mascotaList.push(mascota);
+  // Obtener una mascota por su ID
+  findById(id: number): Observable<Mascota> {
+    return this.http.get<Mascota>(`${this.baseUrl}/${id}`);
   }
 
-  actualizarMascota(mascota: Mascota): void {
-    const index = this.mascotaList.findIndex(m => m.idMascota === mascota.idMascota);
-    if (index !== -1) {
-      this.mascotaList[index] = mascota;
-    }
+  // Eliminar una mascota por su ID
+  deleteMascota(id: number): Observable<void> {
+    console.log('Eliminando mascota con ID:', id);
+    return this.http.delete<void>(`${this.baseUrl}/eliminar/${id}`);
   }
 
-  eliminarMascota(mascota: Mascota): void {
-    this.mascotaList = this.mascotaList.filter(m => m !== mascota);
+  // Agregar una nueva mascota asociada a un cliente
+  agregarMascota(mascota: Mascota, idCliente: number): Observable<Mascota> {
+    const url = `${this.baseUrl}/agregar?idCliente=${idCliente}`;
+    return this.http.post<Mascota>(url, mascota);
   }
 
-  findAllSync(): Mascota[] {
-    return [...this.mascotaList]; // Devuelve una copia del array para evitar modificaciones accidentales
+  // Editar una mascota existente
+  actualizarMascota(id: number, mascota: Mascota): Observable<Mascota> {
+    return this.http.put<Mascota>(`${this.baseUrl}/editar/${id}`, mascota);
+  }
+
+  // Cambiar el estado de una mascota
+  cambiarEstadoMascota(id: number, mascota: Mascota): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/cambiarEstadoMascota/${id}`, mascota);
+  }
+
+  // Obtener mascotas por ID de cliente
+  obtenerMascotasPorCliente(idCliente: number): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(`${this.baseUrl}/mascotas?idCliente=${idCliente}`);
   }
 
   getMascotaById(id: number): Observable<Mascota> {
-    const mascota = this.mascotaList.find(m => m.idMascota === id);
-    return of(mascota!);
+    return this.http.get<Mascota>(`${this.baseUrl}/` + id);
   }
+
+  getAllMascotas(): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(`${this.baseUrl}/all`);
+  }
+  
+ 
+  
 }

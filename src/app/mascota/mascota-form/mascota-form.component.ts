@@ -29,6 +29,8 @@ export class MascotaFormComponent implements OnInit {
   };
 
   editMode = false;
+  idMascota = 0;
+  idCliente = 0;
 
   clientes = [
     { id: 1, nombre: 'Juan Pérez' },
@@ -46,7 +48,8 @@ export class MascotaFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.editMode = true;
-      this.mascotaService.getMascotaById(+id).subscribe(mascota => {
+      this.idMascota = +id;
+      this.mascotaService.findById(this.idMascota).subscribe(mascota => {
         if (mascota) {
           this.formMascota = mascota;
         }
@@ -59,12 +62,14 @@ export class MascotaFormComponent implements OnInit {
 
     if (this.mascotaForm.valid) {
       if (this.editMode) {
-        this.mascotaService.actualizarMascota(this.formMascota);
+        this.mascotaService.actualizarMascota(this.idMascota, this.formMascota).subscribe(() => {
+          this.router.navigate(['/mascotas']);
+        });
       } else {
-        this.mascotaService.agregarMascota(this.formMascota);
+        this.mascotaService.agregarMascota(this.formMascota, this.formMascota.clienteId).subscribe(() => {
+          this.router.navigate(['/mascotas']);
+        });
       }
-
-      this.router.navigate(['/mascotas']);  // Redirige después de guardar
     }
   }
 
