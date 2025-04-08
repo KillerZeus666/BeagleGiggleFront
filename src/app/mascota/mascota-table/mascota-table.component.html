@@ -52,7 +52,7 @@
               Editar
             </button>
             <button class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">
-              Eliminar
+              {{ mascota.estado === 1 ? 'Desactivar' : 'Activar' }}
             </button>
           </td>
         </tr>

@@ -46,13 +46,22 @@ export class MascotaTableComponent implements OnInit {
     this.mascotaService.eliminarMascota(mascota.idMascota).subscribe({
       next: (respuesta) => {
         console.log('Mascota eliminada:', respuesta);
-        // Aquí podrías actualizar la lista si es necesario
+        // Recargar la lista de mascotas después de eliminar
+        this.mascotaService.findAll().subscribe({
+          next: (mascotas: Mascota[]) => {
+            this.mascotaList = mascotas;
+          },
+          error: (err) => {
+            console.error('Error al recargar las mascotas:', err);
+          }
+        });
       },
       error: (err) => {
         console.error('Error al eliminar la mascota:', err);
       }
     });
   }
+  
   
 
   abrirFormularioMascota(){
