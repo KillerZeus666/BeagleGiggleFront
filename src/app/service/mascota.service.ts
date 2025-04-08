@@ -7,51 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MascotaService {
-  private mascotaList: Mascota[] = [
-    {
-      idMascota: 1,
-      nombre: "Rex",
-      raza: "Pastor Alemán",
-      edad: 4,
-      peso: 30.5,
-      enfermedad: "Ninguna",
-      foto: "https://upload.wikimedia.org/wikipedia/commons/9/94/Cane_da_pastore_tedesco_adulto.jpg",
-      fechaNacimiento: new Date("2020-03-10"),
-      fechaIngreso: new Date("2023-08-15"),
-      fechaSalida: new Date("2023-08-25"),
-      estado: 1,
-      clienteId: 101
-    },
-    {
-      idMascota: 2,
-      nombre: "Michi",
-      raza: "Siamés",
-      edad: 3,
-      peso: 4.2,
-      enfermedad: "Alergia",
-      foto: "https://picartpetcare.com/wp-content/uploads/2021/01/gato-siames.jpg",
-      fechaNacimiento: new Date("2021-08-22"),
-      fechaIngreso: new Date("2023-07-01"),
-      fechaSalida: new Date("2023-07-15"),
-      estado: 1,
-      clienteId: 102
-    },
-    {
-      idMascota: 3,
-      nombre: "Firulais",
-      raza: "Labrador Retriever",
-      edad: 5,
-      peso: 28.0,
-      enfermedad: "Ninguna",
-      foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaLlmNmIUsSC1KxgyDD37sF1M6PCDWEzjGw&s",
-      fechaNacimiento: new Date("2019-06-15"),
-      fechaIngreso: new Date("2023-06-10"),
-      fechaSalida: new Date("2023-06-25"),
-      estado: 1,
-      clienteId: 103
-    }
-  ];
-
+  
   private baseUrl = 'http://localhost:8082/mascota';
 
   constructor(private http:HttpClient) {}
@@ -82,12 +38,4 @@ export class MascotaService {
     return this.http.delete(`${this.baseUrl}/eliminar/${id}`, { responseType: 'text' });
   }
 
-  /*findAllSync(): Mascota[] {
-    return [...this.mascotaList]; // Devuelve una copia del array para evitar modificaciones accidentales
-  }
-
-  getMascotaById(id: number): Observable<Mascota> {
-    const mascota = this.mascotaList.find(m => m.idMascota === id);
-    return of(mascota!);
-  }*/
 }

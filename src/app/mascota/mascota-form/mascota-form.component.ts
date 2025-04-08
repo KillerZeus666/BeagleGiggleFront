@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Mascota } from '../mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
+import { ClienteCL } from 'src/app/model/cliente-cl';
+import { ClienteService } from 'src/app/service/cliente.service';
 
 @Component({
   selector: 'app-mascota-form',
@@ -30,14 +32,11 @@ export class MascotaFormComponent implements OnInit {
 
   editMode = false;
 
-  clientes = [
-    { id: 1, nombre: 'Juan Pérez' },
-    { id: 2, nombre: 'María González' },
-    { id: 3, nombre: 'Carlos Ramírez' }
-  ];
+  clientes: ClienteCL[] = [];
 
   constructor(
     private mascotaService: MascotaService,
+    private clienteService: ClienteService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -52,6 +51,9 @@ export class MascotaFormComponent implements OnInit {
         }
       });
     }
+    this.clienteService.findAll().subscribe(clientes => {
+      this.clientes = clientes;
+    });
   }
 
   guardarMascota() {
