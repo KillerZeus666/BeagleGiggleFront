@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Mascota } from '../mascota';
+import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
 @Component({
   selector: 'app-mascota-detail',
@@ -8,7 +8,7 @@ import { MascotaService } from 'src/app/service/mascota.service';
   styleUrls: ['./mascota-detail.component.css']
 })
 export class MascotaDetailComponent implements OnInit {
-  mascota!: Mascota; // La mascota seleccionada
+  mascota!: MascotaCL; // La mascota seleccionada
 
   constructor(
     private route: ActivatedRoute,

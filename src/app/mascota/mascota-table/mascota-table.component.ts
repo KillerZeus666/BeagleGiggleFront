@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Mascota } from '../mascota';
+import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Router } from '@angular/router';
 
@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./mascota-table.component.css']
 })
 export class MascotaTableComponent implements OnInit {
-  selectedMascota: Mascota | null = null;
-  mascotaList: Mascota[] = [];
+  selectedMascota: MascotaCL | null = null;
+  mascotaList: MascotaCL[] = [];
 
   constructor(private mascotaService: MascotaService, private router: Router) {}
 
   ngOnInit(): void {
     this.mascotaService.findAll().subscribe({
-      next: (mascotas: Mascota[]) => {
+      next: (mascotas: MascotaCL[]) => {
         this.mascotaList = mascotas;
       },
       error: (err) => {
@@ -30,7 +30,7 @@ export class MascotaTableComponent implements OnInit {
     this.router.navigate(['/detalles-mascota', id]);
   }
 
-  agregarMascota(mascota: Mascota) {
+  agregarMascota(mascota: MascotaCL) {
     const idCliente = mascota.clienteId; 
   this.mascotaService.agregarMascota(mascota, idCliente).subscribe({
     next: (nuevaMascota) => {
@@ -42,13 +42,13 @@ export class MascotaTableComponent implements OnInit {
   });
   }
 
-  eliminarMascota(mascota: Mascota) {
+  eliminarMascota(mascota: MascotaCL) {
     this.mascotaService.eliminarMascota(mascota.idMascota).subscribe({
       next: (respuesta) => {
         console.log('Mascota eliminada:', respuesta);
         // Recargar la lista de mascotas después de eliminar
         this.mascotaService.findAll().subscribe({
-          next: (mascotas: Mascota[]) => {
+          next: (mascotas: MascotaCL[]) => {
             this.mascotaList = mascotas;
           },
           error: (err) => {

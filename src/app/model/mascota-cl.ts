@@ -13,6 +13,7 @@ export class MascotaCL {
     public fechaSalida?: Date;
     public estado?: number;
     public clienteId: number;
+    public cliente?: ClienteCL;
 
     constructor();
     constructor(
@@ -55,5 +56,6 @@ export class MascotaCL {
         this.fechaSalida = fechaSalida;
         this.estado = estado;
         this.clienteId = cliente ? cliente.idCliente : 0;
+        this.cliente = cliente;
     }
 }

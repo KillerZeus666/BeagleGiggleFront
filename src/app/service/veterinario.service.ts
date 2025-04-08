@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { VeterinarioCL } from '../model/veterinario-cl';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Mascota } from '../mascota/mascota';
+import { MascotaCL } from '../model/mascota-cl';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +27,7 @@ export class VeterinarioService {
       return this.http.put<VeterinarioCL>(`${this.baseUrl}/actualizar/{id}`,veterinario);
     }
 
-    obtenerMascotasAtendidas(): Observable<Mascota[]> {
-      return this.http.get<Mascota[]>(`${this.baseUrl}/mascotas_atendidas`, { withCredentials: true });
+    obtenerMascotasAtendidas(): Observable<MascotaCL[]> {
+      return this.http.get<MascotaCL[]>(`${this.baseUrl}/mascotas_atendidas`, { withCredentials: true });
     }  
 }

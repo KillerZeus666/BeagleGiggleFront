@@ -85,7 +85,7 @@
     #clienteId="ngModel"
   >
     <option value="">Seleccione un cliente</option>
-    <option *ngFor="let cliente of clientes" [value]="cliente.idCliente">
+    <option *ngFor="let cliente of clientes" [ngValue]="cliente.idCliente">
       {{ cliente.nombre }}
     </option>
   </select>

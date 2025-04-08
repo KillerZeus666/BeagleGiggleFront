@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Mascota } from '../mascota/mascota';
+import { MascotaCL } from '../model/mascota-cl';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -12,30 +12,30 @@ export class MascotaService {
 
   constructor(private http:HttpClient) {}
 
-  findAll(): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>(this.baseUrl);
+  findAll(): Observable<MascotaCL[]> {
+    return this.http.get<MascotaCL[]>(this.baseUrl);
   }
 
-  getMascota(id:number): Observable<Mascota>{
-    return this.http.get<Mascota>(`${this.baseUrl}/${id}`);
+  getMascota(id:number): Observable<MascotaCL>{
+    return this.http.get<MascotaCL>(`${this.baseUrl}/${id}`);
   }
 
-  getMascotasPorCliente(idCliente: number): Observable<Mascota[]> {
+  getMascotasPorCliente(idCliente: number): Observable<MascotaCL[]> {
     const params = new HttpParams().set('idCliente', idCliente.toString());
-    return this.http.get<Mascota[]>(`${this.baseUrl}/mascotas`, { params });
+    return this.http.get<MascotaCL[]>(`${this.baseUrl}/mascotas`, { params });
   }
 
-  agregarMascota(mascota: Mascota, idCliente: number): Observable<Mascota> {
+  agregarMascota(mascota: MascotaCL, idCliente: number): Observable<MascotaCL> {
     const params = new HttpParams().set('idCliente', idCliente.toString());
-    return this.http.post<Mascota>(`${this.baseUrl}/agregar`, mascota, { params });
+    return this.http.post<MascotaCL>(`${this.baseUrl}/agregar`, mascota, { params });
   }
 
-   editarMascota(id: number, mascota: Mascota): Observable<Mascota> {
-    return this.http.put<Mascota>(`${this.baseUrl}/editar/${id}`, mascota);
+   editarMascota(id: number, mascota: MascotaCL): Observable<MascotaCL> {
+    return this.http.put<MascotaCL>(`${this.baseUrl}/editar/${id}`, mascota);
   }
 
-  eliminarMascota(id: number): Observable<Mascota> {
-    return this.http.put<Mascota>(`${this.baseUrl}/eliminar/${id}`,null);
+  eliminarMascota(id: number): Observable<MascotaCL> {
+    return this.http.put<MascotaCL>(`${this.baseUrl}/eliminar/${id}`,null);
   }
 
 }

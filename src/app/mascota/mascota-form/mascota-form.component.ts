@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output, ViewChild, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Mascota } from '../mascota';
+import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { ClienteCL } from 'src/app/model/cliente-cl';
 import { ClienteService } from 'src/app/service/cliente.service';
+
 
 @Component({
   selector: 'app-mascota-form',
@@ -13,9 +14,9 @@ import { ClienteService } from 'src/app/service/cliente.service';
 })
 export class MascotaFormComponent implements OnInit {
   @ViewChild('mascotaForm') mascotaForm!: NgForm;
-  @Output() addMascotaEvent = new EventEmitter<Mascota>();
+  @Output() addMascotaEvent = new EventEmitter<MascotaCL>();
 
-  formMascota: Mascota = {
+  formMascota: MascotaCL = {
     idMascota: 0,
     nombre: '',
     raza: '',
@@ -27,8 +28,10 @@ export class MascotaFormComponent implements OnInit {
     fechaIngreso: undefined,
     fechaSalida: undefined,
     estado: 1,
-    clienteId: 0
+    clienteId: 0,
+    cliente: undefined
   };
+  
 
   editMode = false;
 
@@ -52,8 +55,10 @@ export class MascotaFormComponent implements OnInit {
         if (mascota) {
           this.formMascota = {
             ...mascota,
-            clienteId: mascota.clienteId // asegúrate que sea tipo number
+            clienteId: mascota.cliente?.idCliente ?? mascota.clienteId ?? 0
           };
+          console.log('Mascota:', mascota);
+          console.log('Cliente ID asignado:', this.formMascota.clienteId);
         }
       });
     }
