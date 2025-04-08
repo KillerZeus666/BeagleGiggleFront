@@ -30,18 +30,6 @@ export class MascotaTableComponent implements OnInit {
     this.router.navigate(['/detalles-mascota', id]);
   }
 
-  agregarMascota(mascota: MascotaCL) {
-    const idCliente = mascota.clienteId; 
-  this.mascotaService.agregarMascota(mascota, idCliente).subscribe({
-    next: (nuevaMascota) => {
-      this.mascotaList.push(nuevaMascota);
-    },
-    error: (err) => {
-      console.error('Error al agregar mascota:', err);
-    }
-  });
-  }
-
   eliminarMascota(mascota: MascotaCL) {
     this.mascotaService.eliminarMascota(mascota.idMascota).subscribe({
       next: (respuesta) => {
@@ -62,8 +50,6 @@ export class MascotaTableComponent implements OnInit {
     });
   }
   
-  
-
   abrirFormularioMascota(){
     this.router.navigate(['/crear-mascota']);
   }

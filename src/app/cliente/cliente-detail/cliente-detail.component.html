@@ -1,1 +1,35 @@
-<p>cliente-detail works!</p>
+
+<div class="page-container">
+    <div class="container">
+      <h1>Detalle del cliente</h1>
+      <div class="content">
+        <div class="img-container">
+          <img
+            [src]="cliente.foto"
+            alt="Foto del cliente"
+            class="mascota-img"
+          />
+        </div>
+  
+        <div class="datos">
+          <div class="dato">
+            <span class="label">Nombre</span>
+            <span class="info">{{ cliente.nombre }}</span>
+          </div>
+          <div class="dato">
+            <span class="label">Cédula</span>
+            <span class="info">{{ cliente.cedula }}</span>
+          </div>
+          <div class="dato">
+            <span class="label">Correo</span>
+            <span class="info">{{ cliente.correo }}</span>
+          </div>
+          <div class="dato">
+            <span class="label">Celular</span>
+            <span class="info">{{ cliente.celular }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

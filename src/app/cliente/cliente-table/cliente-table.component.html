@@ -1,1 +1,44 @@
-<p>cliente-table works!</p>
+<main class="container-principal">
+    <h1>Lista de Clientes</h1>
+  
+    <div class="button-container">
+      <a class="btn-agregar" (click)="abrirFormualarioAgregarCliente()">Agregar Cliente</a>
+    </div>
+  
+    <div class="tabla-container">
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Celular</th>
+            <th>Correo</th>
+            <th>Detalles</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clienteList">
+            <td>
+              <img [src]="cliente.foto" alt="Foto de cliente" class="foto-tabla" />
+            </td>
+            <td class="cliente-nombre">{{ cliente.nombre }}</td>
+            <td class="cliente-cedula">{{ cliente.cedula }}</td>
+            <td class="cliente-celular">{{ cliente.celular }}</td>
+            <td class="cliente-correo">{{ cliente.correo }}</td>
+            <td>
+              <a (click)="mostrarCliente(cliente.idCliente)" class="btn-detalles">Ver detalles</a>
+            </td>
+            <td class="acciones-cliente">
+              <a class="btn-editar" (click)="abrirFormularioEditarCliente(cliente.idCliente)">Editar</a>
+              <button (click)="eliminarCliente(cliente.idCliente)" class="btn-eliminar">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  

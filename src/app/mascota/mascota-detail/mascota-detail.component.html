@@ -50,8 +50,8 @@
           <span class="data-value">{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">ID Cliente:</span>
-          <span class="data-value">{{ mascota.clienteId }}</span>
+          <span class="data-label">Nombre Cliente:</span>
+          <span class="data-value">{{ mascota.cliente?.nombre }}</span>
         </div>
       </div>
     </ng-container>

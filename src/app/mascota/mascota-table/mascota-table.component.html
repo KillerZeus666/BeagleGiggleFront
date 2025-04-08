@@ -43,7 +43,7 @@
           <td>{{ mascota.fechaIngreso ? (mascota.fechaIngreso | date:'yyyy/MM/dd') : '-' }}</td>
           <td>{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : '-' }}</td>
           <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
-          <td>{{ mascota.clienteId }}</td>
+          <td>{{ mascota.cliente?.nombre }}</td>
           <td class="action-buttons">
             <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">
               Ver Detalles

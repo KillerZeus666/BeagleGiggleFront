@@ -7,6 +7,9 @@ import { MascotaDetailComponent } from './mascota/mascota-detail/mascota-detail.
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { MascotaFormComponent } from './mascota/mascota-form/mascota-form.component';
+import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
+import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 
 
 const routes: Routes = [
@@ -17,6 +20,10 @@ const routes: Routes = [
   {path: 'detalles-mascota/:id', component: MascotaDetailComponent },
   {path: 'crear-mascota', component:MascotaFormComponent},
   {path: 'editar-mascota/:id', component:MascotaFormComponent},
+  {path: 'clientes',component:ClienteTableComponent},
+  {path: 'detalles-cliente/:id', component:ClienteDetailComponent},
+  {path: 'crear-cliente', component:ClienteFormComponent},
+  {path: 'editar-cliente/:id', component:ClienteFormComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 

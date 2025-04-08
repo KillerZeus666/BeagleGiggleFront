@@ -1,1 +1,89 @@
-<p>cliente-form works!</p>
+<section class="formularioLogin">
+    <div class="formularioContainer">
+    <h1>{{ editMode ? 'Editar Mascota' : 'Agregar Mascota' }}</h1>
+    <form #clienteForm="ngForm" (ngSubmit)="guardarCliente()" autocomplete="off">
+        <label for="nombre">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="Formcliente.nombre"
+          placeholder="Ingrese nombre completo"
+          required
+        />
+  
+        <label for="correo">Correo electrónico:</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          [(ngModel)]="Formcliente.correo"
+          placeholder="Ingrese correo electrónico"
+          required
+        />
+  
+        <label for="celular">Celular:</label>
+        <input
+          type="text"
+          id="celular"
+          name="celular"
+          [(ngModel)]="Formcliente.celular"
+          placeholder="Ingrese número de celular"
+          required
+        />
+  
+        <label for="cedula">Cédula:</label>
+        <input
+          type="text"
+          id="cedula"
+          name="cedula"
+          [(ngModel)]="Formcliente.cedula"
+          placeholder="Escriba la cédula"
+          required
+        />
+  
+        <label for="nombreUsuario">Usuario:</label>
+        <input
+          type="text"
+          id="nombreUsuario"
+          name="nombreUsuario"
+          [(ngModel)]="Formcliente.nombreUsuario"
+          placeholder="Escriba un nombre de usuario"
+          required
+        />
+  
+        <label for="foto">Foto (URL):</label>
+        <input
+          type="text"
+          id="foto"
+          name="foto"
+          [(ngModel)]="Formcliente.foto"
+          placeholder="Pegue la URL de la foto"
+          required
+        />
+  
+        <label for="contrasena">Contraseña:</label>
+        <input
+          type="password"
+          id="contrasena"
+          name="contrasena"
+          [(ngModel)]="Formcliente.contrasena"
+          placeholder="Cree una contraseña"
+          required
+        />
+  
+        <label for="confirm_password">Confirmar contraseña:</label>
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          [(ngModel)]="confirmPassword"
+          placeholder="Repita la contraseña"
+          required
+        />
+  
+        <button type="submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
+      </form>
+    </div>
+  </section>
+  
