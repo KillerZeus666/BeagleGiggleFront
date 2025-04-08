@@ -16,6 +16,9 @@ import { FooterComponent } from './veterinaria/footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { FundacionesComponent } from './landing/fundaciones/fundaciones.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
+import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { HttpClientModule } from '@angular/common/http';
     ErrorsPageComponent,
     FooterComponent,
     LandingComponent,
-    FundacionesComponent
+    FundacionesComponent,
+    ClienteTableComponent,
+    ClienteFormComponent,
+    ClienteDetailComponent
   ],
   imports: [
     BrowserModule,
