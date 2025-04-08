@@ -42,19 +42,24 @@ export class MascotaFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  this.clienteService.findAll().subscribe(clientes => {
+    this.clientes = clientes;
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.editMode = true;
       this.mascotaService.getMascota(+id).subscribe(mascota => {
         if (mascota) {
-          this.formMascota = mascota;
+          this.formMascota = {
+            ...mascota,
+            clienteId: mascota.clienteId // asegúrate que sea tipo number
+          };
         }
       });
     }
-    this.clienteService.findAll().subscribe(clientes => {
-      this.clientes = clientes;
-    });
-  }
+  });
+}
+
 
   guardarMascota() {
     this.markAllAsTouched();

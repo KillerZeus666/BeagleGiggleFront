@@ -43,8 +43,17 @@ export class MascotaTableComponent implements OnInit {
   }
 
   eliminarMascota(mascota: Mascota) {
-    this.mascotaService.eliminarMascota(mascota.idMascota);
+    this.mascotaService.eliminarMascota(mascota.idMascota).subscribe({
+      next: (respuesta) => {
+        console.log('Mascota eliminada:', respuesta);
+        // Aquí podrías actualizar la lista si es necesario
+      },
+      error: (err) => {
+        console.error('Error al eliminar la mascota:', err);
+      }
+    });
   }
+  
 
   abrirFormularioMascota(){
     this.router.navigate(['/crear-mascota']);
