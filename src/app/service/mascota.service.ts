@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Mascota } from '../mascota/mascota';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -51,33 +52,42 @@ export class MascotaService {
     }
   ];
 
-  constructor() {}
+  private baseUrl = 'http://localhost:8082/mascota';
+
+  constructor(private http:HttpClient) {}
 
   findAll(): Observable<Mascota[]> {
-    return of(this.mascotaList);
+    return this.http.get<Mascota[]>(this.baseUrl);
   }
 
-  agregarMascota(mascota: Mascota): void {
-    this.mascotaList.push(mascota);
+  getMascota(id:number): Observable<Mascota>{
+    return this.http.get<Mascota>(`${this.baseUrl}/${id}`);
   }
 
-  actualizarMascota(mascota: Mascota): void {
-    const index = this.mascotaList.findIndex(m => m.idMascota === mascota.idMascota);
-    if (index !== -1) {
-      this.mascotaList[index] = mascota;
-    }
+  getMascotasPorCliente(idCliente: number): Observable<Mascota[]> {
+    const params = new HttpParams().set('idCliente', idCliente.toString());
+    return this.http.get<Mascota[]>(`${this.baseUrl}/mascotas`, { params });
   }
 
-  eliminarMascota(mascota: Mascota): void {
-    this.mascotaList = this.mascotaList.filter(m => m !== mascota);
+  agregarMascota(mascota: Mascota, idCliente: number): Observable<Mascota> {
+    const params = new HttpParams().set('idCliente', idCliente.toString());
+    return this.http.post<Mascota>(`${this.baseUrl}/agregar`, mascota, { params });
   }
 
-  findAllSync(): Mascota[] {
+   editarMascota(id: number, mascota: Mascota): Observable<Mascota> {
+    return this.http.put<Mascota>(`${this.baseUrl}/editar/${id}`, mascota);
+  }
+
+  eliminarMascota(id: number): Observable<string> {
+    return this.http.delete(`${this.baseUrl}/eliminar/${id}`, { responseType: 'text' });
+  }
+
+  /*findAllSync(): Mascota[] {
     return [...this.mascotaList]; // Devuelve una copia del array para evitar modificaciones accidentales
   }
 
   getMascotaById(id: number): Observable<Mascota> {
     const mascota = this.mascotaList.find(m => m.idMascota === id);
     return of(mascota!);
-  }
+  }*/
 }

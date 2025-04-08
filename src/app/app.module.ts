@@ -15,6 +15,7 @@ import { ErrorsPageComponent } from './errors/errors-page/errors-page.component'
 import { FooterComponent } from './veterinaria/footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { FundacionesComponent } from './landing/fundaciones/fundaciones.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FundacionesComponent } from './landing/fundaciones/fundaciones.componen
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

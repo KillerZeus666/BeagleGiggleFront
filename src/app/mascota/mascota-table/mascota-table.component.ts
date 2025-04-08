@@ -31,13 +31,19 @@ export class MascotaTableComponent implements OnInit {
   }
 
   agregarMascota(mascota: Mascota) {
-    this.mascotaService.agregarMascota(mascota);
-    this.mascotaList = this.mascotaService.findAllSync();
+    const idCliente = mascota.clienteId; 
+  this.mascotaService.agregarMascota(mascota, idCliente).subscribe({
+    next: (nuevaMascota) => {
+      this.mascotaList.push(nuevaMascota);
+    },
+    error: (err) => {
+      console.error('Error al agregar mascota:', err);
+    }
+  });
   }
 
   eliminarMascota(mascota: Mascota) {
-    this.mascotaService.eliminarMascota(mascota);
-    this.mascotaList = this.mascotaService.findAllSync();
+    this.mascotaService.eliminarMascota(mascota.idMascota);
   }
 
   abrirFormularioMascota(){

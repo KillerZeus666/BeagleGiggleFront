@@ -46,7 +46,7 @@ export class MascotaFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.editMode = true;
-      this.mascotaService.getMascotaById(+id).subscribe(mascota => {
+      this.mascotaService.getMascota(+id).subscribe(mascota => {
         if (mascota) {
           this.formMascota = mascota;
         }
@@ -56,17 +56,28 @@ export class MascotaFormComponent implements OnInit {
 
   guardarMascota() {
     this.markAllAsTouched();
-
+  
     if (this.mascotaForm.valid) {
       if (this.editMode) {
-        this.mascotaService.actualizarMascota(this.formMascota);
+        this.mascotaService.editarMascota(this.formMascota.idMascota, this.formMascota)
+          .subscribe(() => {
+            this.router.navigate(['/mascotas']);
+          });
       } else {
-        this.mascotaService.agregarMascota(this.formMascota);
+        const idCliente = this.formMascota.clienteId;
+  
+        if (idCliente) {
+          this.mascotaService.agregarMascota(this.formMascota, idCliente)
+            .subscribe(() => {
+              this.router.navigate(['/mascotas']);
+            });
+        } else {
+          console.error("ID del cliente no definido.");
+        }
       }
-
-      this.router.navigate(['/mascotas']);  // Redirige después de guardar
     }
   }
+  
 
   private markAllAsTouched() {
     Object.keys(this.mascotaForm.controls).forEach(field => {

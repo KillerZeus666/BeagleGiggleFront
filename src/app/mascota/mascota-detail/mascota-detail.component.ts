@@ -22,7 +22,7 @@ export class MascotaDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     
     // Buscar la mascota por ID (simulado con un servicio)
-    this.mascotaService.getMascotaById(id).subscribe(mascota => {
+    this.mascotaService.getMascota(id).subscribe(mascota => {
       this.mascota = mascota;
     });
   }
