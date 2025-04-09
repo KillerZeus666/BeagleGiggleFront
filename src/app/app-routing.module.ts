@@ -11,6 +11,8 @@ import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.com
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { VerMascotasClienteComponent } from './cliente/ver-mascotas-cliente/ver-mascotas-cliente.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 const routes: Routes = [
@@ -27,6 +29,7 @@ const routes: Routes = [
   {path: 'editar-cliente/:id', component:ClienteFormComponent},
   {path: 'mascotas-cliente/:id', component:VerMascotasClienteComponent},  
   {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'inicio-sesion', component: LoginComponent },
   {path: '**', component: ErrorsPageComponent}
 
   
