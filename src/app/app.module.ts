@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
+import { VerMascotasClienteComponent } from './cliente/ver-mascotas-cliente/ver-mascotas-cliente.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.
     FundacionesComponent,
     ClienteTableComponent,
     ClienteFormComponent,
-    ClienteDetailComponent
+    ClienteDetailComponent,
+    VerMascotasClienteComponent
   ],
   imports: [
     BrowserModule,

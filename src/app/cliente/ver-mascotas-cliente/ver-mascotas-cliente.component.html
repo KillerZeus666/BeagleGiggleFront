@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<section class="mascotas">
+    <h2>Mis mascotas</h2>
+  
+    <!-- Contenedor de mascotas -->
+    <div class="mascotas-container">
+      <!-- Si hay mascotas, las muestra -->
+      <div *ngIf="mascotas && mascotas.length > 0; else noMascotas">
+        <div class="mascota" *ngFor="let mascota of mascotas">
+          <a (click)="mostrarMascota(mascota.idMascota)" class="btn-detalles">
+            <img [src]="mascota.foto"
+                 alt="Foto de mascota"
+                 [ngClass]="mascota.estado == 1 ? 'img-inactiva' : ''" />
+          </a>
+          <h3>{{ mascota.nombre }}</h3>
+          <p>{{ mascota.raza }}</p>
+        </div>
+      </div>
+  
+      <!-- Si no hay mascotas, muestra un mensaje -->
+      <ng-template #noMascotas>
+        <p>No hay mascotas registradas.</p>
+      </ng-template>
+    </div>
+  </section>
+  <app-footer></app-footer>

@@ -1,0 +1,212 @@
+/* Estilos para la sección de mascotas en cliente y veterinario */
+.mascotas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Estilos para la sección de mascotas */
+  .mascotas {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    position: relative;
+    padding: 50px 5%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  
+  /* Pseudo-elemento para la opacidad en mascotas */
+  .mascotas::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(244, 248, 251, 0.7);
+    z-index: 1;
+  }
+  
+  /* Ajustar contenido de .mascotas para que no quede oculto */
+  .mascotas > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .mascotas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .mascota:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mascotas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .mascotas h2 {
+    padding-bottom: 15px;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  /* Contenedor de la tarjeta */
+  .mascota {
+    background: #dae8f2;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 20px);
+    min-height: 300px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  /* Ajustar tamaño de imagen */
+  .mascota img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .mascota p {
+    margin: 0px;
+  }
+  
+  .mascotas-footer {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+  }
+  
+  /* Ajuste de los íconos */
+  .icono-editar,
+  .icono-archivo,
+  .icono-eliminar {
+    width: 25px !important;
+    height: 25px !important;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  .mascota-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Animación al pasar el mouse */
+  .icono-editar:hover,
+  .icono-archivo:hover,
+  .icono-eliminar:hover {
+    transform: scale(1.3);
+  }
+  
+  /* Estilos para los iconos */
+  .icono-editar,
+  .icono-eliminar {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 0; /* Iconos completos */
+  }
+  
+  .icono-editar:hover,
+  .icono-eliminar:hover {
+    transform: scale(1.3);
+  }
+  
+  /* Estilos para el tooltip */
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    transform: translateY(-5px);
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #3c1f15;
+    position: relative;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .saludo h2 {
+    background-color: #97d4f5;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  .btn-detalles {
+    background-color: transparent;
+  }
+  
+  .btn-detalles:hover {
+    background-color: transparent;
+  }
+  
+  
