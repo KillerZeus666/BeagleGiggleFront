@@ -12,6 +12,12 @@ import { Router } from '@angular/router';
 export class MascotaTableComponent implements OnInit {
   selectedMascota: MascotaCL | null = null;
   mascotaList: MascotaCL[] = [];
+  nombreABuscar: string = '';
+  listaMascotas: MascotaCL[] = [];
+
+  todasLasMascotas: any[] = []; // copia original
+
+
 
   constructor(private mascotaService: MascotaService, private router: Router) {}
 
@@ -57,4 +63,26 @@ export class MascotaTableComponent implements OnInit {
   abrirFormularioMascotaEdicion(id:number){
     this.router.navigate(['/editar-mascota',id]);
   }
+
+  buscar() {
+    const nombre = this.nombreABuscar.trim();
+    
+    if (nombre === '') {
+      // Si el campo está vacío, muestra todo de nuevo
+      this.mascotaService.findAll().subscribe({
+        next: (mascotas: MascotaCL[]) => {
+          this.mascotaList = mascotas;
+        },
+        error: (err) => {
+          console.error('Error al recargar las mascotas:', err);
+        }
+      });
+    } else {
+      this.mascotaService.buscarPorNombre(nombre).subscribe((resultados) => {
+        this.mascotaList = resultados;
+      });
+    }
+  }
+  
+  
 }

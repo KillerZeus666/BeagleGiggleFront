@@ -192,3 +192,31 @@
     font-size: 0.75rem;
   }
 }
+/* Buscador */
+.buscador {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
+}
+
+.input-busqueda {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.btn-buscar {
+  padding: 8px 16px;
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-buscar:hover {
+  background-color: #1565c0;
+}

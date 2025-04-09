@@ -38,4 +38,11 @@ export class MascotaService {
     return this.http.put<MascotaCL>(`${this.baseUrl}/eliminar/${id}`,null);
   }
 
+  buscarPorNombre(nombre: string): Observable<MascotaCL[]> {
+    return this.http.get<MascotaCL[]>(`http://localhost:8082/mascota/buscar`, {
+      params: { nombre }
+    });
+  }
+  
+
 }

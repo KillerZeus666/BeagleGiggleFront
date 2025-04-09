@@ -7,6 +7,12 @@
   <button class="btn-detalles" (click)="abrirFormularioMascota()">Crear Mascota</button>
 </div>
   
+  <div class="buscador">
+    <input type="text" [(ngModel)]="nombreABuscar" placeholder="Buscar mascota por nombre" class="input-busqueda" />
+    <button (click)="buscar()" class="btn-buscar">Buscar</button>
+  </div>
+
+
 
   <div class="tabla-container">
     <table class="tabla">

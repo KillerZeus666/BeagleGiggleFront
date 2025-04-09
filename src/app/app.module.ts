@@ -20,6 +20,7 @@ import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.com
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
 import { VerMascotasClienteComponent } from './cliente/ver-mascotas-cliente/ver-mascotas-cliente.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { VerMascotasClienteComponent } from './cliente/ver-mascotas-cliente/ver-
     ClienteTableComponent,
     ClienteFormComponent,
     ClienteDetailComponent,
-    VerMascotasClienteComponent
+    VerMascotasClienteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
