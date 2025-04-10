@@ -15,7 +15,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.username === 'admin' && this.password === '1234') {
-      this.router.navigate(['/admin/dashboard']);
+      this.router.navigate(['/admin']);
     } else if (this.username === 'cliente2' && this.password === '1234') {
       const clienteId = 2; // Este ID debería venir del backend idealmente
       this.router.navigate(['/mascotas-cliente', clienteId]);
