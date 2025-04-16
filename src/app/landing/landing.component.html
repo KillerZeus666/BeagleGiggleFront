@@ -1,5 +1,6 @@
 <app-header></app-header>
 
+<!-- Sección de descripción -->
 <section class="description-section">
   <div class="overlay"></div>
   <div class="description-text">
@@ -13,105 +14,75 @@
 </section>
 
 <main>
+  <!-- Servicios -->
   <section id="servicios" class="services-section-title">
     <h2>Servicios</h2>
-    <div class="services-section">
-      <div class="service-card">
+    <div *ngIf="isLoading" class="loading-spinner">
+      <p>Cargando servicios...</p>
+    </div>
+    <div class="services-section" *ngIf="!isLoading">
+      <div class="service-card" *ngFor="let servicio of servicios">
         <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Consulta General</h3>
+          <div
+            class="service-card-front"
+            [style.background-image]="'url(' + servicio.imagenFrontal + ')'"
+          >
+            <h3>{{ servicio.nombre }}</h3>
           </div>
-          <div class="service-card-back">
-            <p>
-              Realizamos chequeos completos para garantizar la salud de tu
-              mascota.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Cirugía</h3>
-          </div>
-          <div class="service-card-back">
-            <p>
-              Contamos con quirófanos equipados para procedimientos seguros.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Estética y Peluquería</h3>
-          </div>
-          <div class="service-card-back">
-            <p>
-              Ofrecemos servicios de baño, cortes de pelo y cuidado estético.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Hospitalización</h3>
-          </div>
-          <div class="service-card-back">
-            <p>
-              Brindamos hospitalización para garantizar la recuperación de tu
-              mascota.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Monitoreo</h3>
-          </div>
-          <div class="service-card-back">
-            <p>
-              Seguimiento continuo para supervisar el estado de salud de tu
-              mascota.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Vacunación</h3>
-          </div>
-          <div class="service-card-back">
-            <p>
-              Ofrecemos una amplia gama de vacunas para mantener a tu mascota
-              protegida y saludable.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <h3>Laboratorio Clínico</h3>
-          </div>
-          <div class="service-card-back">
-            <p>
-              Realizamos pruebas de laboratorio para diagnosticar y prevenir
-              enfermedades.
-            </p>
+          <div
+            class="service-card-back"
+            [style.background-image]="'url(' + servicio.imagenTrasera + ')'"
+          >
+            <p>{{ servicio.descripcion }}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Sección de Testimonios -->
   <section id="conocenos" class="testimonials-section">
     <h2>Testimonios de clientes</h2>
-    <div class="testimonial-grid"></div>
+    <div *ngIf="isLoadingTestimonios" class="loading-spinner">
+      <p>Cargando testimonios...</p>
+    </div>
+    <div *ngIf="errorTestimonios" class="error-message">
+      {{ errorTestimonios }}
+      <button (click)="reintentarCarga()">Reintentar</button>
+    </div>
+    <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
+      <div class="testimonial" *ngFor="let testimonio of testimonios">
+        <div class="testimonial-content">
+          <img
+            [src]="
+              testimonio.imagenCliente || 'assets/images/default-avatar.png'
+            "
+            [alt]="testimonio.nombreCliente"
+            class="testimonial-image"
+          />
+          <div class="testimonial-details">
+            <p class="testimonial-text">"{{ testimonio.texto }}"</p>
+            <div class="testimonial-meta">
+              <span class="testimonial-client">{{
+                testimonio.nombreCliente
+              }}</span>
+              <span class="testimonial-service">
+                - {{ testimonio.nombreServicio }}</span
+              >
+            </div>
+            <div class="testimonial-rating">
+              {{ testimonio.rating }}
+            </div>
+            <div class="testimonial-date">
+              {{ testimonio.fechaFormateada }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Agendar cita -->
   <section id="contactanos" class="appointment-section">
     <h2>Agenda tu cita</h2>
     <div class="appointment-container">
@@ -189,7 +160,7 @@
       </div>
     </div>
   </section>
-  
+
   <app-fundaciones></app-fundaciones>
 </main>
 

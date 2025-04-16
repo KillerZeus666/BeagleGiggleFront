@@ -18,16 +18,6 @@
     letter-spacing: 2px;
   }
   
-  .carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 90%;
-    margin: auto;
-    overflow: hidden;
-  }
-  
   .carousel {
     display: flex;
     gap: 10px;
@@ -109,15 +99,6 @@
     will-change: transform;
   }
   
-  .foundation-card {
-    flex: 0 0 auto;
-    width: 260px;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s;
-  }
-  
   .foundation-card img {
     width: 100%;
     height: 250px;
@@ -161,14 +142,32 @@
     white-space: nowrap;
   }
 
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
   .carousel-track {
     display: flex;
     gap: 20px;
     will-change: transform;
+    padding: 20px 0;
+  }
+  
+  .foundation-card {
+    flex: 0 0 auto;
+    width: 260px;
+    border-radius: 10px;
     overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
   }
   
   .carousel::-webkit-scrollbar {
     display: none;
   }
-  
