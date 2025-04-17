@@ -1,0 +1,121 @@
+<section class="vet-form-container">
+  <div class="vet-form-card">
+    <h1>{{ editMode ? "Editar Veterinario" : "Agregar Veterinario" }}</h1>
+    <form
+      #veterinarioForm="ngForm"
+      (ngSubmit)="guardarVeterinario()"
+      autocomplete="off"
+      class="vet-form"
+    >
+      <div class="vet-form-group">
+        <label for="nombre" class="vet-form-label">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="vet-form-input"
+          [(ngModel)]="FormVeterinario.nombre"
+          placeholder="Ingrese nombre completo"
+          required
+        />
+      </div>
+
+      <div class="vet-form-group">
+        <label for="cedula" class="vet-form-label">Cédula:</label>
+        <input
+          type="text"
+          id="cedula"
+          name="cedula"
+          class="vet-form-input"
+          [(ngModel)]="FormVeterinario.cedula"
+          placeholder="Escriba la cédula"
+          required
+        />
+      </div>
+
+      <div class="vet-form-group">
+        <label for="especialidad" class="vet-form-label">Especialidad:</label>
+        <input
+          type="text"
+          id="especialidad"
+          name="especialidad"
+          class="vet-form-input"
+          [(ngModel)]="FormVeterinario.especialidad"
+          placeholder="Ingrese especialidad"
+          required
+        />
+      </div>
+
+      <div class="vet-form-group">
+        <label for="sede" class="vet-form-label">Sede:</label>
+        <select
+          id="sede"
+          name="sede"
+          class="vet-form-select"
+          [(ngModel)]="FormVeterinario.sede"
+          required
+        >
+          <option *ngFor="let sede of sedes" [value]="sede">{{ sede }}</option>
+        </select>
+      </div>
+
+      <div class="vet-form-group">
+        <label for="nombreUsuario" class="vet-form-label">Usuario:</label>
+        <input
+          type="text"
+          id="nombreUsuario"
+          name="nombreUsuario"
+          class="vet-form-input"
+          [(ngModel)]="FormVeterinario.nombreUsuario"
+          placeholder="Escriba un nombre de usuario"
+          required
+        />
+      </div>
+
+      <div class="vet-form-group">
+        <label for="foto" class="vet-form-label">Foto (URL):</label>
+        <input
+          type="text"
+          id="foto"
+          name="foto"
+          class="vet-form-input"
+          [(ngModel)]="FormVeterinario.foto"
+          placeholder="Pegue la URL de la foto"
+          required
+        />
+      </div>
+
+      <div class="vet-form-group">
+        <label for="contrasena" class="vet-form-label">Contraseña:</label>
+        <input
+          type="password"
+          id="contrasena"
+          name="contrasena"
+          class="vet-form-input"
+          [(ngModel)]="FormVeterinario.contrasena"
+          placeholder="Cree una contraseña"
+          [required]="!editMode"
+        />
+      </div>
+
+      <div class="vet-form-group">
+        <label for="confirm_password" class="vet-form-label"
+          >Confirmar contraseña:</label
+        >
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          class="vet-form-input"
+          [(ngModel)]="confirmPassword"
+          placeholder="Repita la contraseña"
+          [required]="!editMode"
+        />
+      </div>
+
+      <button type="submit" class="vet-form-button">
+        {{ editMode ? "Actualizar" : "Agregar" }}
+      </button>
+    </form>
+  </div>
+</section>

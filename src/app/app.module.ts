@@ -21,6 +21,10 @@ import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.compon
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
 import { VerMascotasClienteComponent } from './cliente/ver-mascotas-cliente/ver-mascotas-cliente.component';
 import { LoginComponent } from './login/login.component';
+import { VerCitasVeterinarioComponent } from './veterinario/ver-citas-veterinario/ver-citas-veterinario.component';
+import { VeterinarioTableComponent } from './veterinario/veterinario-table/veterinario-table.component';
+import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
+import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { LoginComponent } from './login/login.component';
     ClienteDetailComponent,
     VerMascotasClienteComponent,
     LoginComponent,
+    VerCitasVeterinarioComponent,
+    VeterinarioTableComponent,
+    VeterinarioFormComponent,
+    VeterinarioDetailComponent,
   ],
   imports: [
     BrowserModule,

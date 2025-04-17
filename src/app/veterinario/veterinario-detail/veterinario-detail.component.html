@@ -1,0 +1,43 @@
+<div class="vet-detail-container">
+  <div class="vet-detail-card">
+    <h1>Detalle del veterinario</h1>
+    <div class="vet-content">
+      <div class="vet-img-container">
+        <img
+          [src]="veterinario.foto"
+          alt="Foto del veterinario"
+          class="vet-img"
+        />
+      </div>
+
+      <div class="vet-data">
+        <div class="vet-field">
+          <span class="vet-label">Nombre</span>
+          <span class="vet-value">{{ veterinario.nombre }}</span>
+        </div>
+        <div class="vet-field">
+          <span class="vet-label">Cédula</span>
+          <span class="vet-value">{{ veterinario.cedula }}</span>
+        </div>
+        <div class="vet-field">
+          <span class="vet-label">Especialidad</span>
+          <span class="vet-value">{{ veterinario.especialidad }}</span>
+        </div>
+        <div class="vet-field">
+          <span class="vet-label">Sede</span>
+          <span class="vet-value">{{ veterinario.sede }}</span>
+        </div>
+        <div class="vet-field">
+          <span class="vet-label">Atenciones realizadas</span>
+          <span class="vet-value">{{ veterinario.numeroAtenciones }}</span>
+        </div>
+        <div class="vet-field">
+          <span class="vet-label">Estado</span>
+          <span class="vet-value">{{
+            veterinario.estado === 1 ? "Activo" : "Inactivo"
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

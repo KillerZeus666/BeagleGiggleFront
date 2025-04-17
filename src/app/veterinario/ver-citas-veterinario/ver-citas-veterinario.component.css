@@ -1,0 +1,139 @@
+/* Estilos principales para la sección de citas */
+.citas-veterinario {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  padding: 80px 5% 60px;
+  position: relative;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  min-height: calc(100vh - 140px);
+}
+
+/* Fondo semitransparente */
+.citas-veterinario::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(244, 248, 251, 0.7);
+  z-index: 1;
+}
+
+/* Asegurar que el contenido esté sobre el fondo */
+.citas-veterinario > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilo del título */
+.citas-veterinario h2 {
+  font-size: 2rem;
+  color: #3c1f15;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #97d4f5;
+}
+
+/* Contenedor de las citas */
+.citas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+}
+
+/* Tarjeta de cita individual */
+.cita-card {
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1 1 calc(33.333% - 25px);
+  min-width: 280px;
+  max-width: 350px;
+  transition: all 0.3s ease;
+}
+
+.cita-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para cada dato de la cita */
+.cita-dato {
+  display: flex;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.cita-label {
+  font-weight: bold;
+  color: #3c1f15;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.cita-info {
+  color: #555;
+  flex-grow: 1;
+}
+
+/* Botón de detalles */
+.btn-detalles {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #97d4f5;
+  color: #3c1f15;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-detalles:hover {
+  background-color: #7bc1eb;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Mensaje cuando no hay citas */
+.no-citas-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .cita-card {
+    flex: 1 1 calc(50% - 25px);
+  }
+}
+
+@media (max-width: 480px) {
+  .cita-card {
+    flex: 1 1 100%;
+  }
+
+  .citas-veterinario {
+    padding: 60px 3% 40px;
+  }
+}

@@ -1,3 +1,4 @@
+import { SelfDecorator } from '@angular/core';
 import { CitaCL } from './cita-cl';
 import { TratamientoCL } from './tratamiento-cl';
 
@@ -8,6 +9,7 @@ export class VeterinarioCL {
   especialidad: string;
   foto: string;
   estado: number;
+  sede: string;
   numeroAtenciones: number;
   nombreUsuario: string;
   contrasena: string;
@@ -21,6 +23,7 @@ export class VeterinarioCL {
     especialidad: string = '',
     foto: string = '',
     estado: number = 1,
+    sede: string = '',
     numeroAtenciones: number = 0,
     nombreUsuario: string = '',
     contrasena: string = '',
@@ -33,6 +36,7 @@ export class VeterinarioCL {
     this.especialidad = especialidad;
     this.foto = foto;
     this.estado = estado;
+    this.sede = sede;
     this.numeroAtenciones = numeroAtenciones;
     this.nombreUsuario = nombreUsuario;
     this.contrasena = contrasena;
@@ -48,6 +52,7 @@ export class VeterinarioCL {
       data.especialidad,
       data.foto,
       data.estado,
+      data.sede,
       data.numeroAtenciones,
       data.nombreUsuario,
       data.contrasena,
@@ -70,6 +75,7 @@ export class VeterinarioCL {
       especialidad: this.especialidad,
       foto: this.foto,
       estado: this.estado,
+      sede: this.sede,
       numeroAtenciones: this.numeroAtenciones,
       nombreUsuario: this.nombreUsuario,
       contrasena: this.contrasena,
