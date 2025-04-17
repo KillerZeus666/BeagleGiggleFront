@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TestimonioService } from 'src/app/service/testimonio.service';
 import { DatePipe } from '@angular/common';
+import { TestimonioCL } from 'src/app/model/testimonio-cl';
 
 @Component({
   selector: 'app-landing',
@@ -13,7 +14,7 @@ export class LandingComponent implements OnInit {
   servicios: any[] = [];
   isLoading = true;
   errorMessage = '';
-  testimonios: any[] = [];
+  testimonios: TestimonioCL[] = [];
   isLoadingTestimonios = true;
   errorTestimonios = '';
   constructor(private servicioService: ServicioService, private testimonioService: TestimonioService, private datePipe: DatePipe) {}
@@ -38,34 +39,25 @@ export class LandingComponent implements OnInit {
   }
 
   cargarTestimonios(): void {
-    console.log('Iniciando carga de testimonios...');
     this.testimonioService.obtenerTestimonios().subscribe({
-      next: (data) => {
-        console.log('Datos recibidos:', data); // Agrega este log
-        this.testimonios = data.map(t => ({
-          ...t,
-          rating: this.generarRating(t.calificacion),
-          fechaFormateada: this.formatearFecha(t.fecha)
-        }));
+      next: (data: TestimonioCL[]) => {
+        this.testimonios = data;
         this.isLoadingTestimonios = false;
       },
       error: (err) => {
         console.error('Error al cargar testimonios:', err);
         this.errorTestimonios = 'Error al cargar los testimonios';
         this.isLoadingTestimonios = false;
-      },
-      complete: () => {
-        console.log('Carga de testimonios completada');
       }
     });
   }
 
-  private generarRating(calificacion: number): string {
-    return '⭐'.repeat(calificacion);
+  getRatingStars(testimonio: TestimonioCL): string {
+    return '⭐'.repeat(testimonio.calificacion);
   }
 
-  private formatearFecha(fecha: string): string {
-    return this.datePipe.transform(fecha, 'dd/MM/yyyy') || '';
+  formatDate(testimonio: TestimonioCL): string {
+    return this.datePipe.transform(testimonio.fecha, 'dd/MM/yyyy') || '';
   }
 
   reintentarCarga(): void {

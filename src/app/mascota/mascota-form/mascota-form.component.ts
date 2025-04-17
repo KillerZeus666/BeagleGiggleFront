@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  ViewChild,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { MascotaCL } from 'src/app/model/mascota-cl';
@@ -6,32 +12,16 @@ import { MascotaService } from 'src/app/service/mascota.service';
 import { ClienteCL } from 'src/app/model/cliente-cl';
 import { ClienteService } from 'src/app/service/cliente.service';
 
-
 @Component({
   selector: 'app-mascota-form',
   templateUrl: './mascota-form.component.html',
-  styleUrls: ['./mascota-form.component.css']
+  styleUrls: ['./mascota-form.component.css'],
 })
 export class MascotaFormComponent implements OnInit {
   @ViewChild('mascotaForm') mascotaForm!: NgForm;
   @Output() addMascotaEvent = new EventEmitter<MascotaCL>();
 
-  formMascota: MascotaCL = {
-    idMascota: 0,
-    nombre: '',
-    raza: '',
-    edad: 0,
-    peso: 0,
-    enfermedad: '',
-    foto: '',
-    fechaNacimiento: undefined,
-    fechaIngreso: undefined,
-    fechaSalida: undefined,
-    estado: 1,
-    clienteId: 0,
-    cliente: undefined
-  };
-  
+  formMascota: MascotaCL = new MascotaCL();
 
   editMode = false;
 
@@ -45,54 +35,64 @@ export class MascotaFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  this.clienteService.findAll().subscribe(clientes => {
-    this.clientes = clientes;
+    this.clienteService.findAll().subscribe((clientes) => {
+      this.clientes = clientes;
 
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.editMode = true;
-      this.mascotaService.getMascota(+id).subscribe(mascota => {
-        if (mascota) {
-          this.formMascota = {
-            ...mascota,
-            clienteId: mascota.cliente?.idCliente ?? mascota.clienteId ?? 0
-          };
-          console.log('Mascota:', mascota);
-          console.log('Cliente ID asignado:', this.formMascota.clienteId);
-        }
-      });
-    }
-  });
-}
-
+      const id = this.route.snapshot.paramMap.get('id');
+      if (id) {
+        this.editMode = true;
+        this.mascotaService.getMascota(+id).subscribe((mascota) => {
+          if (mascota) {
+            this.formMascota = new MascotaCL(
+              mascota.idMascota,
+              mascota.nombre,
+              mascota.raza,
+              mascota.edad,
+              mascota.peso,
+              mascota.enfermedad,
+              mascota.foto,
+              mascota.fechaNacimiento,
+              mascota.fechaIngreso,
+              mascota.fechaSalida,
+              mascota.estado,
+              mascota.cliente
+            );
+            console.log('Mascota:', mascota);
+            console.log('Cliente ID asignado:', this.formMascota.clienteId);
+          }
+        });
+      }
+    });
+  }
 
   guardarMascota() {
     this.markAllAsTouched();
-  
+
     if (this.mascotaForm.valid) {
       if (this.editMode) {
-        this.mascotaService.editarMascota(this.formMascota.idMascota, this.formMascota)
+        this.mascotaService
+          .editarMascota(this.formMascota.idMascota, this.formMascota)
           .subscribe(() => {
             this.router.navigate(['/mascotas']);
           });
       } else {
         const idCliente = this.formMascota.clienteId;
-  
+
         if (idCliente) {
-          this.mascotaService.agregarMascota(this.formMascota, idCliente)
+          this.mascotaService
+            .agregarMascota(this.formMascota.toBackendFormat(), idCliente)
             .subscribe(() => {
               this.router.navigate(['/mascotas']);
             });
         } else {
-          console.error("ID del cliente no definido.");
+          console.error('ID del cliente no definido.');
         }
       }
     }
   }
-  
 
   private markAllAsTouched() {
-    Object.keys(this.mascotaForm.controls).forEach(field => {
+    Object.keys(this.mascotaForm.controls).forEach((field) => {
       const control = this.mascotaForm.controls[field];
       control.markAsTouched();
     });
@@ -104,22 +104,9 @@ export class MascotaFormComponent implements OnInit {
       estado: 1,
       clienteId: 0,
       edad: null,
-      peso: null
+      peso: null,
     });
 
-    this.formMascota = {
-      idMascota: 0,
-      nombre: '',
-      raza: '',
-      edad: 0,
-      peso: 0,
-      enfermedad: '',
-      foto: '',
-      fechaNacimiento: undefined,
-      fechaIngreso: undefined,
-      fechaSalida: undefined,
-      estado: 1,
-      clienteId: 0
-    };
+    this.formMascota = new MascotaCL();
   }
 }

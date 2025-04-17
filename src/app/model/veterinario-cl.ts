@@ -1,5 +1,5 @@
-import { CitaCL } from "./cita-cl";
-import { TratamientoCL } from "./tratamiento-cl";
+import { CitaCL } from './cita-cl';
+import { TratamientoCL } from './tratamiento-cl';
 
 export class VeterinarioCL {
   idVeterinario: number;
@@ -16,14 +16,14 @@ export class VeterinarioCL {
 
   constructor(
     idVeterinario: number = 0,
-    nombre: string = "",
-    cedula: string = "",
-    especialidad: string = "",
-    foto: string = "",
+    nombre: string = '',
+    cedula: string = '',
+    especialidad: string = '',
+    foto: string = '',
     estado: number = 1,
     numeroAtenciones: number = 0,
-    nombreUsuario: string = "",
-    contrasena: string = "",
+    nombreUsuario: string = '',
+    contrasena: string = '',
     citas: CitaCL[] = [],
     tratamientos: TratamientoCL[] = []
   ) {
@@ -38,5 +38,45 @@ export class VeterinarioCL {
     this.contrasena = contrasena;
     this.citas = citas;
     this.tratamientos = tratamientos;
-  }
+  }
+
+  public static fromBackendData(data: any): VeterinarioCL {
+    return new VeterinarioCL(
+      data.idVeterinario,
+      data.nombre,
+      data.cedula,
+      data.especialidad,
+      data.foto,
+      data.estado,
+      data.numeroAtenciones,
+      data.nombreUsuario,
+      data.contrasena,
+      data.citas
+        ? data.citas.map((cita: any) => CitaCL.fromBackendData(cita))
+        : [],
+      data.tratamientos
+        ? data.tratamientos.map((tratamiento: any) =>
+            TratamientoCL.fromBackendData(tratamiento)
+          )
+        : []
+    );
+  }
+
+  public toBackendFormat(): any {
+    return {
+      idVeterinario: this.idVeterinario,
+      nombre: this.nombre,
+      cedula: this.cedula,
+      especialidad: this.especialidad,
+      foto: this.foto,
+      estado: this.estado,
+      numeroAtenciones: this.numeroAtenciones,
+      nombreUsuario: this.nombreUsuario,
+      contrasena: this.contrasena,
+      citas: this.citas.map((cita) => cita.toBackendFormat()),
+      tratamientos: this.tratamientos.map((tratamiento) =>
+        tratamiento.toBackendFormat()
+      ),
+    };
+  }
 }
