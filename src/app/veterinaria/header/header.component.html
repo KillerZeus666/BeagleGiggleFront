@@ -6,12 +6,13 @@
     
     <nav>
       <ul class="nav-links">
-        <li><a routerLink="/">Inicio</a></li>
-        <li><a routerLink="/#servicios">Servicios</a></li>
-        <li><a routerLink="/#conocenos">Conócenos</a></li>
-        <li><a routerLink="/#contactanos">Contáctanos</a></li>
+        <li><a routerLink="/home">Inicio</a></li>
+        <li><a [routerLink]="['/home']" fragment="servicios">Servicios</a></li>
+        <li><a [routerLink]="['/home']" fragment="conocenos">Conócenos</a></li>
+        <li><a [routerLink]="['/home']" fragment="contactanos">Contáctanos</a></li>
       </ul>
     </nav>
+    
     
     <div class="user-menu" [ngSwitch]="userType">
       <!-- Sección para Cliente -->

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TestimonioService } from 'src/app/service/testimonio.service';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { TestimonioCL } from 'src/app/model/testimonio-cl';
 
 @Component({
@@ -17,7 +19,14 @@ export class LandingComponent implements OnInit {
   testimonios: TestimonioCL[] = [];
   isLoadingTestimonios = true;
   errorTestimonios = '';
-  constructor(private servicioService: ServicioService, private testimonioService: TestimonioService, private datePipe: DatePipe) {}
+
+  constructor(
+    private servicioService: ServicioService,
+    private testimonioService: TestimonioService,
+    private datePipe: DatePipe,
+    private route: ActivatedRoute,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   ngOnInit(): void {
     this.cargarServicios();
