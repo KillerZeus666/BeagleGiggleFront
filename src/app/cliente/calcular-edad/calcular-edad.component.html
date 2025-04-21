@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="cliente-pagina-principal">
+    <app-cliente-bienvenida></app-cliente-bienvenida>
+</div>
+  
+<div class="seccion-galeria-calculadora">
+  <h2 class="titulo-seccion">Nuestra Beagle Giggle Galería</h2>
+  <p class="subtitulo-seccion">¡Conoce más de nuestras adorables mascotas!</p>
+  <div class="galeria-calculadora-container">
+    <!-- Galería de imágenes -->
+    <div class="galeria" (click)="toggleGaleria()">
+      <img *ngFor="let imagen of imagenes.slice(0, 4)" [src]="imagen" alt="Foto de mascota" />
+    </div>
+
+    <!-- Calculadora -->
+    <div class="calculadora-edad">
+      <h3>Calculadora de Edad Humana</h3>
+      <input type="number" [(ngModel)]="edadMascota" placeholder="Edad de la mascota" />
+      <button (click)="calcularEdadHumana()">Calcular Edad Humana</button>
+      <p *ngIf="edadHumana">La edad de tu mascota es aproximadamente {{ edadHumana }} años humanos.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

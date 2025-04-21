@@ -27,6 +27,7 @@ import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterin
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
 import { ClienteBienvenidaComponent } from './cliente-bienvenida/cliente-bienvenida.component';
 import { ClientePaginaPrincipalComponent } from './cliente/cliente-pagina-principal/cliente-pagina-principal.component';
+import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.component';
 
 
 
@@ -54,6 +55,7 @@ import { ClientePaginaPrincipalComponent } from './cliente/cliente-pagina-princi
     VeterinarioDetailComponent,
     ClienteBienvenidaComponent,
     ClientePaginaPrincipalComponent,
+    CalcularEdadComponent,
   ],
   imports: [
     BrowserModule,
