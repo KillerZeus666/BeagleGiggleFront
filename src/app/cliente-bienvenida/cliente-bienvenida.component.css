@@ -99,3 +99,141 @@
     margin-bottom: 0.5rem;
   }
   
+  /* Estilos generales para la sección */
+.seccion-galeria-calculadora {
+  background-color: #f4f4f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Títulos */
+.titulo-seccion {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.subtitulo-seccion {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de la galería y calculadora */
+.galeria-calculadora-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Galería tipo álbum */
+.galeria {
+  background: #fff;
+  padding: 20px;
+  width: 400px;
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Bordes azules a los lados como si fueran argollas o márgenes */
+.galeria::before,
+.galeria::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 14px;
+  height: 100%;
+  background-color: #1976d2;
+  z-index: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.galeria::before {
+  left: 0;
+  border-radius: 8px 0 0 8px;
+}
+
+.galeria::after {
+  right: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.galeria img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo de la calculadora */
+.calculadora-edad {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculadora-edad h3 {
+  font-size: 1.2rem;
+  color: #1976d2;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.calculadora-edad input {
+  width: 85%;
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 2px solid #bbdefb;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.calculadora-edad input:focus {
+  border-color: #1976d2;
+}
+
+.calculadora-edad button {
+  background-color: #1976d2;
+  color: #ffffff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calculadora-edad button:hover {
+  background-color: #1565c0;
+}
+
+.calculadora-edad p {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #0d47a1;
+  font-weight: bold;
+}
+
