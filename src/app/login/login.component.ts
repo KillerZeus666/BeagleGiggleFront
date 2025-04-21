@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service'; // cambia la ruta según tu estructura
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,17 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   onSubmit() {
     if (this.username === 'admin' && this.password === '1234') {
+      this.authService.login({ tipo: 'ADMINISTRADOR', nombre: 'Admin', foto: '' });
       this.router.navigate(['/admin']);
     } else if (this.username === 'cliente2' && this.password === '1234') {
-      const clienteId = 2; // Este ID debería venir del backend idealmente
-      this.router.navigate(['/mascotas-cliente', clienteId]);
+      this.authService.login({ tipo: 'CLIENTE', nombre: 'Luz Morales', foto: 'https://randomuser.me/api/portraits/women/2.jpg' });
+      this.router.navigate(['/mascotas-cliente', 2]);
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos.';
     }
   }
-  
 }

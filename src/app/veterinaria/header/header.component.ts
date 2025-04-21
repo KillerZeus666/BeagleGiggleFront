@@ -1,27 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  userType: string | null = null; // 'CLIENTE', 'VETERINARIO', 'ADMINISTRADOR' o null
+export class HeaderComponent implements OnInit {
+  userType: string | null = null;
   userName: string = '';
   userPhoto: string = '';
   isMenuOpen: boolean = false;
 
-  // Simulación de datos de usuario (en una app real vendrían de un servicio)
-  constructor() {
-    // Ejemplo: cambiar este valor para probar diferentes vistas
-    this.userType = null; // Por defecto sin sesión
-    // this.userType = 'CLIENTE';
-    // this.userType = 'VETERINARIO';
-    // this.userType = 'ADMINISTRADOR';
-    
-    // Datos de ejemplo para usuario logueado
-    this.userName = 'Juan Pérez';
-    this.userPhoto = 'https://randomuser.me/api/portraits/men/1.jpg';
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.userType = this.authService.getUserType();
+    this.userName = this.authService.getUserName();
+    this.userPhoto = this.authService.getUserPhoto();
   }
 
   toggleMenu(): void {
@@ -29,8 +25,7 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    this.userType = null;
-    this.isMenuOpen = false;
-    // En una app real aquí llamarías al servicio de autenticación
+    this.authService.logout();
+    location.reload(); // o navegar al login
   }
 }
