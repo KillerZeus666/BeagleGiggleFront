@@ -25,6 +25,10 @@ import { VerCitasVeterinarioComponent } from './veterinario/ver-citas-veterinari
 import { VeterinarioTableComponent } from './veterinario/veterinario-table/veterinario-table.component';
 import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
+import { ClienteBienvenidaComponent } from './cliente-bienvenida/cliente-bienvenida.component';
+import { ClientePaginaPrincipalComponent } from './cliente/cliente-pagina-principal/cliente-pagina-principal.component';
+
+
 
 @NgModule({
   declarations: [
@@ -48,6 +52,8 @@ import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/vet
     VeterinarioTableComponent,
     VeterinarioFormComponent,
     VeterinarioDetailComponent,
+    ClienteBienvenidaComponent,
+    ClientePaginaPrincipalComponent,
   ],
   imports: [
     BrowserModule,

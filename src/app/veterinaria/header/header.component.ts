@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
+import { Router } from '@angular/router'; // <--- importa el Router
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,10 @@ export class HeaderComponent implements OnInit {
   userPhoto: string = '';
   isMenuOpen: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router // <--- inyecta el Router
+  ) {}
 
   ngOnInit(): void {
     this.userType = this.authService.getUserType();
@@ -26,6 +30,6 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
-    location.reload(); // o navegar al login
+    this.router.navigate(['/home']); // <--- redirige elegantemente
   }
 }
