@@ -6,6 +6,7 @@
     margin-top: 80px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   }
+
   
   .bienvenida-header img {
     width: 70px;
@@ -38,7 +39,7 @@
   }
   
   .card {
-    background: #ffffff;
+    background: #e3f2fd;
     border-radius: 16px;
     padding: 2rem 1.5rem;
     width: 260px;
@@ -101,7 +102,7 @@
   
   /* Estilos generales para la sección */
 .seccion-galeria-calculadora {
-  background-color: #f4f4f9;
+  background-color: #e3f2fd; /* azulito claro */
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
