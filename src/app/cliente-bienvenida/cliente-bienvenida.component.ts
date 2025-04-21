@@ -53,4 +53,9 @@ export class ClienteBienvenidaComponent implements OnInit {
   toggleGaleria(): void {
     alert('¡Abrir galería completa!'); // Aquí podrías mostrar un modal, por ejemplo
   }
+
+  verMascotasCliente(): void {
+    const idCliente = 4; // Aquí pondrías el ID real del cliente si lo tienes
+    this.router.navigate(['/ver-mascotas-cliente', idCliente]);
+  }
 }
