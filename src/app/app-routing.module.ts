@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-  //Correlacionar comportamiento con una URL
+  //Correlacionar comportamiento con una URL  
   {path: 'admin', component: AdminPageComponent},
   {path: 'home', component: LandingComponent},
   {path: 'mascotas', component: MascotaTableComponent},
