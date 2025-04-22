@@ -17,24 +17,26 @@ export class LoginComponent {
   onSubmit() {
     if (this.username === 'admin' && this.password === '1234') {
       this.authService.login({ tipo: 'ADMINISTRADOR', nombre: 'Admin', foto: '' });
-      this.router.navigate(['/admin']); // Página para el administrador
+      this.router.navigate(['/admin']);
     } else if (this.username === 'cliente2' && this.password === '1234') {
       this.authService.login({
+        id: 2,
         tipo: 'CLIENTE',
         nombre: 'Luz Morales',
         foto: 'https://randomuser.me/api/portraits/women/2.jpg'
       });
-      // Redirigir a la página principal del cliente
-      this.router.navigate(['/cliente']); // Cambia la ruta a la página principal del cliente
+      this.router.navigate(['/cliente']);
     } else if (this.username === 'veterinario1' && this.password === '1234') {
       this.authService.login({
+        id: 1,
         tipo: 'VETERINARIO',
         nombre: 'Dr. Juan Pérez',
         foto: 'https://randomuser.me/api/portraits/men/1.jpg'
       });
-      this.router.navigate(['/mascotas-veterinario', 1]);  // Página para el veterinario
+      this.router.navigate(['/veterinario', 1]);
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos.';
     }
   }
+  
 }

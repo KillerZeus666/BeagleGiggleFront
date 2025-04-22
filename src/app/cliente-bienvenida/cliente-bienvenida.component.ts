@@ -11,7 +11,7 @@ export class ClienteBienvenidaComponent implements OnInit {
   nombreCliente: string = '';
   edadMascota: number = 0;
   edadHumana: number | null = null;
-
+  idCliente!: number;
   // Galería de imágenes (puedes agregar más o cambiar las URLs)
   imagenes: string[] = [
     'https://content.nationalgeographic.com.es/medio/2024/07/23/perro-jugando-con-palo-istock-tetiana-garkusha_46d0ac5d_240723190448_800x800.jpg',
@@ -24,12 +24,24 @@ export class ClienteBienvenidaComponent implements OnInit {
 
   ngOnInit(): void {
     this.nombreCliente = this.authService.getUserName();
+    const usuario = this.authService.getUser();
+    if (usuario && usuario.tipo === 'CLIENTE') {
+      this.idCliente = usuario.id;
+      console.log('ID del cliente:', this.idCliente);
+    } else {
+      // manejar caso si no está logueado o es otro tipo de usuario
+      console.warn('Usuario no autorizado para esta vista');
+    }
   }
 
   irAMascotas(): void {
-    this.router.navigate(['/cliente/mascotas']);
+    if (this.idCliente) {
+      this.router.navigate(['/mascotas-cliente', this.idCliente]);
+    } else {
+      console.error('Error: idCliente está undefined');
+    }
   }
-
+  
   irACitas(): void {
     this.router.navigate(['/cliente/citas']);
   }
