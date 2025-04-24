@@ -1,18 +1,53 @@
-<div *ngIf="loading">Cargando mascotas en tratamiento...</div>
-
-<div *ngIf="error" class="alert alert-danger">
-  {{ error }}
-</div>
-
-<div *ngIf="mascotasEnTratamiento.length > 0">
-  <h3>Mascotas en tratamiento</h3>
-  <ul>
-    <li *ngFor="let mascota of mascotasEnTratamiento">
-      {{ mascota.nombre }} <!-- Muestra otras propiedades según necesites -->
-    </li>
-  </ul>
-</div>
-
-<div *ngIf="!loading && mascotasEnTratamiento.length === 0">
-  El cliente no tiene mascotas en tratamiento actualmente.
+<div class="detail-container">
+    <h2 class="detail-title">Mascotas en Tratamiento</h2>
+    
+    <ng-container class="detail-content" *ngIf="mascotasEnTratamiento.length > 0; else noMascotas">
+      <div class="mascotas-list">
+        <div *ngFor="let mascota of mascotasEnTratamiento" class="mascota-card">
+          <!-- Imagen de la mascota -->
+          <div class="pet-image-container">
+            <img
+              [src]="mascota.foto || 'assets/default-pet.jpg'"
+              alt="Foto de {{mascota.nombre}}"
+              class="pet-image"
+            />
+          </div>
+          
+          <!-- Datos de la mascota -->
+          <div class="pet-data">
+            <div class="data-item">
+              <span class="data-label">Nombre:</span>
+              <span class="data-value">{{ mascota.nombre }}</span>
+            </div>
+            <div class="data-item">
+              <span class="data-label">Raza:</span>
+              <span class="data-value">{{ mascota.raza }}</span>
+            </div>
+            <div class="data-item">
+              <span class="data-label">Edad:</span>
+              <span class="data-value">{{ mascota.edad }} años</span>
+            </div>
+            <div class="data-item">
+              <span class="data-label">Peso:</span>
+              <span class="data-value">{{ mascota.peso | number:'1.1-1' }} kg</span>
+            </div>
+            <div class="data-item">
+              <span class="data-label">Enfermedad:</span>
+              <span class="data-value">{{ mascota.enfermedad || 'Ninguna' }}</span>
+            </div>
+            <div class="data-item">
+              <span class="data-label">Estado:</span>
+              <span class="data-value">{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    
+    <ng-template #noMascotas>
+      <div class="no-selection-message">
+        <p *ngIf="!loading">El cliente no tiene mascotas en tratamiento actualmente</p>
+        <p *ngIf="loading">Cargando mascotas en tratamiento...</p>
+      </div>
+    </ng-template>
 </div>
