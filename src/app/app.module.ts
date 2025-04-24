@@ -28,6 +28,7 @@ import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/vet
 import { ClienteBienvenidaComponent } from './cliente-bienvenida/cliente-bienvenida.component';
 import { ClientePaginaPrincipalComponent } from './cliente/cliente-pagina-principal/cliente-pagina-principal.component';
 import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.component';
+import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mascotas-tratamiento.component';
 
 
 
@@ -56,6 +57,7 @@ import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.com
     ClienteBienvenidaComponent,
     ClientePaginaPrincipalComponent,
     CalcularEdadComponent,
+    MascotasTratamientoComponent,
   ],
   imports: [
     BrowserModule,

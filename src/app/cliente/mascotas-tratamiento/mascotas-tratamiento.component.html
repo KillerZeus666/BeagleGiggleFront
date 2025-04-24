@@ -1,0 +1,18 @@
+<div *ngIf="loading">Cargando mascotas en tratamiento...</div>
+
+<div *ngIf="error" class="alert alert-danger">
+  {{ error }}
+</div>
+
+<div *ngIf="mascotasEnTratamiento.length > 0">
+  <h3>Mascotas en tratamiento</h3>
+  <ul>
+    <li *ngFor="let mascota of mascotasEnTratamiento">
+      {{ mascota.nombre }} <!-- Muestra otras propiedades según necesites -->
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!loading && mascotasEnTratamiento.length === 0">
+  El cliente no tiene mascotas en tratamiento actualmente.
+</div>

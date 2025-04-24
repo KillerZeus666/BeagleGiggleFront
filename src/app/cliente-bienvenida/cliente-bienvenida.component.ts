@@ -47,18 +47,19 @@ export class ClienteBienvenidaComponent implements OnInit {
   }
 
   irATratamientos(): void {
-    this.router.navigate(['/cliente/mascotas/tratamiento']);
+    this.router.navigate(['/mascotas-tratamiento', this.idCliente]);
   }
 
   calcularEdadHumana(): void {
-    if (this.edadMascota <= 0) {
+    const edad = Number(this.edadMascota); // Conversión explícita
+    if (edad <= 0) {
       this.edadHumana = null;
-    } else if (this.edadMascota === 1) {
+    } else if (edad === 1) {
       this.edadHumana = 15;
-    } else if (this.edadMascota === 2) {
+    } else if (edad === 2) {
       this.edadHumana = 24;
     } else {
-      this.edadHumana = 24 + (this.edadMascota - 2) * 4;
+      this.edadHumana = 24 + (edad - 2) * 4;
     }
   }
 
@@ -66,8 +67,5 @@ export class ClienteBienvenidaComponent implements OnInit {
     alert('¡Abrir galería completa!'); // Aquí podrías mostrar un modal, por ejemplo
   }
 
-  verMascotasCliente(): void {
-    const idCliente = 4; // Aquí pondrías el ID real del cliente si lo tienes
-    this.router.navigate(['/ver-mascotas-cliente', idCliente]);
-  }
+
 }

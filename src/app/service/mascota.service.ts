@@ -44,5 +44,7 @@ export class MascotaService {
     });
   }
   
-
+  getMascotasEnTratamientoPorCliente(idCliente: number): Observable<MascotaCL[]> {
+    return this.http.get<MascotaCL[]>(`${this.baseUrl}/mascotas-en-tratamiento/${idCliente}`);
+  }
 }

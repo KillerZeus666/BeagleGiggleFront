@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { ClientePaginaPrincipalComponent } from './cliente/cliente-pagina-principal/cliente-pagina-principal.component';
 import { VeterinarioTableComponent } from './veterinario/veterinario-table/veterinario-table.component';
 import { VerCitasVeterinarioComponent } from './veterinario/ver-citas-veterinario/ver-citas-veterinario.component';
+import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mascotas-tratamiento.component';
 
 
 
@@ -22,7 +23,7 @@ import { VerCitasVeterinarioComponent } from './veterinario/ver-citas-veterinari
 const routes: Routes = [
   //Correlacionar comportamiento con una URL  
   {path: 'admin', component: AdminPageComponent},
-  { path: 'cliente', component: ClientePaginaPrincipalComponent },
+  {path: 'cliente', component: ClientePaginaPrincipalComponent },
   {path: 'home', component: LandingComponent},
   {path: 'mascotas', component: MascotaTableComponent},
   {path: 'detalles-mascota/:id', component: MascotaDetailComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path: 'detalles-cliente/:id', component:ClienteDetailComponent},
   {path: 'crear-cliente', component:ClienteFormComponent},
   {path: 'editar-cliente/:id', component:ClienteFormComponent},
-  {path: 'mascotas-cliente/:id', component:VerMascotasClienteComponent},  
+  {path: 'mascotas-cliente/:id', component:VerMascotasClienteComponent},
+  {path: 'mascotas-tratamiento/:id', component:MascotasTratamientoComponent},  
   {path: 'citas-veterinario/:id', component:VerCitasVeterinarioComponent},
   {path: 'veterinarios', component:VeterinarioTableComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
