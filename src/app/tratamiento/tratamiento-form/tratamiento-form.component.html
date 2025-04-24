@@ -1,1 +1,77 @@
-<p>tratamiento-form works!</p>
+<div class="container">
+  <h1>Crear Nuevo Tratamiento</h1>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="tratamientoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="codigo">Código del Tratamiento:</label>
+      <input type="text" id="codigo" formControlName="codigo" required placeholder="TRAT-001">
+      <div *ngIf="tratamientoForm.get('codigo')?.invalid && tratamientoForm.get('codigo')?.touched" class="error-message">
+        Código es requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha">Fecha del Tratamiento:</label>
+      <input type="date" id="fecha" formControlName="fecha" required>
+      <div *ngIf="tratamientoForm.get('fecha')?.invalid && tratamientoForm.get('fecha')?.touched" class="error-message">
+        Fecha es requerida
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="idServicio">ID Servicio:</label>
+      <input type="number" id="idServicio" formControlName="idServicio" required placeholder="Ingrese el ID del servicio">
+      <div *ngIf="tratamientoForm.get('idServicio')?.invalid && tratamientoForm.get('idServicio')?.touched" class="error-message">
+        ID Servicio es requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="idMascota">ID Mascota:</label>
+      <input type="number" id="idMascota" formControlName="idMascota" required placeholder="Ingrese el ID de la mascota">
+      <div *ngIf="tratamientoForm.get('idMascota')?.invalid && tratamientoForm.get('idMascota')?.touched" class="error-message">
+        ID Mascota es requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="idVeterinario">ID Veterinario (opcional):</label>
+      <input type="number" id="idVeterinario" formControlName="idVeterinario" placeholder="Ingrese el ID del veterinario">
+    </div>
+
+    <div class="form-group">
+      <label for="detalles">Detalles del Tratamiento:</label>
+      <textarea id="detalles" formControlName="detalles" required placeholder="Describa los síntomas, diagnóstico y tratamiento recomendado..."></textarea>
+      <div *ngIf="tratamientoForm.get('detalles')?.invalid && tratamientoForm.get('detalles')?.touched" class="error-message">
+        Detalles son requeridos
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Medicamentos:</label>
+      <div class="medicamentos-container" formArrayName="medicamentos">
+        <div class="medicamento-item" *ngFor="let medicamento of medicamentosArray.controls; let i = index" [formGroupName]="i">
+          <input type="number" formControlName="idMedicamento" placeholder="ID Medicamento" required>
+          <input type="text" formControlName="dosis" placeholder="Dosis" required>
+          <button type="button" class="btn btn-remove" (click)="removeMedicamento(i)">-</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-add" (click)="addMedicamento()">+ Añadir Medicamento</button>
+    </div>
+
+    <div class="form-footer">
+      <button type="button" class="btn" (click)="resetForm()">Cancelar</button>
+      <button type="submit" class="btn" [disabled]="loading || tratamientoForm.invalid">
+        {{ loading ? 'Guardando...' : 'Guardar Tratamiento' }}
+      </button>
+    </div>
+  </form>
+</div>
