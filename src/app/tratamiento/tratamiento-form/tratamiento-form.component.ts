@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TratamientoService } from '../services/tratamiento.service';
-import { TratamientoCL } from '../model/tratamiento-cl';
-
+import { FormGroup, FormBuilder, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { TratamientoCL } from 'src/app/model/tratamiento-cl';
+import { TratamientoService } from 'src/app/service/tratamiento.service';
 @Component({
   selector: 'app-tratamiento-form',
   templateUrl: './tratamiento-form.component.html',
@@ -62,14 +62,14 @@ export class TratamientoFormComponent {
     this.errorMessage = null;
 
     const formValue = this.tratamientoForm.value;
-    const tratamiento: TratamientoCL = {
-      codigo: formValue.codigo,
-      fecha: formValue.fecha,
-      detalles: formValue.detalles,
-      // Asume que TratamientoCL tiene estos campos
-      id: 0, // El backend asignará el ID
-      estado: 'ACTIVO' // Valor por defecto
-    };
+   // Crear una instancia usando solo los datos del formulario (idTratamiento = 0, valores iniciales)
+    const tratamiento = new TratamientoCL(
+      0,                              // idTratamiento
+      formValue.codigo,              // código
+      new Date(formValue.fecha),     // fecha (convertido de string a Date)
+      formValue.detalles             // detalles
+      // veterinario, mascota, servicio y tratamientoMedicamentos se dejan como undefined por ahora
+    );
 
     const idsMedicamentos = formValue.medicamentos.map((m: any) => m.idMedicamento);
 
