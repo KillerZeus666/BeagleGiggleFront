@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -74,6 +77,8 @@ import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tra
     ReactiveFormsModule  
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]  
+
 })
 export class AppModule { }

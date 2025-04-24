@@ -1,3 +1,311 @@
 <app-header></app-header>
 
-<app-cliente-table></app-cliente-table>
+
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="paw-outline"></ion-icon>
+                        </span>
+                        <span class="title">Beagle Giggle</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon client-icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Clientes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon pet-icon">
+                            <ion-icon name="paw-outline"></ion-icon>
+                        </span>
+                        <span class="title">Mascotas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon vet-icon">
+                            <ion-icon name="medkit-outline"></ion-icon>
+                        </span>
+                        <span class="title">Veterinarios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </span>
+                        <span class="title">Citas</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Configuración</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Buscar...">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="assets/imgs/veterinarian.jpg" alt="Usuario">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">154</div>
+                        <div class="cardName">Clientes</div>
+                    </div>
+
+                    <div class="iconBx client-icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">237</div>
+                        <div class="cardName">Mascotas</div>
+                    </div>
+
+                    <div class="iconBx pet-icon">
+                        <ion-icon name="paw-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">8</div>
+                        <div class="cardName">Veterinarios</div>
+                    </div>
+
+                    <div class="iconBx vet-icon">
+                        <ion-icon name="medkit-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">24</div>
+                        <div class="cardName">Citas Hoy</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Citas Recientes</h2>
+                        <a href="#" class="btn">Ver Todas</a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Mascota</td>
+                                <td>Dueño</td>
+                                <td>Veterinario</td>
+                                <td>Hora</td>
+                                <td>Estado</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Max (Labrador)</td>
+                                <td>Juan Pérez</td>
+                                <td>Dra. García</td>
+                                <td>09:30 AM</td>
+                                <td><span class="status completed">Completada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Luna (Gato)</td>
+                                <td>María López</td>
+                                <td>Dr. Martínez</td>
+                                <td>10:15 AM</td>
+                                <td><span class="status scheduled">Programada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Rocky (Bulldog)</td>
+                                <td>Carlos Ruiz</td>
+                                <td>Dra. Fernández</td>
+                                <td>11:00 AM</td>
+                                <td><span class="status scheduled">Programada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Misi (Persa)</td>
+                                <td>Ana Gómez</td>
+                                <td>Dr. Rodríguez</td>
+                                <td>02:30 PM</td>
+                                <td><span class="status scheduled">Programada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Toby (Golden)</td>
+                                <td>Luisa Méndez</td>
+                                <td>Dra. García</td>
+                                <td>03:45 PM</td>
+                                <td><span class="status scheduled">Programada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Bella (Poodle)</td>
+                                <td>Pedro Sánchez</td>
+                                <td>Dr. Martínez</td>
+                                <td>04:30 PM</td>
+                                <td><span class="status scheduled">Programada</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Simba (Siamés)</td>
+                                <td>Elena Castro</td>
+                                <td>Dra. Fernández</td>
+                                <td>09:00 AM</td>
+                                <td><span class="status canceled">Cancelada</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ================= New Customers ================ -->
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Mascotas Recientes</h2>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/dog1.jpg" alt="Max"></div>
+                            </td>
+                            <td>
+                                <h4>Max <br> <span>Labrador - 3 años</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/cat1.jpg" alt="Luna"></div>
+                            </td>
+                            <td>
+                                <h4>Luna <br> <span>Gato - 2 años</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/dog2.jpg" alt="Rocky"></div>
+                            </td>
+                            <td>
+                                <h4>Rocky <br> <span>Bulldog - 5 años</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/cat2.jpg" alt="Misi"></div>
+                            </td>
+                            <td>
+                                <h4>Misi <br> <span>Persa - 1 año</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/dog3.jpg" alt="Toby"></div>
+                            </td>
+                            <td>
+                                <h4>Toby <br> <span>Golden - 4 años</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/dog4.jpg" alt="Bella"></div>
+                            </td>
+                            <td>
+                                <h4>Bella <br> <span>Poodle - 2 años</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/cat3.jpg" alt="Simba"></div>
+                            </td>
+                            <td>
+                                <h4>Simba <br> <span>Siamés - 3 años</span></h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ionicons  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+

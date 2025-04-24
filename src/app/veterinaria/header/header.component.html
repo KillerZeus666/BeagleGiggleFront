@@ -22,7 +22,6 @@
           <img [src]="userPhoto" alt="Foto del Cliente" class="user-img" />
         </button>
         <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a routerLink="/cliente/editar">Editar Usuario</a>
           <a routerLink="/mascota/mascotas">Ver Mascotas</a>
           <a (click)="logout()">Cerrar sesión</a>
         </div>
