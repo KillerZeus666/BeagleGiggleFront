@@ -29,6 +29,8 @@ import { ClienteBienvenidaComponent } from './cliente-bienvenida/cliente-bienven
 import { ClientePaginaPrincipalComponent } from './cliente/cliente-pagina-principal/cliente-pagina-principal.component';
 import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.component';
 import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mascotas-tratamiento.component';
+import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
+import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tratamiento-detail.component';
 
 
 
@@ -58,6 +60,8 @@ import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mas
     ClientePaginaPrincipalComponent,
     CalcularEdadComponent,
     MascotasTratamientoComponent,
+    TratamientoFormComponent,
+    TratamientoDetailComponent,
   ],
   imports: [
     BrowserModule,
