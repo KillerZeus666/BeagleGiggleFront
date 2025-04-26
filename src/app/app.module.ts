@@ -39,6 +39,7 @@ import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tra
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
 import { BuscadorComponent } from './veterinaria/buscador/buscador.component';
+import { CartasClienteComponent } from './cliente/cartas-cliente/cartas-cliente.component';
 
 
 
@@ -73,6 +74,7 @@ import { BuscadorComponent } from './veterinaria/buscador/buscador.component';
     AdminTableComponent,
     NavegacionComponent,
     BuscadorComponent,
+    CartasClienteComponent,
 
   ],
   imports: [
