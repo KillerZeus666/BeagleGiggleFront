@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteCL } from 'src/app/model/cliente-cl';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service'; // Importar el servicio AuthService
 
 @Component({
   selector: 'app-cliente-table',
@@ -10,9 +11,14 @@ import { Router } from '@angular/router';
 })
 export class ClienteTableComponent implements OnInit {
   
-  clienteList:ClienteCL[] = [];
+  clienteList: ClienteCL[] = [];
+  currentUser: any; // Variable para almacenar el usuario actual
 
-  constructor(private clienteService:ClienteService, private router: Router){}
+  constructor(
+    private clienteService: ClienteService, 
+    private router: Router, 
+    private authService: AuthService // Inyectar el AuthService
+  ) {}
 
   ngOnInit(): void {
     this.clienteService.findAll().subscribe({
@@ -23,22 +29,25 @@ export class ClienteTableComponent implements OnInit {
         console.error('Error al cargar los clientes', err);
       }
     });
+
+    // Obtener el usuario actual desde el AuthService
+    this.currentUser = this.authService.getUser();
   }
 
-  mostrarCliente(id:number){
-    this.router.navigate(['/detalles-cliente',id]);
+  mostrarCliente(id: number): void {
+    this.router.navigate(['/detalles-cliente', id]);
   }
 
-  eliminarCliente(id:number){
+  eliminarCliente(id: number): void {
     this.clienteService.eliminarCliente(id).subscribe({
-      next: (respuesta) =>{
+      next: (respuesta) => {
         console.log('Cliente eliminado:', respuesta);
         this.clienteService.findAll().subscribe({
           next: (clientes: ClienteCL[]) => {
-            this.clienteList=clientes;
+            this.clienteList = clientes;
           },
           error: (err) => {
-            console.error('Error al recargar los clientes',err);
+            console.error('Error al recargar los clientes', err);
           }
         });
       },
@@ -48,11 +57,16 @@ export class ClienteTableComponent implements OnInit {
     });
   }
 
-  abrirFormualarioAgregarCliente(){
+  abrirFormualarioAgregarCliente(): void {
     this.router.navigate(['/crear-cliente']);
   }
 
-  abrirFormularioEditarCliente(id:number){
-    this.router.navigate(['/editar-cliente',id]);
+  abrirFormularioEditarCliente(id: number): void {
+    this.router.navigate(['/editar-cliente', id]);
+  }
+
+  esAdmin(): boolean {
+    // Verifica si el usuario es Admin
+    return this.currentUser && this.currentUser.tipo === 'Admin';
   }
 }

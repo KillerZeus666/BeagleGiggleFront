@@ -27,7 +27,7 @@
         </div>
 
         <div class="user">
-            <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg	" alt="Usuario">
+            <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                         <th>Celular</th>
                         <th>Correo</th>
                         <th>Detalles</th>
-                        <th>Acciones</th>
+                        <th *ngIf="esAdmin()">Acciones</th> <!-- Mostrar solo si es Admin -->
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                         <td>
                             <a (click)="mostrarCliente(cliente.idCliente)" class="btn-detalles">Ver detalles</a>
                         </td>
-                        <td class="acciones-cliente">
+                        <td class="acciones-cliente" *ngIf="esAdmin()"> <!-- Mostrar solo si es Admin -->
                             <a class="btn-editar" (click)="abrirFormularioEditarCliente(cliente.idCliente)">Editar</a>
                             <button (click)="eliminarCliente(cliente.idCliente)" class="btn-eliminar">Eliminar</button>
                         </td>
