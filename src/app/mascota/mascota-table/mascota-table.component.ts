@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
+
 
 
 @Component({
@@ -10,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./mascota-table.component.css']
 })
 export class MascotaTableComponent implements OnInit {
+  userType: string | null = null;
+  userName: string = '';
+  userPhoto = 'https://example.com/path-to-your-image.jpg';
   selectedMascota: MascotaCL | null = null;
   mascotaList: MascotaCL[] = [];
   nombreABuscar: string = '';
@@ -19,9 +24,17 @@ export class MascotaTableComponent implements OnInit {
 
 
 
-  constructor(private mascotaService: MascotaService, private router: Router) {}
+  constructor(private authService: AuthService, private mascotaService: MascotaService, private router: Router) {}
+
+
 
   ngOnInit(): void {
+    this.userType = this.authService.getUserType();
+    this.userName = this.authService.getUserName();
+    this.userPhoto = this.authService.getUserPhoto();
+    this.User = this.authService.getUser(); // Este método debe devolver el objeto completo del usuario
+
+
     this.mascotaService.findAll().subscribe({
       next: (mascotas: MascotaCL[]) => {
         this.mascotaList = mascotas;
