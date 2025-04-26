@@ -86,3 +86,9 @@ body {
   margin-right: 30px; /* Agregar margen derecho si es necesario */
   flex: 2;
 }
+.iconBx img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+  
