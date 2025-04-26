@@ -93,15 +93,9 @@
               <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
               <td>{{ mascota.cliente?.nombre }}</td>
               <td class="action-buttons">
-                <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">
-                  Ver Detalles
-                </button>
-                <button class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">
-                  Editar
-                </button>
-                <button class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">
-                  {{ mascota.estado === 1 ? 'Desactivar' : 'Activar' }}
-                </button>
+                <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">Ver Detalles</button>
+                <button *ngIf="esAdmin()" class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">Editar</button>
+                <button *ngIf="esAdmin()" class="btn-eliminar" (click)="eliminarMascota(mascota)">Eliminar</button>
               </td>
             </tr>
           </tbody>

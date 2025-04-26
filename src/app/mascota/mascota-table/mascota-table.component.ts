@@ -14,7 +14,7 @@ export class MascotaTableComponent implements OnInit {
   mascotaList: MascotaCL[] = [];
   nombreABuscar: string = '';
   listaMascotas: MascotaCL[] = [];
-
+  User: any; // Variable para almacenar el usuario actual
   todasLasMascotas: any[] = []; // copia original
 
 
@@ -84,5 +84,8 @@ export class MascotaTableComponent implements OnInit {
     }
   }
   
+  esAdmin(): boolean {
+    return this.User && this.User.tipo === 'Admin'; // Verifica si el usuario es un admin
+  }
   
 }

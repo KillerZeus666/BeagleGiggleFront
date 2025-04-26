@@ -43,7 +43,7 @@
       </li>
   
       <!-- Solo visible si el usuario es admin o veterinario -->
-      <li *ngIf="userType === 'Admin' || userType === 'Veterinario'">
+      <li *ngIf="userType === 'Admin'">
         <a href="#" class="nav-link">
           <span class="icon">
             <ion-icon name="medkit-outline"></ion-icon>
@@ -52,27 +52,19 @@
         </a>
       </li>
   
-      <!-- Solo visible si el usuario es admin o veterinario -->
-      <li *ngIf="userType === 'Admin' || userType === 'Veterinario'">
-        <a href="#" class="nav-link">
-          <span class="icon">
-            <ion-icon name="calendar-outline"></ion-icon>
-          </span>
-          <span class="title">Citas</span>
-        </a>
-      </li>
-  
-      <!-- Siempre visible -->
-   <!-- Mostrar mascotas - visible a Cliente -->
-    <li *ngIf="userType === 'Cliente'">
-        <a routerLink="/mascotas-cliente/2" class="nav-link">
+     
+    <!-- Solo visible si el usuario es Veterinario -->
+    <li *ngIf="userType === 'Veterinario'">
+      <a href="#" class="nav-link">
         <span class="icon">
-            <ion-icon name="paw-outline"></ion-icon>
+          <ion-icon name="paw-outline"></ion-icon>
         </span>
-        <span class="title">Mascotas</span>
-        </a>
+        <span class="title">Tus Mascotas Atendidas</span>
+      </a>
     </li>
-  
+
+
+
           <!-- Siempre visible -->
       <li>
         <a href="#" class="nav-link">
@@ -84,22 +76,23 @@
       </li>
 
       <li>
-        <a routerLink="/detalles-cliente/2" class="nav-link">
-            <span class="icon">
+        <a [routerLink]="getPerfilLink()" class="nav-link">
+          <span class="icon">
             <ion-icon name="settings-outline"></ion-icon>
           </span>
           <span class="title">Perfil</span>
         </a>
       </li>
+      
 
-      <li>
-        <a href="#" class="nav-link">
-          <span class="icon">
-            <ion-icon name="settings-outline"></ion-icon>
-          </span>
-          <span class="title">Profesionales</span>
+      <li *ngIf="userType === 'Cliente'">
+        <a routerLink="/mascotas-cliente/2" class="nav-link">
+        <span class="icon">
+            <ion-icon name="paw-outline"></ion-icon>
+        </span>
+        <span class="title">Mascotas</span>
         </a>
-      </li>
+    </li>
   
       <!-- Siempre visible (Cerrar sesión) -->
       <li (click)="logout()">

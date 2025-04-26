@@ -50,4 +50,15 @@ export class NavegacionComponent implements AfterViewInit {
       window.location.reload(); // 🚀 Esto fuerza el refresco completo de la página
     });
   }
+
+  getPerfilLink(): string[] {
+    if (this.userType === 'Admin') {
+      return ['/detalles-admin/ 1']; // Ruta para admin
+    } else if (this.userType === 'Veterinario') {
+      return ['/detalles-veterinario/2']; // Ruta para veterinario
+    } else if (this.userType === 'Cliente') {
+      return ['/detalles-cliente/2']; // Ruta para cliente
+    }
+    return ['/']; // Ruta por defecto en caso de no estar definido
+  }
 }
