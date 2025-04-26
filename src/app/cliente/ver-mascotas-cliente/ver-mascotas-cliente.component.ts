@@ -8,16 +8,22 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './ver-mascotas-cliente.component.html',
   styleUrls: ['./ver-mascotas-cliente.component.css']
 })
-export class VerMascotasClienteComponent implements OnInit{
+export class VerMascotasClienteComponent implements OnInit {
   mascotas: MascotaCL[] = [];
+  cantidadMascotas: number = 0; // Nueva variable para cantidad de mascotas
 
-  constructor(private mascotaService: MascotaService, private route: ActivatedRoute, private router: Router){}
+  constructor(
+    private mascotaService: MascotaService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     const idCliente = Number(this.route.snapshot.paramMap.get('id'));
     this.mascotaService.getMascotasPorCliente(idCliente).subscribe({
       next: (data) => {
         this.mascotas = data;
+        this.cantidadMascotas = data.length; // <- Aquí asignas la cantidad directamente
       },
       error: (err) => {
         console.error('Error al obtener las mascotas', err);
@@ -29,4 +35,3 @@ export class VerMascotasClienteComponent implements OnInit{
     this.router.navigate(['/detalles-mascota', id]);
   }
 }
-

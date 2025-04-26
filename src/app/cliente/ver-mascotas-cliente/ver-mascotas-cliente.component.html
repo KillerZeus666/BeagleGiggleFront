@@ -1,31 +1,26 @@
 <div class="container">
-  <!-- Barra de navegación -->
   <div class="navigation">
     <app-navegacion></app-navegacion>
-    <!-- Código de navegación -->
   </div>
 
-  <!-- Main content -->
   <div class="main">
     <app-buscador></app-buscador>
-    <!-- Código de contenido principal -->
+
     <div class="topbar">
       <!-- Aquí podrías poner cosas de la topbar -->
     </div>
-    
-    <app-cartas-cliente></app-cartas-cliente>
+
+    <!-- Aquí pasamos la cantidad de mascotas al componente hijo -->
+    <app-cartas-cliente [cantidadMascotas]="cantidadMascotas"></app-cartas-cliente>
     
     <section class="mascotas">
       <h2>Mis mascotas</h2>
-      
-      <!-- Contenedor de mascotas en tabla -->
       <div class="mascotas-container">
         <div *ngIf="mascotas && mascotas.length > 0; else noMascotas">
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
                 <h2>Lista de Mascotas</h2>
-               
               </div>
 
               <table>
@@ -43,10 +38,9 @@
                   <tr *ngFor="let mascota of mascotas">
                     <td>
                       <img [src]="mascota.foto" 
-                      alt="Foto de mascota" 
-                      class="img-mascota"
-                      [ngClass]="mascota.estado == 1 ? 'img-inactiva' : ''" />
-                 
+                        alt="Foto de mascota" 
+                        class="img-mascota"
+                        [ngClass]="mascota.estado == 1 ? 'img-inactiva' : ''" />
                     </td>
                     <td>{{ mascota.nombre }}</td>
                     <td>{{ mascota.raza }}</td>
@@ -67,12 +61,11 @@
           </div>
         </div>
 
-        <!-- Si no hay mascotas, muestra un mensaje -->
         <ng-template #noMascotas>
           <p>No hay mascotas registradas.</p>
         </ng-template>
       </div>
     </section>
 
-  </div> <!-- cierre de main -->
-</div> <!-- cierre de container -->
+  </div>
+</div>
