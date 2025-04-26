@@ -1,16 +1,33 @@
-
+// navegacion.component.ts
 import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
-
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'app-admin-table',
+  selector: 'app-navegacion',
   templateUrl: './admin-table.component.html',
   styleUrls: ['./admin-table.component.css'],
-  encapsulation: ViewEncapsulation.None, // 👈 esto hace que los estilos no estén encapsulados
+  encapsulation: ViewEncapsulation.None, // 👈 esto hace que los estilos no estén encapsulados
 })
 export class AdminTableComponent implements AfterViewInit {
+  userType: string | null = null;
+  userName: string = '';
+  userPhoto = 'https://example.com/path-to-your-image.jpg';
+  
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.userType = this.authService.getUserType();
+    this.userName = this.authService.getUserName();
+    this.userPhoto = this.authService.getUserPhoto();
+  }
+  
 
   ngAfterViewInit(): void {
+    // Obtener los datos del usuario
+    this.userType = this.authService.getUserType();
+    this.userName = this.authService.getUserName();
+
+    // Código de navegación (sin cambios)
     const listItems = document.querySelectorAll<HTMLLIElement>('.navigation li');
     const toggle = document.querySelector<HTMLElement>('.toggle');
     const navigation = document.querySelector<HTMLElement>('.navigation');
@@ -30,5 +47,4 @@ export class AdminTableComponent implements AfterViewInit {
       main?.classList.toggle('active');
     });
   }
-
 }

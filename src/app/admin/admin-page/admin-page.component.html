@@ -1,7 +1,4 @@
 
-<app-header></app-header>
-
-
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
@@ -96,7 +93,7 @@
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/veterinarian.jpg" alt="Usuario">
+                    <img *ngIf="userPhoto" [src]="userPhoto" alt="Foto del usuario" class="user-photo" />
                 </div>
             </div>
 

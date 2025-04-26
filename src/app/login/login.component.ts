@@ -16,16 +16,16 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.username === 'admin' && this.password === '1234') {
-      this.authService.login({ tipo: 'ADMINISTRADOR', nombre: 'Admin', foto: '' });
+      this.authService.login({ tipo: 'ADMINISTRADOR', nombre: 'Admin', foto: 'https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg	' });
       this.router.navigate(['/admin']);
     } else if (this.username === 'cliente2' && this.password === '1234') {
       this.authService.login({
         id: 2,
         tipo: 'CLIENTE',
         nombre: 'Carlos Gomez',
-        foto: 'https://www.donnamoderna.com/content/uploads/2022/07/Donna-sorridente-830x625.jpg	'
+        foto: 'https://www.donnamoderna.com/content/uploads/2022/07/Donna-sorridente-830x625.jpg'
       });
-      this.router.navigate(['/cliente']);
+      this.router.navigate(['/navigation']);
     } else if (this.username === 'veterinario1' && this.password === '1234') {
       this.authService.login({
         id: 1,
@@ -33,7 +33,9 @@ export class LoginComponent {
         nombre: 'Dr. Juan Pérez',
         foto: 'https://randomuser.me/api/portraits/men/1.jpg'
       });
-      this.router.navigate(['/veterinario', 1]);
+      this.router.navigate(['/navigation']);
+
+      //this.router.navigate(['/veterinario', 1]);
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos.';
     }

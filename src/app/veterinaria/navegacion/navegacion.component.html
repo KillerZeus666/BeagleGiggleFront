@@ -86,6 +86,7 @@
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/veterinarian.jpg" alt="Usuario">
-                </div>
+                    <img *ngIf="userPhoto" [src]="userPhoto" alt="Foto del usuario" class="user-photo" />
+                  </div>
+                  
             </div>
