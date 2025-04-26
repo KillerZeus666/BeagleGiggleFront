@@ -3,12 +3,12 @@ import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'app-admin-table',
-  templateUrl: './admin-table.component.html',
-  styleUrls: ['./admin-table.component.css'],
+  selector: 'app-buscador',
+  templateUrl: './buscador.component.html',
+  styleUrls: ['./buscador.component.css'],
   encapsulation: ViewEncapsulation.None, // 👈 esto hace que los estilos no estén encapsulados
 })
-export class AdminTableComponent implements AfterViewInit {
+export class BuscadorComponent  {
   userType: string | null = null;
   userName: string = '';
   userPhoto = 'https://example.com/path-to-your-image.jpg';

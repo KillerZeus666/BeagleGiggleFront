@@ -3,7 +3,7 @@ import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'app-navegacion',
+  selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css'],
   encapsulation: ViewEncapsulation.None, // 👈 esto hace que los estilos no estén encapsulados
