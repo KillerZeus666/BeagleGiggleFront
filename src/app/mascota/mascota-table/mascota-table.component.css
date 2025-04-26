@@ -1,222 +1,201 @@
-/* Estilos para las lista de clientes y mascotas */
+/* ================== General Layout ================= */
+
 .container-principal {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem auto;
-  margin-bottom: 0;
-  background: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 100%;
+  margin-left: 100px; /* Reducido para no quedar tan alejado de la barra de navegación */
+  width: calc(100% - 230px); /* Ajusta el ancho del contenido para que no se sobreponga con la navegación */
+  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px; /* Limitar el ancho máximo para evitar que se estire demasiado */
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* Tabla */
-.tabla-container {
-  margin-top: 1.5rem;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.tabla {
-  width: auto;
-  min-width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  table-layout: auto;
-}
-
-.tabla th {
-  background-color: #40a8c4;
-  color: white;
-  padding: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03rem;
-  white-space: nowrap;
-}
-
-.tabla td {
-  padding: 0.75rem;
-  text-align: center;
-  font-size: 0.85rem;
-  border-bottom: 1px solid #e0e7ec;
-  color: #333;
-  white-space: normal;
-  word-break: break-word;
-}
-
-/* Columnas específicas con ancho fijo donde sea necesario */
-.tabla th:nth-child(1),
-.tabla td:nth-child(1) {
-  width: 50px;
-} /* ID */
-.tabla th:nth-child(2),
-.tabla td:nth-child(2) {
-  width: 100px;
-} /* Nombre */
-.tabla th:nth-child(7),
-.tabla td:nth-child(7) {
-  width: 70px;
-} /* Foto */
-.tabla th:nth-child(13),
-.tabla td:nth-child(13) {
-  width: 150px;
-  white-space: nowrap;
-} /* Acciones */
-
-.tabla tr:nth-child(even) td {
-  background-color: #f5f9fa;
-}
-
-.tabla tr:nth-child(odd) td {
-  background-color: #ffffff;
-}
-
-.tabla tbody tr:hover {
-  background-color: rgba(64, 168, 196, 0.1);
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-/* Estilos de imagen */
-.foto-tabla {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid #40a8c4;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.foto-tabla:hover {
-  transform: scale(1.1);
-}
-
-/* Botones */
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centra los botones horizontalmente */
-  align-items: center; /* Asegura alineación vertical */
-  gap: 8px; /* Espaciado entre botones */
-}
-
-.btn-editar,
-.btn-eliminar,
-.btn-detalles {
-  display: flex;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  margin: 0.2rem;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-editar {
-  background-color: #205375;
-  color: white;
-}
-
-.btn-eliminar {
-  background-color: #ff4d4d;
-  color: white;
-}
-
-.btn-detalles {
-  background-color: #40a8c4;
-  color: white;
-}
-
-.btn-editar:hover {
-  background-color: #112d4e;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-eliminar:hover {
-  background-color: #e60000;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-detalles:hover {
-  background-color: #2e86ab;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+h1 {
+  font-size: 30px;
+  color: #5cadf4;
+  margin-bottom: 20px;
 }
 
 .contenedor-boton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* Responsive */
-@media (max-width: 1200px) {
-  .container-principal {
-    padding: 0.5rem;
-  }
-
-  .tabla th,
-  .tabla td {
-    padding: 0.5rem;
-    font-size: 0.8rem;
-  }
-
-  .foto-tabla {
-    width: 40px;
-    height: 40px;
-  }
-
-  .btn-eliminar,
-  .btn-detalles {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.7rem;
-  }
+  margin-bottom: 20px;
+  text-align: right; /* Alinea los botones a la derecha */
 }
 
-@media (max-width: 992px) {
-  .tabla th,
-  .tabla td {
-    font-size: 0.75rem;
-  }
+.btn-detalles,
+.btn-editar,
+.btn-eliminar,
+.btn-agregar {
+  background-color: #5cadf4; /* Color suave de fondo */
+  color: white;
+  padding: 8px 16px; /* Tamaño más pequeño pero cómodo */
+  border-radius: 20px; /* Bordes redondeados */
+  text-decoration: none;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  border: none; /* Elimina el borde */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* Asegura que los botones sean del mismo tamaño */
+  margin-bottom: 10px; /* Espaciado entre los botones */
+  width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
 }
-/* Buscador */
+
+.btn-detalles:hover,
+.btn-editar:hover,
+.btn-eliminar:hover,
+.btn-agregar:hover {
+  background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
+  transform: scale(1.05); /* Efecto de aumento suave */
+}
+
+.btn-eliminar {
+  background-color: #f44336; /* Rojo para eliminar */
+}
+
+.btn-eliminar:hover {
+  background-color: #d32f2f; /* Rojo más oscuro cuando se pasa el ratón */
+}
+
+/* ================== Search ================= */
+
 .buscador {
-  margin: 20px 0;
   display: flex;
-  gap: 10px;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .input-busqueda {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;  /* Bordes redondeados */
+  border: 1px solid #ddd;
+  width: 70%;
+  outline: none; /* Elimina el borde al hacer focus */
+  transition: all 0.3s ease; /* Transición para los cambios de estilo */
 }
 
+.input-busqueda:focus {
+  border-color: #5cadf4; /* Cambiar el borde cuando se hace focus */
+}
+
+.button-container {
+  margin-bottom: 20px;
+  text-align: right; /* Alinea los botones a la derecha */
+}
+
+/* ================== Table Layout ================= */
+
+.tabla-container {
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 110%;
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
+  padding: 12px;  /* Aumenta el padding para dar más espacio */
+  text-align: left;
+}
+
+.tabla th {
+  font-weight: 600;
+  color: #333;
+}
+
+.tabla tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tabla tr:last-child {
+  border-bottom: none;
+}
+
+.tabla tr:hover {
+  background-color: #e3f2fd;
+}
+
+/* ================== Table Cells ================= */
+
+.tabla td img.foto-tabla {
+  width: 50px;  /* Aumenta el tamaño de la imagen */
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #1e88e5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cliente-nombre {
+  font-weight: bold;
+  color: #333;
+}
+
+.cliente-cedula,
+.cliente-celular,
+.cliente-correo {
+  color: #555;
+}
+
+.acciones-cliente {
+  display: flex;
+  gap: 12px; /* Aumenta el espacio entre los botones */
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ================== Responsive Design ================= */
+
+@media (max-width: 768px) {
+  .tabla td {
+    padding: 10px; /* Aumenta el padding para los dispositivos móviles */
+  }
+
+  .acciones-cliente {
+    justify-content: center;
+    gap: 12px; /* Aumenta el espacio entre botones en pantallas pequeñas */
+  }
+
+  .btn-detalles,
+  .btn-editar,
+  .btn-eliminar,
+  .btn-agregar {
+    width: 100%; /* Botones de ancho completo en pantallas pequeñas */
+    margin-bottom: 8px; /* Margen entre botones */
+  }
+
+  .input-busqueda {
+    width: 60%; /* Reducir el tamaño del campo de búsqueda en pantallas pequeñas */
+  }
+
+/* ================== Estilo del botón de Buscar ================= */
 .btn-buscar {
-  padding: 8px 16px;
-  border: none;
-  background-color: #1976d2;
+  background-color: #5cadf4; /* Color suave de fondo */
   color: white;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 5px 12px; /* Reduce el tamaño del padding para hacerlo más pequeño */
+  border-radius: 20px; /* Bordes redondeados */
+  text-decoration: none;
+  font-size: 12px; /* Tamaño de fuente más pequeño */
+  border: none; /* Elimina el borde */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  width: auto; /* El ancho se ajusta automáticamente al contenido */
+  min-width: 100px; /* Establece un ancho mínimo para el botón */
+  cursor: pointer; /* Agrega el cursor de mano al pasar por encima */
 }
 
 .btn-buscar:hover {
-  background-color: #1565c0;
+  background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
+  transform: scale(1.05); /* Efecto de aumento suave */
+}
+
 }
