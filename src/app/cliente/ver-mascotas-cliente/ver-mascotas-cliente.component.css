@@ -69,51 +69,69 @@
   text-align: center;
 }
 
-.status.completed {
-  padding: 2px 4px;
-  background: #8de02c;
-  color: var(--white);
-  border-radius: 4px;
+.status {
+  padding: 4px 10px; /* Aumenté el padding ligeramente para un aspecto más equilibrado */
   font-size: 14px;
   font-weight: 500;
+  border-radius: 4px;
+  display: inline-block; /* Asegura que los elementos se ajusten al contenido */
+  text-align: center; /* Centra el texto dentro de cada status */
+  line-height: 1.5; /* Ajusta el alto de línea para asegurar una visualización uniforme */
+  min-width: 80px; /* Ancho mínimo para que ambos tengan el mismo tamaño */
+}
+
+.status.completed {
+  background: #8de02c; /* Color de fondo verde */
+  color: var(--white); /* Color del texto blanco */
 }
 
 .status.inactive {
-  padding: 2px 4px;
-  background: #f00;
-  color: var(--white);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
+  background: #f00; /* Color de fondo rojo */
+  color: var(--white); /* Color del texto blanco */
 }
+
 
 .recomendaciones {
   padding: 20px;
-  background: var(--white);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
+  color: #439ee9; /* Color azul para el texto */
+  text-align: justify;
+  font-size: 24px; /* Aumenta el tamaño del texto */
+  letter-spacing: 1px; /* Espaciado entre letras para mayor estilo */
+  margin-bottom: 20px; /* Espacio debajo del título */
 }
 
 .recomendaciones .tarjetas {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
+  position: relative;
 }
 
 .recomendaciones .tarjeta {
-  background: #f0f4f7;
+  background: #b9e5ff; /* Fondo de tarjeta en azul pastel suave */
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recomendaciones .tarjeta:hover {
+  transform: translateY(-5px); /* Efecto de desplazamiento al pasar el mouse */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra sutil en hover */
 }
 
 .recomendaciones h4 {
-  color: var(--blue);
+  color: #246ec2; /* Azul pastel suave para los títulos */
+  font-size: 18px;
 }
 
 .recomendaciones p {
-  color: #333;
+  color: #000000; /* Gris suave para el texto */
+  font-size: 14px;
 }
+
 
 .btn-detalles {
   background-color: #1e88e5;
