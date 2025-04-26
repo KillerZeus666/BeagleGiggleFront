@@ -1,34 +1,36 @@
-/* Estilos para detalle_mascota y detalle_cliente */
+/* .page-container: mover hacia la derecha y hacerlo más pequeño */
 .page-container {
-  display: flex;
-  flex-direction: column;
-  background-color: #F4F8FB;
-  background-image: url('https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-  padding-top: 80px;
-  padding-bottom: 60px;
-  position: relative;
+    display: flex;
+    width: 80%; /* Reduce el tamaño a un 80% del ancho de la ventana */
+    flex-direction: column;
+    background:white; /* Gradiente suave */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    position: relative;
+    min-height: 100vh; /* Ocupará toda la altura de la ventana */
+    margin-left:19%; /* Esto empuja el contenedor hacia la derecha */
 }
 
 /* Pseudo-elemento para la opacidad */
 .page-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(244, 248, 251, 0.7);
-  z-index: 1;
+    content: '';
+    background:white; /* Gradiente suave */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 /* Contenedor principal */
 .container {
-    max-width: 1200px; /* Más ancho para mejor distribución */
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: white;
+    background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -37,6 +39,7 @@
     z-index: 2;
 }
 
+/* Título */
 h1 {
     color: #205375;
     font-size: 30px;
@@ -51,45 +54,61 @@ h1 {
 /* Contenido: mejor distribución horizontal */
 .content {
     display: flex;
-    justify-content: space-between; /* Distribución horizontal */
+    justify-content: space-between;
     align-items: center;
-    gap: 40px; /* Más espacio entre elementos */
+    gap: 40px;
 }
 
-/* Imagen de la mascota */
+/* Imagen del cliente */
 .img-container {
-    width: 300px; /* Más grande */
-    height: 300px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 4px solid #40A8C4;
+    border: 4px solid #1d95db;
     overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background: #f2faff;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container:hover {
+    transform: scale(1.05); /* Efecto de hover */
 }
 
 .mascota-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-/* Datos de la mascota */
+/* Datos del cliente */
 .datos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px; /* Más espacio entre los datos */
+    gap: 30px;
     width: 100%;
-    max-width: 900px; /* Más amplio */
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .dato, .btn-detalles {
-    background-color: #40A8C4;
+    background-color: #1d95db; /* Azul para los ítems */
     color: white;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     font-size: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dato:hover, .btn-detalles:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .label {
@@ -118,7 +137,6 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Responsive */
 @media (max-width: 1024px) {
     .container {
@@ -132,8 +150,8 @@ h1 {
     }
 
     .img-container {
-        width: 250px;
-        height: 250px;
+        width: 160px;
+        height: 160px;
     }
 
     .datos {
@@ -148,8 +166,8 @@ h1 {
     }
 
     .img-container {
-        width: 200px;
-        height: 200px;
+        width: 140px;
+        height: 140px;
     }
 
     .datos {

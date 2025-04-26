@@ -1,53 +1,40 @@
 .detail-container {
-  background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave con tonos similares a #1d95db */
+  background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
   padding: 1.5rem;
   width: 100%;
   margin-top: 20px;
-  max-width: 600px; /* Haciendo el contenedor más pequeño */
-  border-radius: 10px; /* Bordes ligeramente más pequeños */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   display: flex;
   margin-left: 70px;
   align-items: flex-start;
   flex-direction: column;
   gap: 2rem;
-
-  /* Para mover el contenedor un 35% desde la izquierda */
   position: relative;
   left: 35%;
-}
-
-
-.detail-title {
-  color: #1d95db; /* Azul que pediste */
-  font-size: 1.8rem; /* Tamaño de fuente ajustado */
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 4px solid #1d95db; /* Borde en el mismo azul */
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem; /* Margen ajustado */
+  justify-content: center; /* Centra los elementos hijos verticalmente */
 }
 
 .pet-image-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center; /* Asegura que la imagen se centre tanto vertical como horizontalmente */
   width: 100%;
 }
 
 .pet-image-container {
-  width: 180px; /* Tamaño más pequeño para la imagen */
+  width: 180px; /* Asegurando un tamaño adecuado para la imagen */
   height: 180px;
   border-radius: 50%;
-  border: 4px solid #1d95db; /* Usando el mismo azul para el borde */
+  border: 4px solid #1d95db; /* Borde azul */
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   background: #f2faff;
   transition: transform 0.3s ease-in-out;
   display: flex;
   justify-content: center;
-  align-items: center; /* Centra la imagen en su contenedor */
+  align-items: center; /* Asegura que la imagen esté centrada dentro de su contenedor */
 }
 
 .pet-image-container:hover {
@@ -57,7 +44,7 @@
 .pet-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Asegura que la imagen cubra todo el espacio del contenedor */
   display: block;
 }
 
