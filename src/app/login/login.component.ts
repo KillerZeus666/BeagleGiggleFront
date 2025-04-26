@@ -22,8 +22,8 @@ export class LoginComponent {
       this.authService.login({
         id: 2,
         tipo: 'CLIENTE',
-        nombre: 'Luz Morales',
-        foto: 'https://randomuser.me/api/portraits/women/2.jpg'
+        nombre: 'Carlos Gomez',
+        foto: 'https://www.donnamoderna.com/content/uploads/2022/07/Donna-sorridente-830x625.jpg	'
       });
       this.router.navigate(['/cliente']);
     } else if (this.username === 'veterinario1' && this.password === '1234') {
