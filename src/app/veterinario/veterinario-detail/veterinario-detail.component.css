@@ -1,40 +1,25 @@
-/* Estilos para el contenedor principal */
+/* Contenedor principal */
 .vet-detail-container {
     display: flex;
-    flex-direction: column;
-    background-image: url('https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    padding: 80px 20px 60px;
-    position: relative;
-    min-height: calc(100vh - 140px);
+    justify-content: center;
+    padding: 60px 20px;
 }
-  
-/* Fondo semitransparente */
-.vet-detail-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(244, 248, 251, 0.7);
-    z-index: 1;
-}
-  
-/* Tarjeta de detalle del veterinario */
+
+/* Tarjeta del veterinario */
 .vet-detail-card {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
     border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 1200px;
+    width: 80%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
 }
 
+/* Título */
 .vet-detail-card h1 {
     color: #205375;
     font-size: 30px;
@@ -44,111 +29,116 @@
     display: inline-block;
     padding-bottom: 10px;
     margin-bottom: 30px;
+    text-align: center;
 }
-  
-/* Contenido principal */
+
+/* Contenido */
 .vet-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 40px;
 }
-  
-/* Contenedor de imagen */
+
+/* Imagen del veterinario */
 .vet-img-container {
-    width: 300px;
-    height: 300px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 4px solid #40A8C4;
+    border: 4px solid #1d95db;
     overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background: #f2faff;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-  
+
+.vet-img-container:hover {
+    transform: scale(1.05); /* Efecto hover */
+}
+
 .vet-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-  
+
 /* Datos del veterinario */
 .vet-data {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    gap: 30px;
     width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
-  
+
 .vet-field {
-    background-color: #40A8C4;
+    background-color: #1d95db; /* Azul para los ítems */
     color: white;
     padding: 20px;
     border-radius: 8px;
+    text-align: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-  
+
+.vet-field:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
 .vet-label {
     font-size: 16px;
     font-weight: bold;
     color: #F0F8FF;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
-  
+
 .vet-value {
     font-size: 20px;
     font-weight: 500;
     color: white;
-    display: block;
 }
 
-/* Estilos responsivos */
+/* Responsive */
 @media (max-width: 1024px) {
     .vet-detail-card {
-        max-width: 90%;
+        width: 90%;
         padding: 30px;
     }
-  
+
     .vet-content {
         flex-direction: column;
         align-items: center;
     }
-  
+
     .vet-img-container {
-        width: 250px;
-        height: 250px;
-        margin-bottom: 30px;
+        width: 160px;
+        height: 160px;
     }
-  
+
     .vet-data {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
         max-width: 100%;
     }
 }
-  
+
 @media (max-width: 768px) {
     .vet-detail-card {
         padding: 20px;
     }
-  
+
     .vet-img-container {
-        width: 200px;
-        height: 200px;
+        width: 140px;
+        height: 140px;
     }
-  
+
     .vet-data {
         gap: 20px;
-    }
-    
-    .vet-detail-card h1 {
-        font-size: 24px;
-    }
-    
-    .vet-label {
-        font-size: 14px;
-    }
-    
-    .vet-value {
-        font-size: 18px;
     }
 }
