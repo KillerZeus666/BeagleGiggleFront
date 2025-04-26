@@ -19,6 +19,7 @@ import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mas
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
+import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'inicio-sesion', component: LoginComponent }, 
   {path: 'tabla', component: AdminTableComponent },
   {path: 'navigation', component: NavegacionComponent },
+  {path: 'veterinario', component: VeterinarioPageComponent },
   {path: '**', component: ErrorsPageComponent}
  
 ];

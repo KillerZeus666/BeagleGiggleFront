@@ -41,6 +41,7 @@ import { NavegacionComponent } from './veterinaria/navegacion/navegacion.compone
 import { BuscadorComponent } from './veterinaria/buscador/buscador.component';
 import { CartasClienteComponent } from './cliente/cartas-cliente/cartas-cliente.component';
 import { CartasAdministradorComponent } from './admin/cartas-administrador/cartas-administrador.component';
+import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
 
 
 
@@ -77,6 +78,7 @@ import { CartasAdministradorComponent } from './admin/cartas-administrador/carta
     BuscadorComponent,
     CartasClienteComponent,
     CartasAdministradorComponent,
+    VeterinarioPageComponent,
 
   ],
   imports: [

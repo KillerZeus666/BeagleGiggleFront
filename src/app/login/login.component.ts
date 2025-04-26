@@ -40,6 +40,15 @@ export class LoginComponent implements OnInit {
         foto: 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png' // Icono de admin
       });
       this.router.navigate(['/admin']);
+    } else if (this.username === 'vet1' && this.password === 'pass1') {
+      // Login manual (quemado) para veterinario
+      this.authService.login({
+        id: 1,
+        tipo: 'Veterinario',
+        nombre: 'Dra. Martínez',
+        foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDcaEWpYQklMDUzSJPss_l5V9T7yC2xtK7OA&s	' // Foto de veterinario (puedes usar una foto real)
+      });
+      this.router.navigate(['/veterinario']);
     } else {
       // Si no, usar el login normal con el backend
       this.authService.iniciarSesion(this.username, this.password).subscribe(
