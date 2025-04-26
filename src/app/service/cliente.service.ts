@@ -30,4 +30,11 @@ export class ClienteService {
   eliminarCliente(id: number): Observable<string> {
     return this.http.delete<string>(`${this.baseUrl}/eliminar/${id}`);
   }
+
+   // Método para buscar mascotas por su nombre
+    buscarPorNombre(nombre: string): Observable<ClienteCL[]> {
+      return this.http.get<ClienteCL[]>(`http://localhost:8082/cliente/buscar`, {
+        params: { nombre }  // Pasa el nombre como parámetro de búsqueda
+      });
+    }
 }

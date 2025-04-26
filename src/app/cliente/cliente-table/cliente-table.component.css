@@ -1,18 +1,18 @@
 /* ================== General Layout ================= */
 
 .container-principal {
-  margin-left: 270px; /* Reducido para no quedar tan alejado de la barra de navegación */
-  width: calc(100% - 270px); /* Ajusta el ancho del contenido para que no se sobreponga con la navegación */
+  margin-left: 270px;
+  width: calc(100% - 270px);
   padding: 20px;
   font-family: 'Arial', sans-serif;
-  max-width: 1200px; /* Limitar el ancho máximo para evitar que se estire demasiado */
+  max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
 }
 
 h1 {
-  font-size:30px;
-  color:  #5cadf4;
+  font-size: 30px;
+  color: #5cadf4;
   margin-bottom: 20px;
 }
 
@@ -21,19 +21,38 @@ h1 {
   text-align: right; /* Alinea los botones a la derecha */
 }
 
+/* Unificando estilo de los botones */
+.btn-detalles,
+.btn-editar,
+.btn-eliminar,
 .btn-agregar {
-  background-color: #5cadf4;
+  background-color: #5cadf4; /* Color suave de fondo */
   color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 10px 20px; /* Tamaño de botón más cómodo */
+  border-radius: 20px; /* Bordes redondeados */
   text-decoration: none;
+  font-size: 16px; /* Tamaño de fuente cómodo */
+  border: none; /* Elimina el borde */
   transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 10px; /* Espaciado entre los botones */
+  width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
 }
 
+.btn-detalles:hover,
+.btn-editar:hover,
+.btn-eliminar:hover,
 .btn-agregar:hover {
-  background-color: #4f96e8;
-  transform: scale(1.05);
+  background-color: #4f96e8; /* Color de fondo más oscuro en hover */
+  transform: scale(1.05); /* Efecto de aumento suave */
+}
+
+.btn-eliminar {
+  background-color: #f44336; /* Rojo para eliminar */
+}
+
+.btn-eliminar:hover {
+  background-color: #d32f2f; /* Rojo más oscuro cuando se pasa el ratón */
 }
 
 .tabla-container {
@@ -41,10 +60,10 @@ h1 {
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  margin-top: 20px; /* Añadir margen superior para no quedar pegado al título */
-  margin-bottom: 40px; /* Añadir margen inferior para separación */
-  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
-  overflow-x: auto; /* Permite el desplazamiento horizontal en pantallas pequeñas */
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .tabla {
@@ -72,7 +91,7 @@ h1 {
 }
 
 .tabla tr:hover {
-  background-color:#e3f2fd;
+  background-color: #e3f2fd;
 }
 
 .tabla td img.foto-tabla {
@@ -98,57 +117,26 @@ h1 {
 .acciones-cliente {
   display: flex;
   gap: 10px;
-  justify-content: flex-start; /* Alinea los botones al inicio */
-  align-items: center; /* Alinea los botones verticalmente */
-  flex-wrap: wrap; /* Permite que los botones se ajusten en pantallas pequeñas */
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
-.btn-detalles,
-.btn-editar,
-.btn-eliminar {
-  background-color: #1e88e5;
-  color: white;
-  padding: 8px 16px; /* Aumentar el tamaño del botón para mayor consistencia */
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-block;
-}
-
-.btn-detalles:hover,
-.btn-editar:hover,
-.btn-eliminar:hover {
-  background-color: #4f96e8;
-  transform: scale(1.05);
-}
-
-.btn-eliminar {
-  background-color: #f44336; /* Red for delete */
-  border: none; /* Elimina el borde */
-}
-
-.btn-eliminar:hover {
-  background-color: #d32f2f;
-}
-
 
 @media (max-width: 768px) {
   .tabla td {
-    padding: 8px; /* Reducir padding para pantallas más pequeñas */
+    padding: 8px;
   }
 
   .acciones-cliente {
-    justify-content: center; /* Centra los botones en pantallas pequeñas */
+    justify-content: center;
     gap: 8px;
   }
 
   .btn-detalles,
   .btn-editar,
-  .btn-eliminar {
-    width: 100%; /* Hace que los botones sean de ancho completo en pantallas pequeñas */
-    margin-bottom: 8px; /* Añade un pequeño margen entre botones */
+  .btn-eliminar,
+  .btn-agregar {
+    width: 100%;
+    margin-bottom: 8px;
   }
-  
-  
 }

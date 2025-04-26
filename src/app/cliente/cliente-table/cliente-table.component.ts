@@ -13,6 +13,9 @@ export class ClienteTableComponent implements OnInit {
   
   clienteList: ClienteCL[] = [];
   currentUser: any; // Variable para almacenar el usuario actual
+  nombreABuscar: string = '';
+  listaClientes: ClienteCL[] = [];
+
 
   constructor(
     private clienteService: ClienteService, 
@@ -69,4 +72,27 @@ export class ClienteTableComponent implements OnInit {
     // Verifica si el usuario es Admin
     return this.currentUser && this.currentUser.tipo === 'Admin';
   }
+
+
+
+  buscarCliente() {
+      const nombre = this.nombreABuscar.trim();
+      
+      if (nombre === '') {
+        // Si el campo está vacío, muestra todo de nuevo
+        this.clienteService.findAll().subscribe({
+          next: (clientes: ClienteCL[]) => {
+            this.clienteList = clientes;
+          },
+          error: (err) => {
+            console.error('Error al recargar las mascotas:', err);
+          }
+        });
+      } else {
+        this.clienteService.buscarPorNombre(nombre).subscribe((resultados) => {
+          this.clienteList = resultados;
+        });
+      }
+    }
+    
 }
