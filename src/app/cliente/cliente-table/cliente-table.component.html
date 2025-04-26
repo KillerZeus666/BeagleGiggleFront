@@ -19,12 +19,6 @@
             <ion-icon name="menu-outline"></ion-icon>
         </div>
 
-        <div class="search">
-            <label>
-                <input type="text" placeholder="Buscar cliente...">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
-        </div>
 
         <div class="user">
             <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
@@ -32,25 +26,27 @@
     </div>
 
 
-    <div class="buscador">
-        <input 
-          type="text" 
-          [(ngModel)]="nombreABuscar" 
-          placeholder="Buscar mascota..." 
-          class="input-busqueda" 
-          style="padding: 12px; font-size: 18px; border-radius: 25px; border: 1px solid #ddd; width: 80%; outline: none; transition: all 0.3s ease;" 
-        />
-        <button 
-        (click)="buscarCliente()"
-        class="btn-buscar" 
-          style="background-color: #5cadf4 !important; color: white !important; padding: 8px 18px !important; border-radius: 20px !important; font-size: 14px !important; border: none !important; transition: background-color 0.3s ease, transform 0.2s ease !important; width: auto !important; cursor: pointer !important;">
-          Buscar
-        </button>
-      </div>
 
     <!-- ========================= Lista de Clientes ==================== -->
     <main class="container-principal">
         <h1>Lista de Clientes</h1>
+
+        <div class="buscador">
+            <input 
+              type="text" 
+              [(ngModel)]="nombreABuscar" 
+              placeholder="Buscar Cliente..." 
+              class="input-busqueda" 
+              style="padding: 12px; font-size: 18px; border-radius: 25px; border: 1px solid #ddd; width: 80%; outline: none; transition: all 0.3s ease;" 
+            />
+            <button 
+            (click)="buscarCliente()"
+            class="btn-buscar" 
+              style="background-color: #5cadf4 !important; color: white !important; padding: 8px 18px !important; border-radius: 20px !important; font-size: 14px !important; border: none !important; transition: background-color 0.3s ease, transform 0.2s ease !important; width: auto !important; cursor: pointer !important;">
+              Buscar
+            </button>
+          </div>
+    
     
         <div class="button-container">
             <a class="btn-agregar" (click)="abrirFormualarioAgregarCliente()">Nuevo Cliente</a>

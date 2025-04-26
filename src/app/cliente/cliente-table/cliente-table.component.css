@@ -24,8 +24,7 @@ h1 {
 /* Unificando estilo de los botones */
 .btn-detalles,
 .btn-editar,
-.btn-eliminar,
-.btn-agregar {
+.btn-eliminar {
   background-color: #5cadf4; /* Color suave de fondo */
   color: white;
   padding: 10px 20px; /* Tamaño de botón más cómodo */
@@ -122,13 +121,29 @@ h1 {
   flex-wrap: wrap;
 }
 
+.btn-agregar {
+  padding: 8px 16px; /* Un poco más de padding para hacerlo ligeramente más grande */
+  font-size: 14px; /* Un tamaño de fuente intermedio */
+  border-radius: 15px; /* Redondea los bordes */
+  background-color: #5cadf4; /* Color de fondo */
+  color: white; /* Color del texto */
+  text-decoration: none; /* Elimina el subrayado */
+  display: inline-block; /* Hace que el botón sea un bloque en línea */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+}
+
+.btn-agregar:hover {
+  background-color: #4a8fc4; /* Color al pasar el ratón */
+  transform: scale(1.1); /* Agranda ligeramente el botón */
+}
+
+
 @media (max-width: 768px) {
   .tabla td {
     padding: 8px;
   }
 
   .acciones-cliente {
-    justify-content: center;
     gap: 8px;
   }
 

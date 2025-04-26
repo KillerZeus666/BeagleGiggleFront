@@ -82,6 +82,26 @@ h1 {
   text-align: right; /* Alinea los botones a la derecha */
 }
 
+.btn-agregar {
+  padding: 8px 14px; /* Aumenta el padding para hacerlo ligeramente más grande */
+  font-size: 14px; /* Tamaño de fuente un poco mayor */
+  border-radius: 15px; /* Bordes ligeramente redondeados */
+  background-color: #5cadf4; /* Color de fondo */
+  color: white; /* Color del texto */
+  text-decoration: none; /* Elimina el subrayado */
+  display: inline-block; /* Hace que el botón sea un bloque en línea */
+  width: auto; /* Hace que el botón se ajuste a su contenido */
+  max-width: 180px; /* Máximo ancho aumentado */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+}
+
+.btn-agregar:hover {
+  background-color: #4a8fc4; /* Color al pasar el ratón */
+  transform: scale(1.05); /* Agranda ligeramente el botón */
+}
+
+
+
 /* ================== Table Layout ================= */
 
 .tabla-container {
@@ -153,6 +173,10 @@ h1 {
   flex-wrap: wrap;
 }
 
+
+
+
+
 /* ================== Responsive Design ================= */
 
 @media (max-width: 768px) {
@@ -165,7 +189,7 @@ h1 {
     gap: 12px; /* Aumenta el espacio entre botones en pantallas pequeñas */
   }
 
-  .btn-detalles,
+  
   .btn-editar,
   .btn-eliminar,
   .btn-agregar {
@@ -200,5 +224,6 @@ h1 {
   background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
   transform: scale(1.05); /* Efecto de aumento suave */
 }
+
 
 }
