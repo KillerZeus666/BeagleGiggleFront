@@ -11,17 +11,18 @@
 }
 
 h1 {
-  font-size: 24px;
-  color: #333;
+  font-size:30px;
+  color:  #5cadf4;
   margin-bottom: 20px;
 }
 
 .button-container {
   margin-bottom: 20px;
+  text-align: right; /* Alinea los botones a la derecha */
 }
 
 .btn-agregar {
-  background-color: #1e88e5;
+  background-color: #5cadf4;
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
@@ -71,7 +72,7 @@ h1 {
 }
 
 .tabla tr:hover {
-  background-color: #f1f1f1;
+  background-color:#e3f2fd;
 }
 
 .tabla td img.foto-tabla {
@@ -124,11 +125,13 @@ h1 {
 
 .btn-eliminar {
   background-color: #f44336; /* Red for delete */
+  border: none; /* Elimina el borde */
 }
 
 .btn-eliminar:hover {
   background-color: #d32f2f;
 }
+
 
 @media (max-width: 768px) {
   .tabla td {
@@ -146,4 +149,6 @@ h1 {
     width: 100%; /* Hace que los botones sean de ancho completo en pantallas pequeñas */
     margin-bottom: 8px; /* Añade un pequeño margen entre botones */
   }
+  
+  
 }
