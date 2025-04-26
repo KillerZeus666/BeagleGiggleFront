@@ -36,6 +36,7 @@ import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.com
 import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mascotas-tratamiento.component';
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tratamiento-detail.component';
+import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 
 
 
@@ -67,6 +68,7 @@ import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tra
     MascotasTratamientoComponent,
     TratamientoFormComponent,
     TratamientoDetailComponent,
+    AdminTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ import { VeterinarioTableComponent } from './veterinario/veterinario-table/veter
 import { VerCitasVeterinarioComponent } from './veterinario/ver-citas-veterinario/ver-citas-veterinario.component';
 import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mascotas-tratamiento.component';
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
+import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 
 
 
@@ -41,8 +42,12 @@ const routes: Routes = [
   {path: 'crear-tratamiento', component:TratamientoFormComponent},
   {path: 'editar-veterinario/:id', component:VeterinarioTableComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: 'inicio-sesion', component: LoginComponent },
+  {path: 'inicio-sesion', component: LoginComponent }, 
+   {path: 'tabla', component: AdminTableComponent },
+
   {path: '**', component: ErrorsPageComponent}
+
+
 
   
   
