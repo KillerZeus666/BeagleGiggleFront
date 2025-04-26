@@ -37,6 +37,7 @@ import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mas
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tratamiento-detail.component';
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
+import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
 
 
 
@@ -69,6 +70,7 @@ import { AdminTableComponent } from './admin/admin-table/admin-table.component';
     TratamientoFormComponent,
     TratamientoDetailComponent,
     AdminTableComponent,
+    NavegacionComponent,
   ],
   imports: [
     BrowserModule,
