@@ -37,6 +37,14 @@ body {
 .navigation.active {
   width: 80px;
 }
+app-navegacion {
+  position: fixed; /* Fija la navegación en la parte superior */
+  top: 0; /* Asegura que esté en la parte superior */
+  left: 0; /* Alinea a la izquierda de la página */
+  z-index: 1000; /* Hace que el componente de navegación esté por encima de otros elementos */
+}
+
+
 
 .navigation ul {
   position: absolute;
