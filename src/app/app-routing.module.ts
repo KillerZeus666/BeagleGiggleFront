@@ -18,6 +18,7 @@ import { VerCitasVeterinarioComponent } from './veterinario/ver-citas-veterinari
 import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mascotas-tratamiento.component';
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
+import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
 
 
 
@@ -43,14 +44,10 @@ const routes: Routes = [
   {path: 'editar-veterinario/:id', component:VeterinarioTableComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'inicio-sesion', component: LoginComponent }, 
-   {path: 'tabla', component: AdminTableComponent },
-
+  {path: 'tabla', component: AdminTableComponent },
+  {path: 'navigation', component: NavegacionComponent },
   {path: '**', component: ErrorsPageComponent}
-
-
-
-  
-  
+ 
 ];
 
 @NgModule({
