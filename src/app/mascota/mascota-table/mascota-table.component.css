@@ -179,19 +179,22 @@ h1 {
 
 /* ================== Estilo del botón de Buscar ================= */
 .btn-buscar {
-  background-color: #5cadf4; /* Color suave de fondo */
-  color: white;
-  padding: 5px 12px; /* Reduce el tamaño del padding para hacerlo más pequeño */
-  border-radius: 20px; /* Bordes redondeados */
-  text-decoration: none;
-  font-size: 12px; /* Tamaño de fuente más pequeño */
-  border: none; /* Elimina el borde */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-block;
-  width: auto; /* El ancho se ajusta automáticamente al contenido */
-  min-width: 100px; /* Establece un ancho mínimo para el botón */
-  cursor: pointer; /* Agrega el cursor de mano al pasar por encima */
+  width: 120px;  /* Ajusta este valor según el tamaño que desees */
+  height: 40px;  /* Ajusta el alto según lo que necesites */
 }
+
+.btn-buscar {
+  background-color: #5cadf4 !important;
+  color: white !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-size: 12px !important;
+  border: none !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+  width: auto !important;
+  cursor: pointer !important;
+}
+
 
 .btn-buscar:hover {
   background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
