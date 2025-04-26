@@ -73,6 +73,7 @@ import { BuscadorComponent } from './veterinaria/buscador/buscador.component';
     AdminTableComponent,
     NavegacionComponent,
     BuscadorComponent,
+
   ],
   imports: [
     BrowserModule,

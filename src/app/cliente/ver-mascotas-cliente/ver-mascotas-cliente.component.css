@@ -1,10 +1,4 @@
-/* Estilos para la sección de mascotas en cliente y veterinario */
-.mascotas-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
+
   
   /* Estilos para la sección de mascotas */
   .mascotas {
