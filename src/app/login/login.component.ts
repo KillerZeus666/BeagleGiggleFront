@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Solo llenar el formulario automáticamente
+    // Solo llenar el formulario automáticamente para pruebas
     this.username = 'carlosg';
     this.password = 'pass2';
   }
@@ -23,15 +23,23 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     // Validar si coincide con los datos quemados
     if (this.username === 'carlosg' && this.password === 'pass2') {
-      // Login manual (quemado)
+      // Login manual (quemado) para cliente
       this.authService.login({
         id: 2,
         tipo: 'Cliente',
         nombre: 'Carlos Gómez',
         foto: 'https://www.donnamoderna.com/content/uploads/2022/07/Donna-sorridente-830x625.jpg'
       });
-      // Después del login, navegar
       this.router.navigate(['/mascotas-cliente/2']);
+    } else if (this.username === 'admin' && this.password === '1234') {
+      // Login manual (quemado) para admin
+      this.authService.login({
+        id: 1,
+        tipo: 'Admin',
+        nombre: 'Administrador',
+        foto: 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png' // Icono de admin
+      });
+      this.router.navigate(['/admin']);
     } else {
       // Si no, usar el login normal con el backend
       this.authService.iniciarSesion(this.username, this.password).subscribe(

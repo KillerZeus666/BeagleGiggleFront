@@ -1,17 +1,85 @@
-<div class="container">
-    <!-- Barra de navegación -->
-    <div class="navigation">
-      <app-navegacion></app-navegacion>
-      <!-- Código de navegación -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Veterinaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Incluye el CSS aquí si lo prefieres en un solo archivo */
+  </style>
+</head>
+<body>
+
+<app-navegacion></app-navegacion>
+
+<main>
+  <h1>Dashboard Beagle Giggle</h1>
+
+  <div class="kpi-container">
+    <div class="kpi-card">
+      <div class="kpi-number">120</div>
+      <div class="kpi-label">Tratamientos este mes</div>
     </div>
-  
-    <!-- Main content -->
-    <div class="main">
-      <app-buscador></app-buscador>
-      <!-- Código de contenido principal -->
-      <div class="topbar">
-        <!-- Aquí podrías poner cosas de la topbar -->
-      </div>
-    </div> <!-- 👈 Te faltaba cerrar este div -->
-  </div> <!-- 👈 Este también -->
-  
+    <div class="kpi-card">
+      <div class="kpi-number">15</div>
+      <div class="kpi-label">Veterinarios activos</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-number">3</div>
+      <div class="kpi-label">Veterinarios inactivos</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-number">200</div>
+      <div class="kpi-label">Mascotas registradas</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-number">75</div>
+      <div class="kpi-label">Mascotas activas</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Tratamientos por tipo de medicamento</h2>
+    <img src="https://via.placeholder.com/600x300?text=Gráfica+de+Medicamentos" alt="Gráfica de medicamentos" style="width:100%;">
+  </div>
+
+  <div class="section">
+    <h2>Top 3 Tratamientos Más Vendidos</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Tratamiento</th>
+          <th>Unidades Vendidas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vacuna Antirrábica</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>Desparasitación</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>Antibiótico General</td>
+          <td>45</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="kpi-container">
+    <div class="kpi-card">
+      <div class="kpi-number">$5,000</div>
+      <div class="kpi-label">Ventas Totales</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-number">$2,000</div>
+      <div class="kpi-label">Ganancias Totales</div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

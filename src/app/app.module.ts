@@ -40,6 +40,7 @@ import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
 import { BuscadorComponent } from './veterinaria/buscador/buscador.component';
 import { CartasClienteComponent } from './cliente/cartas-cliente/cartas-cliente.component';
+import { CartasAdministradorComponent } from './admin/cartas-administrador/cartas-administrador.component';
 
 
 
@@ -75,6 +76,7 @@ import { CartasClienteComponent } from './cliente/cartas-cliente/cartas-cliente.
     NavegacionComponent,
     BuscadorComponent,
     CartasClienteComponent,
+    CartasAdministradorComponent,
 
   ],
   imports: [

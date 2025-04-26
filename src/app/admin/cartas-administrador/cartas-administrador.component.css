@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #1d95db;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-gap: 30px;
+  padding: 40px;
+  margin-left: 50px; /* 👉 Agregado */
+  justify-content: center;
+}
+
+.cardBox .card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.cardBox .card .content {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cardBox .card .numbers {
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  width: 80px;
+  height: 80px;
+  background: var(--gray);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardBox .card .iconBx img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+  transform: translateY(-10px);
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName {
+  color: var(--white);
+}
+
+.cardBox .card:hover .iconBx {
+  background: var(--white);
+}
+
+.cardBox .card:hover .iconBx img {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(74%) saturate(4235%) hue-rotate(183deg) brightness(92%) contrast(90%);
+}

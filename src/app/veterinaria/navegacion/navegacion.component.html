@@ -12,25 +12,26 @@
         </a>
       </li>
   
-      <!-- Solo visible si el usuario es admin -->
-      <li *ngIf="userType === 'Admin'">
-        <a href="#" class="nav-link">
-          <span class="icon">
-            <ion-icon name="home-outline"></ion-icon>
-          </span>
-          <span class="title">Dashboard</span>
-        </a>
-      </li>
+        <!-- Solo visible si el usuario es admin -->
+        <li *ngIf="userType === 'Admin'">
+            <a routerLink="/admin" class="nav-link"> <!-- Cambié href por routerLink -->
+            <span class="icon">
+                <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+            </a>
+        </li>
   
-      <!-- Solo visible si el usuario es admin -->
-      <li *ngIf="userType === 'Admin'">
-        <a href="#" class="nav-link">
-          <span class="icon">
-            <ion-icon name="people-outline"></ion-icon>
-          </span>
-          <span class="title">Clientes</span>
-        </a>
-      </li>
+  
+            <!-- Solo visible si el usuario es admin o veterinario -->
+        <li *ngIf="userType === 'Admin' || userType === 'Veterinario'">
+            <a routerLink="/clientes" class="nav-link"> <!-- Usé routerLink para la navegación interna -->
+            <span class="icon">
+                <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Clientes</span>
+            </a>
+        </li>
   
       <!-- Solo visible si el usuario es admin o veterinario -->
       <li *ngIf="userType === 'Admin' || userType === 'Veterinario'">
