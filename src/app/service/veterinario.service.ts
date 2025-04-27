@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { VeterinarioCL } from '../model/veterinario-cl';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { CitaCL } from '../model/cita-cl';
+import { MascotaCL } from '../model/mascota-cl';
+import { TratamientoCL } from '../model/tratamiento-cl';
 
 @Injectable({
   providedIn: 'root'
@@ -64,8 +67,24 @@ export class VeterinarioService {
     return this.http.get<any[]>(`${this.baseUrl}/${idVeterinario}/mascotas_atendidas`);
   }
 
-   /*Obtener mascotas atendidas por veterinario
-   obtenerVeterinariosActivos(): Observable<Number[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/${idVeterinario}/mascotas_atendidas`);
-  }*/
+  // Obtener citas agendadas
+  obtenerCitasAgendadas(idVeterinario:number): Observable<CitaCL[]> {
+    return this.http.get<CitaCL[]>(`${this.baseUrl}/citas_agendadas/${idVeterinario}`);
+  }
+
+  // Obtener historial de citas
+  obtenerHistorialcitas(idVeterinario:number): Observable<CitaCL[]> {
+    return this.http.get<CitaCL[]>(`${this.baseUrl}/historial-citas/${idVeterinario}`);
+  }
+
+  // Obtener historial de tratamientos de una mascota específica atendida por un veterinario
+  getHistorialTratamientos(idVeterinario: number, idMascota: number): Observable<TratamientoCL[]> {
+    return this.http.get<TratamientoCL[]>(`${this.baseUrl}/historial-tratamientos-Mascota/${idVeterinario}/${idMascota}`);
+  }
+
+  // Obtener todos los tratamientos realizados por un veterinario
+  getAllTratamientosVeterinario(idVeterinario: number): Observable<TratamientoCL[]> {
+    return this.http.get<TratamientoCL[]>(`${this.baseUrl}/historial-tratamientos/${idVeterinario}`);
+  }
+
 }

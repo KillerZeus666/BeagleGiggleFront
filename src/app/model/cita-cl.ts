@@ -17,6 +17,7 @@ export class CitaCL {
     mascota: MascotaCL = new MascotaCL(),
     veterinario: VeterinarioCL | null = null,
     servicio: ServicioCL | null = null
+    
   ) {
     this.idCita = idCita;
     this.fechaHora = fechaHora;

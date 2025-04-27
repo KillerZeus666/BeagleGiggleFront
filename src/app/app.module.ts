@@ -42,6 +42,9 @@ import { BuscadorComponent } from './veterinaria/buscador/buscador.component';
 import { CartasClienteComponent } from './cliente/cartas-cliente/cartas-cliente.component';
 import { CartasAdministradorComponent } from './admin/cartas-administrador/cartas-administrador.component';
 import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
+import { CitaTableComponent } from './cita/cita-table/cita-table.component';
+import { CitaFormComponent } from './cita/cita-form/cita-form.component';
+import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 
 
 
@@ -79,6 +82,9 @@ import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterin
     CartasClienteComponent,
     CartasAdministradorComponent,
     VeterinarioPageComponent,
+    CitaTableComponent,
+    CitaFormComponent,
+    CitaDetailComponent,
 
   ],
   imports: [
