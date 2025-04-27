@@ -7,14 +7,20 @@ import { MedicamentoCL } from '../model/medicamento-cl';
   providedIn: 'root'
 })
 export class MedicamentoService {
-  private baseUrl = 'http://localhost:8082/cliente';
-  constructor(private http:HttpClient) { }
+  private baseUrl = 'http://localhost:8082/medicamento';
+  constructor(private http: HttpClient) { }
 
-  findAll():Observable<MedicamentoCL[]>{
-    return this.http.get<MedicamentoCL[]>(`${this.baseUrl}`)
+  findAll(): Observable<MedicamentoCL[]> {
+    return this.http.get<MedicamentoCL[]>(`${this.baseUrl}`);
   }
 
-  getMedicamento(id:number):Observable<MedicamentoCL>{
-    return this.http.get<MedicamentoCL>(`${this.baseUrl}/${id}`)
+  getMedicamento(id: number): Observable<MedicamentoCL> {
+    return this.http.get<MedicamentoCL>(`${this.baseUrl}/${id}`);
+  }
+
+  buscarPorNombre(nombre: string): Observable<MedicamentoCL[]> {
+    return this.http.get<MedicamentoCL[]>(`${this.baseUrl}/buscar`, {
+      params: { nombre }
+    });
   }
 }

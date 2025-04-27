@@ -10,6 +10,7 @@ import { MedicamentoService } from 'src/app/service/medicamento.service';
 })
 export class MedicamentoTableComponent implements OnInit {
   medicamentos: MedicamentoCL[] = [];
+  nombreMedicamentoBuscar: string = '';
 
   constructor(
     private medicamentoService: MedicamentoService,
@@ -17,6 +18,10 @@ export class MedicamentoTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cargarMedicamentos();
+  }
+
+  cargarMedicamentos(): void {
     this.medicamentoService.findAll().subscribe({
       next: (medicamentos: MedicamentoCL[]) => {
         this.medicamentos = medicamentos;
@@ -25,5 +30,21 @@ export class MedicamentoTableComponent implements OnInit {
         console.error('Error al cargar los medicamentos', err);
       }
     });
+  }
+
+  buscarMedicamento(): void {
+    const nombre = this.nombreMedicamentoBuscar.trim();
+    if (nombre === '') {
+      this.cargarMedicamentos(); // Si no hay nombre, recarga todos los medicamentos
+    } else {
+      this.medicamentoService.buscarPorNombre(nombre).subscribe({
+        next: (resultados: MedicamentoCL[]) => {
+          this.medicamentos = resultados;
+        },
+        error: (err) => {
+          console.error('Error al buscar medicamentos', err);
+        }
+      });
+    }
   }
 }

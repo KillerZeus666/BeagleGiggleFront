@@ -1,1 +1,57 @@
-<p>medicamento-table works!</p>
+<app-navegacion></app-navegacion>
+
+<div class="main">
+  <div class="topbar">
+    <div class="toggle">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="user">
+      <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+    </div>
+  </div>
+
+  <main class="container-principal">
+    <h1>Lista de Medicamentos</h1>
+
+    <div class="buscador">
+      <input 
+        type="text" 
+        [(ngModel)]="nombreMedicamentoBuscar" 
+        placeholder="Buscar medicamento por su nombre..." 
+        class="input-busqueda"
+        style="padding: 12px; font-size: 18px; border-radius: 25px; border: 1px solid #ddd; width: 80%; outline: none; transition: all 0.3s ease;" 
+      />
+      <button 
+        (click)="buscarMedicamento()"
+        class="btn-buscar" 
+        style="background-color: #5cadf4; color: white; padding: 8px 18px; border-radius: 20px; font-size: 14px; border: none; cursor: pointer;">
+        Buscar
+      </button>
+    </div>
+
+    <div class="tabla-container">
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>ID Medicamento</th>
+            <th>Precio Compra</th>
+            <th>Precio Venta</th>
+            <th>Unidades Disponibles</th>
+            <th>Unidades Vendidas</th>
+            <th>Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let medicamento of medicamentos">
+            <td>{{ medicamento.idMedicamento }}</td>
+            <td>{{ medicamento.precioCompra | currency:'COP' }}</td>
+            <td>{{ medicamento.precioVenta | currency:'COP' }}</td>
+            <td>{{ medicamento.unidadesDisponibles }}</td>
+            <td>{{ medicamento.unidadesVendidas }}</td>
+            <td>{{ medicamento.nombre }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
