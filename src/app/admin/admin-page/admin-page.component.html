@@ -70,12 +70,13 @@
 
   <div class="kpi-container">
     <div class="kpi-card">
-      <div class="kpi-number">$5,000</div>
-      <div class="kpi-label">Ventas Totales</div>
+      <div class="kpi-number">{{ stats.ventasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
+      <div class="kpi-label">Ventas Totales (Todos los medicamentos)</div>
     </div>
+    
     <div class="kpi-card">
-      <div class="kpi-number">$2,000</div>
-      <div class="kpi-label">Ganancias Totales</div>
+      <div class="kpi-number">{{ stats.gananciasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
+      <div class="kpi-label">Ganancias Totales (Todos los servicios)</div>
     </div>
   </div>
 </main>

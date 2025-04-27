@@ -1,14 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Servicio {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  imagenFrontal: string;
-  imagenTrasera: string;
-}
+import { ServicioCL } from '../model/servicio-cl';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +12,17 @@ export class ServicioService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerServicios(): Observable<Servicio[]> {
-    return this.http.get<Servicio[]>(this.apiUrl);
+  obtenerServicios(): Observable<ServicioCL[]> {
+    return this.http.get<ServicioCL[]>(this.apiUrl).pipe(
+      map(response => response.map(item => ServicioCL.fromBackendData(item)))
+    );
+  }
+
+  obtenerVentasTotales(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/ventas-totales`);
+  }
+
+  obtenerGananciasTotales(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/ganancias-totales`);
   }
 }
