@@ -21,6 +21,7 @@ import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component'; 
 import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
+import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
 
 
 
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: 'navigation', component: NavegacionComponent },
   {path: 'veterinario', component: VeterinarioPageComponent },
   {path: 'detalles-veterinario/:id', component: VeterinarioDetailComponent},
+  {path: 'historial-tratamientos/:id', component:HistorialTratamientosComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
  
