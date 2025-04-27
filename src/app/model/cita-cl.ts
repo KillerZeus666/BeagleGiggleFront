@@ -9,6 +9,7 @@ export class CitaCL {
   mascota: MascotaCL;
   veterinario: VeterinarioCL | null;
   servicio: ServicioCL | null;
+  estado: string;
 
   constructor(
     idCita: number = 0,
@@ -16,8 +17,8 @@ export class CitaCL {
     sede: string = '',
     mascota: MascotaCL = new MascotaCL(),
     veterinario: VeterinarioCL | null = null,
-    servicio: ServicioCL | null = null
-    
+    servicio: ServicioCL | null = null,
+    estado: string = 'pendiente' // Valor por defecto
   ) {
     this.idCita = idCita;
     this.fechaHora = fechaHora;
@@ -25,6 +26,7 @@ export class CitaCL {
     this.mascota = mascota;
     this.veterinario = veterinario;
     this.servicio = servicio;
+    this.estado = estado;
   }
 
   static fromBackendData(data: any): CitaCL {
@@ -34,7 +36,8 @@ export class CitaCL {
       data.sede,
       MascotaCL.fromBackendData(data.mascota),
       data.veterinario ? VeterinarioCL.fromBackendData(data.veterinario) : null,
-      data.servicio ? ServicioCL.fromBackendData(data.servicio) : null
+      data.servicio ? ServicioCL.fromBackendData(data.servicio) : null,
+      data.estado || 'pendiente' // Manejo por defecto si no viene el estado
     );
   }
 
@@ -48,6 +51,7 @@ export class CitaCL {
         ? { idVeterinario: this.veterinario.idVeterinario }
         : null,
       servicio: this.servicio ? { idServicio: this.servicio.idServicio } : null,
+      estado: this.estado
     };
   }
 
@@ -64,6 +68,10 @@ export class CitaCL {
 
     if (!this.fechaHora || this.fechaHora <= new Date()) {
       errors.push('La fecha debe ser futura');
+    }
+
+    if (!this.estado || this.estado.trim() === '') {
+      errors.push('El estado es requerido');
     }
 
     return {
