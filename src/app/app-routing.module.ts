@@ -22,6 +22,7 @@ import { NavegacionComponent } from './veterinaria/navegacion/navegacion.compone
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component'; 
 import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
 import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
+import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 
 
 
@@ -51,6 +52,7 @@ const routes: Routes = [
   {path: 'veterinario', component: VeterinarioPageComponent },
   {path: 'detalles-veterinario/:id', component: VeterinarioDetailComponent},
   {path: 'medicamentos', component: MedicamentoTableComponent },
+  {path: 'servicios', component: ServicioTableComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
  

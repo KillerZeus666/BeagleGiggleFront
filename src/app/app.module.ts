@@ -46,6 +46,7 @@ import { CitaTableComponent } from './cita/cita-table/cita-table.component';
 import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
+import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 
 
 
@@ -87,6 +88,7 @@ import { MedicamentoTableComponent } from './medicamento/medicamento-table/medic
     CitaFormComponent,
     CitaDetailComponent,
     MedicamentoTableComponent,
+    ServicioTableComponent,
 
   ],
   imports: [

@@ -34,21 +34,21 @@
         <thead>
           <tr>
             <th>ID Medicamento</th>
+            <th>Nombre</th>
             <th>Precio Compra</th>
             <th>Precio Venta</th>
             <th>Unidades Disponibles</th>
             <th>Unidades Vendidas</th>
-            <th>Nombre</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let medicamento of medicamentos">
             <td>{{ medicamento.idMedicamento }}</td>
-            <td>{{ medicamento.precioCompra | currency:'COP' }}</td>
-            <td>{{ medicamento.precioVenta | currency:'COP' }}</td>
+            <td>{{ medicamento.nombre }}</td>
+            <td>{{ medicamento.precioCompra | currency:'$' }}</td>
+            <td>{{ medicamento.precioVenta | currency:'$' }}</td>
             <td>{{ medicamento.unidadesDisponibles }}</td>
             <td>{{ medicamento.unidadesVendidas }}</td>
-            <td>{{ medicamento.nombre }}</td>
           </tr>
         </tbody>
       </table>

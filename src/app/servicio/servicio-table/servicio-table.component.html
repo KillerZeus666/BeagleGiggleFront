@@ -1,0 +1,40 @@
+<app-navegacion></app-navegacion>
+
+<div class="main">
+  <div class="topbar">
+    <div class="toggle">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="user">
+      <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+    </div>
+  </div>
+
+  <main class="container-principal">
+    <h1>Lista de Servicios</h1>
+
+
+
+    <div class="tabla-container">
+      <table class="tabla">
+        <thead>
+          <tr>
+            <th>ID Servicio</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio Base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let servicio of servicios">
+            <td>{{ servicio.idServicio }}</td>
+            <td>{{ servicio.nombre }}</td>
+            <td>{{ servicio.descripcion }}</td>
+            <td>{{ servicio.precioBase | currency:'$' }}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
