@@ -63,7 +63,7 @@ export class MascotaService {
     return this.http.get<number>(`${this.baseUrl}/cantidadMascotas`);  // Realiza una solicitud GET para obtener el número total de mascotas
   }
 
-// Método para obtener la cantidad total de mascotas dado el id de un Usuario
+  // Método para obtener la cantidad total de mascotas dado el id de un Usuario
   getCantidadMascotasPorUsuario(idCliente: number): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/cantidadMascotasPorCliente/${idCliente}`);
   }
@@ -71,5 +71,13 @@ export class MascotaService {
     // Método para obtener la cantidad total de mascotas en tratamiento
     getCantidadMascotasEnTratamiento(): Observable<number> {
       return this.http.get<number>(`${this.baseUrl}/cantidadMascotasEnTratamiento`);  // Realiza una solicitud GET para obtener el número total de mascotas en tratamiento
+    }
+
+    getCantidadMascotasActivas(): Observable<number> {
+      return this.http.get<number>(`${this.baseUrl}/cantidadMascotasActivas`);
+    }
+  
+    getMascotasActivas(): Observable<MascotaCL[]> {
+      return this.http.get<MascotaCL[]>(`${this.baseUrl}/activas`);
     }
 }

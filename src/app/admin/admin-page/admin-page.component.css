@@ -93,10 +93,22 @@ img {
   border-radius: 10px;
 }
 
-/* Para integrar tu navegación lateral */
 app-navegacion {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+}
+
+.section canvas {
+  width: 100% !important;
+  height: 400px !important;
+  margin: 0 auto;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: 400px;
 }
