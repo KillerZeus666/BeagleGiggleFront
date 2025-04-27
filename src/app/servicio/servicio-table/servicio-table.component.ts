@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ServicioCL } from 'src/app/model/servicio-cl';
 import { ServicioService } from 'src/app/service/servicio.service';
+import { ServicioCL } from 'src/app/model/servicio-cl';
 
 @Component({
   selector: 'app-servicio-table',
@@ -11,10 +10,7 @@ import { ServicioService } from 'src/app/service/servicio.service';
 export class ServicioTableComponent implements OnInit {
   servicios: ServicioCL[] = [];
 
-  constructor(
-    private servicioService: ServicioService,
-    private router: Router
-  ) { }
+  constructor(private servicioService: ServicioService) {}
 
   ngOnInit(): void {
     this.cargarServicios();
@@ -23,7 +19,7 @@ export class ServicioTableComponent implements OnInit {
   cargarServicios(): void {
     this.servicioService.findAll().subscribe({
       next: (servicios: ServicioCL[]) => {
-        this.servicios = servicios;
+        this.servicios = servicios.sort((a, b) => a.idServicio - b.idServicio); // <- Aquí ordenamos
       },
       error: (err) => {
         console.error('Error al cargar los servicios', err);
