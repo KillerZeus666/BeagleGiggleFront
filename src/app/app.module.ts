@@ -4,9 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-
-
-
+import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './veterinaria/header/header.component';
@@ -93,7 +91,8 @@ import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

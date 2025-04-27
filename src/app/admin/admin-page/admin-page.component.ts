@@ -1,5 +1,4 @@
-// navegacion.component.ts
-import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { MascotaCL } from 'src/app/model/mascota-cl';
@@ -8,6 +7,7 @@ import { VeterinarioCL } from 'src/app/model/veterinario-cl';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { TratamientoCL } from 'src/app/model/tratamiento-cl';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
+import { ChartService } from 'src/app/service/chart.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -16,6 +16,7 @@ import { TratamientoService } from 'src/app/service/tratamiento.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AdminPageComponent implements AfterViewInit {
+  @ViewChild('medicamentosChart', { static: false }) medicamentosChartRef!: ElementRef<HTMLCanvasElement>;
   userType: string | null = null;
   userName: string = '';
   userPhoto = 'https://example.com/path-to-your-image.jpg';
@@ -40,10 +41,12 @@ export class AdminPageComponent implements AfterViewInit {
   showTratamientosRecientesList = false;
   tratamientosRecientes: TratamientoCL[] = [];
   
-  constructor(private authService: AuthService, 
+  constructor(
+    private authService: AuthService, 
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
-    private tratamientoService: TratamientoService
+    private tratamientoService: TratamientoService,
+    private chartService: ChartService
   ) {}
 
   ngOnInit(): void {
@@ -186,9 +189,10 @@ export class AdminPageComponent implements AfterViewInit {
         this.loading = false;
       }
     });
-  }  
+  }
 
   ngAfterViewInit(): void {
+    this.loadMedicamentosChart();
     // Obtener los datos del usuario
     this.userType = this.authService.getUserType();
     this.userName = this.authService.getUserName();
@@ -212,5 +216,108 @@ export class AdminPageComponent implements AfterViewInit {
       navigation?.classList.toggle('active');
       main?.classList.toggle('active');
     });
+  }
+
+  loadMedicamentosChart(): void {
+    this.tratamientoService.getMedicamentosMasUsados().subscribe({
+      next: (data) => {
+        this.createMedicamentosChart(data);
+      },
+      error: (err) => {
+        console.error('Error al cargar datos para gráfica de medicamentos', err);
+      }
+    });
+  }
+
+  createMedicamentosChart(data: {medicamento: string, cantidad: number}[]): void {
+    if (!this.medicamentosChartRef?.nativeElement) {
+      console.error('No se pudo encontrar el elemento canvas');
+      return;
+    }
+  
+    const ctx = this.medicamentosChartRef.nativeElement.getContext('2d');
+    if (!ctx) {
+      console.error('No se pudo obtener el contexto 2D del canvas');
+      return;
+    }
+    
+    const config: any = {
+      type: 'bar',
+      data: {
+        labels: data.map(item => item.medicamento),
+        datasets: [{
+          data: data.map(item => item.cantidad),
+          backgroundColor: '#1d95da',
+          borderColor: '#1d95db',
+          borderWidth: 1,
+          barPercentage: 0.8,
+          categoryPercentage: 0.9
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: (context: any) => {
+                return `${context.parsed.y} tratamientos`;
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Cantidad de tratamientos',
+              font: {
+                size: 14,
+                weight: 'bold',
+                family: 'Poppins'
+              },
+              padding: {top: 20, bottom: 10}
+            },
+            ticks: {
+              font: {
+                size: 12,
+                family: 'Poppins'
+              }
+            },
+            grid: {
+              drawBorder: true,
+              color: 'rgba(0, 0, 0, 0.1)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Medicamento',
+              font: {
+                size: 14,
+                weight: 'bold',
+                family: 'Poppins'
+              },
+              padding: {top: 10, bottom: 20}
+            },
+            ticks: {
+              font: {
+                size: 12,
+                family: 'Poppins'
+              }
+            },
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    };
+  
+    this.chartService.createChart(ctx, config);
   }
 }
