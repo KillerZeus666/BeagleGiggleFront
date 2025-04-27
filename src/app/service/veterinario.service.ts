@@ -64,7 +64,7 @@ export class VeterinarioService {
 
   // Obtener mascotas atendidas por veterinario
   obtenerMascotasAtendidas(idVeterinario: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/${idVeterinario}/mascotas_atendidas`);
+    return this.http.get<any[]>(`${this.baseUrl}/mascotas_atendidas/${idVeterinario}`);
   }
 
   // Obtener citas agendadas
