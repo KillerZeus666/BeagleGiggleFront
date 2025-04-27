@@ -72,4 +72,11 @@ export class TratamientoService {
     return this.http.get<TratamientoCL[]>(`${this.baseUrl}/por-mascota/${idMascota}`);
   }
 
+  getCantidadTratamientosUltimos30Dias(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/cantidad-ultimos-30-dias`);
+  }
+
+  getTratamientosUltimos30Dias(): Observable<TratamientoCL[]> {
+    return this.http.get<TratamientoCL[]>(`${this.baseUrl}/ultimos-30-dias`);
+  }
 }

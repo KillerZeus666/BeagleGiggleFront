@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <title>Dashboard Veterinaria</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Incluye el CSS aquí si lo prefieres en un solo archivo */
-  </style>
 </head>
 <body>
 
@@ -16,24 +13,24 @@
   <h1>Dashboard Beagle Giggle</h1>
 
   <div class="kpi-container">
-    <div class="kpi-card">
-      <div class="kpi-number">120</div>
-      <div class="kpi-label">Tratamientos este mes</div>
+    <div class="kpi-card" (click)="toggleTratamientosRecientesList()" style="cursor: pointer;">
+      <div class="kpi-number">{{ stats.tratamientosMes }}</div>
+      <div class="kpi-label">Tratamientos últimos 30 días</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-number">15</div>
+    <div class="kpi-card" (click)="toggleVeterinariosActivosList()" style="cursor: pointer;">
+      <div class="kpi-number">{{ stats.veterinariosActivos }}</div>
       <div class="kpi-label">Veterinarios activos</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-number">3</div>
+    <div class="kpi-card" (click)="toggleVeterinariosInactivosList()" style="cursor: pointer;">
+      <div class="kpi-number">{{ stats.veterinariosInactivos }}</div>
       <div class="kpi-label">Veterinarios inactivos</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-number">200</div>
+    <div class="kpi-card" (click)="toggleMascotasList()" style="cursor: pointer;">
+      <div class="kpi-number">{{ stats.totalMascotas }}</div>
       <div class="kpi-label">Mascotas registradas</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-number">75</div>
+    <div class="kpi-card" (click)="toggleMascotasActivasList()" style="cursor: pointer;">
+      <div class="kpi-number">{{ stats.mascotasActivas }}</div>
       <div class="kpi-label">Mascotas activas</div>
     </div>
   </div>

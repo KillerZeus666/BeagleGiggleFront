@@ -87,4 +87,19 @@ export class VeterinarioService {
     return this.http.get<TratamientoCL[]>(`${this.baseUrl}/historial-tratamientos/${idVeterinario}`);
   }
 
+  getCantidadVeterinariosActivos(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/cantidadVeterinariosActivos`);
+  }
+
+  getCantidadVeterinariosInactivos(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/cantidadVeterinariosInactivos`);
+  }
+
+  getVeterinariosActivos(): Observable<VeterinarioCL[]> {
+    return this.http.get<VeterinarioCL[]>(`${this.baseUrl}/activos`);
+  }
+
+  getVeterinariosInactivos(): Observable<VeterinarioCL[]> {
+    return this.http.get<VeterinarioCL[]>(`${this.baseUrl}/inactivos`);
+  }
 }
