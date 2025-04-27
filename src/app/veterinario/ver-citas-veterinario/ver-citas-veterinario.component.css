@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url("https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
@@ -136,4 +135,70 @@
   .citas-veterinario {
     padding: 60px 3% 40px;
   }
+}
+
+/* Estilos para las acciones superiores */
+.acciones-superiores {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+/* Botón de agendar en la parte superior */
+.btn-agendar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-agendar:hover {
+  background-color: #3e8e41;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Ajustes para los botones en las tarjetas */
+.cita-acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+/* Estilo base para ambos botones */
+.btn-detalles, .btn-cancelar, .btn-editar{
+  display: inline-block;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1;
+  color: white;
+  margin: 0; 
+  line-height: normal; 
+  vertical-align: top; 
+}
+
+.btn-detalles {
+  background-color: #97d4f5;
+}
+
+.btn-cancelar {
+  background-color: #ff0000;
+}
+
+.btn-editar{
+  background-color: #3e8e41;
 }

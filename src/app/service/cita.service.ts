@@ -32,8 +32,8 @@ export class CitaService {
   }
 
   // Eliminar una cita
-  eliminarCita(id: number): Observable<string> {
-    return this.http.delete<string>(`${this.baseUrl}/eliminar/${id}`);
+  cancelarCita(id: number): Observable<CitaCL> {
+    return this.http.put<CitaCL>(`${this.baseUrl}/cancelar-cita/${id}`,null);
   }
 
   // Obtener citas por cliente

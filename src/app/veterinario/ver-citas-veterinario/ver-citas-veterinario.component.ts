@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitaCL } from 'src/app/model/cita-cl';
+import { CitaService } from 'src/app/service/cita.service';
 
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 
@@ -15,7 +16,8 @@ export class VerCitasVeterinarioComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private veterinarioService: VeterinarioService
+    private veterinarioService: VeterinarioService,
+    private citaService: CitaService
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +34,27 @@ export class VerCitasVeterinarioComponent implements OnInit {
 
   mostrarDetallesCita(id: number): void {
     this.router.navigate(['/detalles-cita', id]);
+  }
+  
+  agendarCita(){
+
+  }
+
+  editarCita(){
+    
+  }
+  // Método simplificado para cancelar cita
+  cancelarCita(idCita: number): void {
+    if (confirm('¿Estás seguro de que deseas cancelar esta cita?')) {
+      this.citaService.cancelarCita(idCita).subscribe({
+        next: () => {
+          window.location.reload(); // Recarga la página
+        },
+        error: (error) => {
+          console.error('Error al cancelar cita:', error);
+          alert('Ocurrió un error al cancelar la cita');
+        }
+      });
+    }
   }
 }

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         nombre: 'Dra. Martínez',
         foto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDcaEWpYQklMDUzSJPss_l5V9T7yC2xtK7OA&s	' // Foto de veterinario (puedes usar una foto real)
       });
-      this.router.navigate(['/veterinario']);
+      this.router.navigate(['/detalles-veterinario/2']);
     } else {
       // Si no, usar el login normal con el backend
       this.authService.iniciarSesion(this.username, this.password).subscribe(

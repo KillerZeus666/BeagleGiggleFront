@@ -1,7 +1,11 @@
 <app-navegacion></app-navegacion>
+
 <section class="citas-veterinario">
   <h2>Citas del Veterinario</h2>
-
+  
+  <div class="acciones-superiores">
+    <button (click)="agendarCita()" class="btn-agendar">Agendar nueva cita</button>
+  </div>
   <div class="citas-container">
     <div *ngIf="citas && citas.length > 0; else noCitas">
       <div class="cita-card" *ngFor="let cita of citas">
@@ -19,9 +23,13 @@
         </div>
         <div class="cita-dato">
           <span class="cita-label">Servicio:</span>
-          <span class="cita-info">{{ cita.servicio }}</span>
+          <span class="cita-info">{{ cita.servicio?.nombre }}</span>
         </div>
-        <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Ver detalles</a>
+        <div class="cita-acciones">
+          <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Ver detalles</a>
+          <a (click)="cancelarCita(cita.idCita)" class="btn-cancelar">Cancelar cita</a>
+          <a (click)="editarCita()" class="btn-editar">editar cita</a>
+        </div>
       </div>
     </div>
 
