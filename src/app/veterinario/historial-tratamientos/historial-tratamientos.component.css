@@ -1,0 +1,209 @@
+/* Estilos principales para la sección de tratamientos */
+.tratamientos-veterinario {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    padding: 80px 5% 60px;
+    position: relative;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    min-height: calc(100vh - 140px);
+  }
+  
+  /* Fondo semitransparente */
+  .tratamientos-veterinario::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(244, 248, 251, 0.7);
+    z-index: 1;
+  }
+  
+  /* Asegurar que el contenido esté sobre el fondo */
+  .tratamientos-veterinario > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Estilo del título */
+  .tratamientos-veterinario h2 {
+    font-size: 2rem;
+    color: #3c1f15;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #97d4f5;
+  }
+  
+  /* Contenedor de los tratamientos */
+  .tratamientos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+  }
+  
+  /* Tarjeta de tratamiento individual */
+  .tratamiento-card {
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 calc(33.333% - 25px);
+    min-width: 280px;
+    max-width: 350px;
+    transition: all 0.3s ease;
+  }
+  
+  .tratamiento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo para cada dato del tratamiento */
+  .tratamiento-dato {
+    display: flex;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .tratamiento-label {
+    font-weight: bold;
+    color: #3c1f15;
+    min-width: 100px;
+    display: inline-block;
+  }
+  
+  .tratamiento-info {
+    color: #555;
+    flex-grow: 1;
+  }
+  
+  /* Botón de detalles */
+  .btn-detalles {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: #97d4f5;
+    color: #3c1f15;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-detalles:hover {
+    background-color: #7bc1eb;
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  /* Mensaje cuando no hay tratamientos */
+  .no-tratamientos-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .tratamiento-card {
+      flex: 1 1 calc(50% - 25px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tratamiento-card {
+      flex: 1 1 100%;
+    }
+  
+    .tratamientos-veterinario {
+      padding: 60px 3% 40px;
+    }
+  }
+  
+  /* Estilos para las acciones superiores */
+  .acciones-superiores {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+  
+  /* Botón de agregar en la parte superior */
+  .btn-agregar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .btn-agregar:hover {
+    background-color: #3e8e41;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  /* Ajustes para los botones en las tarjetas */
+  .tratamiento-acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: space-between;
+  }
+  
+  /* Estilo base para todos los botones */
+  .btn-detalles, .btn-eliminar, .btn-editar {
+    display: inline-block;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+    flex: 1;
+    color: white;
+    margin: 0; 
+    line-height: normal; 
+    vertical-align: top; 
+  }
+  
+  .btn-detalles {
+    background-color: #97d4f5;
+  }
+  
+  .btn-eliminar {
+    background-color: #ff0000;
+  }
+  
+  .btn-editar {
+    background-color: #3e8e41;
+  }
+  
+  .btn-detalles:hover, .btn-eliminar:hover, .btn-editar:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
