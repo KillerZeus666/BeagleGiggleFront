@@ -44,12 +44,12 @@ const routes: Routes = [
   {path: 'veterinarios', component:VeterinarioTableComponent},
   {path: 'crear-tratamiento', component:TratamientoFormComponent},
   {path: 'editar-veterinario/:id', component:VeterinarioTableComponent},
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'inicio-sesion', component: LoginComponent }, 
   {path: 'tabla', component: AdminTableComponent },
   {path: 'navigation', component: NavegacionComponent },
   {path: 'veterinario', component: VeterinarioPageComponent },
   {path: 'detalles-veterinario/:id', component: VeterinarioDetailComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
  
 ];

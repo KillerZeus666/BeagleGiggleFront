@@ -12,14 +12,16 @@ import { AuthService } from 'src/app/service/auth.service';
 export class NavegacionComponent implements AfterViewInit {
   userType: string | null = null;
   userName: string = '';
+  //idVeterinario:number;
   userPhoto = 'https://example.com/path-to-your-image.jpg';
-
+  
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.userType = this.authService.getUserType();
     this.userName = this.authService.getUserName();
     this.userPhoto = this.authService.getUserPhoto();
+    
   }
 
   ngAfterViewInit(): void {
@@ -60,5 +62,9 @@ export class NavegacionComponent implements AfterViewInit {
       return ['/detalles-cliente/2']; // Ruta para cliente
     }
     return ['/']; // Ruta por defecto en caso de no estar definido
+  }
+
+  navegarCitasVeterinario():void{
+    this.router.navigate(['/citas-veterinario/2'])
   }
 }

@@ -93,11 +93,19 @@
       </a>
     </li>
 
-
+    <!-- Solo visible si el usuario es Veterinario -->
+    <li *ngIf="userType === 'Veterinario'" >
+      <a   class="nav-link" >
+        <span class="icon">
+          <ion-icon name="document-text-outline"></ion-icon>
+        </span>
+        <span class="title">Historial</span>
+      </a>
+    </li>
 
           <!-- Siempre visible -->
       <li>
-        <a href="#" class="nav-link">
+        <a routerLink="/citas-veterinario/2" class="nav-link">
             <span class="icon">
                 <ion-icon name="settings-outline"></ion-icon>
             </span>

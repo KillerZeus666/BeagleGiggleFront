@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitaCL } from 'src/app/model/cita-cl';
-import { CitaService } from 'src/app/service/cita.service';
+
+import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 @Component({
   selector: 'app-ver-citas-veterinario',
@@ -12,14 +13,14 @@ export class VerCitasVeterinarioComponent implements OnInit {
   citas: CitaCL[] = [];
 
   constructor(
-    private citaService: CitaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private veterinarioService: VeterinarioService
   ) {}
 
   ngOnInit(): void {
     const idVeterinario = Number(this.route.snapshot.paramMap.get('id'));
-    this.citaService.obtenerCitasPorVeterinario(idVeterinario).subscribe({
+    this.veterinarioService.obtenerCitasAgendadas(idVeterinario).subscribe({
       next: (data) => {
         this.citas = data;
       },
