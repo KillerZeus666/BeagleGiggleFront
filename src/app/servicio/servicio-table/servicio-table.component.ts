@@ -26,4 +26,19 @@ export class ServicioTableComponent implements OnInit {
       }
     });
   }
+  precioFiltro: number = 0; // precio mínimo para filtrar
+serviciosOriginales: ServicioCL[] = []; // para guardar los servicios completos sin filtro
+
+opcionOrdenamiento: string = 'id'; // Inicialmente ordenamos por ID
+
+ordenarServicios(): void {
+  if (this.opcionOrdenamiento === 'id') {
+    this.servicios.sort((a, b) => a.idServicio - b.idServicio);
+  } else if (this.opcionOrdenamiento === 'precioAsc') {
+    this.servicios.sort((a, b) => a.precioBase - b.precioBase);
+  } else if (this.opcionOrdenamiento === 'precioDesc') {
+    this.servicios.sort((a, b) => b.precioBase - a.precioBase);
+  }
+}
+
 }
