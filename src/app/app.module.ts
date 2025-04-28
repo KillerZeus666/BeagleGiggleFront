@@ -94,8 +94,8 @@ import { TratamientoTableComponent } from './tratamiento/tratamiento-table/trata
     HistorialTratamientosComponent,
     AdminDetailComponent,
     MascotasAtendidasComponent,
-
-
+    NavegacionComponent,
+    TratamientoTableComponent
   ],
   imports: [
     BrowserModule,
