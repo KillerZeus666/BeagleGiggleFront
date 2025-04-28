@@ -27,6 +27,7 @@ import { HistorialTratamientosComponent } from './veterinario/historial-tratamie
 import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component';
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 import { MascotasAtendidasComponent } from './veterinario/mascotas-atendidas/mascotas-atendidas.component';
+import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tratamiento-detail.component';
 
 
 
@@ -63,6 +64,7 @@ const routes: Routes = [
   {path: 'detalles-admin/:id', component: AdminDetailComponent},
   {path: 'mascotas-atendidas/:id', component:MascotasAtendidasComponent},
   {path: 'tratamiento/veterinario/:id', component: TratamientoTableComponent},
+  {path: 'detalles-tratamiento/:id', component:TratamientoDetailComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

@@ -23,4 +23,8 @@ export class MedicamentoService {
       params: { nombre }
     });
   }
+
+  getPorTratamiento(id:number): Observable<MedicamentoCL[]>{
+    return this.http.get<MedicamentoCL[]>(`${this.baseUrl}/por-tratamiento/${id}`);
+  }
 }

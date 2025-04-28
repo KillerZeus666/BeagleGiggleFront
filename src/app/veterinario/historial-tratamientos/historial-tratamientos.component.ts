@@ -59,7 +59,7 @@ export class HistorialTratamientosComponent implements OnInit {
   }
 
   mostrarDetallesTratamiento(idTratamiento:number){
-
+    this.router.navigate(['/detalles-tratamiento', idTratamiento]);
   }
 
   eliminarTratamiento(idTratamiento:number){

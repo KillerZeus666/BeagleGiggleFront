@@ -1,1 +1,47 @@
-<p>tratamiento-detail works!</p>
+<div class="tratamiento-detail-container">
+    <div class="header">
+      <h2>Detalles del Tratamiento</h2>
+      <div class="treatment-id">CODIGO: {{tratamiento.codigo}}</div>
+    </div>
+  
+    <div class="detail-section">
+        <div class="detail-card">
+            <div class="detail-row">
+              <span class="detail-label">Fecha:</span>
+              <span class="detail-value">{{tratamiento.fecha}}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Nombre del Servicio:</span>
+                <span class="detail-value">{{tratamiento.detalles}}</span>
+            </div>
+        </div>
+          
+      <div class="detail-card">
+        <h3 class="card-title">Información del Servicio</h3>
+        <div class="detail-row">
+          <span class="detail-label">Nombre del Servicio:</span>
+          <span class="detail-value">{{servicio.nombre || 'No disponible'}}</span>
+        </div>
+      </div>
+  
+      <div class="detail-card">
+        <h3 class="card-title">Información de la Mascota</h3>
+        <div class="detail-row">
+          <span class="detail-label">Nombre de la Mascota:</span>
+          <span class="detail-value">{{mascota.nombre || 'No disponible'}}</span>
+        </div>
+      </div>
+  
+      <div class="detail-card">
+        <h3 class="card-title">Medicamentos Recetados</h3>
+        <div *ngIf="medicamentos.length > 0; else noMedicamentos">
+          <div class="medicamento-item" *ngFor="let medicamento of medicamentos">
+            <span class="medicamento-name">{{medicamento.nombre}}</span>
+          </div>
+        </div>
+        <ng-template #noMedicamentos>
+          <div class="no-items">No se han recetado medicamentos</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
