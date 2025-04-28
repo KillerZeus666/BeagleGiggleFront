@@ -2,6 +2,42 @@
 <main class="vets-list-container">
   <h1 class="vets-list-title">Lista de Veterinarios</h1>
 
+
+
+    <!-- Buscador de medicamentos 
+    <div class="buscador">
+      <input 
+        type="text" 
+        [(ngModel)]="nombreVeterinarioBuscar" 
+        placeholder="Buscar veterinario por nombre..." 
+        class="input-busqueda"
+        style="padding: 12px; font-size: 18px; border-radius: 25px; border: 1px solid #ddd; width: 80%; outline: none; transition: all 0.3s ease;" 
+      />
+      <button 
+        (click)="buscarVeterinario()"
+        class="btn-buscar" 
+        style="background-color: #5cadf4; color: white; padding: 8px 18px; border-radius: 20px; font-size: 14px; border: none; cursor: pointer;">
+        Buscar
+      </button>
+    </div>
+
+
+       <!-- Filtro de ordenamiento alineado a la derecha 
+    <div style="display: flex; justify-content: flex-end; margin: 20px 0;">
+      <select 
+        [(ngModel)]="opcionOrdenamiento" 
+        (change)="ordenarMedicamentos()" 
+        style="padding: 10px 20px; border-radius: 25px; font-size: 16px; border: 1px solid #ccc; cursor: pointer;">
+        <option value="id">Ordenar por ID</option>
+        <option value="precioCompraAsc">Precio Compra (Menor a Mayor)</option>
+        <option value="precioCompraDesc">Precio Compra (Mayor a Menor)</option>
+        <option value="precioVentaAsc">Precio Venta (Menor a Mayor)</option>
+        <option value="precioVentaDesc">Precio Venta (Mayor a Menor)</option>
+      </select>
+    </div>-->
+
+
+
   <div class="vets-list-actions">
     <button class="vet-add-button" (click)="abrirFormularioAgregarVeterinario()">
       <i class="fas fa-plus"></i> Agregar Veterinario
