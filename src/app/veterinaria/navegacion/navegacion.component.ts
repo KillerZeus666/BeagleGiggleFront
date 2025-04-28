@@ -25,26 +25,36 @@ export class NavegacionComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // Código de navegación (sin cambios)
     const listItems = document.querySelectorAll<HTMLLIElement>('.navigation li');
     const toggle = document.querySelector<HTMLElement>('.toggle');
     const navigation = document.querySelector<HTMLElement>('.navigation');
     const main = document.querySelector<HTMLElement>('.main');
-
-    const activeLink = function (this: HTMLLIElement): void {
+  
+    // Para el efecto de hover (cuando pasas el mouse)
+    const hoverLink = function (this: HTMLLIElement): void {
       listItems.forEach((item) => item.classList.remove('hovered'));
       this.classList.add('hovered');
     };
-
-    listItems.forEach((item) =>
-      item.addEventListener('mouseover', activeLink)
-    );
-
+  
+    // Para el efecto de selección (cuando haces click)
+    const activeLink = function (this: HTMLLIElement): void {
+      listItems.forEach((item) => item.classList.remove('active'));
+      this.classList.add('active');
+    };
+  
+    // Asignar eventos
+    listItems.forEach((item) => {
+      item.addEventListener('mouseover', hoverLink); // mouseover = hover
+      item.addEventListener('click', activeLink);     // click = active
+    });
+  
+    // Toggle del menú
     toggle?.addEventListener('click', () => {
       navigation?.classList.toggle('active');
       main?.classList.toggle('active');
     });
   }
+  
 
   logout(): void {
     this.authService.logout();
