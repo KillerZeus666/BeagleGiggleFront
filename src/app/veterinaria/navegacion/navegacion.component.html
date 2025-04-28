@@ -90,6 +90,7 @@
       </a>
     </li>
 
+    <!-- Solo visible si el usuario es Veterinario 
     <li *ngIf="userType === 'Veterinario'">
       <a (click)="navegarTratamientosVeterinario()" class="nav-link" style="cursor: pointer;">
         <span class="icon">
@@ -97,8 +98,17 @@
         </span>
         <span class="title">Tratamientos Realizados</span>
       </a>
-    </li>
+    </li>-->
     
+    <!-- Solo visible si el usuario es Veterinario -->
+    <li *ngIf="userType === 'Veterinario'">
+      <a routerLink="/mascotas-atendidas/2" class="nav-link">
+        <span class="icon">
+          <ion-icon name="document-text-outline"></ion-icon>
+        </span>
+        <span class="title">Mascotas atendidas</span>
+      </a>
+    </li>
 
     <!-- Solo visible si el usuario es Veterinario -->
     <li *ngIf="userType === 'Veterinario'">
