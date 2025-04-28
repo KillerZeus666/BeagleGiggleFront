@@ -24,7 +24,7 @@ export class TratamientoTableComponent {
     const idVeterinario = Number(this.route.snapshot.paramMap.get('id'));
     console.log('idVeterinario recibido:', idVeterinario); // 👈
   
-    this.tratamientoService.getTratamientosPorVeterinario(idVeterinario).subscribe({
+    this.tratamientoService.getTratamientosPorMascota(idVeterinario).subscribe({
       next: (data) => {
         console.log('Datos recibidos:', data); // 👈
         this.tratamientos = data;
@@ -35,8 +35,7 @@ export class TratamientoTableComponent {
     });
   }
   
-
-
+  
 }
 
 
