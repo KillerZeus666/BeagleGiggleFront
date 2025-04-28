@@ -46,6 +46,7 @@ import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
 import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
+import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component';
 
 
 
@@ -89,6 +90,7 @@ import { HistorialTratamientosComponent } from './veterinario/historial-tratamie
     MedicamentoTableComponent,
     ServicioTableComponent,
     HistorialTratamientosComponent,
+    AdminDetailComponent,
 
 
   ],
