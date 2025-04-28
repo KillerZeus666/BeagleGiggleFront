@@ -2,39 +2,44 @@
 
 <section class="citas-veterinario">
   <h2>Citas del Veterinario</h2>
-  
+
   <div class="acciones-superiores">
     <button (click)="agendarCita()" class="btn-agendar">Agendar nueva cita</button>
   </div>
-  <div class="citas-container">
-    <div *ngIf="citas && citas.length > 0; else noCitas">
-      <div class="cita-card" *ngFor="let cita of citas">
-        <div class="cita-dato">
-          <span class="cita-label">Fecha:</span>
-          <span class="cita-info">{{ cita.fechaHora | date:'medium' }}</span>
-        </div>
-        <div class="cita-dato">
-          <span class="cita-label">Mascota:</span>
-          <span class="cita-info">{{ cita.mascota.nombre }}</span>
-        </div>
-        <div class="cita-dato">
-          <span class="cita-label">Dueño:</span>
-          <span class="cita-info">{{ cita.mascota.cliente?.nombre }}</span>
-        </div>
-        <div class="cita-dato">
-          <span class="cita-label">Servicio:</span>
-          <span class="cita-info">{{ cita.servicio?.nombre }}</span>
-        </div>
-        <div class="cita-acciones">
-          <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Ver detalles</a>
-          <a (click)="cancelarCita(cita.idCita)" class="btn-cancelar">Cancelar cita</a>
-          <a (click)="editarCita()" class="btn-editar">editar cita</a>
-        </div>
-      </div>
-    </div>
 
-    <ng-template #noCitas>
-      <p class="no-citas-message">No hay citas registradas para este veterinario.</p>
-    </ng-template>
+  <div class="tabla-container">
+    <table class="tabla-citas">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Mascota</th>
+          <th>Dueño</th>
+          <th>Servicio</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citas">
+          <td>{{ cita.fechaHora | date:'medium' }}</td>
+          <td>{{ cita.mascota.nombre }}</td>
+          <td>{{ cita.mascota.cliente?.nombre || 'No especificado' }}</td>
+          <td>{{ cita.servicio?.nombre || 'No especificado' }}</td>
+          <td>
+            <span class="estado-badge estado-{{cita.estado}}">
+              {{ cita.estado }}
+            </span>
+          </td>
+          <td class="acciones-cita">
+            <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Detalles</a>
+            <a (click)="cancelarCita(cita.idCita)" class="btn-cancelar">Cancelar</a>
+            <a (click)="editarCita()" class="btn-editar">Editar</a>
+          </td>
+        </tr>
+        <tr *ngIf="citas && citas.length === 0">
+          <td colspan="6" class="no-citas">No hay citas registradas</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>

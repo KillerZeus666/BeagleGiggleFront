@@ -364,11 +364,11 @@
     }
 
 }
-/* Añade esto al final de tu CSS existente */
+
 .vets-list-container {
-  margin-bottom: 4rem; /* Aumenta el margen inferior para evitar que el footer tape el contenido */
+  margin-bottom: 5rem;
 }
 
 .vets-list-title {
-  margin-top: 1.5rem; /* Añade un margen superior adicional al título */
+  margin-top: 2.5rem;
 }

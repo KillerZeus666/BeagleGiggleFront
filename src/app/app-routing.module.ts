@@ -19,12 +19,12 @@ import { MascotasTratamientoComponent } from './cliente/mascotas-tratamiento/mas
 import { TratamientoFormComponent } from './tratamiento/tratamiento-form/tratamiento-form.component';
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
-import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component'; 
+import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component';
 import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
 import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
 import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
-import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component'; 
+import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component';
 
 
 
@@ -32,7 +32,7 @@ import { AdminDetailComponent } from './admin/admin-detail/admin-detail.componen
 
 
 const routes: Routes = [
-  //Correlacionar comportamiento con una URL  
+  //Correlacionar comportamiento con una URL
   {path: 'admin', component: AdminPageComponent},
   {path: 'cliente', component: ClientePaginaPrincipalComponent },
   {path: 'home', component: LandingComponent},
@@ -45,12 +45,12 @@ const routes: Routes = [
   {path: 'crear-cliente', component:ClienteFormComponent},
   {path: 'editar-cliente/:id', component:ClienteFormComponent},
   {path: 'mascotas-cliente/:id', component:VerMascotasClienteComponent},
-  {path: 'mascotas-tratamiento/:id', component:MascotasTratamientoComponent},  
+  {path: 'mascotas-tratamiento/:id', component:MascotasTratamientoComponent},
   {path: 'citas-veterinario/:id', component:VerCitasVeterinarioComponent},
   {path: 'veterinarios', component:VeterinarioTableComponent},
   {path: 'crear-tratamiento', component:TratamientoFormComponent},
   {path: 'editar-veterinario/:id', component:VeterinarioTableComponent},
-  {path: 'inicio-sesion', component: LoginComponent }, 
+  {path: 'inicio-sesion', component: LoginComponent },
   {path: 'tabla', component: AdminTableComponent },
   {path: 'navigation', component: NavegacionComponent },
   {path: 'veterinario', component: VeterinarioPageComponent },
@@ -61,7 +61,6 @@ const routes: Routes = [
   {path: 'detalles-admin/:id', component: AdminDetailComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
- 
 ];
 
 @NgModule({
