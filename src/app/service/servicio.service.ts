@@ -15,6 +15,7 @@ export class ServicioService {
 
   findAll(): Observable<ServicioCL[]> {
     return this.http.get<ServicioCL[]>(this.apiUrl);
+  }
 
   obtenerServicios(): Observable<ServicioCL[]> {
     return this.http.get<ServicioCL[]>(this.apiUrl).pipe(
@@ -31,7 +32,7 @@ export class ServicioService {
 
   }
 
-  obtenerServicios(): Observable<ServicioCL[]> {
+  obtenerServiciosTodos(): Observable<ServicioCL[]> {
     return this.http.get<ServicioCL[]>(this.apiUrl);
   }
 }
