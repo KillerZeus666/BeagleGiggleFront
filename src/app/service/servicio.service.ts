@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ServicioCL } from '../model/servicio-cl';
 
 export interface Servicio {
   id: number;
@@ -20,5 +21,9 @@ export class ServicioService {
 
   obtenerServicios(): Observable<Servicio[]> {
     return this.http.get<Servicio[]>(this.apiUrl);
+  }
+
+  getServicioPorTratamiento(id:number): Observable<ServicioCL>{
+    return this.http.get<ServicioCL>(`${this.apiUrl}/por-tratamiento/${id}`);
   }
 }

@@ -19,19 +19,11 @@
         </div>
         <div class="tratamiento-dato">
           <span class="tratamiento-label">Mascota:</span>
-          <span class="tratamiento-info">{{ tratamiento.mascota?.nombre }}</span>
-        </div>
-        <div class="tratamiento-dato">
-          <span class="tratamiento-label">Dueño:</span>
-          <span class="tratamiento-info">{{ tratamiento.mascota?.cliente?.nombre }}</span>
+          <span class="tratamiento-info">{{ mascota.nombre }}</span>
         </div>
         <div class="tratamiento-dato">
           <span class="tratamiento-label">Servicio:</span>
-          <span class="tratamiento-info">{{ tratamiento.servicio?.nombre }}</span>
-        </div>
-        <div class="tratamiento-dato">
-          <span class="tratamiento-label">Veterinario:</span>
-          <span class="tratamiento-info">{{ tratamiento.veterinario?.nombre }}</span>
+          <span class="tratamiento-info">{{ servicio.nombre }}</span>
         </div>
         <div class="tratamiento-acciones">
           <a (click)="mostrarDetallesTratamiento(tratamiento.idTratamiento)" class="btn-detalles">Ver detalles</a>
