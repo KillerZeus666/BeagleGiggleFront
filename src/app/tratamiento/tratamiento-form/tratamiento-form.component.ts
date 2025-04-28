@@ -1,31 +1,81 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { MascotaCL } from 'src/app/model/mascota-cl';
+import { MedicamentoCL } from 'src/app/model/medicamento-cl';
+import { ServicioCL } from 'src/app/model/servicio-cl';
 import { TratamientoCL } from 'src/app/model/tratamiento-cl';
+import { MascotaService } from 'src/app/service/mascota.service';
+import { MedicamentoService } from 'src/app/service/medicamento.service';
+import { ServicioService } from 'src/app/service/servicio.service';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
+import { ActivatedRoute,Router } from '@angular/router';
 @Component({
   selector: 'app-tratamiento-form',
   templateUrl: './tratamiento-form.component.html',
   styleUrls: ['./tratamiento-form.component.css']
 })
-export class TratamientoFormComponent {
-     tratamientoForm: FormGroup;
+export class TratamientoFormComponent implements OnInit{
+  tratamientoForm!: FormGroup;
   loading = false;
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
+  servicios: ServicioCL[] = []; 
+  mascotas: MascotaCL[] = [];  
+  medicamentosDisponibles: MedicamentoCL[] = []; 
+
+  idVeterinario: number=0;
   constructor(
     private fb: FormBuilder,
-    private tratamientoService: TratamientoService
-  ) {
+    private tratamientoService: TratamientoService,
+    private servicioService: ServicioService,
+    private mascotaService: MascotaService,
+    private medicamentoService: MedicamentoService
+  ) {}
+
+  ngOnInit(): void {
+    const id = history.state?.id || 0;
+    console.log('idVeterinario recibido:', id); 
+    this.idVeterinario = id;
+
     this.tratamientoForm = this.fb.group({
       codigo: ['', Validators.required],
       fecha: [new Date().toISOString().substring(0, 10), Validators.required],
       idServicio: ['', Validators.required],
       idMascota: ['', Validators.required],
-      idVeterinario: [null],
+      idVeterinario: [this.idVeterinario],
       detalles: ['', Validators.required],
       medicamentos: this.fb.array([this.createMedicamentoGroup()])
     });
+
+    console.log(this.idVeterinario);
+
+      this.servicioService.findAll().subscribe({
+        next: (serviciodata) => {
+          this.servicios=serviciodata;
+        },
+        error: (err) =>{
+          console.error('Error al obtener los servicios',err);
+        }
+      });
+
+      this.mascotaService.findAll().subscribe({
+        next: (mascotadata) =>{
+          this.mascotas=mascotadata;
+        },
+        error: (err) =>{
+          console.error('Error al obtener las mascotas',err)
+        }
+      });
+
+      this.medicamentoService.findAll().subscribe({
+        next: (medicamentodata) =>{
+          this.medicamentosDisponibles = medicamentodata
+        },
+        error: (err) =>{
+          console.error('Error al obtener los medicamentos',err);
+        }
+      });
   }
 
   createMedicamentoGroup(): FormGroup {
@@ -94,8 +144,12 @@ export class TratamientoFormComponent {
 
   resetForm(): void {
     this.tratamientoForm.reset({
+      codigo: '',
       fecha: new Date().toISOString().substring(0, 10),
-      medicamentos: [this.createMedicamentoGroup()]
+      idServicio: '',
+      idMascota: '',
+      idVeterinario: this.idVeterinario,
+      detalles: '',
     });
   }
 

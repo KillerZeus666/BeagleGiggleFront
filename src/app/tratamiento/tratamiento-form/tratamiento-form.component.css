@@ -162,3 +162,8 @@ button:disabled {
     width: 100%;
   }
 }
+
+.small-select {
+  width: 500px; /* más pequeño que antes */
+  padding: 5px;
+}

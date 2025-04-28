@@ -53,8 +53,9 @@ export class HistorialTratamientosComponent implements OnInit {
     });
   }
 
-  agregarTratamiento(){
-
+  navegarAgregarTratamiento() {
+    const id = this.route.snapshot.paramMap.get('id'); // o donde tengas el id
+    this.router.navigate(['/crear-tratamiento'], { state: { id: id } });
   }
 
   mostrarDetallesTratamiento(idTratamiento:number){

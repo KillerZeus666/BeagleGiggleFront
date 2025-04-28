@@ -47,6 +47,7 @@ import { MedicamentoTableComponent } from './medicamento/medicamento-table/medic
 import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
 import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component';
+import { MascotasAtendidasComponent } from './veterinario/mascotas-atendidas/mascotas-atendidas.component';
 
 
 
@@ -91,6 +92,7 @@ import { AdminDetailComponent } from './admin/admin-detail/admin-detail.componen
     ServicioTableComponent,
     HistorialTratamientosComponent,
     AdminDetailComponent,
+    MascotasAtendidasComponent,
 
 
   ],

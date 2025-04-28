@@ -4,31 +4,33 @@
   <h2>Tratamientos Veterinarios</h2>
   
   <div class="acciones-superiores">
-    <button (click)="agregarTratamiento()" class="btn-agregar">Agregar nuevo tratamiento</button>
+    <button (click)="navegarAgregarTratamiento()" class="btn-agregar">Agregar nuevo tratamiento</button>
   </div>
-  <div class="tratamientos-container">
+  
+  <div class="tabla-container">
     <div *ngIf="tratamientos && tratamientos.length > 0; else noTratamientos">
-      <div class="tratamiento-card" *ngFor="let tratamiento of tratamientos">
-        <div class="tratamiento-dato">
-          <span class="tratamiento-label">Código:</span>
-          <span class="tratamiento-info">{{ tratamiento.codigo }}</span>
-        </div>
-        <div class="tratamiento-dato">
-          <span class="tratamiento-label">Fecha:</span>
-          <span class="tratamiento-info">{{ tratamiento.fecha | date:'mediumDate' }}</span>
-        </div>
-        <div class="tratamiento-dato" *ngIf="mascota">
-          <span class="tratamiento-label">Mascota:</span>
-          <span class="tratamiento-info">{{ mascota.nombre }}</span>
-        </div>
-        <div class="tratamiento-dato" *ngIf="servicio">
-          <span class="tratamiento-label">Servicio:</span>
-          <span class="tratamiento-info">{{ servicio.nombre }}</span>
-        </div>
-        <div class="tratamiento-acciones">
-          <a (click)="mostrarDetallesTratamiento(tratamiento.idTratamiento)" class="btn-detalles">Ver detalles</a>
-        </div>
-      </div>
+      <table class="tabla-tratamientos">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th *ngIf="mascota">Mascota</th>
+            <th *ngIf="servicio">Servicio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tratamiento of tratamientos">
+            <td>{{ tratamiento.codigo }}</td>
+            <td>{{ tratamiento.fecha | date:'mediumDate' }}</td>
+            <td *ngIf="mascota">{{ mascota.nombre }}</td>
+            <td *ngIf="servicio">{{ servicio.nombre }}</td>
+            <td>
+              <a (click)="mostrarDetallesTratamiento(tratamiento.idTratamiento)" class="btn-detalles">Ver detalles</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <ng-template #noTratamientos>

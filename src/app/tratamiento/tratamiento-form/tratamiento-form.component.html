@@ -27,24 +27,29 @@
     </div>
 
     <div class="form-group">
-      <label for="idServicio">ID Servicio:</label>
-      <input type="number" id="idServicio" formControlName="idServicio" required placeholder="Ingrese el ID del servicio">
+      <label for="idServicio">Servicio:</label>
+      <select id="idServicio" formControlName="idServicio" required>
+        <option value="">Seleccione un servicio</option>
+        <option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
+          {{ servicio.nombre }}
+        </option>
+      </select>
       <div *ngIf="tratamientoForm.get('idServicio')?.invalid && tratamientoForm.get('idServicio')?.touched" class="error-message">
-        ID Servicio es requerido
+        Servicio es requerido
       </div>
     </div>
 
     <div class="form-group">
-      <label for="idMascota">ID Mascota:</label>
-      <input type="number" id="idMascota" formControlName="idMascota" required placeholder="Ingrese el ID de la mascota">
+      <label for="idMascota">Mascota:</label>
+      <select id="idMascota" formControlName="idMascota" required>
+        <option value="">Seleccione una mascota</option>
+        <option *ngFor="let mascota of mascotas" [value]="mascota.idMascota">
+          {{ mascota.nombre }} - {{ mascota.cliente?.nombre }}
+        </option>
+      </select>
       <div *ngIf="tratamientoForm.get('idMascota')?.invalid && tratamientoForm.get('idMascota')?.touched" class="error-message">
-        ID Mascota es requerido
+        Mascota es requerida
       </div>
-    </div>
-
-    <div class="form-group">
-      <label for="idVeterinario">ID Veterinario (opcional):</label>
-      <input type="number" id="idVeterinario" formControlName="idVeterinario" placeholder="Ingrese el ID del veterinario">
     </div>
 
     <div class="form-group">
@@ -59,7 +64,12 @@
       <label>Medicamentos:</label>
       <div class="medicamentos-container" formArrayName="medicamentos">
         <div class="medicamento-item" *ngFor="let medicamento of medicamentosArray.controls; let i = index" [formGroupName]="i">
-          <input type="number" formControlName="idMedicamento" placeholder="ID Medicamento" required>
+          <select formControlName="idMedicamento" required class="small-select">
+            <option value="">Seleccione un medicamento</option>
+            <option *ngFor="let med of medicamentosDisponibles" [value]="med.idMedicamento">
+              {{ med.nombre }}
+            </option>
+          </select>
           <input type="text" formControlName="dosis" placeholder="Dosis" required>
           <button type="button" class="btn btn-remove" (click)="removeMedicamento(i)">-</button>
         </div>

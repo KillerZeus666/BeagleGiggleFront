@@ -29,7 +29,6 @@ export class ServicioService {
 
   obtenerGananciasTotales(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/ganancias-totales`);
-
   }
 
   obtenerServiciosTodos(): Observable<ServicioCL[]> {

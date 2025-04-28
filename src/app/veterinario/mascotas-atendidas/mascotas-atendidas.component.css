@@ -1,0 +1,230 @@
+/* ================== General Layout ================= */
+
+.container-principal {
+    margin-left: 100px; /* Reducido para no quedar tan alejado de la barra de navegación */
+    width: calc(100% - 230px); /* Ajusta el ancho del contenido para que no se sobreponga con la navegación */
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    max-width: 1200px; /* Limitar el ancho máximo para evitar que se estire demasiado */
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  h1 {
+    font-size: 30px;
+    color: #5cadf4;
+    margin-bottom: 20px;
+  }
+  
+  .contenedor-boton {
+    margin-bottom: 20px;
+    text-align: right; /* Alinea los botones a la derecha */
+  }
+  
+  .btn-detalles,
+  .btn-editar,
+  .btn-eliminar,
+  .btn-agregar {
+    background-color: #5cadf4; /* Color suave de fondo */
+    color: white;
+    padding: 8px 16px; /* Tamaño más pequeño pero cómodo */
+    border-radius: 20px; /* Bordes redondeados */
+    text-decoration: none;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    border: none; /* Elimina el borde */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block; /* Asegura que los botones sean del mismo tamaño */
+    margin-bottom: 10px; /* Espaciado entre los botones */
+    width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
+  }
+  
+  .btn-detalles:hover,
+  .btn-editar:hover,
+  .btn-eliminar:hover,
+  .btn-agregar:hover {
+    background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
+    transform: scale(1.05); /* Efecto de aumento suave */
+  }
+  
+  .btn-eliminar {
+    background-color: #f44336; /* Rojo para eliminar */
+  }
+  
+  .btn-eliminar:hover {
+    background-color: #d32f2f; /* Rojo más oscuro cuando se pasa el ratón */
+  }
+  
+  /* ================== Search ================= */
+  
+  .buscador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-busqueda {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 25px;  /* Bordes redondeados */
+    border: 1px solid #ddd;
+    width: 70%;
+    outline: none; /* Elimina el borde al hacer focus */
+    transition: all 0.3s ease; /* Transición para los cambios de estilo */
+  }
+  
+  .input-busqueda:focus {
+    border-color: #5cadf4; /* Cambiar el borde cuando se hace focus */
+  }
+  
+  .button-container {
+    margin-bottom: 20px;
+    text-align: right; /* Alinea los botones a la derecha */
+  }
+  
+  .btn-agregar {
+    padding: 8px 14px; /* Aumenta el padding para hacerlo ligeramente más grande */
+    font-size: 14px; /* Tamaño de fuente un poco mayor */
+    border-radius: 15px; /* Bordes ligeramente redondeados */
+    background-color: #5cadf4; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    display: inline-block; /* Hace que el botón sea un bloque en línea */
+    width: auto; /* Hace que el botón se ajuste a su contenido */
+    max-width: 180px; /* Máximo ancho aumentado */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+  }
+  
+  .btn-agregar:hover {
+    background-color: #4a8fc4; /* Color al pasar el ratón */
+    transform: scale(1.05); /* Agranda ligeramente el botón */
+  }
+  
+  
+  
+  /* ================== Table Layout ================= */
+  
+  .tabla-container {
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 110%;
+    overflow-x: auto;
+  }
+  
+  .tabla {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tabla th,
+  .tabla td {
+    padding: 12px;  /* Aumenta el padding para dar más espacio */
+    text-align: left;
+  }
+  
+  .tabla th {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .tabla tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .tabla tr:last-child {
+    border-bottom: none;
+  }
+  
+  .tabla tr:hover {
+    background-color: #e3f2fd;
+  }
+  
+  /* ================== Table Cells ================= */
+  
+  .tabla td img.foto-tabla {
+    width: 50px;  /* Aumenta el tamaño de la imagen */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #1e88e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cliente-nombre {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .cliente-cedula,
+  .cliente-celular,
+  .cliente-correo {
+    color: #555;
+  }
+  
+  .acciones-cliente {
+    display: flex;
+    gap: 12px; /* Aumenta el espacio entre los botones */
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  
+  
+  
+  
+  /* ================== Responsive Design ================= */
+  
+  @media (max-width: 768px) {
+    .tabla td {
+      padding: 10px; /* Aumenta el padding para los dispositivos móviles */
+    }
+  
+    .acciones-cliente {
+      justify-content: center;
+      gap: 12px; /* Aumenta el espacio entre botones en pantallas pequeñas */
+    }
+  
+    
+    .btn-editar,
+    .btn-eliminar,
+    .btn-agregar {
+      width: 100%; /* Botones de ancho completo en pantallas pequeñas */
+      margin-bottom: 8px; /* Margen entre botones */
+    }
+  
+    .input-busqueda {
+      width: 60%; /* Reducir el tamaño del campo de búsqueda en pantallas pequeñas */
+    }
+  
+  /* ================== Estilo del botón de Buscar ================= */
+  .btn-buscar {
+    width: 120px;  /* Ajusta este valor según el tamaño que desees */
+    height: 40px;  /* Ajusta el alto según lo que necesites */
+  }
+  
+  .btn-buscar {
+    background-color: #5cadf4 !important;
+    color: white !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    border: none !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+    width: auto !important;
+    cursor: pointer !important;
+  }
+  
+  
+  .btn-buscar:hover {
+    background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
+    transform: scale(1.05); /* Efecto de aumento suave */
+  }
+  
+  
+  }
+  

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Veterinaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Incluye el CSS aquí si lo prefieres en un solo archivo */
+  </style>
+</head>
+<body>
+
+    <app-navegacion></app-navegacion>
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+
+
+            <div class="user">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDcaEWpYQklMDUzSJPss_l5V9T7yC2xtK7OA&s	" alt="Usuario">
+            </div>
+        </div>
+
+    <div class="container-principal">
+      <h1>Listado de Mascotas</h1>
+      
+      <div class="contenedor-boton">
+      
+    </div>
+      <div class="tabla-container">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Raza</th>
+              <th>Edad</th>
+              <th>Peso</th>
+              <th>Enfermedad</th>
+              <th>Foto</th>
+              <th>Nacimiento</th>
+              <th>Ingreso</th>
+              <th>Salida</th>
+              <th>Estado</th>
+              <th>Cliente</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mascota of mascotaList" (click)="mostrarMascota(mascota.idMascota)">
+              <td>{{ mascota.idMascota }}</td>
+              <td>{{ mascota.nombre }}</td>
+              <td>{{ mascota.raza }}</td>
+              <td>{{ mascota.edad }}</td>
+              <td>{{ mascota.peso | number:'1.1-1' }}</td>
+              <td>{{ mascota.enfermedad || '-' }}</td>
+              <td>
+                <img *ngIf="mascota.foto" [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" class="foto-tabla">
+                <span *ngIf="!mascota.foto">-</span>
+              </td>
+              <td>{{ mascota.fechaNacimiento ? (mascota.fechaNacimiento | date:'yyyy/MM/dd') : '-' }}</td>
+              <td>{{ mascota.fechaIngreso ? (mascota.fechaIngreso | date:'yyyy/MM/dd') : '-' }}</td>
+              <td>{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : '-' }}</td>
+              <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
+              <td>{{ mascota.cliente?.nombre }}</td>
+              <td class="action-buttons">
+                <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">Ver Detalles</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> <!-- End main -->
