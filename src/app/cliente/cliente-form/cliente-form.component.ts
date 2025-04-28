@@ -36,7 +36,7 @@ export class ClienteFormComponent implements OnInit {
       this.clienteService.getCliente(+id).subscribe((cliente) => {
         if (cliente) {
           this.Formcliente = cliente;
-          this.confirmPassword = cliente.contrasenha;
+          this.confirmPassword = cliente.contrasena;
         }
       });
     } else {
@@ -49,7 +49,7 @@ export class ClienteFormComponent implements OnInit {
     this.markAllAsTouched();
 
     if (this.clienteForm.valid) {
-      if (this.Formcliente.contrasenha !== this.confirmPassword) {
+      if (this.Formcliente.contrasena !== this.confirmPassword) {
         alert('Las contraseñas no coinciden');
         return;
       }
@@ -61,11 +61,16 @@ export class ClienteFormComponent implements OnInit {
             this.router.navigate(['/clientes']);
           });
       } else {
-        this.clienteService
-          .agregarCliente(this.Formcliente, this.confirmPassword)
-          .subscribe(() => {
+        this.clienteService.agregarCliente(this.Formcliente.toBackendFormat(), this.confirmPassword).subscribe(
+          (response) => {
+            console.log('Cliente creado', response);
             this.router.navigate(['/clientes']);
-          });
+          },
+          (error) => {
+            console.error('Error al crear cliente', error);
+            alert('Error: ' + error.error);
+          }
+        );
       }
     }
   }

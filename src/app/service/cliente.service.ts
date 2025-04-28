@@ -18,10 +18,11 @@ export class ClienteService {
     return this.http.get<ClienteCL>(`${this.baseUrl}/${id}`);
   }
 
-  agregarCliente(cliente: ClienteCL, confirmPassword: string): Observable<ClienteCL> {
+  agregarCliente(cliente: ClienteCL, confirmPassword: string): Observable<string> {
     const params = new HttpParams().set('confirm_password', confirmPassword);
-    return this.http.post<ClienteCL>(`${this.baseUrl}/crear`, cliente, { params,responseType: 'text' as 'json' });
-  }  
+    return this.http.post<string>(`${this.baseUrl}/crear`, cliente, { params });
+  }
+     
 
   actualizarCliente(id:number, cliente:ClienteCL): Observable<ClienteCL>{
     return this.http.put<ClienteCL>(`${this.baseUrl}/actualizar/${id}`,cliente);

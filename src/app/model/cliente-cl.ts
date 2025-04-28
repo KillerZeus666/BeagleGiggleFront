@@ -9,7 +9,7 @@ export class ClienteCL {
   public foto: string;
   public cedula: string;
   public nombreUsuario: string;
-  public contrasenha: string;
+  public contrasena: string;
   public mascotas: MascotaCL[];
   public testimonios: TestimonioCL[];
 
@@ -21,7 +21,7 @@ export class ClienteCL {
     foto: string = '',
     cedula: string = '',
     nombreUsuario: string = '',
-    contrasenha: string = '',
+    contrasena: string = '',
     mascotas: MascotaCL[] = [],
     testimonios: TestimonioCL[] = []
   ) {
@@ -32,7 +32,7 @@ export class ClienteCL {
     this.foto = foto;
     this.cedula = cedula;
     this.nombreUsuario = nombreUsuario;
-    this.contrasenha = contrasenha;
+    this.contrasena = contrasena;
     this.mascotas = mascotas;
     this.testimonios = testimonios;
   }
@@ -47,7 +47,7 @@ export class ClienteCL {
       data.foto,
       data.cedula,
       data.nombreUsuario,
-      data.contrasenha,
+      data.contrasena,
       data.mascotas
         ? data.mascotas.map((m: any) => MascotaCL.fromBackendData(m))
         : [],
@@ -67,7 +67,7 @@ export class ClienteCL {
       foto: this.foto,
       cedula: this.cedula,
       nombreUsuario: this.nombreUsuario,
-      contrasenha: this.contrasenha,
+      contrasena: this.contrasena,
     };
   }
 
@@ -95,7 +95,7 @@ export class ClienteCL {
       errors.push('El nombre de usuario es requerido');
     }
 
-    if (!this.contrasenha || this.contrasenha.length < 8) {
+    if (!this.contrasena || this.contrasena.length < 8) {
       errors.push('La contraseña debe tener al menos 8 caracteres');
     }
 
