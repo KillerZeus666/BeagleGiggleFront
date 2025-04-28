@@ -17,11 +17,11 @@
           <span class="tratamiento-label">Fecha:</span>
           <span class="tratamiento-info">{{ tratamiento.fecha | date:'mediumDate' }}</span>
         </div>
-        <div class="tratamiento-dato">
+        <div class="tratamiento-dato" *ngIf="mascota">
           <span class="tratamiento-label">Mascota:</span>
           <span class="tratamiento-info">{{ mascota.nombre }}</span>
         </div>
-        <div class="tratamiento-dato">
+        <div class="tratamiento-dato" *ngIf="servicio">
           <span class="tratamiento-label">Servicio:</span>
           <span class="tratamiento-info">{{ servicio.nombre }}</span>
         </div>

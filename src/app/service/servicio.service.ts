@@ -9,7 +9,7 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class ServicioService {
-  private apiUrl = 'http://localhost:8082/servicios';
+  private apiUrl = 'http://localhost:8082/api/servicios';
 
   constructor(private http: HttpClient) { }
 
