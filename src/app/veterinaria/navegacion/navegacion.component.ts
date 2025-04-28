@@ -77,4 +77,9 @@ export class NavegacionComponent implements AfterViewInit {
   navegarCitasVeterinario():void{
     this.router.navigate(['/citas-veterinario/2'])
   }
+
+  
+  navegarTratamientosVeterinario():void{
+    this.router.navigate(['/tratamiento/veterinario/1'])
+  }
 }

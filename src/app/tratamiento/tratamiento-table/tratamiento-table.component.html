@@ -1,0 +1,25 @@
+<h1>Tratamientos atendidos</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Código</th>
+      <th>Fecha</th>
+      <th>Detalles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tratamiento of tratamientos">
+      <td>{{ tratamiento.idTratamiento }}</td>
+      <td>{{ tratamiento.codigo }}</td>
+      <td>{{ tratamiento.fecha }}</td>
+      <td>{{ tratamiento.detalles }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Mensaje si no hay tratamientos -->
+<div *ngIf="tratamientos.length === 0">
+  No se encontraron tratamientos para este veterinario.
+</div>
