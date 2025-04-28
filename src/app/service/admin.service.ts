@@ -14,16 +14,16 @@ export class AdminService {
       return this.http.get<AdministradorCL[]>(`${this.baseUrl}`);
     }
   
-    getCliente(id:number): Observable<AdministradorCL>{
+    getAdmin(id:number): Observable<AdministradorCL>{
       return this.http.get<AdministradorCL>(`${this.baseUrl}/${id}`)
     }
   
-    agregarCliente(veterinario:AdministradorCL,confirmPassword: string): Observable<AdministradorCL>{
+    agregarAdministrador(veterinario:AdministradorCL,confirmPassword: string): Observable<AdministradorCL>{
       const params = new HttpParams().set('confirm_password', confirmPassword);
       return  this.http.post<AdministradorCL>(`${this.baseUrl}/crear`, veterinario, { params });
     }
   
-    actualizarCliente(id:number, veterinario:AdministradorCL): Observable<AdministradorCL>{
+    actualizarAdministrador(id:number, veterinario:AdministradorCL): Observable<AdministradorCL>{
         return this.http.put<AdministradorCL>(`${this.baseUrl}/actualizar/{id}`,veterinario);
       }
 }

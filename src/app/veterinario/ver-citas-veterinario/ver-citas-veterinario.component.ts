@@ -30,18 +30,19 @@ export class VerCitasVeterinarioComponent implements OnInit {
         console.error('Error al obtener las citas', err);
       }
     });
+    this.obtenerCitas();
   }
 
   mostrarDetallesCita(id: number): void {
     this.router.navigate(['/detalles-cita', id]);
   }
-  
+
   agendarCita(){
 
   }
 
   editarCita(){
-    
+
   }
   // Método simplificado para cancelar cita
   cancelarCita(idCita: number): void {
@@ -57,4 +58,16 @@ export class VerCitasVeterinarioComponent implements OnInit {
       });
     }
   }
+
+  obtenerCitas(): void {
+    this.citaService.obtenerTodasCitas().subscribe({
+      next: (citas) => {
+        this.citas = citas;
+      },
+      error: (err) => {
+        console.error('Error al obtener citas:', err);
+      }
+    });
+  }
 }
+

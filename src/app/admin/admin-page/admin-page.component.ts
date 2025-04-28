@@ -8,6 +8,7 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { TratamientoCL } from 'src/app/model/tratamiento-cl';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { ChartService } from 'src/app/service/chart.service';
+import { ServicioService } from 'src/app/service/servicio.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -40,13 +41,15 @@ export class AdminPageComponent implements AfterViewInit {
   veterinariosInactivos: VeterinarioCL[] = [];
   showTratamientosRecientesList = false;
   tratamientosRecientes: TratamientoCL[] = [];
+  top3Medicamentos: {nombre: string, cantidad: number}[] = [];
   
   constructor(
     private authService: AuthService, 
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
     private tratamientoService: TratamientoService,
-    private chartService: ChartService
+    private chartService: ChartService,
+    private servicioService: ServicioService
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +57,43 @@ export class AdminPageComponent implements AfterViewInit {
     this.userName = this.authService.getUserName();
     this.userPhoto = this.authService.getUserPhoto();
     this.loadAllStats();
+    this.loadFinancialData();
+    this.loadTop3Medicamentos();
+  }
+
+  loadTop3Medicamentos(): void {
+    this.tratamientoService.getTop3MedicamentosMasVendidos().subscribe({
+      next: (medicamentos) => {
+        this.top3Medicamentos = medicamentos;
+      },
+      error: (err) => {
+        console.error('Error al cargar top 3 medicamentos', err);
+        // Datos de ejemplo en caso de error
+        this.top3Medicamentos = [
+          {nombre: 'Vacuna Antirrábica', cantidad: 0},
+          {nombre: 'Desparasitación', cantidad: 0},
+          {nombre: 'Antibiótico General', cantidad: 0}
+        ];
+      }
+    });
+  }
+
+  loadFinancialData(): void {
+    forkJoin([
+      this.servicioService.obtenerVentasTotales(),
+      this.servicioService.obtenerGananciasTotales()
+    ]).subscribe({
+      next: ([ventas, ganancias]) => {
+        this.stats.ventasTotales = ventas;
+        this.stats.gananciasTotales = ganancias;
+      },
+      error: (err) => {
+        console.error('Error al cargar datos financieros:', err);
+        // Puedes mostrar valores por defecto o un mensaje de error
+        this.stats.ventasTotales = 0;
+        this.stats.gananciasTotales = 0;
+      }
+    });
   }
 
   loadAllStats(): void {

@@ -1,143 +1,282 @@
+/* Fuente importada de Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Estilos generales para formularios de login y registro */
 .formularioLogin,
 .formularioRegistro {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
     padding: 20px;
-    background-color: #f4f8fb; /* Fondo claro */
-    background-image: url('https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
+    background-color: #1d95db;
+    font-family: 'Poppins', sans-serif;
     position: relative;
+    overflow: hidden;
 }
 
-/* Pseudo-elemento para la opacidad */
+/* Efecto de burbujas decorativas */
 .formularioLogin::before,
 .formularioRegistro::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(244, 248, 251, 0.7); /* Opacidad del 70% */
-    z-index: 1;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    top: -50px;
+    left: -50px;
+}
+
+.formularioLogin::after,
+.formularioRegistro::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    bottom: -30px;
+    right: -30px;
 }
 
 /* Contenedor del formulario */
 .formularioContainer {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 400px;
+    width: 100%;
+    max-width: 450px;
     position: relative;
-    z-index: 2; /* Asegura que el formulario esté por encima del fondo */
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.formularioContainer:hover {
+    transform: translateY(-5px) scale(1.005);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* Títulos */
 .formularioContainer h2 {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 24px; /* Un poco más grande */
+    margin-bottom: 30px;
+    color: #1d95db;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    text-align: center;
+}
+
+.formularioContainer h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #1d95db, #23a3ed);
+    border-radius: 3px;
 }
 
 /* Formulario */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 22px;
+    align-items: center;
+}
+
+/* Grupos de campos */
+.form-group {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 /* Etiquetas */
 label {
-    font-weight: bold;
-    text-align: left;
     display: block;
-    font-size: 1.2rem;
     margin-bottom: 8px;
-    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #555;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
 }
 
 /* Campos de entrada */
 input,
 select {
-    max-width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
     font-size: 16px;
-    background-color: #fff;
-    color: #555;
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-select:focus,
-input:focus {
-    border-color: #000000;
+input:focus,
+select:focus {
+    border-color: #1d95db;
     outline: none;
+    box-shadow: 0 5px 15px rgba(29, 149, 219, 0.2);
+    background-color: #fff;
+    transform: translateY(-2px);
 }
 
-/* Botón */
+/* Placeholder estilizado */
+::placeholder {
+    color: #aaa;
+    font-weight: 300;
+    text-align: center;
+}
+
+/* Estilo para los botones */
 button {
-    padding: 14px;
-    background-color: #3c5b6f;
+    padding: 16px;
+    background: linear-gradient(to right, #1d95db, #23a3ed);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(29, 149, 219, 0.3);
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
 }
 
 button:hover {
-    background-color: #5e7e92;
+    background: linear-gradient(to right, #158bbd, #1d95db);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
+}
+
+button:active {
+    transform: translateY(1px);
 }
 
 /* Enlace de registro */
 .registro {
-    margin-top: 15px;
-    font-size: 14px;
+    margin-top: 25px;
+    font-size: 15px;
+    color: #666;
+    text-align: center;
+    width: 100%;
 }
 
 .registro a {
-    color: #5e7e92;
+    color: #1d95db;
     text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
 }
 
-.registro a:hover {
-    text-decoration: underline;
+.registro a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1d95db;
+    transition: width 0.3s ease;
+}
+
+.registro a:hover::after {
+    width: 100%;
 }
 
 /* Estilos para opciones de select */
 option {
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
     background-color: #fff;
-    color: #3c5b6f;
+    color: #333;
+    text-align: center;
+}
+
+/* Iconos en los campos (opcional) */
+.form-group i {
+    position: absolute;
+    right: 15px;
+    top: 42px;
+    color: #999;
+    font-size: 18px;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.formularioContainer {
+    animation: fadeIn 0.6s ease-out forwards;
 }
 
 /* Diseño responsive */
-@media (max-width: 600px) {
-    label {
-        font-size: 1rem;
+@media (max-width: 768px) {
+    .formularioContainer {
+        padding: 30px;
     }
 
+    .formularioContainer h2 {
+        font-size: 26px;
+    }
+
+    input,
     select {
-        font-size: 0.9rem;
-        padding: 10px;
+        padding: 12px;
+    }
+
+    button {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formularioContainer {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .formularioContainer h2 {
+        font-size: 24px;
+    }
+
+    .registro {
+        font-size: 14px;
     }
 }
 
 /* Estilos para autocompletado de navegadores */
-input:-webkit-autofill {
-    background-color: white !important;
-    color: black !important;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #333;
+    -webkit-box-shadow: 0 0 0px 1000px #f9f9f9 inset;
     transition: background-color 5000s ease-in-out 0s;
-    box-shadow: 0 0 0px 1000px white inset !important;
+    text-align: center;
 }
