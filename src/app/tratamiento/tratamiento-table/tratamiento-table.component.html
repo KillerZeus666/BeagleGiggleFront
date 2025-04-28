@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Veterinaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <app-navegacion></app-navegacion>
+
+  <!-- ========================= Main ==================== -->
+  <div class="main">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+
+      <div class="user">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDcaEWpYQklMDUzSJPss_l5V9T7yC2xtK7OA&s" alt="Usuario">
+      </div>
+    </div>
+
+    <div class="container-principal">
+      <h1>Listado de Tratamientos</h1>
+      
+      <div class="contenedor-boton">
+      </div>
+
+  
+
+     
+
+      <div class="tabla-container">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Fecha</th>
+              <th>Detalles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tratamiento of tratamientos">
+              <td>{{ tratamiento.codigo }}</td>
+              <td>{{ tratamiento.fecha | date:'yyyy/MM/dd' }}</td>
+              <td>{{ tratamiento.detalles }}</td>
+              <td class="action-buttons">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> <!-- End main -->
+
+</body>
+</html>
