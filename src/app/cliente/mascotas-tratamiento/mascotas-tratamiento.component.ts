@@ -43,4 +43,8 @@ export class MascotasTratamientoComponent {
       }
     });
   }
+
+  verTratamiento(id:number){
+    this.router.navigate([' ']);
+  }
 }

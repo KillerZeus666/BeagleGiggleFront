@@ -40,6 +40,9 @@
               <span class="data-value">{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</span>
             </div>
           </div>
+          <button class="tratamiento-button" (click)="verTratamiento(mascota.id)">
+            <i class="fas fa-pills"></i> Ver Tratamiento
+          </button>
         </div>
       </div>
     </ng-container>
