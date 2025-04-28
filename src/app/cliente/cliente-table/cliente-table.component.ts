@@ -94,5 +94,4 @@ export class ClienteTableComponent implements OnInit {
         });
       }
     }
-    
 }

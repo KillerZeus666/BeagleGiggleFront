@@ -26,6 +26,7 @@ h1 {
 .btn-editar,
 .btn-eliminar {
   background-color: #5cadf4; /* Color suave de fondo */
+  text-align: center;
   color: white;
   padding: 10px 20px; /* Tamaño de botón más cómodo */
   border-radius: 20px; /* Bordes redondeados */
@@ -73,7 +74,7 @@ h1 {
 .tabla th,
 .tabla td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 .tabla th {

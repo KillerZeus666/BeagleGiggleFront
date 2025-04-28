@@ -18,43 +18,43 @@
       <!-- Datos de la mascota -->
       <div class="pet-data">
         <div class="data-item">
-          <span class="data-label">Nombre:</span>
+          <span class="data-label">Nombre: </span>
           <span class="data-value">{{ mascota.nombre }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Raza:</span>
+          <span class="data-label">Raza: </span>
           <span class="data-value">{{ mascota.raza }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Edad:</span>
+          <span class="data-label">Edad: </span>
           <span class="data-value">{{ mascota.edad }} años</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Peso:</span>
+          <span class="data-label">Peso: </span>
           <span class="data-value">{{ mascota.peso | number:'1.1-1' }} kg</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Enfermedad:</span>
+          <span class="data-label">Enfermedad: </span>
           <span class="data-value">{{ mascota.enfermedad || 'Ninguna' }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Fecha Nacimiento:</span>
+          <span class="data-label">Fecha Nacimiento: </span>
           <span class="data-value">{{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Fecha Ingreso:</span>
+          <span class="data-label">Fecha Ingreso: </span>
           <span class="data-value">{{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Fecha Salida:</span>
+          <span class="data-label">Fecha Salida: </span>
           <span class="data-value">{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : 'Aún en la clínica' }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Estado:</span>
+          <span class="data-label">Estado: </span>
           <span class="data-value">{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</span>
         </div>
         <div class="data-item">
-          <span class="data-label">Nombre Cliente:</span>
+          <span class="data-label">Nombre Cliente: </span>
           <span class="data-value">{{ mascota.cliente?.nombre }}</span>
         </div>
       </div>
