@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-mascota-detail',
   templateUrl: './mascota-detail.component.html',
@@ -12,6 +14,7 @@ export class MascotaDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private mascotaService: MascotaService // Inyectar servicio para obtener datos
   ) {}
 
@@ -25,5 +28,10 @@ export class MascotaDetailComponent implements OnInit {
     this.mascotaService.getMascota(id).subscribe(mascota => {
       this.mascota = mascota;
     });
+  }
+
+  mostrarCliente(event: Event, idCliente: number) {
+    event.stopPropagation(); // 👉 Esto evita que también se dispare el click de la fila
+    this.router.navigate(['/detalles-cliente', idCliente]);
   }
 }
