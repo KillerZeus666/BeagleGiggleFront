@@ -35,8 +35,6 @@ export class ServicioService {
   obtenerServiciosTodos(): Observable<ServicioCL[]> {
     return this.http.get<ServicioCL[]>(this.apiUrl);
   }
-}
-
 
   getServicioPorTratamiento(id:number): Observable<ServicioCL>{
     return this.http.get<ServicioCL>(`${this.apiUrl}/por-tratamiento/${id}`);
