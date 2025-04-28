@@ -1,0 +1,176 @@
+/* .page-container: mover hacia la derecha y hacerlo más pequeño */
+.page-container {
+    display: flex;
+    width: 80%; /* Reduce el tamaño a un 80% del ancho de la ventana */
+    flex-direction: column;
+    background:white; /* Gradiente suave */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    position: relative;
+    min-height: 100vh; /* Ocupará toda la altura de la ventana */
+    margin-left:19%; /* Esto empuja el contenedor hacia la derecha */
+}
+
+/* Pseudo-elemento para la opacidad */
+.page-container::before {
+    content: '';
+    background:white; /* Gradiente suave */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Título */
+h1 {
+    color: #205375;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 4px solid #40A8C4;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Contenido: mejor distribución horizontal */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Imagen del cliente */
+.img-container {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #1d95db;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background: #126da6;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container:hover {
+    transform: scale(1.05); /* Efecto de hover */
+}
+
+.mascota-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Datos del cliente */
+.datos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dato, .btn-detalles {
+    background-color: #1d95db; /* Azul para los ítems */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dato:hover, .btn-detalles:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #F0F8FF;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.btn-detalles {
+    background-color: #205375;
+    color: white;
+    border: none;
+}
+
+.btn-detalles:hover {
+    background-color: #2e86ab;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+        padding: 30px;
+    }
+
+    .content {
+        flex-direction: column; /* Pila los elementos en pantallas pequeñas */
+        align-items: center;
+    }
+
+    .img-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    .datos {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .img-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    .datos {
+        gap: 20px;
+    }
+}

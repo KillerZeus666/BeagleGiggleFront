@@ -1,0 +1,50 @@
+<app-navegacion></app-navegacion>
+
+<div class="main">
+  <div class="topbar">
+    <div class="toggle">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="user">
+      <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+    </div>
+  </div>
+
+  <main class="container-principal">
+    <h1>Lista de Servicios</h1>
+
+    <!-- Contenedor del filtro alineado a la derecha -->
+    <div style="display: flex; justify-content: flex-end; margin: 20px 0;">
+      <select 
+        [(ngModel)]="opcionOrdenamiento" 
+        (change)="ordenarServicios()" 
+        style="padding: 10px 20px; border-radius: 25px; font-size: 16px; border: 1px solid #ccc; cursor: pointer;">
+        <option value="id">Ordenar por ID</option>
+        <option value="precioAsc">Precio (Menor a Mayor)</option>
+        <option value="precioDesc">Precio (Mayor a Menor)</option>
+      </select>
+    </div>
+
+    <!-- Tabla de servicios -->
+    <div class="tabla-container" style="overflow-x:auto;">
+      <table class="tabla" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+          <tr style="background-color: #f8f9fa;">
+            <th style="padding: 12px; border-bottom: 2px solid #dee2e6;">ID Servicio</th>
+            <th style="padding: 12px; border-bottom: 2px solid #dee2e6;">Nombre</th>
+            <th style="padding: 12px; border-bottom: 2px solid #dee2e6;">Descripción</th>
+            <th style="padding: 12px; border-bottom: 2px solid #dee2e6;">Precio Base</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let servicio of servicios" style="border-bottom: 1px solid #dee2e6;">
+            <td style="padding: 10px;">{{ servicio.idServicio }}</td>
+            <td style="padding: 10px;">{{ servicio.nombre }}</td>
+            <td style="padding: 10px;">{{ servicio.descripcion }}</td>
+            <td style="padding: 10px;">{{ servicio.precioBase | currency:'S' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

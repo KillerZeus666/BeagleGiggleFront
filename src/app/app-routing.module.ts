@@ -21,7 +21,12 @@ import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { NavegacionComponent } from './veterinaria/navegacion/navegacion.component';
 import { VeterinarioDetailComponent } from './veterinario/veterinario-detail/veterinario-detail.component'; 
 import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterinario-page.component';
+import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
+import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
+import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component'; 
+
+
 
 
 
@@ -50,7 +55,10 @@ const routes: Routes = [
   {path: 'navigation', component: NavegacionComponent },
   {path: 'veterinario', component: VeterinarioPageComponent },
   {path: 'detalles-veterinario/:id', component: VeterinarioDetailComponent},
+  {path: 'medicamentos', component: MedicamentoTableComponent },
+  {path: 'servicios', component: ServicioTableComponent},
   {path: 'historial-tratamientos/:id', component:HistorialTratamientosComponent},
+  {path: 'detalles-admin/:id', component: AdminDetailComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
  

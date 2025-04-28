@@ -1,0 +1,31 @@
+<app-navegacion></app-navegacion>
+
+<div class="page-container">
+  <div class="container">
+    <h1>Detalle del administrador</h1>
+    <div class="content">
+      <div class="img-container">
+        <img
+          [src]="admin.foto"
+          alt="Foto del administrador"
+          class="mascota-img"
+        />
+      </div>
+
+      <div class="datos">
+        <div class="dato">
+          <span class="label">Nombre</span>
+          <span class="info">{{ admin.nombre }}</span>
+        </div>
+        <div class="dato">
+          <span class="label">Cédula</span>
+          <span class="info">{{ admin.cedula }}</span>
+        </div>
+        <div class="dato">
+          <span class="label">Correo</span>
+          <span class="info">{{ admin.correo }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
