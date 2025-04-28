@@ -43,26 +43,18 @@
   </div>
 
   <div class="section">
-    <h2>Top 3 Tratamientos Más Vendidos</h2>
+    <h2>Top 3 Medicamentos Más Vendidos</h2>
     <table class="table">
       <thead>
         <tr>
-          <th>Tratamiento</th>
+          <th>Medicamento</th>
           <th>Unidades Vendidas</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Vacuna Antirrábica</td>
-          <td>80</td>
-        </tr>
-        <tr>
-          <td>Desparasitación</td>
-          <td>60</td>
-        </tr>
-        <tr>
-          <td>Antibiótico General</td>
-          <td>45</td>
+        <tr *ngFor="let medicamento of top3Medicamentos">
+          <td>{{medicamento.nombre}}</td>
+          <td>{{medicamento.cantidad}}</td>
         </tr>
       </tbody>
     </table>

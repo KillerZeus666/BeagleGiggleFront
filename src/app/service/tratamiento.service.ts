@@ -91,4 +91,13 @@ export class TratamientoService {
       })
     );
   }
+  
+  getTop3MedicamentosMasVendidos(): Observable<{nombre: string, cantidad: number}[]> {
+    return this.http.get<{medicamento: string, total: number}[]>(`${this.baseUrl}/top3-medicamentos-vendidos`).pipe(
+      map(data => data.map(item => ({
+        nombre: item.medicamento,
+        cantidad: item.total
+      })))
+    );
+  }
 }

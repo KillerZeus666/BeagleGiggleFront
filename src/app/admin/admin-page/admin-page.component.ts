@@ -41,6 +41,7 @@ export class AdminPageComponent implements AfterViewInit {
   veterinariosInactivos: VeterinarioCL[] = [];
   showTratamientosRecientesList = false;
   tratamientosRecientes: TratamientoCL[] = [];
+  top3Medicamentos: {nombre: string, cantidad: number}[] = [];
   
   constructor(
     private authService: AuthService, 
@@ -57,6 +58,24 @@ export class AdminPageComponent implements AfterViewInit {
     this.userPhoto = this.authService.getUserPhoto();
     this.loadAllStats();
     this.loadFinancialData();
+    this.loadTop3Medicamentos();
+  }
+
+  loadTop3Medicamentos(): void {
+    this.tratamientoService.getTop3MedicamentosMasVendidos().subscribe({
+      next: (medicamentos) => {
+        this.top3Medicamentos = medicamentos;
+      },
+      error: (err) => {
+        console.error('Error al cargar top 3 medicamentos', err);
+        // Datos de ejemplo en caso de error
+        this.top3Medicamentos = [
+          {nombre: 'Vacuna Antirrábica', cantidad: 0},
+          {nombre: 'Desparasitación', cantidad: 0},
+          {nombre: 'Antibiótico General', cantidad: 0}
+        ];
+      }
+    });
   }
 
   loadFinancialData(): void {
