@@ -14,8 +14,8 @@
           <tr>
             <th>Código</th>
             <th>Fecha</th>
-            <th *ngIf="mascota">Mascota</th>
-            <th *ngIf="servicio">Servicio</th>
+            <th>Mascota</th>
+            <th>Servicio</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -23,8 +23,8 @@
           <tr *ngFor="let tratamiento of tratamientos">
             <td>{{ tratamiento.codigo }}</td>
             <td>{{ tratamiento.fecha | date:'mediumDate' }}</td>
-            <td *ngIf="mascota">{{ mascota.nombre }}</td>
-            <td *ngIf="servicio">{{ servicio.nombre }}</td>
+            <td>{{ tratamiento.mascota?.nombre || 'Sin mascota' }}</td>
+            <td>{{ tratamiento.servicio?.nombre || 'Sin servicio' }}</td>
             <td>
               <a (click)="mostrarDetallesTratamiento(tratamiento.idTratamiento)" class="btn-detalles">Ver detalles</a>
             </td>

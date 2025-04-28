@@ -26,32 +26,34 @@ export class HistorialTratamientosComponent implements OnInit {
     this.veterinarioService.getAllTratamientosVeterinario(this.idVeterinario).subscribe({
       next: (data) => {
         this.tratamientos = data;
-        if (this.tratamientos.length > 0) {
-          const idTratamiento = this.tratamientos[0].idTratamiento; // ejemplo: tomamos el primer tratamiento
-          this.mascotaService.getMascotaPorTratamiento(idTratamiento).subscribe({
+  
+        // Para cada tratamiento, buscar su mascota y servicio
+        this.tratamientos.forEach(tratamiento => {
+          this.mascotaService.getMascotaPorTratamiento(tratamiento.idTratamiento).subscribe({
             next: (mascotaData) => {
-              this.mascota = mascotaData;
+              tratamiento.mascota = mascotaData;
             },
             error: (err) => {
-              console.error('Error al obtener la mascota', err);
+              console.error(`Error al obtener la mascota del tratamiento ${tratamiento.idTratamiento}`, err);
             }
           });
-          
-          this.servicioService.getServicioPorTratamiento(idTratamiento).subscribe({
-            next: (serviciodata) => {
-              this.servicio = serviciodata;
+  
+          this.servicioService.getServicioPorTratamiento(tratamiento.idTratamiento).subscribe({
+            next: (servicioData) => {
+              tratamiento.servicio = servicioData;
             },
             error: (err) => {
-              console.error('Error al obtener el servicio');
+              console.error(`Error al obtener el servicio del tratamiento ${tratamiento.idTratamiento}`, err);
             }
-          })
-        }
+          });
+        });
       },
       error: (err) => {
         console.error('Error al obtener los tratamientos', err);
       }
     });
   }
+  
 
   navegarAgregarTratamiento() {
     const id = this.route.snapshot.paramMap.get('id'); // o donde tengas el id
