@@ -43,6 +43,8 @@ import { VeterinarioPageComponent } from './veterinario/veterinario-page/veterin
 import { CitaTableComponent } from './cita/cita-table/cita-table.component';
 import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
+import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
+import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
 import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
 
 
@@ -84,7 +86,10 @@ import { HistorialTratamientosComponent } from './veterinario/historial-tratamie
     CitaTableComponent,
     CitaFormComponent,
     CitaDetailComponent,
+    MedicamentoTableComponent,
+    ServicioTableComponent,
     HistorialTratamientosComponent,
+
 
   ],
   imports: [
