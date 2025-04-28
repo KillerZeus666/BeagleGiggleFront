@@ -94,7 +94,7 @@
               <td>{{ mascota.cliente?.nombre }}</td>
               <td class="action-buttons">
                 <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">Ver Detalles</button>
-                <button *ngIf="esAdmin()" class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota); $event.stopPropagation()">Editar</button>
+                <button class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota); $event.stopPropagation()">Editar</button>
                 <button *ngIf="esAdmin()" class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">{{ mascota.estado === 1 ? 'Desactivar' : 'Activar' }}</button>
               </td>              
             </tr>
