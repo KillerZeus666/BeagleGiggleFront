@@ -38,10 +38,11 @@ export class VeterinarioService {
     return this.http.put<VeterinarioCL>(`${this.baseUrl}/editar/${id}`, veterinario);
   }
 
-  cambiarEstadoVeterinario(id: number): Observable<VeterinarioCL> {
+  cambiarEstadoVeterinario(id: number): Observable<any> {
     const url = `${this.baseUrl}/cambiar-estado/${id}`;
-    return this.http.put<VeterinarioCL>(url, null);  
+    return this.http.put(url, null, { responseType: 'text' });  
   }
+  
 
   // Validar credenciales de veterinario (login)
   validarVeterinario(username: string, password: string): Observable<VeterinarioCL> {

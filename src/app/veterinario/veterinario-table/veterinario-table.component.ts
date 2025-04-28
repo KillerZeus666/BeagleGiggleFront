@@ -41,7 +41,6 @@ export class VeterinarioTableComponent implements OnInit {
         next: (response: any) => {
           console.log('Respuesta del servidor:', response);
           if (response) {
-            alert(response);  // Muestra la respuesta del servidor
             this.cargarVeterinarios();  // Recarga la lista de veterinarios
           }
         },
@@ -51,6 +50,7 @@ export class VeterinarioTableComponent implements OnInit {
       });
     }
   }
+  
   
 
   abrirFormularioAgregarVeterinario(): void {
