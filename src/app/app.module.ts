@@ -4,9 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-
-
-
+import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './veterinaria/header/header.component';
@@ -47,6 +45,7 @@ import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 import { MedicamentoTableComponent } from './medicamento/medicamento-table/medicamento-table.component';
 import { ServicioTableComponent } from './servicio/servicio-table/servicio-table.component';
+import { HistorialTratamientosComponent } from './veterinario/historial-tratamientos/historial-tratamientos.component';
 
 
 
@@ -89,6 +88,8 @@ import { ServicioTableComponent } from './servicio/servicio-table/servicio-table
     CitaDetailComponent,
     MedicamentoTableComponent,
     ServicioTableComponent,
+    HistorialTratamientosComponent,
+
 
   ],
   imports: [
@@ -97,7 +98,8 @@ import { ServicioTableComponent } from './servicio/servicio-table/servicio-table
     CommonModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

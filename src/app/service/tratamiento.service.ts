@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TratamientoCL } from '../model/tratamiento-cl';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -78,5 +79,25 @@ export class TratamientoService {
 
   getTratamientosUltimos30Dias(): Observable<TratamientoCL[]> {
     return this.http.get<TratamientoCL[]>(`${this.baseUrl}/ultimos-30-dias`);
+  }
+
+  getMedicamentosMasUsados(): Observable<{medicamento: string, cantidad: number}[]> {
+    return this.http.get<{[key: string]: number}>(`${this.baseUrl}/medicamentos-mas-usados`).pipe(
+      map(data => {
+        return Object.entries(data).map(([medicamento, cantidad]) => ({ 
+          medicamento, 
+          cantidad 
+        }));
+      })
+    );
+  }
+  
+  getTop3MedicamentosMasVendidos(): Observable<{nombre: string, cantidad: number}[]> {
+    return this.http.get<{medicamento: string, total: number}[]>(`${this.baseUrl}/top3-medicamentos-vendidos`).pipe(
+      map(data => data.map(item => ({
+        nombre: item.medicamento,
+        cantidad: item.total
+      })))
+    );
   }
 }
