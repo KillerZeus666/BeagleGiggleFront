@@ -62,6 +62,26 @@ export class MascotaCL {
   }
 
   public toBackendFormat(): any {
+    // Helper function to safely convert to ISO date string
+    const toDateString = (date: any): string | null => {
+      if (!date) return null;
+      
+      // If it's already a Date object
+      if (date instanceof Date) {
+        return date.toISOString().split('T')[0];
+      }
+      
+      // If it's a string that can be converted to Date
+      if (typeof date === 'string') {
+        const d = new Date(date);
+        if (!isNaN(d.getTime())) {
+          return d.toISOString().split('T')[0];
+        }
+      }
+      
+      return null;
+    };
+  
     return {
       idMascota: this.idMascota,
       nombre: this.nombre,
@@ -70,15 +90,9 @@ export class MascotaCL {
       peso: this.peso,
       enfermedad: this.enfermedad,
       foto: this.foto,
-      fechaNacimiento: this.fechaNacimiento
-        ? this.fechaNacimiento.toISOString().split('T')[0]
-        : null,
-      fechaIngreso: this.fechaIngreso
-        ? this.fechaIngreso.toISOString().split('T')[0]
-        : null,
-      fechaSalida: this.fechaSalida
-        ? this.fechaSalida.toISOString().split('T')[0]
-        : null,
+      fechaNacimiento: toDateString(this.fechaNacimiento),
+      fechaIngreso: toDateString(this.fechaIngreso),
+      fechaSalida: toDateString(this.fechaSalida),
       estado: this.estado,
       cliente: this.cliente ? this.cliente.toBackendFormat() : null,
     };
