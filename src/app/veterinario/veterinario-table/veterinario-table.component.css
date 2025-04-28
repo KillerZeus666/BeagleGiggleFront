@@ -1,22 +1,58 @@
+/* Fuente importada de Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Contenedor principal */
 .vets-list-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de borde animado */
+.vets-list-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #1d95db, #23a3ed, #1d95db);
+    z-index: -1;
+    border-radius: 18px;
+    background-size: 400%;
+    opacity: 0;
+    transition: 0.5s;
+    animation: animate 20s linear infinite;
+}
+
+.vets-list-container:hover::before {
+    opacity: 0.3;
+}
+
+@keyframes animate {
+    0% { background-position: 0 0; }
+    50% { background-position: 300% 0; }
+    100% { background-position: 0 0; }
 }
 
 /* Título */
 .vets-list-title {
-    color: #205375;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    color: #1d95db;
+    font-size: 2.2rem;
+    margin: 0 0 2rem 0;
     text-align: center;
     font-weight: 600;
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    letter-spacing: 0.5px;
 }
 
 .vets-list-title::after {
@@ -25,9 +61,9 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
+    width: 120px;
     height: 4px;
-    background-color: #40A8C4;
+    background: linear-gradient(to right, #1d95db, #23a3ed);
     border-radius: 2px;
 }
 
@@ -35,36 +71,42 @@
 .vets-list-actions {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 /* Botón Agregar */
 .vet-add-button {
-    padding: 0.8rem 1.5rem;
-    background-color: #205375;
+    padding: 0.9rem 1.8rem;
+    background: linear-gradient(to right, #1d95db, #23a3ed);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.7rem;
     font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(29, 149, 219, 0.3);
 }
 
 .vet-add-button:hover {
-    background-color: #16405c;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to right, #158bbd, #1d95db);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
+}
+
+.vet-add-button:active {
+    transform: translateY(1px);
 }
 
 /* Tabla */
 .vets-table-wrapper {
     overflow-x: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-top: 1.5rem;
 }
 
 .vets-table {
@@ -72,23 +114,35 @@
     border-collapse: separate;
     border-spacing: 0;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
+    min-width: 900px;
 }
 
 /* Cabecera de tabla */
 .vets-table-header {
-    background-color: #40A8C4;
+    background: linear-gradient(to right, #1d95db, #23a3ed);
 }
 
 .vets-table-header th {
-    padding: 1rem;
+    padding: 1.2rem;
     color: white;
     font-weight: 600;
     text-align: center;
     font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.05rem;
+    position: relative;
+}
+
+.vets-table-header th:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Cuerpo de tabla */
@@ -97,10 +151,11 @@
 }
 
 .vets-table-body td {
-    padding: 1rem;
+    padding: 1.2rem;
     text-align: center;
     border-bottom: 1px solid #f0f4f8;
     vertical-align: middle;
+    font-size: 0.95rem;
 }
 
 .vets-table-body tr:nth-child(even) {
@@ -108,32 +163,38 @@
 }
 
 .vets-table-body tr:hover {
-    background-color: rgba(64, 168, 196, 0.08);
+    background-color: rgba(29, 149, 219, 0.08);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* Celdas específicas */
 .vet-photo-cell {
-    width: 70px;
+    width: 80px;
 }
 
 .vet-photo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #e0f2fe;
-    transition: transform 0.3s ease;
+    border: 3px solid #e0f2fe;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .vet-photo:hover {
     transform: scale(1.1);
+    border-color: #1d95db;
 }
 
 .vet-status span {
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
+    display: inline-block;
+    min-width: 80px;
 }
 
 .vet-status .active {
@@ -150,110 +211,164 @@
 .vet-details-button,
 .vet-edit-button,
 .vet-delete-button {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.85rem;
-    margin: 0.2rem;
+    font-size: 0.9rem;
+    margin: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .vet-details-button {
-    background-color: #40A8C4;
+    background: linear-gradient(to right, #4a6cf7, #8a63ff);
     color: white;
 }
 
 .vet-edit-button {
-    background-color: #205375;
+    background: linear-gradient(to right, #1d95db, #23a3ed);
     color: white;
 }
 
 .vet-delete-button {
-    background-color: #ef4444;
+    background: linear-gradient(to right, #ef4444, #f87171);
     color: white;
 }
 
 .vet-details-button:hover {
-    background-color: #3a96af;
     transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(74, 108, 247, 0.3);
 }
 
 .vet-edit-button:hover {
-    background-color: #16405c;
     transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(29, 149, 219, 0.3);
 }
 
 .vet-delete-button:hover {
-    background-color: #dc2626;
     transform: translateY(-2px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+    .vets-list-container {
+        padding: 2rem;
+    }
+}
+
 @media (max-width: 992px) {
     .vets-list-container {
-        padding: 1.5rem;
+        padding: 1.8rem;
+        margin: 1.5rem;
+    }
+
+    .vets-list-title {
+        font-size: 2rem;
+        margin-bottom: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
+    .vets-list-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
     .vets-list-title {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
     }
-    
-    .vets-table-header th {
-        padding: 0.8rem;
-        font-size: 0.85rem;
+
+    .vets-list-title::after {
+        width: 100px;
     }
-    
-    .vets-table-body td {
-        padding: 0.8rem;
-    }
-    
+
     .vet-add-button {
-        padding: 0.7rem 1.2rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .vets-table-header th {
+        padding: 1rem;
         font-size: 0.9rem;
     }
-    
-    .vet-details-button,
-    .vet-edit-button,
-    .vet-delete-button {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+
+    .vets-table-body td {
+        padding: 1rem;
     }
 }
 
 @media (max-width: 576px) {
     .vets-list-container {
-        padding: 1rem;
+        padding: 1.2rem;
+        margin: 0.8rem;
+        border-radius: 12px;
     }
-    
+
     .vets-list-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.6rem;
     }
-    
+
+    .vets-list-title::after {
+        width: 80px;
+        height: 3px;
+    }
+
     .vets-list-actions {
         justify-content: center;
+        margin-bottom: 1.5rem;
     }
-    
+
     .vet-add-button {
         width: 100%;
         justify-content: center;
     }
-    
+
+    .vets-table-header th {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .vets-table-body td {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .vet-photo {
+        width: 50px;
+        height: 50px;
+    }
+
     .vet-actions-cell {
         display: flex;
         flex-direction: column;
+        gap: 0.5rem;
     }
-    
+
     .vet-details-button,
     .vet-edit-button,
     .vet-delete-button {
         width: 100%;
-        margin: 0.2rem 0;
+        margin: 0.1rem 0;
+        padding: 0.5rem;
     }
+
+}
+/* Añade esto al final de tu CSS existente */
+.vets-list-container {
+  margin-bottom: 4rem; /* Aumenta el margen inferior para evitar que el footer tape el contenido */
+}
+
+.vets-list-title {
+  margin-top: 1.5rem; /* Añade un margen superior adicional al título */
 }
