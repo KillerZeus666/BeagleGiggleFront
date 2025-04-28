@@ -36,17 +36,22 @@ export class VeterinarioTableComponent implements OnInit {
   }
 
   eliminarVeterinario(id: number): void {
-    if (confirm('¿Está seguro de eliminar este veterinario?')) {
-      this.veterinarioService.eliminarVeterinario(id).subscribe({
-        next: () => {
-          this.cargarVeterinarios();
+    if (confirm('¿Está seguro de desactivar este veterinario?')) {
+      this.veterinarioService.cambiarEstadoVeterinario(id).subscribe({
+        next: (response: any) => {
+          console.log('Respuesta del servidor:', response);
+          if (response) {
+            alert(response);  // Muestra la respuesta del servidor
+            this.cargarVeterinarios();  // Recarga la lista de veterinarios
+          }
         },
         error: (err) => {
-          console.error('Error al eliminar el veterinario', err);
+          console.error('Error al cambiar el estado del veterinario', err);
         }
       });
     }
   }
+  
 
   abrirFormularioAgregarVeterinario(): void {
     this.router.navigate(['/crear-veterinario']);

@@ -38,9 +38,9 @@ export class VeterinarioService {
     return this.http.put<VeterinarioCL>(`${this.baseUrl}/editar/${id}`, veterinario);
   }
 
-  // Eliminar un veterinario
-  eliminarVeterinario(id: number): Observable<string> {
-    return this.http.delete<string>(`${this.baseUrl}/eliminar/${id}`);
+  cambiarEstadoVeterinario(id: number): Observable<VeterinarioCL> {
+    const url = `${this.baseUrl}/cambiar-estado/${id}`;
+    return this.http.put<VeterinarioCL>(url, null);  
   }
 
   // Validar credenciales de veterinario (login)

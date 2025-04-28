@@ -28,6 +28,7 @@ import { AdminDetailComponent } from './admin/admin-detail/admin-detail.componen
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 import { MascotasAtendidasComponent } from './veterinario/mascotas-atendidas/mascotas-atendidas.component';
 import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tratamiento-detail.component';
+import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
 
 
 
@@ -52,7 +53,6 @@ const routes: Routes = [
   {path: 'citas-veterinario/:id', component:VerCitasVeterinarioComponent},
   {path: 'veterinarios', component:VeterinarioTableComponent},
   {path: 'crear-tratamiento', component:TratamientoFormComponent},
-  {path: 'editar-veterinario/:id', component:VeterinarioTableComponent},
   {path: 'inicio-sesion', component: LoginComponent },
   {path: 'tabla', component: AdminTableComponent },
   {path: 'navigation', component: NavegacionComponent },
@@ -65,6 +65,8 @@ const routes: Routes = [
   {path: 'mascotas-atendidas/:id', component:MascotasAtendidasComponent},
   {path: 'tratamiento/veterinario/:id', component: TratamientoTableComponent},
   {path: 'detalles-tratamiento/:id', component:TratamientoDetailComponent},
+  {path: 'crear-veterinario', component:VeterinarioFormComponent},
+  {path: 'editar-veterinario/:id', component:VeterinarioFormComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];
