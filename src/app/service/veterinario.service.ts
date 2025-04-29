@@ -103,4 +103,10 @@ export class VeterinarioService {
   getVeterinariosInactivos(): Observable<VeterinarioCL[]> {
     return this.http.get<VeterinarioCL[]>(`${this.baseUrl}/inactivos`);
   }
+
+  buscarPorNombre(nombre: string): Observable<VeterinarioCL[]> {
+      return this.http.get<VeterinarioCL[]>(`${this.baseUrl}/buscar`, {
+        params: { nombre }
+      });
+    }
 }
