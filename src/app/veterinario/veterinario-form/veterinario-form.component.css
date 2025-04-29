@@ -1,207 +1,199 @@
-/* Contenedor principal del formulario */
+/* ================== FONDO PRINCIPAL UNIFICADO ================== */
 .vet-form-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #f4f8fb;
-    background-image: url('https://static.vecteezy.com/system/resources/previews/014/435/034/non_2x/seamless-dog-pattern-with-paw-prints-cat-foots-texture-pattern-with-doggy-pawprints-dog-texture-hand-drawn-illustration-in-doodle-style-on-white-background-vector.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #1d95db;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Fondo semitransparente */
+/* Efecto de burbujas decorativas */
+.vet-form-container::before,
+.vet-form-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .vet-form-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(244, 248, 251, 0.85);
-    z-index: 1;
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -50px;
 }
 
-/* Tarjeta del formulario */
+.vet-form-container::after {
+  width: 200px;
+  height: 200px;
+  bottom: -30px;
+  right: -30px;
+}
+
+/* ================== TARJETA DE FORMULARIO ================== */
 .vet-form-card {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    max-width: 550px;
-    position: relative;
-    z-index: 2;
-    margin: 30px 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.6s ease-out forwards;
+  transition: all 0.5s ease;
+}
+
+.vet-form-card:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .vet-form-card h1 {
-    color: #205375;
-    font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
-    border-bottom: 3px solid #40A8C4;
-    padding-bottom: 10px;
-    font-weight: 600;
+  margin-bottom: 30px;
+  color: #1d95db;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
 }
 
-/* Formulario */
+.vet-form-card h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  border-radius: 3px;
+}
+
+/* ================== FORMULARIO ================== */
 .vet-form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: center;
 }
 
-/* Grupos de campos */
 .vet-form-group {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  width: 100%;
+  text-align: center;
 }
 
-/* Etiquetas */
 .vet-form-label {
-    font-weight: 600;
-    text-align: left;
-    display: block;
-    font-size: 15px;
-    margin-bottom: 8px;
-    color: #3c5b6f;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #555;
 }
 
-/* Campos de entrada */
 .vet-form-input,
 .vet-form-select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e0e6ed;
-    border-radius: 6px;
-    font-size: 15px;
-    background-color: #fff;
-    color: #3c5b6f;
-    transition: all 0.3s ease;
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.vet-form-select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 1em;
-    cursor: pointer;
+.vet-form-input:focus,
+.vet-form-select:focus {
+  border-color: #1d95db;
+  outline: none;
+  box-shadow: 0 5px 15px rgba(29, 149, 219, 0.2);
+  background-color: #fff;
+  transform: translateY(-2px);
 }
 
-.vet-form-select:focus,
-.vet-form-input:focus {
-    border-color: #40A8C4;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(64, 168, 196, 0.2);
-}
-
-/* Placeholder */
-.vet-form-input::placeholder {
-    color: #a8b6c4;
-    opacity: 1;
-}
-
-/* Botón */
 .vet-form-button {
-    padding: 14px;
-    background-color: #3c5b6f;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-    letter-spacing: 0.5px;
-    width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .vet-form-button:hover {
-    background-color: #40A8C4;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #158bbd, #1d95db);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
 }
 
 .vet-form-button:active {
-    transform: translateY(0);
+  transform: translateY(1px);
 }
 
-/* Estilos para mensajes de error */
-.vet-form-error {
-    color: #e74c3c;
-    font-size: 13px;
-    margin-top: 5px;
-    text-align: left;
-    font-weight: 500;
+/* ================== ANIMACIONES ================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Estilos para campos inválidos */
-.ng-invalid.ng-touched {
-    border-color: #e74c3c !important;
-}
-
-.ng-invalid.ng-touched:focus {
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2) !important;
-}
-
-/* Diseño responsive */
+/* ================== RESPONSIVE ================== */
 @media (max-width: 768px) {
-    .vet-form-card {
-        padding: 30px;
-    }
-    
-    .vet-form-card h1 {
-        font-size: 24px;
-        margin-bottom: 25px;
-    }
-    
-    .vet-form {
-        gap: 20px;
-    }
+  .vet-form-card {
+    padding: 30px;
+  }
+
+  .vet-form-card h1 {
+    font-size: 26px;
+  }
+
+  .vet-form-input,
+  .vet-form-select {
+    padding: 12px;
+  }
+
+  .vet-form-button {
+    padding: 14px;
+  }
 }
 
 @media (max-width: 480px) {
-    .vet-form-container {
-        padding: 15px;
-    }
-    
-    .vet-form-card {
-        padding: 25px 20px;
-        margin: 20px 0;
-    }
-    
-    .vet-form {
-        gap: 18px;
-    }
-    
-    .vet-form-label {
-        font-size: 14px;
-    }
-    
-    .vet-form-input,
-    .vet-form-select {
-        padding: 10px 12px;
-        font-size: 14px;
-    }
-    
-    .vet-form-button {
-        padding: 12px;
-        font-size: 15px;
-    }
+  .vet-form-container {
+    padding: 15px;
+  }
+
+  .vet-form-card {
+    padding: 25px;
+    width: 95%;
+  }
+
+  .vet-form-card h1 {
+    font-size: 24px;
+  }
 }
 
-/* Estilos para autocompletado de navegadores */
+/* ================== INPUT AUTOFILL ================== */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #3c5b6f;
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-    transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #333;
+  -webkit-box-shadow: 0 0 0px 1000px #f9f9f9 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  text-align: center;
 }

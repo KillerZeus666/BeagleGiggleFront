@@ -1,176 +1,186 @@
-/* .page-container: mover hacia la derecha y hacerlo más pequeño */
+/* ================== CONTENEDOR PRINCIPAL ================== */
 .page-container {
-    display: flex;
-    width: 80%; /* Reduce el tamaño a un 80% del ancho de la ventana */
-    flex-direction: column;
-    background:white; /* Gradiente suave */
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    padding-top: 80px;
-    padding-bottom: 60px;
-    position: relative;
-    min-height: 100vh; /* Ocupará toda la altura de la ventana */
-    margin-left:19%; /* Esto empuja el contenedor hacia la derecha */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 270px);
+  margin-left: 270px;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #f0f4f8, #d9e2ec);
+  transition: all 0.4s ease;
+  position: relative;
+  box-sizing: border-box;
 }
 
-/* Pseudo-elemento para la opacidad */
-.page-container::before {
-    content: '';
-    background:white; /* Gradiente suave */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+/* Layout colapsado */
+.main.active + .page-container {
+  margin-left: 80px;
+  width: calc(100% - 80px);
 }
 
-/* Contenedor principal */
+/* ================== CONTENIDO INTERIOR ================== */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-    z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: fadeIn 0.7s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Título */
+/* TÍTULO */
 h1 {
-    color: #205375;
-    font-size: 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-bottom: 4px solid #40A8C4;
-    display: inline-block;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #2b2d42;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-bottom: 3px solid #5cadf4;
+  padding-bottom: 0.5rem;
+  width: fit-content;
 }
 
-/* Contenido: mejor distribución horizontal */
+/* ================== CONTENIDO FLEX ================== */
 .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* Imagen del cliente */
+/* ================== FOTO ================== */
 .img-container {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 4px solid #1d95db;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    background: #126da6;
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #5cadf4;
+  border: 5px solid #1e88e5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
 }
 
 .img-container:hover {
-    transform: scale(1.05); /* Efecto de hover */
+  transform: scale(1.08);
 }
 
 .mascota-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Datos del cliente */
+/* ================== DATOS ================== */
 .datos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
 }
 
-.dato, .btn-detalles {
-    background-color: #1d95db; /* Azul para los ítems */
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 18px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.dato {
+  background: linear-gradient(145deg, #5cadf4, #4098d7);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dato:hover, .btn-detalles:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+.dato:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .label {
-    font-size: 16px;
-    font-weight: bold;
-    color: #F0F8FF;
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #e0f2ff;
 }
 
 .info {
-    font-size: 20px;
-    font-weight: 500;
-    color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
+/* ================== BOTÓN DE DETALLES ================== */
 .btn-detalles {
-    background-color: #205375;
-    color: white;
-    border: none;
+  background: #205375;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-detalles:hover {
-    background-color: #2e86ab;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #2e86ab;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .container {
-        max-width: 90%;
-        padding: 30px;
-    }
+/* ================== RESPONSIVE ================== */
+@media (max-width: 992px) {
+  .content {
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-    .content {
-        flex-direction: column; /* Pila los elementos en pantallas pequeñas */
-        align-items: center;
-    }
+  .img-container {
+    width: 180px;
+    height: 180px;
+  }
 
-    .img-container {
-        width: 160px;
-        height: 160px;
-    }
-
-    .datos {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-        max-width: 100%;
-    }
+  .datos {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
+  .container {
+    padding: 2rem;
+  }
 
-    .img-container {
-        width: 140px;
-        height: 140px;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 
-    .datos {
-        gap: 20px;
-    }
+  .img-container {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .img-container {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* ================== ANIMACIONES ================== */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

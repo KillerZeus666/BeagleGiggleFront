@@ -1,157 +1,269 @@
-/* ================== General Layout ================= */
+/* ================== Variables y Configuración Global ================= */
+:root {
+  --primary-color: #3a5bc7;  /* Azul profesional */
+  --primary-hover: #2e4aac;
+  --secondary-color: #6c757d;  /* Gris para botones secundarios */
+  --danger-color: #e63946;    /* Rojo vibrante */
+  --success-color: #2a9d8f;  /* Verde azulado */
+  --warning-color: #f4a261;  /* Naranja suave */
+  --light-bg: #f1faee;      /* Fondo claro verde muy suave */
+  --sidebar-bg: #1d3557;    /* Azul oscuro para sidebar */
+  --white: #ffffff;
+  --text-color: #2b2d42;
+  --text-light: #8d99ae;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* ================== Estilos Generales ================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================== Sidebar Estilo Dashboard ================= */
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  color: white;
+  padding: 25px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  padding: 0 25px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar-menu li {
+  padding: 12px 25px;
+  transition: var(--transition);
+  border-left: 3px solid transparent;
+}
+
+.sidebar-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--success-color);
+}
+
+.sidebar-menu li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-menu li.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 3px solid var(--success-color);
+}
+
+/* ================== Contenido Principal ================= */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: var(--light-bg);
+}
 
 .container-principal {
-    margin-left: 270px;
-    width: calc(100% - 270px);
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: #5cadf4;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* ================== Botón Agregar ================= */
+.btn-agregar {
+  background-color: var(--success-color);
+  color: white;
+  padding: 12px 25px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 500;
+  margin-bottom: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn-agregar:hover {
+  background-color: #248277;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ================== Tabla de Veterinarios ================= */
+.tabla-container {
+  background-color: #78ceff; /* Cambia aquí el color que quieras */
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.tabla-veterinarios {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-veterinarios thead {
+  background: linear-gradient(135deg, var(--primary-color), #4a6cc7);
+  color: #acacac
+}
+
+.tabla-veterinarios th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.tabla-veterinarios td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #edf2f4;
+  background-color: var(--white);
+}
+
+.tabla-veterinarios tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+.tabla-veterinarios tr:hover td {
+  background-color: #f1f5f9;
+}
+
+/* Estilos para columnas específicas */
+.foto-col img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nombre-col {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.especialidad-col {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* Estados */
+.estado-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.estado-activo {
+  background-color: rgba(42, 157, 143, 0.15);
+  color: var(--success-color);
+}
+
+.estado-inactivo {
+  background-color: rgba(230, 57, 70, 0.15);
+  color: var(--danger-color);
+}
+
+/* ================== Botones de Acción ================= */
+.acciones-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-accion {
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
+
+.btn-detalles {
+  background-color: #457b9d;
+  color: white;
+}
+
+.btn-editar {
+  background-color: var(--warning-color);
+  color: var(--text-color);
+}
+
+.btn-desactivar {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-accion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ================== Responsive ================= */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 220px;
+    padding: 20px 0;
+  }
+
+  .main-content {
     padding: 20px;
-    font-family: 'Arial', sans-serif;
-    max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
   }
 
-  h1 {
-    font-size: 30px;
-    color: #5cadf4;
-    margin-bottom: 20px;
-  }
-
-  .button-container {
-    margin-bottom: 20px;
-    text-align: right; /* Alinea los botones a la derecha */
-  }
-
-  /* Unificando estilo de los botones */
-  .btn-detalles,
-  .btn-editar,
-  .btn-eliminar {
-    background-color: #5cadf4; /* Color suave de fondo */
-    color: white;
-    padding: 10px 20px; /* Tamaño de botón más cómodo */
-    border-radius: 20px; /* Bordes redondeados */
-    text-decoration: none;
-    font-size: 16px; /* Tamaño de fuente cómodo */
-    border: none; /* Elimina el borde */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-    margin-bottom: 10px; /* Espaciado entre los botones */
-    width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
-  }
-
-  .btn-detalles:hover,
-  .btn-editar:hover,
-  .btn-eliminar:hover,
-  .btn-agregar:hover {
-    background-color: #4f96e8; /* Color de fondo más oscuro en hover */
-    transform: scale(1.05); /* Efecto de aumento suave */
-  }
-
-  .btn-eliminar {
-    background-color: #f44336; /* Rojo para eliminar */
-  }
-
-  .btn-eliminar:hover {
-    background-color: #d32f2f; /* Rojo más oscuro cuando se pasa el ratón */
-  }
-
-  .tabla-container {
-    background: var(--white);
-    padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+  .sidebar {
     width: 100%;
+    position: static;
+  }
+
+  .tabla-veterinarios {
+    display: block;
     overflow-x: auto;
   }
 
-  .tabla {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .tabla th,
-  .tabla td {
-    padding: 10px;
-    text-align: left;
-  }
-
-  .tabla th {
-    font-weight: 600;
-    color: #333;
-  }
-
-  .tabla tr {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .tabla tr:last-child {
-    border-bottom: none;
-  }
-
-  .tabla tr:hover {
-    background-color: #e3f2fd;
-  }
-
-  .tabla td img.foto-tabla {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #1e88e5;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .cliente-nombre {
-    font-weight: bold;
-    color: #333;
-  }
-
-  .cliente-cedula,
-  .cliente-celular,
-  .cliente-correo {
-    color: #555;
-  }
-
-  .acciones-cliente {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: center;
+  .acciones-cell {
     flex-wrap: wrap;
   }
-
-  .btn-agregar {
-    padding: 8px 16px; /* Un poco más de padding para hacerlo ligeramente más grande */
-    font-size: 14px; /* Un tamaño de fuente intermedio */
-    border-radius: 15px; /* Redondea los bordes */
-    background-color: #5cadf4; /* Color de fondo */
-    color: white; /* Color del texto */
-    text-decoration: none; /* Elimina el subrayado */
-    display: inline-block; /* Hace que el botón sea un bloque en línea */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
-  }
-
-  .btn-agregar:hover {
-    background-color: #4a8fc4; /* Color al pasar el ratón */
-    transform: scale(1.1); /* Agranda ligeramente el botón */
-  }
+}
 
 
-  @media (max-width: 768px) {
-    .tabla td {
-      padding: 8px;
-    }
 
-    .acciones-cliente {
-      gap: 8px;
-    }
-
-    .btn-detalles,
-    .btn-editar,
-    .btn-eliminar,
-    .btn-agregar {
-      width: 100%;
-      margin-bottom: 8px;
-    }
-  }

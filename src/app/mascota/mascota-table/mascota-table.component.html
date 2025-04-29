@@ -61,7 +61,7 @@
             <td>{{ mascota.cliente?.nombre }}</td>
             <td>
               <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota)">Detalles</button>
-              <button *ngIf="esAdmin()" class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">Editar</button>
+              <button  class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">Editar</button>
               <button *ngIf="esAdmin()" class="btn-eliminar" (click)="eliminarMascota(mascota)">Eliminar</button>
             </td>
           </tr>

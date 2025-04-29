@@ -1,3 +1,4 @@
+/* ================== ESTRUCTURA PRINCIPAL ================== */
 .main {
   position: absolute;
   top: 0;
@@ -5,8 +6,9 @@
   width: calc(100% - 300px);
   min-height: 100vh;
   background: #f8f9fa;
-  transition: 0.5s;
+  transition: all 0.5s ease;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .main.active {
@@ -14,13 +16,15 @@
   width: calc(100% - 80px);
 }
 
-/* TOPBAR */
+/* ================== TOPBAR ================== */
 .topbar {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .toggle {
@@ -33,36 +37,50 @@
   align-items: center;
   cursor: pointer;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
-  font-size: 30px;
+  font-size: 24px;
   color: white;
+  transition: all 0.3s ease;
 }
 
-/* CONTENIDO */
+.toggle:hover {
+  transform: scale(1.05);
+}
+
+/* ================== CONTENIDO PRINCIPAL ================== */
 .container-principal {
   width: 100%;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
   color: #5cadf4;
   margin-bottom: 20px;
+  font-size: 2rem;
+  transition: all 0.3s ease;
 }
 
+/* ================== BUSCADOR ================== */
 .buscador {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .input-busqueda {
-  width: 50%;
+  flex: 1;
+  min-width: 200px;
+  max-width: 600px;
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .btn-buscar {
@@ -73,11 +91,20 @@ h1 {
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
+.btn-buscar:hover {
+  transform: scale(1.03);
+}
+
+/* ================== BOTONES ================== */
 .button-container {
   text-align: center;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-agregar {
@@ -88,25 +115,34 @@ h1 {
   border: none;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-/* TABLA */
+.btn-agregar:hover {
+  transform: scale(1.05);
+}
+
+/* ================== TABLA ================== */
 .tabla-container {
   overflow-x: auto;
   background: white;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  max-width: 100%;
 }
 
 .tabla {
   width: 100%;
+  min-width: 800px;
   border-collapse: collapse;
 }
 
 .tabla th, .tabla td {
   padding: 12px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .tabla thead {
@@ -114,6 +150,16 @@ h1 {
   color: white;
   text-transform: uppercase;
   font-size: 14px;
+  position: sticky;
+  top: 0;
+}
+
+.tabla tr {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.tabla tr:last-child {
+  border-bottom: none;
 }
 
 .tabla tr:hover {
@@ -125,17 +171,31 @@ h1 {
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid #1e88e5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-/* Botones de Acciones */
-.btn-detalles, .btn-editar, .btn-eliminar {
+/* ================== BOTONES DE ACCIONES ================== */
+.acciones-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-detalles,
+.btn-editar,
+.btn-eliminar {
   margin: 2px 0;
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: 15px;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   border: none;
   color: white;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .btn-detalles {
@@ -150,44 +210,181 @@ h1 {
   background: #e53935;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
+.btn-detalles:hover,
+.btn-editar:hover,
+.btn-eliminar:hover {
+  transform: scale(1.05);
+}
+
+/* ================== RESPONSIVE BREAKPOINTS ================== */
+
+/* Pantallas grandes (1200px - 992px) */
+@media (max-width: 1200px) {
+  .main {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+
+  .main.active {
+    left: 80px;
+    width: calc(100% - 80px);
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .tabla th, .tabla td {
+    padding: 10px;
+  }
+
+  .foto-tabla {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Tabletas horizontales (992px - 768px) */
+@media (max-width: 992px) {
   .main {
     left: 80px;
     width: calc(100% - 80px);
   }
+
+  .main.active {
+    left: 0;
+    width: 100%;
+  }
+
+  .input-busqueda {
+    max-width: 400px;
+  }
+
+  .btn-agregar {
+    padding: 8px 20px;
+    font-size: 15px;
+  }
+
+  .tabla-container {
+    padding: 15px;
+  }
 }
 
+/* Tabletas verticales (768px - 576px) */
 @media (max-width: 768px) {
+  .main {
+    position: relative;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .main.active {
+    left: 0;
+    width: 100%;
+  }
+
+  .topbar {
+    justify-content: center;
+  }
+
   .input-busqueda {
-    width: 70%;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tabla {
+    min-width: 700px;
+  }
+
+  .tabla th, .tabla td {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .btn-detalles,
+  .btn-editar,
+  .btn-eliminar {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .foto-tabla {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Móviles grandes (576px - 480px) */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .button-container {
+    width: 100%;
+  }
+
+  .btn-agregar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .buscador {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .btn-buscar {
-    width: auto;
+    width: 100%;
   }
 
   .tabla-container {
     padding: 10px;
   }
 
-  .tabla th, .tabla td {
-    padding: 8px;
+  .acciones-container {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
+/* Móviles pequeños (menos de 480px) */
 @media (max-width: 480px) {
-  .input-busqueda {
-    width: 100%;
+  h1 {
+    font-size: 1.3rem;
   }
 
-  .button-container {
-    display: flex;
-    justify-content: center;
+  .toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 
-  .btn-agregar {
-    width: 100%;
-    font-size: 14px;
+  .tabla {
+    min-width: 600px;
+  }
+
+  .tabla th, .tabla td {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .foto-tabla {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Ajuste para pantallas muy anchas */
+@media (min-width: 1600px) {
+  .main {
+    left: calc((100% - 1400px)/2 + 300px);
+    width: 1400px;
+  }
+
+  .main.active {
+    left: calc((100% - 1400px)/2 + 80px);
+    width: calc(1400px - 80px);
   }
 }
