@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./cliente-pagina-principal.component.css']
 })
 export class ClientePaginaPrincipalComponent {
-  
-  
 }
