@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitaCL } from 'src/app/model/cita-cl';
 import { CitaService } from 'src/app/service/cita.service';
-
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 @Component({
@@ -12,6 +11,7 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
 })
 export class VerCitasVeterinarioComponent implements OnInit {
   citas: CitaCL[] = [];
+  isSidebarCollapsed = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,53 +21,60 @@ export class VerCitasVeterinarioComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadCitas();
+  }
+
+  loadCitas(): void {
     const idVeterinario = Number(this.route.snapshot.paramMap.get('id'));
+    if (idVeterinario) {
+      this.loadVeterinarioCitas(idVeterinario);
+    } else {
+      this.loadAllCitas();
+    }
+  }
+
+  loadVeterinarioCitas(idVeterinario: number): void {
     this.veterinarioService.obtenerCitasAgendadas(idVeterinario).subscribe({
-      next: (data) => {
-        this.citas = data;
-      },
+      next: (data) => this.citas = data,
       error: (err) => {
-        console.error('Error al obtener las citas', err);
+        console.error('Error al obtener citas del veterinario', err);
+        this.loadAllCitas();
       }
     });
-    this.obtenerCitas();
+  }
+
+  loadAllCitas(): void {
+    this.citaService.obtenerTodasCitas().subscribe({
+      next: (citas) => this.citas = citas,
+      error: (err) => console.error('Error al obtener todas las citas:', err)
+    });
+  }
+
+  toggleSidebar(): void {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 
   mostrarDetallesCita(id: number): void {
     this.router.navigate(['/detalles-cita', id]);
   }
 
-  agendarCita(){
-
+  agendarCita(): void {
+    this.router.navigate(['/agendar-cita']);
   }
 
-  editarCita(){
-
+  editarCita(idCita: number): void {
+    this.router.navigate(['/editar-cita', idCita]);
   }
-  // Método simplificado para cancelar cita
+
   cancelarCita(idCita: number): void {
-    if (confirm('¿Estás seguro de que deseas cancelar esta cita?')) {
+    if (confirm('¿Estás seguro de cancelar esta cita?')) {
       this.citaService.cancelarCita(idCita).subscribe({
-        next: () => {
-          window.location.reload(); // Recarga la página
-        },
+        next: () => this.loadCitas(),
         error: (error) => {
           console.error('Error al cancelar cita:', error);
-          alert('Ocurrió un error al cancelar la cita');
+          alert('Error al cancelar la cita');
         }
       });
     }
   }
-
-  obtenerCitas(): void {
-    this.citaService.obtenerTodasCitas().subscribe({
-      next: (citas) => {
-        this.citas = citas;
-      },
-      error: (err) => {
-        console.error('Error al obtener citas:', err);
-      }
-    });
-  }
 }
-

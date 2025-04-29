@@ -1,45 +1,55 @@
-<app-navegacion></app-navegacion>
+<div class="main-container">
+  <app-navegacion [collapsed]="isSidebarCollapsed"></app-navegacion>
 
-<section class="citas-veterinario">
-  <h2>Citas del Veterinario</h2>
+  <div class="content-container" [class.sidebar-collapsed]="isSidebarCollapsed">
+    <!-- Contenido principal -->
+    <main class="contenido-principal">
+      <section class="container-principal">
+        <h1>Citas del Veterinario</h1>
 
-  <div class="acciones-superiores">
-    <button (click)="agendarCita()" class="btn-agendar">Agendar nueva cita</button>
+        <div class="button-container">
+          <button (click)="agendarCita()" class="btn-agregar">Agendar nueva cita</button>
+        </div>
+
+        <div class="tabla-container">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Mascota</th>
+                <th>Dueño</th>
+                <th>Servicio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cita of citas">
+                <td>{{ cita.fechaHora | date:'medium' }}</td>
+                <td>{{ cita.mascota.nombre }}</td>
+                <td>{{ cita.mascota.cliente?.nombre || 'No especificado' }}</td>
+                <td>{{ cita.servicio?.nombre || 'No especificado' }}</td>
+                <td>
+                  <span class="estado-badge estado-{{ cita.estado.toLowerCase() }}">
+                    {{ cita.estado }}
+                  </span>
+                </td>
+                <td>
+                  <div class="acciones-cliente">
+                    <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Detalles</a>
+                    <a (click)="editarCita(cita.idCita)" class="btn-editar">Editar</a>
+                    <a (click)="cancelarCita(cita.idCita)" class="btn-eliminar">Cancelar</a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr *ngIf="citas.length === 0">
+                <td colspan="6" class="no-citas">No hay citas registradas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
   </div>
-
-  <div class="tabla-container">
-    <table class="tabla-citas">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Mascota</th>
-          <th>Dueño</th>
-          <th>Servicio</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cita of citas">
-          <td>{{ cita.fechaHora | date:'medium' }}</td>
-          <td>{{ cita.mascota.nombre }}</td>
-          <td>{{ cita.mascota.cliente?.nombre || 'No especificado' }}</td>
-          <td>{{ cita.servicio?.nombre || 'No especificado' }}</td>
-          <td>
-            <span class="estado-badge estado-{{cita.estado}}">
-              {{ cita.estado }}
-            </span>
-          </td>
-          <td class="acciones-cita">
-            <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Detalles</a>
-            <a (click)="cancelarCita(cita.idCita)" class="btn-cancelar">Cancelar</a>
-            <a (click)="editarCita()" class="btn-editar">Editar</a>
-          </td>
-        </tr>
-        <tr *ngIf="citas && citas.length === 0">
-          <td colspan="6" class="no-citas">No hay citas registradas</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+</div>

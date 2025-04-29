@@ -1,32 +1,38 @@
 <app-navegacion> </app-navegacion>
-<main class="vets-list-container">
+<div class="layout">
+  <app-navegacion></app-navegacion>
+  <main class="main-content">
+    <router-outlet></router-outlet> <!-- Aquí cargas veterinario-table y demás componentes -->
+  </main>
+</div>
+<main class="vets-list-container" style="transition: margin-left 0.3s ease;">
   <h1 class="vets-list-title">Lista de Veterinarios</h1>
 
 
 
-    <!-- Buscador de medicamentos 
+    <!-- Buscador de medicamentos
     <div class="buscador">
-      <input 
-        type="text" 
-        [(ngModel)]="nombreVeterinarioBuscar" 
-        placeholder="Buscar veterinario por nombre..." 
+      <input
+        type="text"
+        [(ngModel)]="nombreVeterinarioBuscar"
+        placeholder="Buscar veterinario por nombre..."
         class="input-busqueda"
-        style="padding: 12px; font-size: 18px; border-radius: 25px; border: 1px solid #ddd; width: 80%; outline: none; transition: all 0.3s ease;" 
+        style="padding: 12px; font-size: 18px; border-radius: 25px; border: 1px solid #ddd; width: 80%; outline: none; transition: all 0.3s ease;"
       />
-      <button 
+      <button
         (click)="buscarVeterinario()"
-        class="btn-buscar" 
+        class="btn-buscar"
         style="background-color: #5cadf4; color: white; padding: 8px 18px; border-radius: 20px; font-size: 14px; border: none; cursor: pointer;">
         Buscar
       </button>
     </div>
 
 
-       <!-- Filtro de ordenamiento alineado a la derecha 
+       <!-- Filtro de ordenamiento alineado a la derecha
     <div style="display: flex; justify-content: flex-end; margin: 20px 0;">
-      <select 
-        [(ngModel)]="opcionOrdenamiento" 
-        (change)="ordenarMedicamentos()" 
+      <select
+        [(ngModel)]="opcionOrdenamiento"
+        (change)="ordenarMedicamentos()"
         style="padding: 10px 20px; border-radius: 25px; font-size: 16px; border: 1px solid #ccc; cursor: pointer;">
         <option value="id">Ordenar por ID</option>
         <option value="precioCompraAsc">Precio Compra (Menor a Mayor)</option>

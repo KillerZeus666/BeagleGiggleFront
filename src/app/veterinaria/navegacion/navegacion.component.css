@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 * {
-  font-family: "Ubuntu", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,17 +32,17 @@ body {
   transition: 0.5s;
   overflow: hidden;
 }
+
 .navigation.active {
   width: 80px;
 }
+
 app-navegacion {
-  position: fixed; /* Fija la navegación en la parte superior */
-  top: 0; /* Asegura que esté en la parte superior */
-  left: 0; /* Alinea a la izquierda de la página */
-  z-index: 1000; /* Hace que el componente de navegación esté por encima de otros elementos */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
-
-
 
 .navigation ul {
   position: absolute;
@@ -79,6 +77,7 @@ app-navegacion {
   text-decoration: none;
   color: var(--white);
 }
+
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
   color: var(--blue);
@@ -92,18 +91,33 @@ app-navegacion {
   line-height: 75px;
   text-align: center;
 }
+
 .navigation ul li a .icon ion-icon {
   font-size: 1.75rem;
 }
 
 .navigation ul li a .title {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 0 10px;
   height: 60px;
   line-height: 60px;
   text-align: start;
   white-space: nowrap;
+  color: black;
+}
+
+.navigation ul li a .title img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.navigation ul li a .title span {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* --------- curve outside ---------- */
@@ -120,6 +134,7 @@ app-navegacion {
   box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
+
 .navigation ul li:hover a::after,
 .navigation ul li.hovered a::after {
   content: "";
@@ -143,6 +158,7 @@ app-navegacion {
   background: var(--white);
   transition: 0.5s;
 }
+
 .main.active {
   width: calc(100% - 80px);
   left: 80px;
@@ -155,17 +171,6 @@ app-navegacion {
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-}
-
-.toggle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  cursor: pointer;
 }
 
 .search {
@@ -214,21 +219,44 @@ app-navegacion {
   height: 100%;
   object-fit: cover;
 }
-.navigation ul li a .title {
-    display: flex;
-    align-items: center; /* Alinea verticalmente el texto y la imagen */
-    gap: 8px; /* Espacio entre la imagen y el título */
-    color: black; /* Color del título */
+
+/* =============== Botón hamburguesa mejorado =============== */
+.toggle {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 45px;
+  height: 45px;
+  background: var(--white);
+  color: var(--blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.toggle:hover {
+  background: var(--gray);
+}
+
+.toggle ion-icon {
+  font-size: 28px;
+  color: var(--blue);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .toggle {
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
   }
-  
-  .navigation ul li a .title img {
-    width: 40px; /* Tamaño del logo */
-    height: 40px; /* Tamaño del logo */
-    object-fit: cover; /* Mantiene la imagen proporcional */
+  .toggle ion-icon {
+    font-size: 24px;
   }
-  
-  .navigation ul li a .title span {
-    font-size: 18px; /* Tamaño del texto */
-    font-weight: 500; /* Peso de la fuente para el título */
-  }
-  
+}

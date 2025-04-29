@@ -1,158 +1,207 @@
-/* Estilos para la tabla de citas */
-.tabla-container {
-  margin-top: 1.5rem;
-  overflow-x: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* CONTENEDOR PRINCIPAL GENERAL */
+.container-principal {
+  margin-left: 270px;
+  width: calc(100% - 270px);
+  padding: 20px;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #f8f9fa;
 }
 
-.tabla-citas {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.tabla-citas th {
-  background: linear-gradient(to right, #1d95db, #23a3ed);
-  color: white;
-  padding: 1rem;
-  text-align: left;
-  font-weight: 600;
-}
-
-.tabla-citas td {
-  padding: 1rem;
-  border-bottom: 1px solid #f0f4f8;
-  vertical-align: middle;
-}
-
-.tabla-citas tr:nth-child(even) {
-  background-color: #f9fbfd;
-}
-
-.tabla-citas tr:hover {
-  background-color: rgba(29, 149, 219, 0.08);
-}
-
-/* Estilos para los badges de estado */
-.estado-badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  display: inline-block;
-  min-width: 100px;
+/* TÍTULOS PRINCIPALES */
+h1, h2 {
+  font-size: 30px;
+  color: #5cadf4;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.estado-badge.estado-pendiente {
-  background-color: #fff3cd;
-  color: #856404;
+/* CONTENEDOR DE BOTONES SUPERIOR */
+.button-container {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.estado-badge.estado-confirmada {
-  background-color: #d4edda;
-  color: #155724;
+/* BOTÓN SUPERIOR (AGREGAR NUEVO) */
+.btn-agregar {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 16px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.estado-badge.estado-completada {
-  background-color: #d1ecf1;
-  color: #0c5460;
+.btn-agregar:hover {
+  transform: scale(1.05);
+  background-position: bottom;
 }
 
-.estado-badge.estado-cancelada {
-  background-color: #f8d7da;
-  color: #721c24;
+/* CONTENEDOR TABLA */
+.tabla-container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  overflow-x: auto;
 }
 
-/* Estilos para los botones de acción */
-.acciones-cita {
+/* TABLAS */
+.tabla {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+.tabla thead {
+  background: #29b6f6;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  border-radius: 15px 15px 0 0;
+}
+
+.tabla th {
+  font-weight: 600;
+  padding: 12px;
+  text-align: center;
+}
+
+.tabla td {
+  padding: 12px;
+  text-align: center;
+  color: #333;
+}
+
+.tabla td img.foto-tabla {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #1e88e5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* FILAS */
+.tabla tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tabla tr:last-child {
+  border-bottom: none;
+}
+
+.tabla tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* BOTONES ACCIONES (DETALLES / EDITAR / ELIMINAR) */
+.acciones-cliente {
   display: flex;
-  gap: 0.5rem;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .btn-detalles,
-.btn-cancelar,
-.btn-editar {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.btn-detalles {
-  background-color: #4a6cf7;
-  color: white;
-}
-
-.btn-detalles:hover {
-  background-color: #3a5ce4;
-  transform: translateY(-2px);
-}
-
-.btn-cancelar {
-  background-color: #ef4444;
-  color: white;
-}
-
-.btn-cancelar:hover {
-  background-color: #dc2626;
-  transform: translateY(-2px);
-}
-
-.btn-editar {
-  background-color: #10b981;
-  color: white;
-}
-
-.btn-editar:hover {
-  background-color: #0d9f6e;
-  transform: translateY(-2px);
-}
-
-/* Mensaje cuando no hay citas */
-.no-citas {
+.btn-editar,
+.btn-eliminar {
   text-align: center;
-  padding: 2rem;
-  color: #666;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  width: auto;
 }
 
-/* Responsive */
+/* COLORES ACCIONES */
+.btn-detalles {
+  background: #03a9f4;
+}
+
+.btn-editar {
+  background: #8e24aa;
+}
+
+.btn-eliminar {
+  background: #e53935;
+}
+
+/* EFECTOS HOVER EN BOTONES */
+.btn-detalles:hover,
+.btn-editar:hover,
+.btn-eliminar:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .tabla-citas {
-    display: block;
+  .container-principal {
+    padding: 15px;
   }
 
-  .tabla-citas thead {
-    display: none;
+  .tabla-container {
+    padding: 10px;
   }
 
-  .tabla-citas tr {
-    display: block;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ddd;
+  .tabla {
+    min-width: 600px;
   }
 
-  .tabla-citas td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid #eee;
+  .tabla th, .tabla td {
+    padding: 8px;
+    font-size: 14px;
+    white-space: nowrap;
   }
 
-  .tabla-citas td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-right: 1rem;
+  .acciones-cliente {
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .acciones-cita {
-    justify-content: flex-end;
+  .btn-detalles,
+  .btn-editar,
+  .btn-eliminar,
+  .btn-agregar {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 24px;
+  }
+
+  .btn-agregar {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+/* CONTENIDO PRINCIPAL (Sidebar dinámico) */
+.contenido-principal {
+  margin-left: 250px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.contenido-principal.sidebar-collapsed {
+  margin-left: 80px;
+}
+
+@media (max-width: 768px) {
+  .contenido-principal,
+  .contenido-principal.sidebar-collapsed {
+    margin-left: 0;
+    padding: 1rem;
   }
 }

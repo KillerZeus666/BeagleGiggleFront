@@ -53,8 +53,8 @@ export class VeterinarioTableComponent implements OnInit {
       });
     }
   }
-  
-  
+
+
 
   abrirFormularioAgregarVeterinario(): void {
     this.router.navigate(['/crear-veterinario']);
@@ -79,7 +79,4 @@ export class VeterinarioTableComponent implements OnInit {
         });
       }
     }
-
-
-
 }

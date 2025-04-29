@@ -9,18 +9,18 @@
     margin-right: auto;
     margin-left: auto;
   }
-  
+
   h1 {
     font-size: 30px;
     color: #5cadf4;
     margin-bottom: 20px;
   }
-  
+
   .button-container {
     margin-bottom: 20px;
     text-align: right; /* Alinea los botones a la derecha */
   }
-  
+
   /* Unificando estilo de los botones */
   .btn-detalles,
   .btn-editar,
@@ -37,7 +37,7 @@
     margin-bottom: 10px; /* Espaciado entre los botones */
     width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
   }
-  
+
   .btn-detalles:hover,
   .btn-editar:hover,
   .btn-eliminar:hover,
@@ -45,15 +45,15 @@
     background-color: #4f96e8; /* Color de fondo más oscuro en hover */
     transform: scale(1.05); /* Efecto de aumento suave */
   }
-  
+
   .btn-eliminar {
     background-color: #f44336; /* Rojo para eliminar */
   }
-  
+
   .btn-eliminar:hover {
     background-color: #d32f2f; /* Rojo más oscuro cuando se pasa el ratón */
   }
-  
+
   .tabla-container {
     background: var(--white);
     padding: 20px;
@@ -64,35 +64,35 @@
     width: 100%;
     overflow-x: auto;
   }
-  
+
   .tabla {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   .tabla th,
   .tabla td {
     padding: 10px;
     text-align: left;
   }
-  
+
   .tabla th {
     font-weight: 600;
     color: #333;
   }
-  
+
   .tabla tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   .tabla tr:last-child {
     border-bottom: none;
   }
-  
+
   .tabla tr:hover {
     background-color: #e3f2fd;
   }
-  
+
   .tabla td img.foto-tabla {
     width: 40px;
     height: 40px;
@@ -101,18 +101,18 @@
     border: 2px solid #1e88e5;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
-  
+
   .cliente-nombre {
     font-weight: bold;
     color: #333;
   }
-  
+
   .cliente-cedula,
   .cliente-celular,
   .cliente-correo {
     color: #555;
   }
-  
+
   .acciones-cliente {
     display: flex;
     gap: 10px;
@@ -120,7 +120,7 @@
     align-items: center;
     flex-wrap: wrap;
   }
-  
+
   .btn-agregar {
     padding: 8px 16px; /* Un poco más de padding para hacerlo ligeramente más grande */
     font-size: 14px; /* Un tamaño de fuente intermedio */
@@ -131,22 +131,22 @@
     display: inline-block; /* Hace que el botón sea un bloque en línea */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
   }
-  
+
   .btn-agregar:hover {
     background-color: #4a8fc4; /* Color al pasar el ratón */
     transform: scale(1.1); /* Agranda ligeramente el botón */
   }
-  
-  
+
+
   @media (max-width: 768px) {
     .tabla td {
       padding: 8px;
     }
-  
+
     .acciones-cliente {
       gap: 8px;
     }
-  
+
     .btn-detalles,
     .btn-editar,
     .btn-eliminar,
@@ -155,4 +155,3 @@
       margin-bottom: 8px;
     }
   }
-  

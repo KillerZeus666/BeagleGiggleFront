@@ -1,118 +1,102 @@
-/* ================== General Layout ================= */
-
-.container-principal {
-  margin-left: 100px; /* Reducido para no quedar tan alejado de la barra de navegación */
-  width: calc(100% - 230px); /* Ajusta el ancho del contenido para que no se sobreponga con la navegación */
-  padding: 10px;
-  font-family: 'Arial', sans-serif;
-  max-width: 1200px; /* Limitar el ancho máximo para evitar que se estire demasiado */
-  margin-right: auto;
-  margin-left: auto;
+.main {
+  position: absolute;
+  top: 0;
+  left: 300px; /* cuando navigation es grande */
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  background: #f8f9fa;
+  transition: 0.5s;
+  padding: 20px;
 }
 
-h1 {
-  font-size: 30px;
-  color: #5cadf4;
-  margin-bottom: 20px;
+.main.active {
+  left: 80px;
+  width: calc(100% - 80px);
 }
 
-.contenedor-boton {
-  margin-bottom: 20px;
-  text-align: right; /* Alinea los botones a la derecha */
-}
-
-.btn-detalles,
-.btn-editar,
-.btn-eliminar,
-.btn-agregar {
-  background-color: #5cadf4; /* Color suave de fondo */
-  color: white;
-  padding: 8px 16px; /* Tamaño más pequeño pero cómodo */
-  border-radius: 20px; /* Bordes redondeados */
-  text-decoration: none;
-  font-size: 14px; /* Tamaño de fuente más pequeño */
-  border: none; /* Elimina el borde */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-block; /* Asegura que los botones sean del mismo tamaño */
-  margin-bottom: 10px; /* Espaciado entre los botones */
-  width: 100%; /* Asegura que todos los botones tengan el mismo tamaño */
-}
-
-.btn-detalles:hover,
-.btn-editar:hover,
-.btn-eliminar:hover,
-.btn-agregar:hover {
-  background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
-  transform: scale(1.05); /* Efecto de aumento suave */
-}
-
-.btn-eliminar {
-  background-color: #f44336; /* Rojo para eliminar */
-}
-
-.btn-eliminar:hover {
-  background-color: #d32f2f; /* Rojo más oscuro cuando se pasa el ratón */
-}
-
-/* ================== Search ================= */
-
-.buscador {
+/* TOPBAR */
+.topbar {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.input-busqueda {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 25px;  /* Bordes redondeados */
-  border: 1px solid #ddd;
-  width: 70%;
-  outline: none; /* Elimina el borde al hacer focus */
-  transition: all 0.3s ease; /* Transición para los cambios de estilo */
+.toggle {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+  font-size: 30px;
+  color: white;
 }
 
-.input-busqueda:focus {
-  border-color: #5cadf4; /* Cambiar el borde cuando se hace focus */
+/* CONTENIDO */
+.container-principal {
+  width: 100%;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #5cadf4;
+  margin-bottom: 20px;
+}
+
+.buscador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.input-busqueda {
+  width: 50%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+.btn-buscar {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .button-container {
+  text-align: center;
   margin-bottom: 20px;
-  text-align: right; /* Alinea los botones a la derecha */
 }
 
 .btn-agregar {
-  padding: 8px 14px; /* Aumenta el padding para hacerlo ligeramente más grande */
-  font-size: 14px; /* Tamaño de fuente un poco mayor */
-  border-radius: 15px; /* Bordes ligeramente redondeados */
-  background-color: #5cadf4; /* Color de fondo */
-  color: white; /* Color del texto */
-  text-decoration: none; /* Elimina el subrayado */
-  display: inline-block; /* Hace que el botón sea un bloque en línea */
-  width: auto; /* Hace que el botón se ajuste a su contenido */
-  max-width: 180px; /* Máximo ancho aumentado */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
-}
-
-.btn-agregar:hover {
-  background-color: #4a8fc4; /* Color al pasar el ratón */
-  transform: scale(1.05); /* Agranda ligeramente el botón */
-}
-
-
-
-/* ================== Table Layout ================= */
-
-.tabla-container {
-  background: var(--white);
-  padding: 20px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  padding: 10px 30px;
   border-radius: 20px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  width: 110%;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* TABLA */
+.tabla-container {
   overflow-x: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
 }
 
 .tabla {
@@ -120,154 +104,90 @@ h1 {
   border-collapse: collapse;
 }
 
-.tabla th,
-.tabla td {
-  padding: 12px;  /* Aumenta el padding para dar más espacio */
-  text-align: left;
+.tabla th, .tabla td {
+  padding: 12px;
+  text-align: center;
 }
 
-.tabla th {
-  font-weight: 600;
-  color: #333;
-}
-
-.tabla tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.tabla tr:last-child {
-  border-bottom: none;
+.tabla thead {
+  background-color: #29b6f6;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .tabla tr:hover {
-  background-color: #e3f2fd;
+  background: #f1f1f1;
 }
 
-/* ================== Table Cells ================= */
-
-.tabla td img.foto-tabla {
-  width: 50px;  /* Aumenta el tamaño de la imagen */
+.foto-tabla {
+  width: 50px;
   height: 50px;
-  object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #1e88e5;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
 }
 
-.cliente-nombre {
-  font-weight: bold;
-  color: #333;
+/* Botones de Acciones */
+.btn-detalles, .btn-editar, .btn-eliminar {
+  margin: 2px 0;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  color: white;
 }
 
-.cliente-cedula,
-.cliente-celular,
-.cliente-correo {
-  color: #555;
+.btn-detalles {
+  background: #03a9f4;
 }
 
-.acciones-cliente {
-  display: flex;
-  gap: 12px; /* Aumenta el espacio entre los botones */
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
+.btn-editar {
+  background: #8e24aa;
 }
 
-.activo, .inactivo {
-  display: inline-block;
-  width: 80px;          /* Ancho del círculo */
-  height: 80px;         /* Alto igual para que sea círculo */
-  line-height: 80px;    /* Centrar el texto verticalmente */
-  text-align: center;   /* Centrar el texto horizontalmente */
-  border-radius: 50%;   /* Esto crea el círculo */
-  font-weight: bold;
-  font-size: 14px;
+.btn-eliminar {
+  background: #e53935;
 }
 
-.activo, .inactivo {
-  display: inline-block;
-  padding: 5px 15px;        /* Espaciado interno: arriba/abajo 5px, derecha/izquierda 15px */
-  text-align: center;       
-  border-radius: 20px;      /* Bordes redondeados para hacer forma de óvalo */
-  font-weight: bold;
-  font-size: 14px;
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .main {
+    left: 80px;
+    width: calc(100% - 80px);
+  }
 }
-
-.activo, .inactivo {
-  display: inline-block;
-  padding: 5px 20px;       /* Más ancho que alto */
-  text-align: center;
-  border-radius: 999px;    /* ¡Este truco hace forma de óvalo! */
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.vet-status span {
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  display: inline-block;
-  min-width: 80px;
-}
-
-.vet-status .active {
-  background-color: #e6f7ee; /* Fondo verde claro */
-  color: #10b981; /* Verde oscuro */
-}
-
-.vet-status .inactive {
-  background-color: #fee2e2; /* Fondo rojo claro */
-  color: #ef4444; /* Rojo oscuro */
-}
-
-/* ================== Responsive Design ================= */
 
 @media (max-width: 768px) {
-  .tabla td {
-    padding: 10px; /* Aumenta el padding para los dispositivos móviles */
-  }
-
-  .acciones-cliente {
-    justify-content: center;
-    gap: 12px; /* Aumenta el espacio entre botones en pantallas pequeñas */
-  }
-
-  
-  .btn-editar,
-  .btn-eliminar,
-  .btn-agregar {
-    width: 100%; /* Botones de ancho completo en pantallas pequeñas */
-    margin-bottom: 8px; /* Margen entre botones */
-  }
-
   .input-busqueda {
-    width: 60%; /* Reducir el tamaño del campo de búsqueda en pantallas pequeñas */
+    width: 70%;
   }
 
-/* ================== Estilo del botón de Buscar ================= */
-.btn-buscar {
-  width: 120px;  /* Ajusta este valor según el tamaño que desees */
-  height: 40px;  /* Ajusta el alto según lo que necesites */
+  .btn-buscar {
+    width: auto;
+  }
+
+  .tabla-container {
+    padding: 10px;
+  }
+
+  .tabla th, .tabla td {
+    padding: 8px;
+  }
 }
 
-.btn-buscar {
-  background-color: #5cadf4 !important;
-  color: white !important;
-  padding: 5px 12px !important;
-  border-radius: 20px !important;
-  font-size: 12px !important;
-  border: none !important;
-  transition: background-color 0.3s ease, transform 0.2s ease !important;
-  width: auto !important;
-  cursor: pointer !important;
-}
+@media (max-width: 480px) {
+  .input-busqueda {
+    width: 100%;
+  }
 
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
 
-.btn-buscar:hover {
-  background-color: #4f96e8; /* Color de fondo un poco más oscuro en hover */
-  transform: scale(1.05); /* Efecto de aumento suave */
-}
-
-
+  .btn-agregar {
+    width: 100%;
+    font-size: 14px;
+  }
 }
