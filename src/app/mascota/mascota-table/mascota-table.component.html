@@ -90,13 +90,17 @@
               <td>{{ mascota.fechaNacimiento ? (mascota.fechaNacimiento | date:'yyyy/MM/dd') : '-' }}</td>
               <td>{{ mascota.fechaIngreso ? (mascota.fechaIngreso | date:'yyyy/MM/dd') : '-' }}</td>
               <td>{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : '-' }}</td>
-              <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
-              <td>{{ mascota.cliente?.nombre }}</td>
+              <td>
+                <span class="vet-status {{ mascota.estado === 1 ? 'active' : 'inactive' }}">
+                  {{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}
+                </span>
+              </td>
+                            <td>{{ mascota.cliente?.nombre }}</td>
               <td class="action-buttons">
                 <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota); $event.stopPropagation()">Ver Detalles</button>
-                <button *ngIf="esAdmin()" class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">Editar</button>
-                <button *ngIf="esAdmin()" class="btn-eliminar" (click)="eliminarMascota(mascota)">Eliminar</button>
-              </td>
+                <button class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota); $event.stopPropagation()">Editar</button>
+                <button *ngIf="esAdmin()" class="btn-eliminar" (click)="eliminarMascota(mascota); $event.stopPropagation()">{{ mascota.estado === 1 ? 'Desactivar' : 'Activar' }}</button>
+              </td>              
             </tr>
           </tbody>
         </table>

@@ -43,4 +43,13 @@ export class MascotasTratamientoComponent {
       }
     });
   }
+
+  verTratamiento(id: number) {
+    console.log('ID de mascota:', id); // Verifica qué valor se está recibiendo
+    if (id && !isNaN(id)) {
+      this.router.navigate(['tratamiento/mascota', id]);
+    } else {
+      console.error('ID de mascota no válido:', id);
+    }
+  }
 }

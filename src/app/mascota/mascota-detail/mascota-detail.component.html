@@ -55,7 +55,9 @@
         </div>
         <div class="data-item">
           <span class="data-label">Nombre Cliente: </span>
-          <span class="data-value">{{ mascota.cliente?.nombre }}</span>
+          <span class="data-value" (click)="mostrarCliente($event, mascota.cliente?.idCliente!)">
+            {{ mascota.cliente?.nombre }}
+          </span>
         </div>
       </div>
     </ng-container>

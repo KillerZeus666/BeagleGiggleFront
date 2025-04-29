@@ -100,8 +100,11 @@ export class TratamientoService {
       })))
     );
   }
-
   getTratamientosPorVeterinario(idVeterinario: number): Observable<TratamientoCL[]>  {
     return this.http.get<TratamientoCL[]>(`${this.baseUrl}/veterinario/${idVeterinario}`);
+  }
+
+  getTratamientosPorMascota(idMascota: number): Observable<TratamientoCL[]> {
+    return this.http.get<TratamientoCL[]>(`${this.baseUrl}/por-mascota/${idMascota}`);
   }
 }

@@ -173,9 +173,53 @@ h1 {
   flex-wrap: wrap;
 }
 
+.activo, .inactivo {
+  display: inline-block;
+  width: 80px;          /* Ancho del círculo */
+  height: 80px;         /* Alto igual para que sea círculo */
+  line-height: 80px;    /* Centrar el texto verticalmente */
+  text-align: center;   /* Centrar el texto horizontalmente */
+  border-radius: 50%;   /* Esto crea el círculo */
+  font-weight: bold;
+  font-size: 14px;
+}
 
+.activo, .inactivo {
+  display: inline-block;
+  padding: 5px 15px;        /* Espaciado interno: arriba/abajo 5px, derecha/izquierda 15px */
+  text-align: center;       
+  border-radius: 20px;      /* Bordes redondeados para hacer forma de óvalo */
+  font-weight: bold;
+  font-size: 14px;
+}
 
+.activo, .inactivo {
+  display: inline-block;
+  padding: 5px 20px;       /* Más ancho que alto */
+  text-align: center;
+  border-radius: 999px;    /* ¡Este truco hace forma de óvalo! */
+  font-weight: bold;
+  font-size: 14px;
+}
 
+.vet-status span {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 80px;
+}
+
+.vet-status .active {
+  background-color: #e6f7ee; /* Fondo verde claro */
+  color: #10b981; /* Verde oscuro */
+}
+
+.vet-status .inactive {
+  background-color: #fee2e2; /* Fondo rojo claro */
+  color: #ef4444; /* Rojo oscuro */
+}
 
 /* ================== Responsive Design ================= */
 

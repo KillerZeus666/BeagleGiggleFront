@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class VeterinarioTableComponent implements OnInit {
   veterinarioList: VeterinarioCL[] = [];
+  nombreVeterinarioBuscar: string = ''; // Variable para almacenar el nombre del veterinario a buscar
+  veterinarios: VeterinarioCL[] = []; // Variable para almacenar los resultados de la búsqueda
+
 
   constructor(
     private veterinarioService: VeterinarioService,
@@ -41,7 +44,6 @@ export class VeterinarioTableComponent implements OnInit {
         next: (response: any) => {
           console.log('Respuesta del servidor:', response);
           if (response) {
-            alert(response);  // Muestra la respuesta del servidor
             this.cargarVeterinarios();  // Recarga la lista de veterinarios
           }
         },
@@ -52,6 +54,7 @@ export class VeterinarioTableComponent implements OnInit {
     }
   }
   
+  
 
   abrirFormularioAgregarVeterinario(): void {
     this.router.navigate(['/crear-veterinario']);
@@ -60,4 +63,23 @@ export class VeterinarioTableComponent implements OnInit {
   abrirFormularioEditarVeterinario(id: number): void {
     this.router.navigate(['/editar-veterinario', id]);
   }
+
+    buscarVeterinario(): void {
+      const nombre = this.nombreVeterinarioBuscar.trim();
+      if (nombre === '') {
+        this.cargarVeterinarios(); // Si no hay nombre, recarga todos los medicamentos
+      } else {
+        this.veterinarioService.buscarPorNombre(nombre).subscribe({
+          next: (resultados: VeterinarioCL[]) => {
+            this.veterinarios = resultados;
+          },
+          error: (err) => {
+            console.error('Error al buscar medicamentos', err);
+          }
+        });
+      }
+    }
+
+
+
 }

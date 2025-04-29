@@ -198,14 +198,15 @@
 }
 
 .vet-status .active {
-    background-color: #e6f7ee;
-    color: #10b981;
+    background-color: #e6f7ee; /* Fondo verde claro */
+    color: #10b981; /* Verde oscuro */
 }
 
 .vet-status .inactive {
-    background-color: #fee2e2;
-    color: #ef4444;
+    background-color: #fee2e2; /* Fondo rojo claro */
+    color: #ef4444; /* Rojo oscuro */
 }
+
 
 /* Botones de acción */
 .vet-details-button,

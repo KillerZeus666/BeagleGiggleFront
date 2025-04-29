@@ -1,3 +1,5 @@
+<app-navegacion></app-navegacion>
+
 <div class="detail-container">
     <h2 class="detail-title">Mascotas en Tratamiento</h2>
     
@@ -17,7 +19,7 @@
           <div class="pet-data">
             <div class="data-item">
               <span class="data-label">Nombre:</span>
-              <span class="data-value">{{ mascota.nombre }}</span>
+              <span class="data-value">{{ mascota.nombre }} </span>
             </div>
             <div class="data-item">
               <span class="data-label">Raza:</span>
@@ -40,6 +42,9 @@
               <span class="data-value">{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</span>
             </div>
           </div>
+          <button class="tratamiento-button" (click)="verTratamiento(mascota.idMascota)">
+            <i class="fas fa-pills"></i> Ver Tratamientos
+          </button>
         </div>
       </div>
     </ng-container>
