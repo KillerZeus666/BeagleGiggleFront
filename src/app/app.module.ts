@@ -46,6 +46,8 @@ import { HistorialTratamientosComponent } from './veterinario/historial-tratamie
 import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component';
 import { MascotasAtendidasComponent } from './veterinario/mascotas-atendidas/mascotas-atendidas.component';
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
+import { CitaFormComponent } from './cita/cita-form/cita-form.component';
+import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 
 
 
@@ -89,7 +91,9 @@ import { TratamientoTableComponent } from './tratamiento/tratamiento-table/trata
     AdminDetailComponent,
     MascotasAtendidasComponent,
     NavegacionComponent,
-    TratamientoTableComponent
+    TratamientoTableComponent,
+    CitaFormComponent,
+    CitaDetailComponent
   ],
   imports: [
     BrowserModule,

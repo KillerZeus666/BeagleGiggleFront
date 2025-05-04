@@ -54,12 +54,15 @@ export class VerCitasVeterinarioComponent implements OnInit {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 
-  mostrarDetallesCita(id: number): void {
-    this.router.navigate(['/detalles-cita', id]);
+  mostrarDetallesCita(idCita: number): void {
+    this.router.navigate(['/detalles-cita', idCita]);
   }
 
   agendarCita(): void {
-    this.router.navigate(['/agendar-cita']);
+    const idVeterinario = Number(this.route.snapshot.paramMap.get('id'))
+    this.router.navigate(['/agendar-cita'], { 
+      state: { idVeterinario: idVeterinario } 
+  });
   }
 
   editarCita(idCita: number): void {

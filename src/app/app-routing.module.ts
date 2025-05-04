@@ -29,6 +29,8 @@ import { TratamientoTableComponent } from './tratamiento/tratamiento-table/trata
 import { MascotasAtendidasComponent } from './veterinario/mascotas-atendidas/mascotas-atendidas.component';
 import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tratamiento-detail.component';
 import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
+import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
+import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 
 
 
@@ -67,6 +69,9 @@ const routes: Routes = [
   {path: 'detalles-tratamiento/:id', component:TratamientoDetailComponent},
   {path: 'crear-veterinario', component:VeterinarioFormComponent},
   {path: 'editar-veterinario/:id', component:VeterinarioFormComponent},
+  {path: 'agendar-cita',component:CitaFormComponent},
+  {path: 'editar-cita/:id', component:CitaFormComponent},
+  {path: 'detalles-cita/:id', component:CitaDetailComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

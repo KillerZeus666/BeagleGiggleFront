@@ -1,0 +1,33 @@
+.card-detalles {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .etiqueta {
+    font-weight: bold;
+    color: #1e88e5;
+    width: 40%;
+  }
+  
+  .valor {
+    width: 55%;
+    color: #333;
+  }
+  
+  
+  .button-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+  

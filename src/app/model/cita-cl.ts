@@ -16,9 +16,9 @@ export class CitaCL {
     fechaHora: Date = new Date(),
     sede: string = '',
     mascota: MascotaCL = new MascotaCL(),
-    veterinario: VeterinarioCL | null = null,
-    servicio: ServicioCL | null = null,
-    estado: string = 'pendiente' // Valor por defecto
+    veterinario: VeterinarioCL = new VeterinarioCL(),
+    servicio: ServicioCL = new ServicioCL(),
+    estado: string = 'AGENDADA' // Valor por defecto
   ) {
     this.idCita = idCita;
     this.fechaHora = fechaHora;
@@ -35,48 +35,70 @@ export class CitaCL {
       new Date(data.fechaHora),
       data.sede,
       MascotaCL.fromBackendData(data.mascota),
-      data.veterinario ? VeterinarioCL.fromBackendData(data.veterinario) : null,
-      data.servicio ? ServicioCL.fromBackendData(data.servicio) : null,
-      data.estado || 'pendiente' // Manejo por defecto si no viene el estado
+      VeterinarioCL.fromBackendData(data.veterinario) ,
+      ServicioCL.fromBackendData(data.servicio),
+      data.estado || 'AGENDADA' // Manejo por defecto si no viene el estado
     );
   }
 
   toBackendFormat(): any {
+    let fechaHoraDate: Date;
+    if (this.fechaHora instanceof Date) {
+      fechaHoraDate = this.fechaHora;
+    } else if (typeof this.fechaHora === 'string') {
+      fechaHoraDate = new Date(this.fechaHora);
+    } else {
+      fechaHoraDate = new Date(); // fallback to current date
+    }
+    if (!this.veterinario || !this.servicio || !this.mascota) {
+      throw new Error('Missing required properties for cita');
+    }
     return {
       idCita: this.idCita,
-      fechaHora: this.fechaHora.toISOString(),
+      fechaHora: this.fechaHora?.toISOString(),
       sede: this.sede,
       mascota: { idMascota: this.mascota.idMascota },
-      veterinario: this.veterinario
-        ? { idVeterinario: this.veterinario.idVeterinario }
-        : null,
-      servicio: this.servicio ? { idServicio: this.servicio.idServicio } : null,
+      veterinario: { idVeterinario: this.veterinario.idVeterinario },
+      servicio: { idServicio: this.servicio.idServicio },
       estado: this.estado
     };
   }
 
   validate(): { isValid: boolean; errors: string[] } {
     const errors: string[] = [];
-
-    if (!this.sede || this.sede.trim() === '') {
+    
+    // Convert fechaHora to Date if it isn't already
+    let fechaHoraDate: Date;
+    try {
+      fechaHoraDate = this.fechaHora instanceof Date 
+        ? this.fechaHora 
+        : new Date(this.fechaHora);
+    } catch (e) {
+      errors.push('Fecha inválida');
+      return { isValid: false, errors };
+    }
+  
+    if (!this.sede?.trim()) {
       errors.push('La sede es requerida');
     }
-
-    if (!this.mascota || !this.mascota.idMascota) {
+  
+    if (!this.mascota?.idMascota) {
       errors.push('Debe seleccionar una mascota');
     }
-
-    if (!this.fechaHora || this.fechaHora <= new Date()) {
+  
+    if (!fechaHoraDate || isNaN(fechaHoraDate.getTime())) {
+      errors.push('Fecha inválida');
+    } else if (fechaHoraDate <= new Date()) {
       errors.push('La fecha debe ser futura');
     }
-
-    if (!this.estado || this.estado.trim() === '') {
+  
+    if (!this.estado?.trim()) {
       errors.push('El estado es requerido');
     }
-
+  
     return {
       isValid: errors.length === 0,
-      errors: errors,
+      errors,
     };
   }
 }

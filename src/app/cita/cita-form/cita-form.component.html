@@ -1,0 +1,116 @@
+<form #citaForm="ngForm" (ngSubmit)="guardarCita()">
+    <h1>{{modoEdicion ? 'Editar Cita' : 'Agregar Cita'}}</h1>
+  
+    <label for="fechaHora">Fecha y Hora</label>
+    <input 
+      type="datetime-local" 
+      id="fechaHora"
+      name="fechaHora"
+      [ngModel]="fechaHoraFormatted"
+      (ngModelChange)="fechaHoraFormatted = $event"
+      required
+      #fechaHora="ngModel"
+    />
+    <div *ngIf="fechaHora.invalid && (fechaHora.dirty || fechaHora.touched)" class="error-message">
+      La fecha y hora es requerida
+    </div>
+  
+    <label for="sede">Sede:</label>
+    <select
+      id="sede"
+      name="sede"
+      [(ngModel)]="Formcita.sede"
+      required
+      #sede="ngModel"
+    >
+      <option value="">Seleccione una sede</option>
+      <option *ngFor="let sede of sedesDisponibles" [value]="sede">{{sede}}</option>
+    </select>
+    <div *ngIf="sede.invalid && (sede.dirty || sede.touched)" class="error-message">
+      La sede es requerida
+    </div>
+  
+    <label for="mascota">Mascota:</label>
+    <select
+      id="mascota"
+      name="mascota"
+      [(ngModel)]="Formcita.mascota.idMascota"
+      required
+      #mascotaId="ngModel"
+    >
+      <option value="">Seleccione una mascota</option>
+      <option *ngFor="let mascota of mascotas" [ngValue]="mascota.idMascota">
+        {{mascota.nombre}} - {{mascota.cliente?.nombre}}
+      </option>
+    </select>
+    <div *ngIf="mascotaId.invalid && (mascotaId.dirty || mascotaId.touched)" class="error-message">
+      Debe seleccionar una mascota
+    </div>
+  
+    <!-- Veterinario Section -->
+    <div *ngIf="!modoEdicion && veterinarioAsignado">
+      <label>Veterinario asignado:</label>
+      <span>{{ veterinarioAsignado.nombre }} - {{veterinarioAsignado.especialidad}}</span>
+      <input type="hidden" name="veterinario" [ngModel]="veterinarioAsignado.idVeterinario">
+    </div>
+    
+    <div *ngIf="modoEdicion">
+      <label for="veterinario">Veterinario</label>
+      <select
+        id="veterinario"
+        name="veterinario"
+        [(ngModel)]="Formcita.veterinario.idVeterinario"
+        *ngIf="Formcita.veterinario"
+        required
+        #veterinarioId="ngModel"
+      >
+        <option value="">Selecciona un veterinario</option>
+        <option *ngFor="let vet of veterinarios" [ngValue]="vet.idVeterinario">
+          {{ vet.nombre }} - {{vet.especialidad}}
+        </option>
+      </select>
+    </div>
+  
+    <label for="servicio">Servicio</label>
+    <select
+      id="servicio"
+      name="servicio"
+      [(ngModel)]="Formcita.servicio.idServicio"
+      *ngIf="Formcita.servicio"
+      required
+      #servicioId="ngModel"
+    >
+      <option value="">Selecciona un servicio</option>
+      <option *ngFor="let servicio of servicios" [ngValue]="servicio.idServicio">
+        {{servicio.nombre}}
+      </option>
+    </select>
+  
+    <label for="estado">Estado de la cita</label>
+    <div *ngIf="modoEdicion; else estadoFijo">
+      <select
+        id="estado"
+        name="estado"
+        [(ngModel)]="Formcita.estado"
+        required
+        #estado="ngModel"
+      >
+        <option *ngFor="let estado of estadosCita" [value]="estado">
+          {{estado}}
+        </option>
+      </select>
+    </div>
+  
+    <ng-template #estadoFijo>
+      <input 
+        type="text"
+        id="estado"
+        name="estado"
+        [(ngModel)]="Formcita.estado"
+        readonly
+        class="estado-readonly"
+      >
+    </ng-template>
+  
+    <button type="submit">{{ modoEdicion ? 'Actualizar' : 'Agregar' }}</button>
+  </form>

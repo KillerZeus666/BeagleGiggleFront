@@ -1,0 +1,217 @@
+/* Fuente importada de Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Estilos base del formulario */
+form {
+  max-width: 500px;
+  text-align: center;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+form:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Título del formulario */
+h1 {
+  text-align: center;
+  color: #1d95db;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  border-radius: 3px;
+}
+
+/* Grupos de campos */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  color: #555;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Campos de entrada */
+input,
+select {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  border-color: #1d95db;
+  outline: none;
+  box-shadow: 0 5px 15px rgba(29, 149, 219, 0.2);
+  background-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Placeholder estilizado */
+::placeholder {
+  color: #aaa;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* Campos inválidos solo cuando son tocados */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #e74c3c;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+
+/* Botón de envío */
+button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(29, 149, 219, 0.3);
+  max-width: 100%;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(to right, #158bbd, #1d95db);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+button[type="submit"]:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Estilo para select personalizado */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d95db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+
+/* Efecto de borde animado */
+form::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #1d95db, #23a3ed, #1d95db);
+  z-index: -1;
+  border-radius: 22px;
+  background-size: 400%;
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 20s linear infinite;
+}
+
+form:hover::before {
+  opacity: 0.3;
+}
+
+@keyframes animate {
+  0% { background-position: 0 0; }
+  50% { background-position: 300% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  form {
+    padding: 1.8rem;
+    margin: 1.5rem auto;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  input,
+  select {
+    padding: 12px;
+  }
+
+  button[type="submit"] {
+    padding: 14px;
+  }
+}
