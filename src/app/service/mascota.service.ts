@@ -26,8 +26,7 @@ export class MascotaService {
 
   // Método para obtener las mascotas de un cliente específico
   getMascotasPorCliente(idCliente: number): Observable<MascotaCL[]> {
-    const params = new HttpParams().set('idCliente', idCliente.toString());  // Crea parámetros HTTP con el ID del cliente
-    return this.http.get<MascotaCL[]>(`${this.baseUrl}/mascotas`, { params });  // Realiza una solicitud GET pasando los parámetros
+    return this.http.get<MascotaCL[]>(`${this.baseUrl}/mascotas-cliente/${idCliente}`);
   }
 
   // Método para agregar una nueva mascota para un cliente específico

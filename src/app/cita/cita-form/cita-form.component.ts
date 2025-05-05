@@ -9,6 +9,7 @@ import { CitaCL } from 'src/app/model/cita-cl';
 import { MascotaCL } from 'src/app/model/mascota-cl';
 import { ServicioCL } from 'src/app/model/servicio-cl';
 import { VeterinarioCL } from 'src/app/model/veterinario-cl';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-cita-form',
@@ -18,6 +19,8 @@ import { VeterinarioCL } from 'src/app/model/veterinario-cl';
 export class CitaFormComponent implements OnInit{
   @ViewChild('citaForm') citaForm!: NgForm;
   @Output() addCitaEvent = new EventEmitter<CitaCL>();
+
+  userType: string | null = null;
 
   Formcita: CitaCL = new CitaCL(
     undefined,
@@ -50,26 +53,32 @@ export class CitaFormComponent implements OnInit{
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
     private servicioService: ServicioService,
-    private citaService: CitaService
+    private citaService: CitaService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.userType = this.authService.getUserType();
     const idCita = Number(this.route.snapshot.paramMap.get('id'));
     
     if (idCita) {
       this.modoEdicion = true;
       this.loadCita(idCita);
     } else {
-      this.idVeterinario = history.state.idVeterinario;
-      if (this.idVeterinario) {
-        this.loadVeterinario(this.idVeterinario);
+      // Solo cargamos veterinario asignado si es veterinario
+      if (this.userType === 'Veterinario') {
+        this.idVeterinario = history.state.idVeterinario;
+        if (this.idVeterinario) {
+          this.loadVeterinario(this.idVeterinario);
+        }
       }
     }
     
     this.loadMascotas();
     this.loadServicios();
-    this.loadVeterinarios();
+    this.loadVeterinarios(); // Esto carga la lista de veterinarios disponibles
   }
+
 
   private loadCita(idCita: number): void {
     this.citaService.obtenerCitaPorId(idCita).subscribe({
@@ -96,14 +105,35 @@ export class CitaFormComponent implements OnInit{
   }
 
   private loadMascotas(): void {
-    this.mascotaService.findAll().subscribe({
-      next: (mascotas) => {
-        this.mascotas = mascotas;
-      },
-      error: (err) => {
-        console.error('Error loading pets:', err);
+    if(this.userType == 'Veterinario') {
+      this.mascotaService.findAll().subscribe({
+        next: (mascotas) => {
+          this.mascotas = mascotas;
+        },
+        error: (err) => {
+          console.error('Error loading pets:', err);
+        }
+      });
+    } else if(this.userType == 'Cliente') {
+      // Corregido el nombre para coincidir con lo enviado
+      const idCliente = history.state.idCliente; // Ahora coincide con minúscula 'l'
+      
+      // Añade validación
+      if (!idCliente) {
+        console.error('ID de cliente no encontrado en history.state');
+        // Opcional: intenta obtener el ID de otra fuente
+        return;
       }
-    });
+  
+      this.mascotaService.getMascotasPorCliente(idCliente).subscribe({
+        next: (mascotas) => {
+          this.mascotas = mascotas;
+        },
+        error: (err) => {
+          console.error('Error loading pets:', err);
+        }
+      });
+    } 
   }
 
   private loadServicios(): void {
@@ -150,6 +180,11 @@ export class CitaFormComponent implements OnInit{
     // Ensure fechaHora is properly set
     if (!(this.Formcita.fechaHora instanceof Date)) {
       this.Formcita.fechaHora = new Date(this.Formcita.fechaHora);
+    }
+
+    if (this.userType === 'Cliente' && !this.Formcita.veterinario?.idVeterinario) {
+      this.errors = ['Debe seleccionar un veterinario'];
+      return;
     }
 
     if (this.modoEdicion) {

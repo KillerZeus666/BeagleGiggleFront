@@ -5,7 +5,8 @@
     <!-- Contenido principal -->
     <main class="contenido-principal">
       <section class="container-principal">
-        <h1>Citas del Veterinario</h1>
+        <h1 *ngIf="userType === 'Veterinario'">Citas del Veterinario</h1>
+        <h1 *ngIf="userType === 'Cliente'">Mis Citas</h1>
 
         <div class="button-container">
           <button (click)="agendarCita()" class="btn-agregar">Agendar nueva cita</button>
@@ -37,7 +38,7 @@
                 <td>
                   <div class="acciones-cliente">
                     <a (click)="mostrarDetallesCita(cita.idCita)" class="btn-detalles">Detalles</a>
-                    <a (click)="editarCita(cita.idCita)" class="btn-editar">Editar</a>
+                    <a *ngIf="userType === 'Veterinario'" (click)="editarCita(cita.idCita)" class="btn-editar">Editar</a>
                     <a (click)="cancelarCita(cita.idCita)" class="btn-eliminar">Cancelar</a>
                   </div>
                 </td>

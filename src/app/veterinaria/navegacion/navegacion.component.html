@@ -82,7 +82,7 @@
       </a>
     </li>
 
-    <li>
+    <li *ngIf="userType === 'Veterinario' || userType === 'Cliente'">
       <a routerLink="/citas-veterinario/2" class="nav-link">
         <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
         <span class="title">Citas</span>

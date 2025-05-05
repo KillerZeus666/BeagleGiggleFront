@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitaCL } from 'src/app/model/cita-cl';
+import { AuthService } from 'src/app/service/auth.service';
 import { CitaService } from 'src/app/service/cita.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 
@@ -10,6 +11,7 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
   styleUrls: ['./ver-citas-veterinario.component.css']
 })
 export class VerCitasVeterinarioComponent implements OnInit {
+  userType: string | null = null;
   citas: CitaCL[] = [];
   isSidebarCollapsed = false;
 
@@ -17,11 +19,28 @@ export class VerCitasVeterinarioComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private veterinarioService: VeterinarioService,
-    private citaService: CitaService
+    private citaService: CitaService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.loadCitas();
+    const idCliente = Number(this.route.snapshot.paramMap.get('id'))
+    this.userType = this.authService.getUserType();
+
+    if(this.userType == 'Veterinario'){
+      this.loadCitas();
+    }
+    else if(this.userType == 'Cliente'){
+      this.citaService.obtenerCitasPorCliente(idCliente).subscribe({
+        next: (citadata) =>{
+          this.citas = citadata;
+        },
+        error: (err) => {
+          console.error('Error al obtener las citas',err);
+        }
+      });
+    }
+    
   }
 
   loadCitas(): void {
@@ -59,10 +78,17 @@ export class VerCitasVeterinarioComponent implements OnInit {
   }
 
   agendarCita(): void {
-    const idVeterinario = Number(this.route.snapshot.paramMap.get('id'))
-    this.router.navigate(['/agendar-cita'], { 
-      state: { idVeterinario: idVeterinario } 
-  });
+    if(this.userType == 'Veterinario') {
+      const idVeterinario = Number(this.route.snapshot.paramMap.get('id'));
+      this.router.navigate(['/agendar-cita'], { 
+        state: { idVeterinario: idVeterinario } 
+      });
+    } else if(this.userType == 'Cliente') {
+      const idCliente = Number(this.route.snapshot.paramMap.get('id'));
+      this.router.navigate(['/agendar-cita'], {
+        state: { idCliente: idCliente } // Corregido a minúscula 'l' en 'idCliente'
+      });
+    } 
   }
 
   editarCita(idCita: number): void {

@@ -48,7 +48,7 @@
     </div>
   
     <!-- Veterinario Section -->
-    <div *ngIf="!modoEdicion && veterinarioAsignado">
+    <div *ngIf="!modoEdicion && veterinarioAsignado && userType=='Veterinario'">
       <label>Veterinario asignado:</label>
       <span>{{ veterinarioAsignado.nombre }} - {{veterinarioAsignado.especialidad}}</span>
       <input type="hidden" name="veterinario" [ngModel]="veterinarioAsignado.idVeterinario">
@@ -67,6 +67,22 @@
         <option value="">Selecciona un veterinario</option>
         <option *ngFor="let vet of veterinarios" [ngValue]="vet.idVeterinario">
           {{ vet.nombre }} - {{vet.especialidad}}
+        </option>
+      </select>
+    </div>
+
+    <div *ngIf="userType === 'Cliente' && !modoEdicion">
+      <label for="veterinario">Veterinario</label>
+      <select
+        id="veterinario"
+        name="veterinario"
+        [(ngModel)]="Formcita.veterinario!.idVeterinario"
+        required
+        #veterinarioId="ngModel"
+      >
+        <option value="" selected disabled>Selecciona un veterinario</option>
+        <option *ngFor="let vet of veterinarios" [ngValue]="vet.idVeterinario">
+          {{ vet.nombre }} - {{ vet.especialidad }}
         </option>
       </select>
     </div>
