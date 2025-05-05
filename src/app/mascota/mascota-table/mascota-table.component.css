@@ -2,7 +2,7 @@
 .main {
   position: absolute;
   top: 0;
-  left: 300px; /* cuando navigation es grande */
+  left: 300px;
   width: calc(100% - 300px);
   min-height: 100vh;
   background: #f8f9fa;
@@ -58,7 +58,6 @@ h1 {
   color: #5cadf4;
   margin-bottom: 20px;
   font-size: 2rem;
-  transition: all 0.3s ease;
 }
 
 /* ================== BUSCADOR ================== */
@@ -80,7 +79,6 @@ h1 {
   border-radius: 20px;
   outline: none;
   font-size: 14px;
-  transition: all 0.3s ease;
 }
 
 .btn-buscar {
@@ -92,7 +90,6 @@ h1 {
   cursor: pointer;
   font-size: 14px;
   white-space: nowrap;
-  transition: all 0.3s ease;
 }
 
 .btn-buscar:hover {
@@ -115,8 +112,6 @@ h1 {
   border: none;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
 }
 
 .btn-agregar:hover {
@@ -135,14 +130,13 @@ h1 {
 
 .tabla {
   width: 100%;
-  min-width: 800px;
+  min-width: 900px;
   border-collapse: collapse;
 }
 
 .tabla th, .tabla td {
   padding: 12px;
   text-align: center;
-  transition: all 0.3s ease;
 }
 
 .tabla thead {
@@ -150,8 +144,6 @@ h1 {
   color: white;
   text-transform: uppercase;
   font-size: 14px;
-  position: sticky;
-  top: 0;
 }
 
 .tabla tr {
@@ -172,18 +164,9 @@ h1 {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #1e88e5;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
 }
 
 /* ================== BOTONES DE ACCIONES ================== */
-.acciones-container {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
 .btn-detalles,
 .btn-editar,
 .btn-eliminar {
@@ -194,7 +177,6 @@ h1 {
   cursor: pointer;
   border: none;
   color: white;
-  transition: all 0.3s ease;
   white-space: nowrap;
 }
 
@@ -218,7 +200,7 @@ h1 {
 
 /* ================== RESPONSIVE BREAKPOINTS ================== */
 
-/* Pantallas grandes (1200px - 992px) */
+/* Escritorio ancho */
 @media (max-width: 1200px) {
   .main {
     left: 250px;
@@ -244,7 +226,7 @@ h1 {
   }
 }
 
-/* Tabletas horizontales (992px - 768px) */
+/* Tablet horizontal */
 @media (max-width: 992px) {
   .main {
     left: 80px;
@@ -268,20 +250,19 @@ h1 {
   .tabla-container {
     padding: 15px;
   }
+
+  .tabla {
+    min-width: 700px;
+  }
 }
 
-/* Tabletas verticales (768px - 576px) */
+/* Tablet vertical */
 @media (max-width: 768px) {
   .main {
     position: relative;
     left: 0;
     width: 100%;
     padding: 15px;
-  }
-
-  .main.active {
-    left: 0;
-    width: 100%;
   }
 
   .topbar {
@@ -291,10 +272,6 @@ h1 {
   .input-busqueda {
     width: 100%;
     max-width: 100%;
-  }
-
-  .tabla {
-    min-width: 700px;
   }
 
   .tabla th, .tabla td {
@@ -315,19 +292,10 @@ h1 {
   }
 }
 
-/* Móviles grandes (576px - 480px) */
+/* Celulares grandes */
 @media (max-width: 576px) {
   h1 {
     font-size: 1.5rem;
-  }
-
-  .button-container {
-    width: 100%;
-  }
-
-  .btn-agregar {
-    width: 100%;
-    padding: 10px;
   }
 
   .buscador {
@@ -335,21 +303,17 @@ h1 {
     gap: 10px;
   }
 
-  .btn-buscar {
+  .btn-buscar,
+  .btn-agregar {
     width: 100%;
   }
 
   .tabla-container {
     padding: 10px;
   }
-
-  .acciones-container {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
-/* Móviles pequeños (menos de 480px) */
+/* Celulares pequeños */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.3rem;
@@ -373,18 +337,5 @@ h1 {
   .foto-tabla {
     width: 35px;
     height: 35px;
-  }
-}
-
-/* Ajuste para pantallas muy anchas */
-@media (min-width: 1600px) {
-  .main {
-    left: calc((100% - 1400px)/2 + 300px);
-    width: 1400px;
-  }
-
-  .main.active {
-    left: calc((100% - 1400px)/2 + 80px);
-    width: calc(1400px - 80px);
   }
 }

@@ -1,48 +1,172 @@
-/* CONTENEDOR PRINCIPAL GENERAL */
-.container-principal {
-  margin-left: 270px;
+/* ================== ESTRUCTURA PRINCIPAL ================== */
+.main {
+  position: absolute;
+  top: 0;
+  left: 270px;
   width: calc(100% - 270px);
-  padding: 20px;
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
+  min-height: 100vh;
   background: #f8f9fa;
+  transition: all 0.5s ease;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* TÍTULOS PRINCIPALES */
-h1, h2 {
-  font-size: 30px;
+.main.active {
+  left: 80px;
+  width: calc(100% - 80px);
+}
+
+/* ================== TOPBAR ================== */
+.topbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.toggle {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+/* ================== CONTENIDO PRINCIPAL ================== */
+.container-principal {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
   color: #5cadf4;
   margin-bottom: 20px;
-  text-align: center;
+  font-size: 2rem;
 }
 
-/* CONTENEDOR DE BOTONES SUPERIOR */
-.button-container {
+/* ================== BUSCADOR ================== */
+.buscador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 20px;
-  text-align: center;
 }
 
-/* ESTILO BASE PARA BOTONES */
-.btn-detalles,
-.btn-editar,
-.btn-eliminar,
-.btn-agregar {
-  text-align: center;
+.input-busqueda {
+  flex: 1;
+  min-width: 200px;
+  max-width: 600px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+}
+
+.btn-buscar {
+  background-color: #5cadf4;
   color: white;
   padding: 10px 20px;
   border-radius: 20px;
-  text-decoration: none;
   font-size: 14px;
   border: none;
-  background-size: 300% 300%;
-  transition: background-position 0.4s ease, transform 0.3s ease;
   cursor: pointer;
-  display: inline-block;
-  white-space: nowrap;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* COLORES BOTONES */
+.btn-buscar:hover {
+  transform: scale(1.05);
+}
+
+/* ================== BOTÓN AGREGAR ================== */
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-agregar {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-agregar:hover {
+  transform: scale(1.05);
+}
+
+/* ================== TABLA ================== */
+.tabla-container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.tabla thead {
+  background-color: #29b6f6;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.tabla th, .tabla td {
+  padding: 12px;
+  text-align: center;
+}
+
+.tabla tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla tr:hover {
+  background-color: #f1f1f1;
+}
+
+.foto-tabla {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #1e88e5;
+}
+
+/* ================== BOTONES ACCIONES ================== */
+.btn-detalles,
+.btn-editar,
+.btn-eliminar {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
 .btn-detalles {
   background: #03a9f4;
 }
@@ -55,130 +179,152 @@ h1, h2 {
   background: #e53935;
 }
 
-.btn-agregar {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
-}
-
-/* EFECTOS HOVER */
 .btn-detalles:hover,
 .btn-editar:hover,
-.btn-eliminar:hover,
-.btn-agregar:hover {
+.btn-eliminar:hover {
   transform: scale(1.05);
 }
 
-/* CONTENEDOR DE TABLA */
-.tabla-container {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  margin-bottom: 40px;
-  width: 100%;
-  overflow-x: auto;
-}
-
-/* TABLA */
-.tabla {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tabla thead {
-  background: #29b6f6;
-  color: white;
-  text-transform: uppercase;
-  font-size: 14px;
-  border-radius: 15px 15px 0 0;
-}
-
-.tabla th {
-  font-weight: 600;
-  padding: 12px;
-  text-align: center;
-}
-
-.tabla td {
-  padding: 12px;
-  text-align: center;
-  color: #333;
-}
-
-/* IMAGEN EN CELDA */
-.tabla td img.foto-tabla {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #1e88e5;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* FILAS */
-.tabla tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.tabla tr:last-child {
-  border-bottom: none;
-}
-
-.tabla tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* DATOS CLIENTE */
-.cliente-nombre {
-  font-weight: bold;
-  color: #333;
-}
-
-.cliente-cedula,
-.cliente-celular,
-.cliente-correo {
-  color: #555;
-}
-
-/* ACCIONES */
 .acciones-cliente {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .tabla td,
-  .tabla th {
-    padding: 8px;
-    font-size: 14px;
-    white-space: nowrap;
+/* ================== RESPONSIVE ================== */
+
+/* Escritorio ancho */
+@media (max-width: 1200px) {
+  .main {
+    left: 250px;
+    width: calc(100% - 250px);
   }
 
-  .acciones-cliente {
-    flex-direction: column;
-    gap: 8px;
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .tabla th, .tabla td {
+    padding: 10px;
+  }
+
+  .foto-tabla {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Tablet horizontal */
+@media (max-width: 992px) {
+  .main {
+    left: 80px;
+    width: calc(100% - 80px);
+  }
+
+  .input-busqueda {
+    max-width: 400px;
+  }
+
+  .btn-agregar {
+    padding: 8px 20px;
+    font-size: 15px;
+  }
+
+  .tabla {
+    min-width: 700px;
+  }
+}
+
+/* Tablet vertical */
+@media (max-width: 768px) {
+  .main {
+    position: relative;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .topbar {
+    justify-content: center;
+  }
+
+  .input-busqueda {
+    width: 100%;
+  }
+
+  .tabla th, .tabla td {
+    padding: 8px;
+    font-size: 13px;
   }
 
   .btn-detalles,
   .btn-editar,
-  .btn-eliminar,
-  .btn-agregar {
-    width: 100%;
-    margin-bottom: 8px;
+  .btn-eliminar {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .foto-tabla {
+    width: 40px;
+    height: 40px;
   }
 }
 
-@media (max-width: 480px) {
-  h1, h2 {
-    font-size: 24px;
+/* Celulares grandes */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.5rem;
   }
 
+  .buscador {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-buscar,
   .btn-agregar {
     width: 100%;
-    font-size: 14px;
+  }
+
+  .tabla-container {
+    padding: 10px;
+  }
+
+  .acciones-cliente {
+    flex-direction: column;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .tabla {
+    min-width: 600px;
+  }
+
+  .tabla th, .tabla td {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .foto-tabla {
+    width: 35px;
+    height: 35px;
+  }
+
+  .btn-detalles,
+  .btn-editar,
+  .btn-eliminar {
+    width: 100%;
   }
 }
