@@ -158,16 +158,16 @@
   .mascotas-list {
       grid-template-columns: 1fr;
   }
-  
+
   .card-content {
       flex-direction: column;
       align-items: center;
   }
-  
+
   .pet-data {
       grid-template-columns: 1fr;
   }
-  
+
   .pet-image-container {
       width: 100px;
       height: 100px;
