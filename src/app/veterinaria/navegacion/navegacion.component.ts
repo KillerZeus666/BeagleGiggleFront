@@ -1,5 +1,4 @@
-// navegacion.component.ts
-import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation, Renderer2, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -9,12 +8,18 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./navegacion.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class NavegacionComponent implements AfterViewInit {
+export class NavegacionComponent implements AfterViewInit, OnDestroy {
   userType: string | null = null;
   userName: string = '';
   userPhoto = 'https://example.com/path-to-your-image.jpg';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  private toggleClickListener: (() => void) | null = null;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.userType = this.authService.getUserType();
@@ -25,32 +30,57 @@ export class NavegacionComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const listItems = document.querySelectorAll<HTMLLIElement>('.navigation li');
     const toggle = document.querySelector<HTMLElement>('.toggle');
-    const navigation = document.querySelector<HTMLElement>('.navigation');
-    const main = document.querySelector<HTMLElement>('.main');
 
-    // Efecto hover
+    // Hover efecto
     const hoverLink = function (this: HTMLLIElement): void {
       listItems.forEach((item) => item.classList.remove('hovered'));
       this.classList.add('hovered');
     };
 
-    // Efecto active
+    // Click efecto (active)
     const activeLink = function (this: HTMLLIElement): void {
       listItems.forEach((item) => item.classList.remove('active'));
       this.classList.add('active');
     };
 
-    // Asignar eventos a los items
     listItems.forEach((item) => {
       item.addEventListener('mouseover', hoverLink);
       item.addEventListener('click', activeLink);
     });
 
-    // Evento del toggle (botón hamburguesa)
-    toggle?.addEventListener('click', () => {
-      navigation?.classList.toggle('active');
-      main?.classList.toggle('active');
-    });
+    // Manejador del toggle (hamburguesa)
+    const toggleHandler = () => {
+      const navigation = document.querySelector<HTMLElement>('.navigation');
+      const allMains = document.querySelectorAll<HTMLElement>('.main');
+
+      // Toggle manual ya que Renderer2 no tiene toggleClass
+      if (navigation?.classList.contains('active')) {
+        this.renderer.removeClass(navigation, 'active');
+      } else {
+        this.renderer.addClass(navigation, 'active');
+      }
+
+      allMains.forEach((main) => {
+        if (main.classList.contains('active')) {
+          this.renderer.removeClass(main, 'active');
+        } else {
+          this.renderer.addClass(main, 'active');
+        }
+      });
+    };
+
+    // Asignar el listener
+    if (toggle) {
+      toggle.addEventListener('click', toggleHandler);
+      this.toggleClickListener = toggleHandler;
+    }
+  }
+
+  ngOnDestroy(): void {
+    const toggle = document.querySelector<HTMLElement>('.toggle');
+    if (toggle && this.toggleClickListener) {
+      toggle.removeEventListener('click', this.toggleClickListener);
+    }
   }
 
   logout(): void {

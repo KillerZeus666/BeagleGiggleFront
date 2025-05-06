@@ -1,87 +1,82 @@
-<div class="container">
-  <div class="navigation">
-    <app-navegacion></app-navegacion>
+<app-navegacion></app-navegacion>
+
+<div class="main" id="mainContent">
+  <div class="topbar">
+    <!-- Aquí podrías poner cosas de la topbar -->
   </div>
 
-  <div class="main">
-    <div class="topbar">
-      <!-- Aquí podrías poner cosas de la topbar -->
-    </div>
+  <app-cartas-cliente [cantidadMascotas]="cantidadMascotas"></app-cartas-cliente>
 
-    <!-- Aquí pasamos la cantidad de mascotas al componente hijo -->
-    <app-cartas-cliente [cantidadMascotas]="cantidadMascotas"></app-cartas-cliente>
-    
-    <section class="mascotas">
-      <h2>Mis mascotas</h2>
+  <section class="mascotas">
+    <h2>Mis mascotas</h2>
 
-      <div class="mascotas-container">
-        <div *ngIf="mascotas && mascotas.length > 0; else noMascotas" class="mascotas-flex-container">
-          <div class="table-container">
+    <div class="mascotas-container">
+      <div *ngIf="mascotas && mascotas.length > 0; else noMascotas" class="mascotas-flex-container">
+        <div class="table-container">
 
-
-            <div class="details">
-              <div class="recentOrders">
-                <div class="cardHeader">
-                  <h2>Lista de Mascotas</h2>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <td>Foto</td>
-                      <td>Nombre</td>
-                      <td>Raza</td>
-                      <td>Estado</td>
-                      <td>Acciones</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let mascota of mascotas">
-                      <td>
-                        <img [src]="mascota.foto" alt="Foto de mascota" class="img-mascota" [ngClass]="mascota.estado == 1 ? 'img-inactiva' : ''" />
-                      </td>
-                      <td>{{ mascota.nombre }}</td>
-                      <td>{{ mascota.raza }}</td>
-                      <td>
-                        <span [class.status]="true" [class.completed]="mascota.estado == 0" [class.inactive]="mascota.estado == 1">
-                          {{ mascota.estado == 0 ? 'Activo' : 'Inactivo' }}
-                        </span>
-                      </td>
-                      <td>
-                        <button (click)="mostrarMascota(mascota.idMascota)" class="btn-detalles">Detalles</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+          <div class="details">
+            <div class="recentOrders">
+              <div class="cardHeader">
+                <h2>Lista de Mascotas</h2>
               </div>
-            
-              <div class="recomendaciones">
-                <h3>Recomendaciones</h3>
-                <div class="tarjetas">
-                  <div class="tarjeta">
-                    <h4>Vacunación</h4>
-                    <p>Es importante mantener al día a tus mascotas con sus vacunas. Las vacunas protegen a tus mascotas contra enfermedades graves.</p>
-                  </div>
-                  <div class="tarjeta">
-                    <h4>Alimentación</h4>
-                    <p>Proporciona una alimentación balanceada y adecuada para la edad y raza de tus mascotas. Una dieta saludable mejora su calidad de vida.</p>
-                  </div>
-                  <div class="tarjeta">
-                    <h4>Ejercicio</h4>
-                    <p>Asegúrate de que tus mascotas realicen actividad física regularmente. El ejercicio les ayuda a mantenerse activos y saludables.</p>
-                  </div>
-                  <div class="tarjeta">
-                    <h4>Visitas al Veterinario</h4>
-                    <p>Lleva a tus mascotas al veterinario para chequeos regulares. Esto puede prevenir problemas de salud antes de que se conviertan en algo serio.</p>
-                  </div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Foto</td>
+                    <td>Nombre</td>
+                    <td>Raza</td>
+                    <td>Estado</td>
+                    <td>Acciones</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let mascota of mascotas">
+                    <td>
+                      <img [src]="mascota.foto" alt="Foto de mascota" class="img-mascota" [ngClass]="mascota.estado == 1 ? 'img-inactiva' : ''" />
+                    </td>
+                    <td>{{ mascota.nombre }}</td>
+                    <td>{{ mascota.raza }}</td>
+                    <td>
+                      <span [class.status]="true" [class.completed]="mascota.estado == 0" [class.inactive]="mascota.estado == 1">
+                        {{ mascota.estado == 0 ? 'Activo' : 'Inactivo' }}
+                      </span>
+                    </td>
+                    <td>
+                      <button (click)="mostrarMascota(mascota.idMascota)" class="btn-detalles">Detalles</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="recomendaciones">
+              <h3>Recomendaciones</h3>
+              <div class="tarjetas">
+                <div class="tarjeta">
+                  <h4>Vacunación</h4>
+                  <p>Es importante mantener al día a tus mascotas con sus vacunas. Las vacunas protegen a tus mascotas contra enfermedades graves.</p>
+                </div>
+                <div class="tarjeta">
+                  <h4>Alimentación</h4>
+                  <p>Proporciona una alimentación balanceada y adecuada para la edad y raza de tus mascotas. Una dieta saludable mejora su calidad de vida.</p>
+                </div>
+                <div class="tarjeta">
+                  <h4>Ejercicio</h4>
+                  <p>Asegúrate de que tus mascotas realicen actividad física regularmente. El ejercicio les ayuda a mantenerse activos y saludables.</p>
+                </div>
+                <div class="tarjeta">
+                  <h4>Visitas al Veterinario</h4>
+                  <p>Lleva a tus mascotas al veterinario para chequeos regulares. Esto puede prevenir problemas de salud antes de que se conviertan en algo serio.</p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
-        <ng-template #noMascotas>
-          <p>No hay mascotas registradas.</p>
-        </ng-template>
       </div>
-    </section>
-  </div>
+      <ng-template #noMascotas>
+        <p>No hay mascotas registradas.</p>
+      </ng-template>
+    </div>
+  </section>
 </div>

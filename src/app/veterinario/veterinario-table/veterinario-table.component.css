@@ -1,7 +1,6 @@
 /* CONTENEDOR PRINCIPAL */
 .vets-list-container {
-  margin-left: 270px;
-  width: calc(100% - 270px);
+  width: 100%;
   padding: 20px;
   background: #f8f9fa;
   font-family: 'Arial', sans-serif;
@@ -173,7 +172,6 @@
 @media (max-width: 992px) {
   .vets-list-container {
     padding: 1rem;
-    margin-left: 0;
     width: 100%;
   }
 
@@ -264,4 +262,9 @@
   .vet-delete-button {
     font-size: 12px;
   }
+}
+
+/* =================== AJUSTE AL COLAPSAR SIDEBAR =================== */
+.navigation.active ~ .main .vets-list-container {
+  width: 100%;
 }

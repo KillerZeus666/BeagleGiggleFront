@@ -1,16 +1,11 @@
-<app-navegacion> </app-navegacion>
-<div class="layout">
-  <app-navegacion></app-navegacion>
-  <main class="main-content">
-    <router-outlet></router-outlet> <!-- Aquí cargas veterinario-table y demás componentes -->
-  </main>
-</div>
-<main class="vets-list-container" style="transition: margin-left 0.3s ease;">
-  <h1 class="vets-list-title">Lista de Veterinarios</h1>
+<app-navegacion></app-navegacion>
 
+<div class="main" id="mainContent">
+  <main class="vets-list-container" style="transition: margin-left 0.3s ease;">
+    <h1 class="vets-list-title">Lista de Veterinarios</h1>
 
-
-    <!-- Buscador de medicamentos
+    <!-- Buscador de veterinarios (comentado actualmente) -->
+    <!--
     <div class="buscador">
       <input
         type="text"
@@ -26,9 +21,10 @@
         Buscar
       </button>
     </div>
+    -->
 
-
-       <!-- Filtro de ordenamiento alineado a la derecha
+    <!-- Filtro de ordenamiento (comentado actualmente) -->
+    <!--
     <div style="display: flex; justify-content: flex-end; margin: 20px 0;">
       <select
         [(ngModel)]="opcionOrdenamiento"
@@ -40,59 +36,59 @@
         <option value="precioVentaAsc">Precio Venta (Menor a Mayor)</option>
         <option value="precioVentaDesc">Precio Venta (Mayor a Menor)</option>
       </select>
-    </div>-->
+    </div>
+    -->
 
+    <div class="vets-list-actions">
+      <button class="vet-add-button" (click)="abrirFormularioAgregarVeterinario()">
+        <i class="fas fa-plus"></i> Agregar Veterinario
+      </button>
+    </div>
 
-
-  <div class="vets-list-actions">
-    <button class="vet-add-button" (click)="abrirFormularioAgregarVeterinario()">
-      <i class="fas fa-plus"></i> Agregar Veterinario
-    </button>
-  </div>
-
-  <div class="vets-table-wrapper">
-    <table class="vets-table">
-      <thead class="vets-table-header">
-        <tr>
-          <th>Foto</th>
-          <th>Nombre</th>
-          <th>Cédula</th>
-          <th>Especialidad</th>
-          <th>Sede</th>
-          <th>Estado</th>
-          <th>Detalles</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody class="vets-table-body">
-        <tr *ngFor="let veterinario of veterinarioList" class="vet-row">
-          <td class="vet-photo-cell">
-            <img [src]="veterinario.foto" alt="Foto de {{veterinario.nombre}}" class="vet-photo" />
-          </td>
-          <td class="vet-name">{{ veterinario.nombre }}</td>
-          <td class="vet-id">{{ veterinario.cedula }}</td>
-          <td class="vet-specialty">{{ veterinario.especialidad }}</td>
-          <td class="vet-branch">{{ veterinario.sede }}</td>
-          <td class="vet-status">
-            <span [class.active]="veterinario.estado === 1" [class.inactive]="veterinario.estado !== 1">
-              {{ veterinario.estado === 1 ? 'Activo' : 'Inactivo' }}
-            </span>
-          </td>
-          <td class="vet-details-cell">
-            <button (click)="mostrarVeterinario(veterinario.idVeterinario)" class="vet-details-button">
-              Ver detalles
-            </button>
-          </td>
-          <td class="vet-actions-cell">
-            <button (click)="abrirFormularioEditarVeterinario(veterinario.idVeterinario)" class="vet-edit-button">
-              Editar
-            </button>
-            <button (click)="eliminarVeterinario(veterinario.idVeterinario)" class="vet-delete-button">
-              {{ veterinario.estado === 1 ? 'Desactivar' : 'Activar' }}
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</main>
+    <div class="vets-table-wrapper">
+      <table class="vets-table">
+        <thead class="vets-table-header">
+          <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Especialidad</th>
+            <th>Sede</th>
+            <th>Estado</th>
+            <th>Detalles</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="vets-table-body">
+          <tr *ngFor="let veterinario of veterinarioList" class="vet-row">
+            <td class="vet-photo-cell">
+              <img [src]="veterinario.foto" alt="Foto de {{veterinario.nombre}}" class="vet-photo" />
+            </td>
+            <td class="vet-name">{{ veterinario.nombre }}</td>
+            <td class="vet-id">{{ veterinario.cedula }}</td>
+            <td class="vet-specialty">{{ veterinario.especialidad }}</td>
+            <td class="vet-branch">{{ veterinario.sede }}</td>
+            <td class="vet-status">
+              <span [class.active]="veterinario.estado === 1" [class.inactive]="veterinario.estado !== 1">
+                {{ veterinario.estado === 1 ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="vet-details-cell">
+              <button (click)="mostrarVeterinario(veterinario.idVeterinario)" class="vet-details-button">
+                Ver detalles
+              </button>
+            </td>
+            <td class="vet-actions-cell">
+              <button (click)="abrirFormularioEditarVeterinario(veterinario.idVeterinario)" class="vet-edit-button">
+                Editar
+              </button>
+              <button (click)="eliminarVeterinario(veterinario.idVeterinario)" class="vet-delete-button">
+                {{ veterinario.estado === 1 ? 'Desactivar' : 'Activar' }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

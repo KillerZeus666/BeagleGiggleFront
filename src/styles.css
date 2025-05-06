@@ -1,4 +1,4 @@
-/* Importación de fuentes de Google Fonts - Versión profesional */
+/* Importación de fuentes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@600;700&display=swap');
 
 /* Estilos generales */
@@ -12,18 +12,17 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
   padding: 0;
-  color: #2d3748; /* Gris azulado profesional */
   overflow: visible;
   line-height: 1.6;
   font-weight: 400;
   font-size: 1.05rem;
 }
 
+/* Tipografías por jerarquía */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   letter-spacing: 0.3px;
-  color: #2b6cb0; /* Azul profesional */
   margin-top: 0;
   line-height: 1.3;
 }
@@ -50,28 +49,25 @@ h2:after {
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: #e2b979; /* Acento dorado para veterinarias */
+  background: #e2b979; /* Acento dorado solo para títulos */
 }
 
 h3 {
   font-size: 1.8rem;
-  color: #4a5568; /* Gris azulado más oscuro */
   margin-bottom: 1rem;
 }
 
 p, li, a, span {
   font-family: 'Nunito Sans', sans-serif;
-  color: #4a5568;
   font-size: 1.05rem;
 }
 
-/* Estilo para botones y elementos interactivos */
+/* Botones y elementos interactivos */
 button, .btn {
   font-family: 'Josefin Sans', sans-serif;
   letter-spacing: 0.5px;
   font-weight: 600;
 }
-
 /* Efectos hover para enlaces */
 a {
   color: #2b6cb0;

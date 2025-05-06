@@ -1,79 +1,73 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Esencial -->
-  <title>Dashboard Veterinaria</title>
-</head>
-<body>
-
 <app-navegacion></app-navegacion>
 
-<main class="dashboard-main">
-  <h1>Dashboard Beagle Giggle</h1>
+<div class="container">  <!-- <== Agregado -->
+  <div class="main" id="mainContent">
 
-  <div class="kpi-container">
-    <div class="kpi-card" (click)="toggleTratamientosRecientesList()" style="cursor: pointer;">
-      <div class="kpi-number">{{ stats.tratamientosMes }}</div>
-      <div class="kpi-label">Tratamientos últimos 30 días</div>
-    </div>
-    <div class="kpi-card" (click)="toggleVeterinariosActivosList()" style="cursor: pointer;">
-      <div class="kpi-number">{{ stats.veterinariosActivos }}</div>
-      <div class="kpi-label">Veterinarios activos</div>
-    </div>
-    <div class="kpi-card" (click)="toggleVeterinariosInactivosList()" style="cursor: pointer;">
-      <div class="kpi-number">{{ stats.veterinariosInactivos }}</div>
-      <div class="kpi-label">Veterinarios inactivos</div>
-    </div>
-    <div class="kpi-card" (click)="toggleMascotasList()" style="cursor: pointer;">
-      <div class="kpi-number">{{ stats.totalMascotas }}</div>
-      <div class="kpi-label">Mascotas registradas</div>
-    </div>
-    <div class="kpi-card" (click)="toggleMascotasActivasList()" style="cursor: pointer;">
-      <div class="kpi-number">{{ stats.mascotasActivas }}</div>
-      <div class="kpi-label">Mascotas activas</div>
-    </div>
+    <main class="dashboard-main">
+      <h1>Dashboard Beagle Giggle</h1>
+
+      <div class="kpi-container">
+        <div class="kpi-card" (click)="toggleTratamientosRecientesList()" style="cursor: pointer;">
+          <div class="kpi-number">{{ stats.tratamientosMes }}</div>
+          <div class="kpi-label">Tratamientos últimos 30 días</div>
+        </div>
+        <div class="kpi-card" (click)="toggleVeterinariosActivosList()" style="cursor: pointer;">
+          <div class="kpi-number">{{ stats.veterinariosActivos }}</div>
+          <div class="kpi-label">Veterinarios activos</div>
+        </div>
+        <div class="kpi-card" (click)="toggleVeterinariosInactivosList()" style="cursor: pointer;">
+          <div class="kpi-number">{{ stats.veterinariosInactivos }}</div>
+          <div class="kpi-label">Veterinarios inactivos</div>
+        </div>
+        <div class="kpi-card" (click)="toggleMascotasList()" style="cursor: pointer;">
+          <div class="kpi-number">{{ stats.totalMascotas }}</div>
+          <div class="kpi-label">Mascotas registradas</div>
+        </div>
+        <div class="kpi-card" (click)="toggleMascotasActivasList()" style="cursor: pointer;">
+          <div class="kpi-number">{{ stats.mascotasActivas }}</div>
+          <div class="kpi-label">Mascotas activas</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Tratamientos por tipo de medicamento (últimos 30 días)</h2>
+        <div class="chart-container">
+          <canvas #medicamentosChart></canvas>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Top 3 Medicamentos Más Vendidos</h2>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Medicamento</th>
+                <th>Unidades Vendidas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let medicamento of top3Medicamentos">
+                <td>{{medicamento.nombre}}</td>
+                <td>{{medicamento.cantidad}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="kpi-container">
+        <div class="kpi-card">
+          <div class="kpi-number">{{ stats.ventasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
+          <div class="kpi-label">Ventas Totales</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">{{ stats.gananciasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
+          <div class="kpi-label">Ganancias Totales</div>
+        </div>
+      </div>
+
+    </main>
+
   </div>
-
-  <div class="section">
-    <h2>Tratamientos por tipo de medicamento (últimos 30 días)</h2>
-    <div class="chart-container">
-      <canvas #medicamentosChart></canvas>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Top 3 Medicamentos Más Vendidos</h2>
-    <div class="table-container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Medicamento</th>
-            <th>Unidades Vendidas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let medicamento of top3Medicamentos">
-            <td>{{medicamento.nombre}}</td>
-            <td>{{medicamento.cantidad}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="kpi-container">
-    <div class="kpi-card">
-      <div class="kpi-number">{{ stats.ventasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
-      <div class="kpi-label">Ventas Totales</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-number">{{ stats.gananciasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
-      <div class="kpi-label">Ganancias Totales</div>
-    </div>
-  </div>
-
-</main>
-
-</body>
-</html>
+</div>

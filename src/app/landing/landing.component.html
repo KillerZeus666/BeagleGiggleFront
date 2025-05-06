@@ -1,23 +1,41 @@
 <app-header></app-header>
 
-<!-- Sección de descripción -->
-<section class="description-section">
+<!-- Sección Hero/Carrusel -->
+<section #section class="description-section">
   <div class="overlay"></div>
   <div class="description-text">
-    <h1>Bienvenido a Nuestra Plataforma</h1>
-    <p>
-      Descubre un espacio diseñado para brindarte los mejores servicios en salud
-      y bienestar. Con tecnología de vanguardia y profesionales altamente
-      capacitados, estamos aquí para ti.
-    </p>
+    <h1>{{ carouselItems[currentSlide].title }}</h1>
+    <p>{{ carouselItems[currentSlide].description }}</p>
+    <a href="#contactanos" class="hero-button">Agendar cita</a>
+  </div>
+
+  <!-- Controles del carrusel -->
+  <div class="carousel-nav">
+    <button class="carousel-prev" (click)="prevSlide()" aria-label="Anterior">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </button>
+    <button class="carousel-next" (click)="nextSlide()" aria-label="Siguiente">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </button>
+  </div>
+
+  <!-- Indicadores del carrusel -->
+  <div class="carousel-indicators">
+    <span *ngFor="let item of carouselItems; let i = index"
+          class="indicator"
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)"
+          [attr.aria-current]="i === currentSlide ? 'true' : null">
+    </span>
   </div>
 </section>
 
 <main>
-  <!-- Servicios -->
-  <section id="servicios" class="services-section-title">
+  <!-- Sección de Servicios -->
+  <section #section id="servicios" class="services-section-title">
     <h2>Servicios</h2>
     <div *ngIf="isLoading" class="loading-spinner">
+      <div class="spinner"></div>
       <p>Cargando servicios...</p>
     </div>
     <div class="services-section" *ngIf="!isLoading">
@@ -41,43 +59,44 @@
   </section>
 
   <!-- Sección de Testimonios -->
-<section id="conocenos" class="testimonials-section">
-  <h2>Testimonios de clientes</h2>
-  <div *ngIf="isLoadingTestimonios" class="loading-spinner">
-    <p>Cargando testimonios...</p>
-  </div>
-  <div *ngIf="errorTestimonios" class="error-message">
-    {{ errorTestimonios }}
-    <button (click)="reintentarCarga()">Reintentar</button>
-  </div>
-  <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
-    <div class="testimonial" *ngFor="let testimonio of testimonios">
-      <div class="testimonial-content">
-        <img
-          [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
-          [alt]="testimonio.cliente.nombre"
-          class="testimonial-image"
-        />
-        <div class="testimonial-details">
-          <p class="testimonial-text">"{{ testimonio.texto }}"</p>
-          <div class="testimonial-meta">
-            <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
-            <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
-          </div>
-          <div class="testimonial-rating">
-            {{ getRatingStars(testimonio) }}
-          </div>
-          <div class="testimonial-date">
-            {{ formatDate(testimonio) }}
+  <section #section id="conocenos" class="testimonials-section">
+    <h2>Testimonios de clientes</h2>
+    <div *ngIf="isLoadingTestimonios" class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Cargando testimonios...</p>
+    </div>
+    <div *ngIf="errorTestimonios" class="error-message">
+      {{ errorTestimonios }}
+      <button (click)="reintentarCarga()">Reintentar</button>
+    </div>
+    <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
+      <div class="testimonial" *ngFor="let testimonio of testimonios">
+        <div class="testimonial-content">
+          <img
+            [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
+            [alt]="testimonio.cliente.nombre"
+            class="testimonial-image"
+          />
+          <div class="testimonial-details">
+            <p class="testimonial-text">"{{ testimonio.texto }}"</p>
+            <div class="testimonial-meta">
+              <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
+              <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
+            </div>
+            <div class="testimonial-rating">
+              {{ getRatingStars(testimonio) }}
+            </div>
+            <div class="testimonial-date">
+              {{ formatDate(testimonio) }}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- Agendar cita -->
-  <section id="contactanos" class="appointment-section">
+  <!-- Sección de Citas -->
+  <section #section id="contactanos" class="appointment-section">
     <h2>Agenda tu cita</h2>
     <div class="appointment-container">
       <div class="form-container">
@@ -117,7 +136,7 @@
 
           <input type="hidden" id="selected-vet" required />
           <button type="submit" id="appointment-btn" disabled>
-            Agendar cita
+            <span>Agendar cita</span>
           </button>
         </form>
       </div>
@@ -157,12 +176,15 @@
 
   <app-fundaciones></app-fundaciones>
 </main>
-<!-- Botón flotante de WhatsApp -->
+
+<!-- Botón flotante de WhatsApp mejorado -->
 <a
   href="https://wa.me/573154467881?text=Hola%20quiero%20agendar%20una%20cita"
   class="whatsapp-float"
   target="_blank"
   aria-label="Chat en WhatsApp">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  <span class="whatsapp-tooltip">¡Agenda tu cita!</span>
 </a>
+
 <app-footer></app-footer>
