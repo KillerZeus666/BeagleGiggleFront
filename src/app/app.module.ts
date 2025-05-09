@@ -48,6 +48,7 @@ import { MascotasAtendidasComponent } from './veterinario/mascotas-atendidas/mas
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
+import { ServiciosComponent } from './landing/servicios/servicios.component';
 
 
 
@@ -93,7 +94,8 @@ import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
     NavegacionComponent,
     TratamientoTableComponent,
     CitaFormComponent,
-    CitaDetailComponent
+    CitaDetailComponent,
+    ServiciosComponent
   ],
   imports: [
     BrowserModule,

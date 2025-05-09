@@ -31,6 +31,7 @@ import { TratamientoDetailComponent } from './tratamiento/tratamiento-detail/tra
 import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterinario-form.component';
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 import { CitaFormComponent } from './cita/cita-form/cita-form.component';
+import { ServiciosComponent } from './landing/servicios/servicios.component';
 
 
 
@@ -71,9 +72,11 @@ const routes: Routes = [
   {path: 'editar-veterinario/:id', component:VeterinarioFormComponent},
   {path: 'agendar-cita',component:CitaFormComponent},
   {path: 'editar-cita/:id', component:CitaFormComponent},
+  {path: 'servicios-clinicos', component: ServiciosComponent},
   {path: 'detalles-cita/:id', component:CitaDetailComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
+
 ];
 
 @NgModule({
