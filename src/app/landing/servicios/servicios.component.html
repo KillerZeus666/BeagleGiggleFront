@@ -1,31 +1,32 @@
 <section class="contenedor-servicios">
+    <!-- Título de la sección -->
+    <h2 class="titulo-servicios">Conoce nuestros servicios</h2>
+
     <div *ngIf="isLoading" class="loading">Cargando servicios...</div>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   
     <div class="servicios-container">
-      <div *ngFor="let servicio of servicios" class="tarjeta-servicio" #section (click)="mostrarPrecio(servicio)">
-        <div class="card">
-          <!-- Frente de la tarjeta -->
-          <div class="front">
-            <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
-            <h3>{{ servicio.nombre }}</h3>
-            <p>{{ servicio.descripcion }}</p>
-          </div>
+        <div *ngFor="let servicio of servicios" class="tarjeta-servicio" #section (click)="mostrarPrecio(servicio)">
+            <div class="card">
+                <!-- Frente de la tarjeta -->
+                <div class="front">
+                    <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
+                    <h3>{{ servicio.nombre }}</h3>
+                    <p>{{ servicio.descripcion }}</p>
+                    <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
+                </div>
   
-          <!-- Parte trasera de la tarjeta con precio -->
-          <div class="back" *ngIf="servicio.mostrarPrecio">
-            <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
-            <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
-          </div>
+                <!-- Parte trasera de la tarjeta con precio -->
+                <div class="back" *ngIf="servicio.mostrarPrecio">
+                    <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
+                </div>
+            </div>
         </div>
-      </div>
 
-        <!-- Olas -->
-    <div class="wave wave1"></div>
-    <div class="wave wave2"></div>
-    <div class="wave wave3"></div>
     </div>
-  
-  
-  </section>
-  
+    
+        <!-- Olas -->
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+</section>
