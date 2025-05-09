@@ -177,3 +177,37 @@
         background-position: -1360px 0;
     }
 }
+
+/* Media Queries para Responsividad */
+
+/* Para dispositivos pequeños (móviles en orientación vertical) */
+@media (max-width: 768px) {
+    .servicios-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    }
+
+    .card {
+        width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
+        height: 300px; /* Ajustar el tamaño de las tarjetas */
+    }
+
+    .titulo-servicios {
+        font-size: 24px; /* Reducir el tamaño del título */
+    }
+}
+
+/* Para dispositivos más pequeños como móviles en orientación horizontal */
+@media (max-width: 480px) {
+    .servicios-container {
+        grid-template-columns: 1fr; /* 1 columna en dispositivos más pequeños */
+    }
+
+    .card {
+        width: 95%; /* Ajustar el tamaño de las tarjetas */
+        height: 250px; /* Ajustar el tamaño de las tarjetas */
+    }
+
+    .titulo-servicios {
+        font-size: 20px; /* Reducir aún más el tamaño del título */
+    }
+}
