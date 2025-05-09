@@ -72,6 +72,22 @@ p {
   color: var(--text-light);
 }
 
+.perrito {
+  position: relative;
+  animation: correr 5s infinite linear;
+  width: 200px; /* Ajusta el tamaño según lo desees */
+}
+
+@keyframes correr {
+  0% {
+    left: 100%; /* Comienza fuera de la pantalla a la derecha */
+  }
+  100% {
+    left: -200px; /* Se mueve fuera de la pantalla a la izquierda */
+  }
+}
+
+
 /* Sección Hero/Carrusel */
 .description-section {
   position: relative;
