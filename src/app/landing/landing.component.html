@@ -32,31 +32,8 @@
 
 <main>
   <!-- Sección de Servicios -->
-  <section #section id="servicios" class="services-section-title">
-    <h2>Servicios</h2>
-    <div *ngIf="isLoading" class="loading-spinner">
-      <div class="spinner"></div>
-      <p>Cargando servicios...</p>
-    </div>
-    <div class="services-section" *ngIf="!isLoading">
-      <div class="service-card" *ngFor="let servicio of servicios">
-        <div class="service-card-inner">
-          <div
-            class="service-card-front"
-            [style.background-image]="'url(' + servicio.imagenFrontal + ')'"
-          >
-            <h3>{{ servicio.nombre }}</h3>
-          </div>
-          <div
-            class="service-card-back"
-            [style.background-image]="'url(' + servicio.imagenTrasera + ')'"
-          >
-            <p>{{ servicio.descripcion }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <app-servicios></app-servicios>
+
 
   <!-- Sección de Testimonios -->
   <section #section id="conocenos" class="testimonials-section">

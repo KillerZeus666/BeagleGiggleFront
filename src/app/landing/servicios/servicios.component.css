@@ -1,55 +1,159 @@
-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-color: #cfe8f6;
-    background-size: cover;
-    background-attachment: fixed;
+/* Estilo de las tarjetas */
+.servicios-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten al ancho disponible */
+    gap: 20px; /* Espacio entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    padding-bottom: 120px; /* Da espacio para las olas en la parte inferior */
+    background-color: #b4d4e6;
+    position: relative; /* Necesario para el correcto posicionamiento de las olas */
 }
-section .wave {
+
+/* Ajustar las tarjetas para que estén por encima de las olas */
+.card {
+    width: 250px; /* Ancho ajustado */
+    height: 350px; /* Altura ajustada */
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    cursor: pointer;
+    transition: transform 0.6s ease-in-out, box-shadow 0.3s ease;
+    margin: 10px; /* Márgenes entre tarjetas */
+    z-index: 2; /* Asegura que las tarjetas estén por encima de las olas */
+    background-color: #fff; /* Fondo blanco para todas las tarjetas */
+    transform-style: preserve-3d; /* Habilita la animación en 3D */
+}
+
+/* Efecto de giro en las tarjetas */
+.card:active {
+    transform: rotateY(180deg); /* Gira la tarjeta al hacer clic */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al hacer hover */
+}
+
+/* Parte frontal de la tarjeta */
+.front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff; /* Fondo blanco para el frente */
+    transition: opacity 0.3s ease;
+    position: absolute;
+    backface-visibility: hidden; /* Oculta el frente al girar */
+}
+
+/* Imagen redonda y centrada */
+.front img {
+    width: 100px; /* Imagen más pequeña */
+    height: 100px; /* Imagen más pequeña */
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
+}
+
+/* Estilo del nombre y descripción en el frente */
+.front h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.front p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Parte trasera de la tarjeta con el precio */
+.back {
+    background-color: #fff; /* Fondo blanco para la parte trasera */
+    color: #333; /* Cambié el color del texto a un gris oscuro */
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Transición suave al mostrar el precio */
+    position: absolute;
+    backface-visibility: hidden; /* Oculta la parte trasera al girar */
+    transform: rotateY(180deg); /* Gira la parte trasera para que quede al revés al principio */
+}
+
+.card:active .back {
+    opacity: 1; /* Muestra la parte trasera al hacer clic */
+}
+
+.back h3 {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.back .precio {
+    font-size: 12px; /* Reducir el tamaño de la fuente */
+    margin-top: 10px;
+    color: #333; /* Ajusté el color para que se vea bien sobre el fondo blanco */
+}
+
+.back .mensaje-cita {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #333; /* Ajusté el color para que se vea bien sobre el fondo blanco */
+    font-style: italic;
+    text-align: center;
+}
+
+/* Estilo de las olas en el fondo */
+.wave {
     position: absolute;
     width: 100%;
     height: 100px;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     background-image: url(https://i.postimg.cc/fyLfGfYZ/wave.png);
     background-size: cover;
-    opacity: 0.5;
+    background-repeat: repeat-x;
+    z-index: 1; /* Las olas están debajo de las tarjetas */
     pointer-events: none;
-  }
-  
-  .wave1 {
-    z-index: 3;
-    animation: animate 10s linear infinite;
-  }
-  
-  .wave2 {
-    z-index: 2;
-    opacity: 0.3;
-    animation: animate-reverse 15s linear infinite;
-  }
-  
-  .wave3 {
+}
+
+/* Efectos de animación para las olas */
+.wave1 {
     z-index: 1;
-    opacity: 0.2;
+    opacity: 1;
+    animation: animate 10s linear infinite;
+}
+
+.wave2 {
+    z-index: 0;
+    opacity: 0.6;
+    animation: animate-reverse 15s linear infinite;
+}
+
+.wave3 {
+    z-index: -1;
+    opacity: 0.3;
     animation: animate 20s linear infinite;
-  }
-  
-  @keyframes animate {
+}
+
+/* Keyframes para las olas */
+@keyframes animate {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     100% {
-      background-position: 1360px 0;
+        background-position: 1360px 0;
     }
-  }
-  
-  @keyframes animate-reverse {
+}
+
+@keyframes animate-reverse {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     100% {
-      background-position: -1360px 0;
+        background-position: -1360px 0;
     }
-  }
-  
+}

@@ -1,19 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varias Secciones</title>
-</head>
-<body>
-    <app-header></app-header>
-    <section>
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-      </section>
-      
+<section class="contenedor-servicios">
+    <div *ngIf="isLoading" class="loading">Cargando servicios...</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  
+    <div class="servicios-container">
+      <div *ngFor="let servicio of servicios" class="tarjeta-servicio" #section (click)="mostrarPrecio(servicio)">
+        <div class="card">
+          <!-- Frente de la tarjeta -->
+          <div class="front">
+            <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
+            <h3>{{ servicio.nombre }}</h3>
+            <p>{{ servicio.descripcion }}</p>
+          </div>
+  
+          <!-- Parte trasera de la tarjeta con precio -->
+          <div class="back" *ngIf="servicio.mostrarPrecio">
+            <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
+            <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
+          </div>
+        </div>
+      </div>
 
-
-</body>
-</html>
+        <!-- Olas -->
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    </div>
+  
+  
+  </section>
+  
