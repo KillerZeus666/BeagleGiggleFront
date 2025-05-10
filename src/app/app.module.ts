@@ -49,6 +49,9 @@ import { TratamientoTableComponent } from './tratamiento/tratamiento-table/trata
 import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 import { ServiciosComponent } from './landing/servicios/servicios.component';
+import { FacturaTableComponent } from './factura/factura-table/factura-table.component';
+import { FacturaDetailComponent } from './factura/factura-detail/factura-detail.component';
+import { FacturaFormComponent } from './factura/factura-form/factura-form.component';
 
 
 
@@ -95,7 +98,10 @@ import { ServiciosComponent } from './landing/servicios/servicios.component';
     TratamientoTableComponent,
     CitaFormComponent,
     CitaDetailComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    FacturaTableComponent,
+    FacturaDetailComponent,
+    FacturaFormComponent
   ],
   imports: [
     BrowserModule,
