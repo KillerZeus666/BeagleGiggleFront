@@ -28,7 +28,17 @@ export class FacturaService {
     const params = new HttpParams()
       .set('idCliente', idCliente)
       .set('idTratamiento', idTratamiento);
+
     return this.http.post<FacturaCL>(`${this.baseUrl}/crear/tratamiento`, factura, { params });
+  }
+
+  crearFacturaPorTratamientos(idCliente: number, idsTratamiento: number[], factura: FacturaCL): Observable<FacturaCL[]> {
+    let params = new HttpParams().set('idCliente', idCliente);
+    idsTratamiento.forEach(id => {
+      params = params.append('idsTratamiento', id);
+    });
+
+    return this.http.post<FacturaCL[]>(`${this.baseUrl}/crear/tratamientos`, factura, { params });
   }
 
   crearFacturaPorServicio(idCliente: number, idServicio: number, factura: FacturaCL): Observable<FacturaCL> {
