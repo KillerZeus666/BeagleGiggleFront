@@ -1,37 +1,53 @@
-import { MetodoPagoCL } from './metodo-pago-cl';
+import { ClienteCL } from './cliente-cl';
+import { TratamientoCL } from './tratamiento-cl';
 import { ServicioCL } from './servicio-cl';
+import { FacturaMedicamentoCL } from './factura-medicamento-cl';
 
 export class FacturaCL {
   public idFactura: number;
-  public fecha: Date;
+  public fechaHora: Date;
   public total: number;
-  public metodosPago: MetodoPagoCL[];
-  public servicios: ServicioCL[];
+  public pagada: boolean;
+  public metododepago: string;
+  public cliente: ClienteCL;
+  public tratamiento?: TratamientoCL | null;
+  public servicio?: ServicioCL | null;
+  public facturaMedicamentos: FacturaMedicamentoCL[];
 
   constructor(
     idFactura: number = 0,
-    fecha: Date = new Date(),
+    fechaHora: Date = new Date(),
     total: number = 0.0,
-    metodosPago: MetodoPagoCL[] = [],
-    servicios: ServicioCL[] = []
+    pagada: boolean = false,
+    metododepago: string = '',
+    cliente: ClienteCL,
+    tratamiento: TratamientoCL | null = null,
+    servicio: ServicioCL | null = null,
+    facturaMedicamentos: FacturaMedicamentoCL[] = []
   ) {
     this.idFactura = idFactura;
-    this.fecha = fecha;
+    this.fechaHora = fechaHora;
     this.total = total;
-    this.metodosPago = metodosPago;
-    this.servicios = servicios;
+    this.pagada = pagada;
+    this.metododepago = metododepago;
+    this.cliente = cliente;
+    this.tratamiento = tratamiento;
+    this.servicio = servicio;
+    this.facturaMedicamentos = facturaMedicamentos;
   }
 
   public static fromBackendData(data: any): FacturaCL {
     return new FacturaCL(
       data.idFactura,
-      new Date(data.fecha),
+      new Date(data.fechaHora),
       data.total,
-      data.metodosPago
-        ? data.metodosPago.map((m: any) => MetodoPagoCL.fromBackendData(m))
-        : [],
-      data.servicios
-        ? data.servicios.map((s: any) => ServicioCL.fromBackendData(s))
+      data.pagada,
+      data.metododepago,
+      ClienteCL.fromBackendData(data.cliente),
+      data.tratamiento ? TratamientoCL.fromBackendData(data.tratamiento) : null,
+      data.servicio ? ServicioCL.fromBackendData(data.servicio) : null,
+      data.facturaMedicamentos
+        ? data.facturaMedicamentos.map((fm: any) => FacturaMedicamentoCL.fromBackendData(fm))
         : []
     );
   }
@@ -39,22 +55,34 @@ export class FacturaCL {
   public toBackendFormat(): any {
     return {
       idFactura: this.idFactura,
-      fecha: this.fecha.toISOString(),
+      fechaHora: this.fechaHora.toISOString(),
       total: this.total,
-      metodosPago: this.metodosPago.map((m) => m.toBackendFormat()),
-      servicios: this.servicios.map((s) => s.toBackendFormat()),
+      pagada: this.pagada,
+      metododepago: this.metododepago,
+      cliente: this.cliente.toBackendFormat(),
+      tratamiento: this.tratamiento ? this.tratamiento.toBackendFormat() : null,
+      servicio: this.servicio ? this.servicio.toBackendFormat() : null,
+      facturaMedicamentos: this.facturaMedicamentos.map((fm) => fm.toBackendFormat())
     };
   }
 
   public validate(): { isValid: boolean; errors: string[] } {
     const errors: string[] = [];
 
-    if (!this.fecha) {
-      errors.push('La fecha es requerida');
+    if (!this.fechaHora) {
+      errors.push('La fecha y hora son requeridas');
     }
 
     if (this.total == null || isNaN(this.total) || this.total < 0) {
       errors.push('El total debe ser un número válido y positivo');
+    }
+
+    if (!this.metododepago || this.metododepago.trim() === '') {
+      errors.push('El método de pago es requerido');
+    }
+
+    if (!this.cliente) {
+      errors.push('El cliente es requerido');
     }
 
     return {

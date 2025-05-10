@@ -20,8 +20,8 @@ export class FacturaService {
     return this.http.get<FacturaCL>(`${this.baseUrl}/${id}`);
   }
 
-  getFacturaPorIdCLiente(idCliente:number): Observable<FacturaCL> {
-    return this.http.get<FacturaCL>(`${this.baseUrl}/cliente/${idCliente}`);
+  getFacturaPorIdCLiente(idCliente:number): Observable<FacturaCL[]> {
+    return this.http.get<FacturaCL[]>(`${this.baseUrl}/cliente/${idCliente}`);
   }
 
   crearFacturaPorTratamiento(idCliente: number, idTratamiento: number, factura: FacturaCL): Observable<FacturaCL> {
