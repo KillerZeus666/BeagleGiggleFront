@@ -1,54 +1,18 @@
-<section class="contenedor-servicios">
-    
-    <!-- Título de la sección -->
-    <h2 class="titulo-servicios">Conoce nuestros servicios</h2>
-
-    <div *ngIf="isLoading" class="loading">Cargando servicios...</div>
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-  
-    <div class="servicios-container">
-        <div *ngFor="let servicio of servicios" class="tarjeta-servicio" #section (click)="mostrarPrecio(servicio)">
-            <div class="card">
-                <!-- Frente de la tarjeta -->
-                <div class="front">
-                    <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
-                    <h3>{{ servicio.nombre }}</h3>
-                    <p>{{ servicio.descripcion }}</p>
-                    <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
-                </div>
-  
-                <!-- Parte trasera de la tarjeta con precio -->
-                <div class="back" *ngIf="servicio.mostrarPrecio">
-                    <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    
-        <!-- Olas -->
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-
-</section>
-
-<section class="cupon-container">
-    <div class="huellas-fondo">
-        <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f43e.png" class="huella huella1" />
-        <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f43e.png" class="huella huella2" />
-        <img src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f43e.png" class="huella huella3" />
+<div class="servicios-container">
+  <div *ngFor="let servicio of servicios" class="tarjeta-servicio">
+    <div class="card">
+      <!-- Frente -->
+      <div class="front">
+        <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
+        <h3>{{ servicio.nombre }}</h3>
       </div>
-    <div class="cupon-card">
-      <h3 class="cupon-titulo">Cupones de descuento</h3>
-      <p class="cupon-texto">
-        Haz click sobre el cupón y preséntalo en tu próxima visita para obtener descuentos en tu servicio.
-      </p>
-      <a href="https://drive.google.com/uc?export=download&id=17rxmUqNyHfpkGX614Fe5x7NjqfHyFxyZ" download="cupon-descuento.pdf">
-        <img src="https://i.postimg.cc/T126594Z/cupon2.jpg" alt="Cupón de descuento" class="cupon-img" />
-      </a>
-    </div>
-  </section>
-  
 
-  
+      <!-- Reverso -->
+      <div class="back">
+        <p>{{ servicio.descripcion }}</p>
+        <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
+        <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
+      </div>
+    </div>
+  </div>
+</div>
