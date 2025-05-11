@@ -57,6 +57,7 @@ import { OfertasComponent } from './landing/ofertas/ofertas.component';
 import { PreguntasComponent } from './landing/preguntas/preguntas.component';
 import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.component';
 import { ClientesDestacadosComponent } from './landing/clientes-destacados/clientes-destacados.component';
+import { ContactanosComponent } from './landing/contactanos/contactanos.component';
 
 
 
@@ -111,7 +112,8 @@ import { ClientesDestacadosComponent } from './landing/clientes-destacados/clien
     OfertasComponent,
     PreguntasComponent,
     QuienesSomosComponent,
-    ClientesDestacadosComponent
+    ClientesDestacadosComponent,
+    ContactanosComponent
   ],
   imports: [
     BrowserModule,
