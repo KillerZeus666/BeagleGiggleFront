@@ -40,6 +40,12 @@
     right: -30px;
 }
 
+.formularioLogin::before,
+.formularioLogin::after {
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* Contenedor del formulario */
 .formularioContainer {
     background: rgba(255, 255, 255, 0.95);

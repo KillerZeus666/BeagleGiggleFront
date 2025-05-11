@@ -24,10 +24,10 @@
           required
         />
   
-        <button type="submit">Ingresar</button>
+        <button id="loginSubmit" type="submit">Ingresar</button>
   
         <!-- Mensaje de error -->
-        <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+        <p *ngIf="errorMessage" id="errorMessage" style="color: red">{{ errorMessage }}</p>
   
         <p class="registro">
           ¿No tienes cuenta?

@@ -93,7 +93,6 @@ export class CartasClienteComponent implements AfterViewInit {
       },
       error: (err) => {
         console.error('Error al cargar datos financieros:', err);
-        // Puedes mostrar valores por defecto o un mensaje de error
         this.stats.ventasTotales = 0;
         this.stats.gananciasTotales = 0;
       }
