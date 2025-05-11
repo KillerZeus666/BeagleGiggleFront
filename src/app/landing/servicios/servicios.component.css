@@ -1,14 +1,17 @@
 .servicios-wrapper {
-  background-color: #e0f2ff; /* Azul clarito */
-  width: 100%;
-  padding: 60px 0; /* Más alto arriba y abajo */
+  position: relative;
+  background-color: #e0f7ff; /* azul clarito */
+  overflow: hidden;
+  padding-bottom: 100px; /* da espacio para que se vean las olas debajo */
 }
+
 
 
 .servicios-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+   z-index: 2;
   padding: 30px 10px;
   max-width: 1200px;
   margin: auto;
@@ -123,4 +126,91 @@
   100% {
     left: -200px;
   }
+}
+
+/* Estilo de las olas en el fondo */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-image: url(https://i.postimg.cc/fyLfGfYZ/wave.png);
+  background-size: cover;
+  background-repeat: repeat-x;
+  z-index: 0; /* detrás de tarjetas */
+  pointer-events: none;
+}
+
+
+/* Efectos de animación para las olas */
+.wave1 {
+    z-index: 1;
+    opacity: 1;
+    animation: animate 10s linear infinite;
+}
+
+.wave2 {
+    z-index: 0;
+    opacity: 0.6;
+    animation: animate-reverse 15s linear infinite;
+}
+
+.wave3 {
+    z-index: -1;
+    opacity: 0.3;
+    animation: animate 20s linear infinite;
+}
+
+/* Keyframes para las olas */
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1360px 0;
+    }
+}
+
+@keyframes animate-reverse {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -1360px 0;
+    }
+}
+
+/* Media Queries para Responsividad */
+
+/* Para dispositivos pequeños (móviles en orientación vertical) */
+@media (max-width: 768px) {
+    .servicios-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    }
+
+    .card {
+        width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
+        height: 300px; /* Ajustar el tamaño de las tarjetas */
+    }
+
+    .titulo-servicios {
+        font-size: 24px; /* Reducir el tamaño del título */
+    }
+}
+
+/* Para dispositivos más pequeños como móviles en orientación horizontal */
+@media (max-width: 480px) {
+    .servicios-container {
+        grid-template-columns: 1fr; /* 1 columna en dispositivos más pequeños */
+    }
+
+    .card {
+        width: 95%; /* Ajustar el tamaño de las tarjetas */
+        height: 250px; /* Ajustar el tamaño de las tarjetas */
+    }
+
+    .titulo-servicios {
+        font-size: 20px; /* Reducir aún más el tamaño del título */
+    }
 }

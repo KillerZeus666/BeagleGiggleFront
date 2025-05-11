@@ -1,23 +1,27 @@
 
 <div class="servicios-wrapper">
-
     <div class="servicios-container">
-    <div *ngFor="let servicio of servicios" class="tarjeta-servicio">
-        <div class="card">
-        <!-- Frente -->
-        <div class="front">
-            <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
-            <h3>{{ servicio.nombre }}</h3>
-        </div>
+        <div *ngFor="let servicio of servicios" class="tarjeta-servicio">
+            <div class="card">
+            <!-- Frente -->
+            <div class="front">
+                <img [src]="servicio.imagenFrontal" alt="{{ servicio.nombre }}" />
+                <h3>{{ servicio.nombre }}</h3>
+            </div>
 
-        <!-- Reverso -->
-        <div class="back">
-            <p>{{ servicio.descripcion }}</p>
-            <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
-            <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
-        </div>
+            <!-- Reverso -->
+            <div class="back">
+                <p>{{ servicio.descripcion }}</p>
+                <div class="precio">Precio base: {{ servicio.precioBase | currency }}</div>
+                <div class="mensaje-cita">Es necesario sacar cita con anticipación.</div>
+            </div>
+            </div>
         </div>
     </div>
 
-    </div>
+   <!-- Olas -->
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    
 </div>
