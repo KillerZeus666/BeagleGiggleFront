@@ -4,9 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
-
 
 .tabs {
   max-width: 900px;
@@ -91,7 +89,7 @@
 }
 
 .sede-card {
-  background-color: #b3ddec; /* azul clarito */
+  background-color: #b1e0f0; /* azul clarito */
   border-radius: 10px; /* Bordes más suaves */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 15px; /* Menos padding dentro de las tarjetas */

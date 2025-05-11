@@ -23,20 +23,21 @@
 <section class="sedes-section">
   <h2 class="front">Nuestras Sedes</h2>
   <div class="sedes-container">
-    <div class="sede-card">
-      <img src="https://www.ces.edu.co/wp-content/uploads/2021/06/nota-cvz-best-mini-300x300.jpg" alt="Sede Los Pinos" />
-      <h3>Los Pinos</h3>
-      <p>Rodeada de naturaleza, perfecta para el bienestar de tus mascotas.</p>
-    </div>
-    <div class="sede-card">
-      <img src="https://www.paxinasgalegas.es/imagenes/adsg-acivo_img552467t0.jpg" alt="Sede Patitas Felices" />
-      <h3>Patitas Felices</h3>
-      <p>Un lugar lleno de amor, juegos y atención personalizada.</p>
-    </div>
-    <div class="sede-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9gHpgK6rA-4QK_7jf62obGHv1HHgJjwBOg&s" alt="Sede Huellas" />
-      <h3>Huellas</h3>
-      <p>Instalaciones modernas y cálidas para una atención de calidad.</p>
+    <div class="sede-card" *ngFor="let sede of sedes" (click)="toggleFlip(sede)">
+      <div class="card-inner" [class.flipped]="sede.flipped">
+        <!-- Frontal -->
+        <div class="card-front">
+          <img [src]="sede.image" alt="{{ sede.name }}" />
+          <h3>{{ sede.name }}</h3>
+          <p>{{ sede.description }}</p>
+        </div>
+        <!-- Reverso -->
+        <div class="card-back">
+          <h3>Dirección</h3>
+          <p>{{ sede.address }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
