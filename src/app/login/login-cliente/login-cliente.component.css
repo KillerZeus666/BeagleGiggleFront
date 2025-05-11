@@ -1,0 +1,142 @@
+/* Estilos generales para formularios de login y registro */
+.formularioLogin,
+.formularioRegistro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f4f8fb; /* Fondo claro */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    position: relative;
+}
+
+/* Pseudo-elemento para la opacidad */
+.formularioLogin::before,
+.formularioRegistro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(244, 248, 251, 0.7); /* Opacidad del 70% */
+    z-index: 1;
+}
+
+/* Contenedor del formulario */
+.formularioContainer {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    position: relative;
+    z-index: 2; /* Asegura que el formulario esté por encima del fondo */
+}
+
+/* Títulos */
+.formularioContainer h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px; /* Un poco más grande */
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Etiquetas */
+label {
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Campos de entrada */
+input,
+select {
+    max-width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #555;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus,
+input:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+/* Botón */
+button {
+    padding: 14px;
+    background-color: #3c5b6f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #5e7e92;
+}
+
+/* Enlace de registro */
+.registro {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.registro a {
+    color: #5e7e92;
+    text-decoration: none;
+}
+
+.registro a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para opciones de select */
+option {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #3c5b6f;
+}
+
+/* Diseño responsive */
+@media (max-width: 600px) {
+    label {
+        font-size: 1rem;
+    }
+
+    select {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+/* Estilos para autocompletado de navegadores */
+input:-webkit-autofill {
+    background-color: white !important;
+    color: black !important;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: 0 0 0px 1000px white inset !important;
+}
