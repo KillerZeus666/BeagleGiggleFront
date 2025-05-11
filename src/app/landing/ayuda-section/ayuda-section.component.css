@@ -1,0 +1,38 @@
+.landing-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+  background-color: #bddbec;
+  margin: 40px auto;
+}
+
+.intro-text {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.intro-text h2 {
+  font-size: 40px;
+color: #2a4e68; /* Azul oscuro elegante */
+  margin-bottom: 20px;
+}
+
+.intro-text p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.intro-image {
+  flex: 1;
+  text-align: center;
+}
+
+.intro-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}

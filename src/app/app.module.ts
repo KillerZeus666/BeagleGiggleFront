@@ -52,6 +52,7 @@ import { ServiciosComponent } from './landing/servicios/servicios.component';
 import { FacturaTableComponent } from './factura/factura-table/factura-table.component';
 import { FacturaDetailComponent } from './factura/factura-detail/factura-detail.component';
 import { FacturaFormComponent } from './factura/factura-form/factura-form.component';
+import { AyudaSectionComponent } from './landing/ayuda-section/ayuda-section.component';
 
 
 
@@ -101,7 +102,8 @@ import { FacturaFormComponent } from './factura/factura-form/factura-form.compon
     ServiciosComponent,
     FacturaTableComponent,
     FacturaDetailComponent,
-    FacturaFormComponent
+    FacturaFormComponent,
+    AyudaSectionComponent
   ],
   imports: [
     BrowserModule,
