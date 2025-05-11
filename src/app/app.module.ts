@@ -56,6 +56,7 @@ import { AyudaSectionComponent } from './landing/ayuda-section/ayuda-section.com
 import { OfertasComponent } from './landing/ofertas/ofertas.component';
 import { PreguntasComponent } from './landing/preguntas/preguntas.component';
 import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.component';
+import { ClientesDestacadosComponent } from './landing/clientes-destacados/clientes-destacados.component';
 
 
 
@@ -109,7 +110,8 @@ import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.com
     AyudaSectionComponent,
     OfertasComponent,
     PreguntasComponent,
-    QuienesSomosComponent
+    QuienesSomosComponent,
+    ClientesDestacadosComponent
   ],
   imports: [
     BrowserModule,

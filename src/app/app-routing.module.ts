@@ -34,10 +34,7 @@ import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { ServiciosComponent } from './landing/servicios/servicios.component';
 import { FacturaTableComponent } from './factura/factura-table/factura-table.component';
 import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.component';
-
-
-
-
+import { ClientesDestacadosComponent } from './landing/clientes-destacados/clientes-destacados.component';
 
 
 const routes: Routes = [
@@ -78,6 +75,7 @@ const routes: Routes = [
   {path: 'detalles-cita/:id', component:CitaDetailComponent},
   {path: 'facturas/cliente/:id',component:FacturaTableComponent},
   {path: 'quienes-somos', component: QuienesSomosComponent},
+  {path: 'clientes-destacados', component: ClientesDestacadosComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 

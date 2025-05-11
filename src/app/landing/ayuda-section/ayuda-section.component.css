@@ -35,3 +35,18 @@ color: #2a4e68; /* Azul oscuro elegante */
   height: auto;
   border-radius: 12px;
 }
+.btn-leer-mas {
+  display: inline-block;
+    background-color: #72c0ea;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-leer-mas:hover {
+    background-color: #63bbea;
+}
