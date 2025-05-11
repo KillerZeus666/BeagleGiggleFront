@@ -1,0 +1,43 @@
+<section class="quienes-somos">
+  <h2 class="front">¿Quiénes somos?</h2>
+
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button 
+        *ngFor="let tab of tabs; let i = index" 
+        [class.active]="i === activeTab"
+        (click)="selectTab(i)">
+        {{ tab.title }}
+      </button>
+      <div class="tab-indicator" [style.transform]="'translateX(' + activeTab * 100 + '%)'"></div>
+    </div>
+
+    <div class="tab-content">
+      <div *ngFor="let tab of tabs; let i = index" [hidden]="i !== activeTab">
+        <p>{{ tab.content }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sedes-section">
+  <h2 class="front">Nuestras Sedes</h2>
+  <div class="sedes-container">
+    <div class="sede-card" *ngFor="let sede of sedes" (click)="toggleFlip(sede)">
+      <div class="card-inner" [class.flipped]="sede.flipped">
+        <!-- Frontal -->
+        <div class="card-front">
+          <img [src]="sede.image" alt="{{ sede.name }}" />
+          <h3>{{ sede.name }}</h3>
+          <p>{{ sede.description }}</p>
+        </div>
+        <!-- Reverso -->
+        <div class="card-back">
+          <h3>Dirección</h3>
+          <p>{{ sede.address }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

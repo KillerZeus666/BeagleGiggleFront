@@ -1,22 +1,23 @@
 
 .associated-foundations {
-    background-image: url("https://i.postimg.cc/kMVv77kk/175618270-camino-y-sendero-de-huellas-de-perros-que-se-alejan-patr-n-de-huella-animal-silueta-de-hue.png"),
-      url("https://i.postimg.cc/kMVv77kk/175618270-camino-y-sendero-de-huellas-de-perros-que-se-alejan-patr-n-de-huella-animal-silueta-de-hue.png");
     background-size: 200px, 190px;
     background-repeat: no-repeat, no-repeat;
     background-position: top left, bottom right;
     padding: 50px 0;
+      background-color: #e0f7ff; /* azul clarito */
+
   }
   
-  .associated-foundations h2 {
-    text-align: center;
-    padding-top: 40px;
-    font-size: 30px;
-    color: black;
-    margin-top: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
+.associated-foundations h2 {
+  text-align: center;
+  padding-top: 40px;
+  font-size: 2rem;  /* Similar al tamaño del otro título */
+  color: #2a4e68;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
   
   .carousel {
     display: flex;

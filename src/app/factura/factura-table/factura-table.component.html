@@ -1,1 +1,41 @@
-<p>factura-table works!</p>
+<div class="acciones">
+  <button (click)="irAComprar('servicio')">Comprar servicio</button>
+  <button (click)="irAComprar('medicamento')">Comprar medicamentos</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Seleccionar</th>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Total</th>
+      <th>Pagada</th>
+      <th>Método de pago</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let factura of facturas">
+      <td>
+        <input type="checkbox" 
+               [checked]="seleccionadas.has(factura.idFactura)"
+               (change)="toggleSeleccion(factura.idFactura)"
+               [disabled]="factura.pagada">
+      </td>
+      <td>{{ factura.idFactura }}</td>
+      <td>{{ factura.fechaHora | date:'short' }}</td>
+      <td>{{ factura.total | currency }}</td>
+      <td>{{ factura.pagada ? 'Sí' : 'No' }}</td>
+      <td>{{ factura.metododepago }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="seleccionadas.size > 0">
+  <button (click)="pagar()">Pagar</button>
+</div>
+
+<div *ngIf="mensaje">
+  <p>{{ mensaje }}</p>
+</div>
+

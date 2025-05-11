@@ -44,6 +44,50 @@ h1 {
   font-weight: 700;
 }
 
+
+
+.carousel-text h1, .carousel-text p {
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', sans-serif; /* O puedes elegir otra fuente */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.carousel-text h1 {
+  font-size: 3rem;  /* Tamaño grande para el título */
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.carousel-text p {
+  font-size: 1.2rem;  /* Tamaño más pequeño para la descripción */
+  max-width: 80%;
+  margin: 0 auto;
+  font-weight: 300; /* Para que sea más liviana que el título */
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 15px;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  color: white;
+}
+
 h2 {
   font-size: 2.4rem;
   text-align: center;
@@ -316,10 +360,32 @@ p {
   color: var(--text-color);
 }
 
+.front {
+  font-size: 28px; /* Un poco más grande */
+  color: #2a4e68;  /* Azul */
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 30px auto;
+  display: block; /* Para que ocupe todo el ancho disponible */
+}
+
+.front::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #f39c12; /* Naranja */
+  margin: 8px auto 0 auto; /* Centrado horizontalmente */
+  border-radius: 2px;
+}
+
+
+
 /* Sección de Testimonios */
 .testimonials-section {
   padding: 80px 20px;
-  background-color: #f8f6ef; /* Beige suave */
+  background-color: #e0f7ff; /* azul clarito */
   margin: 40px 0;
 }
 
@@ -871,7 +937,7 @@ section.in-view {
 .hero-button {
   display: inline-block;
   background-color: var(--primary-color);
-  color:#72c0ea;
+  color:#cbecf4;
   font-size: 1rem;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -882,6 +948,6 @@ section.in-view {
 }
 
 .hero-button:hover {
-  background-color: var(--primary-color-dark, #ffffff);
+  background-color: #64bbea;
   text-decoration: none;
 }

@@ -1,0 +1,167 @@
+/* Estilo de las olas en el fondo */
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    left: 0;
+    bottom: 0;
+    background-image: url(https://i.postimg.cc/fyLfGfYZ/wave.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+    z-index: 1; /* Asegura que las olas se queden por debajo del contenido */
+    pointer-events: none;
+}
+
+/* Efectos de animación para las olas */
+.wave1 {
+    z-index: 1;
+    opacity: 1;
+    animation: animate 10s linear infinite;
+}
+
+.wave2 {
+    z-index: 0;
+    opacity: 0.6;
+    animation: animate-reverse 15s linear infinite;
+}
+
+.wave3 {
+    z-index: -1;
+    opacity: 0.3;
+    animation: animate 20s linear infinite;
+}
+
+/* Keyframes para las olas */
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1360px 0;
+    }
+}
+
+@keyframes animate-reverse {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -1360px 0;
+    }
+}
+
+/* Media Queries para Responsividad */
+
+/* Para dispositivos pequeños (móviles en orientación vertical) */
+@media (max-width: 768px) {
+    .servicios-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    }
+
+    .card {
+        width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
+        height: 300px; /* Ajustar el tamaño de las tarjetas */
+    }
+
+    .titulo-servicios {
+        font-size: 24px; /* Reducir el tamaño del título */
+    }
+}
+
+/* Para dispositivos más pequeños como móviles en orientación horizontal */
+@media (max-width: 480px) {
+    .servicios-container {
+        grid-template-columns: 1fr; /* 1 columna en dispositivos más pequeños */
+    }
+
+    .card {
+        width: 95%; /* Ajustar el tamaño de las tarjetas */
+        height: 250px; /* Ajustar el tamaño de las tarjetas */
+    }
+
+    .titulo-servicios {
+        font-size: 20px; /* Reducir aún más el tamaño del título */
+    }
+}
+
+.cupon-container {
+    position: relative;
+    padding: 3rem 1rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 3rem auto;
+    max-width: 800px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cupon-card {
+    position: relative;
+    z-index: 1; /* Encima de las huellas */
+    text-align: center;
+  }
+  
+  .cupon-titulo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #db7093;
+  }
+  
+  .cupon-texto {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #444;
+  }
+  
+  .cupon-img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Fondo de huellas */
+  .huellas-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  .huella {
+    position: absolute;
+    width: 60px;
+    opacity: 0;
+    animation: aparecerDesaparecer 6s infinite ease-in-out;
+  }
+  
+  .huella1 {
+    top: 15%;
+    left: 7%;
+    animation-delay: 0s;
+  }
+  .huella2 {
+    top: 15%;
+    left: 75%;
+    animation-delay: 2s;
+  }
+  .huella3 {
+    top: 70%;
+    left: 78%;
+    animation-delay: 4s;
+  }
+  
+  @keyframes aparecerDesaparecer {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

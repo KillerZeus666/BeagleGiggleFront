@@ -1,0 +1,52 @@
+.landing-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+  margin: 40px auto;
+}
+
+.intro-text {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.intro-text h2 {
+  font-size: 40px;
+color: #2a4e68; /* Azul oscuro elegante */
+  margin-bottom: 20px;
+}
+
+.intro-text p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.intro-image {
+  flex: 1;
+  text-align: center;
+}
+
+.intro-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.btn-leer-mas {
+  display: inline-block;
+    background-color: #72c0ea;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-leer-mas:hover {
+    background-color: #63bbea;
+}

@@ -1,0 +1,123 @@
+.quienes-somos {
+  padding: 60px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs {
+  max-width: 900px;
+  width: 100%;
+}
+
+.tab-buttons {
+  display: flex;
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 30px;
+}
+
+.tab-buttons button {
+  flex: 1;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2a4e68;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.tab-buttons button.active {
+  color: #f39c12;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 25%;
+  height: 4px;
+  background-color: #f39c12;
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.tab-content {
+  background-color: #e0f7ff; /* azul clarito */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #2c3e50;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.front {
+  font-size: 32px;
+  color: #2a4e68;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto 40px auto;
+  font-weight: bold;
+  text-align: center;
+}
+
+.front::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #f39c12;
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+.sedes-section {
+  background-color: #e0f7ff; /* azul clarito */
+  padding: 40px 20px; /* Menos padding en la sección */
+  text-align: center;
+}
+
+.sedes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Menos espacio entre las tarjetas */
+  margin-top: 20px;
+}
+
+.sede-card {
+  background-color: #b1e0f0; /* azul clarito */
+  border-radius: 10px; /* Bordes más suaves */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px; /* Menos padding dentro de las tarjetas */
+  width: 240px; /* Menor tamaño de tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sede-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sede-card img {
+  width: 100%;
+  height: 140px; /* Imagen más pequeña */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px; /* Menos espacio debajo de la imagen */
+}
+
+.sede-card h3 {
+  color: #2a4e68;
+  font-size: 18px; /* Título un poco más pequeño */
+  margin: 8px 0;
+}
+
+.sede-card p {
+  color: #2c3e50;
+  font-size: 0.9rem; /* Texto un poco más pequeño */
+  line-height: 1.4;
+}

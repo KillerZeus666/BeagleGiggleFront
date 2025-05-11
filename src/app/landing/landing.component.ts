@@ -31,12 +31,12 @@ export class LandingComponent implements OnInit, AfterViewInit {
     {
       title: "Cuidado Profesional",
       description: "Nuestro equipo veterinario está disponible las 24 horas para atender a tu mascota.",
-      background: "url('https://i.postimg.cc/g20RkYqL/Profesiones-con-m-s-futuro-en-veterinaria.jpg')"
+      background: "url('https://media.es.wired.com/photos/657cb5b81e17b099f8f9e15c/16:9/w_3008,h_1692,c_limit/gatos%20172050389.jpg')"
     },
     {
       title: "Tecnología de Vanguardia",
       description: "Contamos con equipos modernos para el mejor diagnóstico y tratamiento.",
-      background: "url('https://i.postimg.cc/htwNQXvM/La-medicina-veterinaria-clasificada-como-profesion-del-sector-salud.jpg')"
+      background: "url('https://universidadeuropea.com/resources/media/images/medicina-veterinaria-1200x630.original.jpg')"
     }
   ];
   private carouselInterval: any;
