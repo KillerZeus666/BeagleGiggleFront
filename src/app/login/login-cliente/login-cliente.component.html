@@ -1,46 +1,41 @@
-soy yo desde cliente e 
 <app-header></app-header>
 
 <section class="formularioLogin">
-    <div class="formularioContainer">
-      <h2>Iniciar Sesión</h2>
-      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-        <label for="username">Usuario:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          [(ngModel)]="username"
-          placeholder="Ingresa tu usuario"
-          required
-        />
-  
-        <label for="password">Contraseña:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          [(ngModel)]="password"
-          placeholder="Ingresa tu contraseña"
-          required
-        />
-  
-        <button id="loginSubmit" type="submit">Ingresar</button>
-  
-        <!-- Mensaje de error -->
-        <p *ngIf="errorMessage" id="errorMessage" style="color: red">{{ errorMessage }}</p>
-  
-        <p class="registro">
-          ¿Eres un trabajador?<br>
-          <a routerLink="/login-veterinario">Iniciar sesión como trabajador</a>
-        </p>
+  <div class="formularioContainer">
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <label for="username">Usuario:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        placeholder="Ingresa tu usuario"
+        required
+      />
 
-        <p class="registro">
-          ¿No tienes cuenta?<br>
-          <a routerLink="/crear-cliente">Regístrate aquí</a>
-        </p>
-      </form>
-    </div>
-  </section>
-  
-  <app-footer></app-footer>
+      <label for="password">Contraseña:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Ingresa tu contraseña"
+        required
+      />
+
+      <button id="loginSubmit" type="submit">Ingresar</button>
+
+      <!-- Mensaje de error -->
+      <p *ngIf="errorMessage" id="errorMessage" style="color: red">{{ errorMessage }}</p>
+
+      <!-- Sección de enlaces -->
+      <div class="enlacesLogin">
+        <p>¿Eres un trabajador? <a routerLink="/login-veterinario">Iniciar sesión como trabajador</a></p>
+        <p>¿No tienes cuenta? <a routerLink="/crear-cliente">Regístrate aquí</a></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<app-footer></app-footer>
