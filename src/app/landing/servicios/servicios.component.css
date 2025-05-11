@@ -5,6 +5,18 @@
   padding-bottom: 100px; /* da espacio para que se vean las olas debajo */
 }
 
+.titulo-servicios {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2d3d5c; /* Puedes cambiar este color según tu preferencia */
+    margin-top: 40px; /* Añade más espacio en la parte superior */
+    margin-bottom: 20px; /* Mantén el espacio en la parte inferior */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+
 
 
 .servicios-container {
