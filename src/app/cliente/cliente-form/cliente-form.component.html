@@ -1,88 +1,137 @@
 <section class="formularioLogin">
-    <div class="formularioContainer">
-    <h1>{{ editMode ? 'Editar Cliente' : 'Agregar Mascota' }}</h1>
-    <form #clienteForm="ngForm" (ngSubmit)="guardarCliente()" autocomplete="off">
-        <label for="nombre">Nombre:</label>
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          [(ngModel)]="Formcliente.nombre"
-          placeholder="Ingrese nombre completo"
-          required
-        />
+  <div class="formularioContainer">
+      <h1>{{ editMode ? 'Editar Cliente' : 'Agregar Cliente' }}</h1>
+      <form #clienteForm="ngForm" (ngSubmit)="guardarCliente()" autocomplete="off">
+          <!-- Nombre -->
+          <label for="nombre">Nombre:</label>
+          <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="Formcliente.nombre"
+              placeholder="Ingrese nombre completo"
+              required
+              minlength="3"
+              #nombre="ngModel"
+          />
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="error-message">
+              Nombre inválido
+          </div>
 
-        <label for="correo">Correo electrónico:</label>
-        <input
-          type="email"
-          id="correo"
-          name="correo"
-          [(ngModel)]="Formcliente.correo"
-          placeholder="Ingrese correo electrónico"
-          required
-        />
+          <!-- Correo -->
+          <label for="correo">Correo electrónico:</label>
+          <input
+              type="email"
+              id="correo"
+              name="correo"
+              [(ngModel)]="Formcliente.correo"
+              placeholder="Ingrese correo electrónico"
+              required
+              email
+              #correo="ngModel"
+          />
+          <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="error-message">
+              Correo inválido
+          </div>
 
-        <label for="celular">Celular:</label>
-        <input
-          type="text"
-          id="celular"
-          name="celular"
-          [(ngModel)]="Formcliente.celular"
-          placeholder="Ingrese número de celular"
-          required
-        />
+          <!-- Celular -->
+          <label for="celular">Celular:</label>
+          <input
+              type="text"
+              id="celular"
+              name="celular"
+              [(ngModel)]="Formcliente.celular"
+              placeholder="Ingrese número de celular"
+              required
+              pattern="[0-9]{10}"
+              #celular="ngModel"
+          />
+          <div *ngIf="celular.invalid && (celular.dirty || celular.touched)" class="error-message">
+              Celular inválido
+          </div>
 
-        <label for="cedula">Cédula:</label>
-        <input
-          type="text"
-          id="cedula"
-          name="cedula"
-          [(ngModel)]="Formcliente.cedula"
-          placeholder="Escriba la cédula"
-          required
-        />
+          <!-- Cédula -->
+          <label for="cedula">Cédula:</label>
+          <input
+              type="text"
+              id="cedula"
+              name="cedula"
+              [(ngModel)]="Formcliente.cedula"
+              placeholder="Escriba la cédula"
+              required
+              minlength="8"
+              maxlength="12"
+              #cedula="ngModel"
+          />
+          <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="error-message">
+              Cédula inválida
+          </div>
 
-        <label for="nombreUsuario">Usuario:</label>
-        <input
-          type="text"
-          id="nombreUsuario"
-          name="nombreUsuario"
-          [(ngModel)]="Formcliente.nombreUsuario"
-          placeholder="Escriba un nombre de usuario"
-          required
-        />
+          <!-- Usuario -->
+          <label for="nombreUsuario">Usuario:</label>
+          <input
+              type="text"
+              id="nombreUsuario"
+              name="nombreUsuario"
+              [(ngModel)]="Formcliente.nombreUsuario"
+              placeholder="Escriba un nombre de usuario"
+              required
+              minlength="4"
+              #nombreUsuario="ngModel"
+          />
+          <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)" class="error-message">
+              Usuario inválido
+          </div>
 
-        <label for="foto">Foto (URL):</label>
-        <input
-          type="text"
-          id="foto"
-          name="foto"
-          [(ngModel)]="Formcliente.foto"
-          placeholder="Pegue la URL de la foto"
-          required
-        />
+          <!-- Foto -->
+          <label for="foto">Foto (URL):</label>
+          <input
+              type="url"
+              id="foto"
+              name="foto"
+              [(ngModel)]="Formcliente.foto"
+              placeholder="Pegue la URL de la foto"
+              required
+              #foto="ngModel"
+          />
+          <div *ngIf="foto.invalid && (foto.dirty || foto.touched)" class="error-message">
+              URL inválida
+          </div>
 
-        <label for="contrasena">Contraseña:</label>
-        <input
-          type="password"
-          id="contrasena"
-          name="contrasena"
-          [(ngModel)]="Formcliente.contrasena"
-          placeholder="Cree una contraseña"
-          required
-        />
+          <!-- Contraseña -->
+          <label for="contrasena">Contraseña:</label>
+          <input
+              type="password"
+              id="contrasena"
+              name="contrasena"
+              [(ngModel)]="Formcliente.contrasena"
+              placeholder="Cree una contraseña"
+              required
+              minlength="4"
+              #contrasena="ngModel"
+          />
+          <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)" class="error-message">
+              Contraseña inválida
+          </div>
 
-        <label for="confirm_password">Confirmar contraseña:</label>
-        <input
-          type="password"
-          id="confirm_password"
-          name="confirm_password"
-          [(ngModel)]="confirmPassword"
-          placeholder="Repita la contraseña"
-          required
-        />
+          <!-- Confirmar Contraseña -->
+          <label for="confirm_password">Confirmar contraseña:</label>
+          <input
+              type="password"
+              id="confirm_password"
+              name="confirm_password"
+              [(ngModel)]="confirmPassword"
+              placeholder="Repita la contraseña"
+              required
+              #confirmPasswordInput="ngModel"
+          />
+          <div *ngIf="Formcliente.contrasena !== confirmPassword && (confirmPasswordInput.dirty || confirmPasswordInput.touched)" class="error-message">
+              Las contraseñas no coinciden
+          </div>
 
-        <button class="crear_cliente" type="submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
+          <button class="crear_cliente" type="submit" [disabled]="clienteForm.invalid || Formcliente.contrasena !== confirmPassword">
+              {{ editMode ? 'Actualizar' : 'Agregar' }}
+          </button>
       </form>
-    </div>
-  </section>
+  </div>
+</section>
