@@ -55,6 +55,7 @@ import { FacturaFormComponent } from './factura/factura-form/factura-form.compon
 import { AyudaSectionComponent } from './landing/ayuda-section/ayuda-section.component';
 import { OfertasComponent } from './landing/ofertas/ofertas.component';
 import { PreguntasComponent } from './landing/preguntas/preguntas.component';
+import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.component';
 
 
 
@@ -107,7 +108,8 @@ import { PreguntasComponent } from './landing/preguntas/preguntas.component';
     FacturaFormComponent,
     AyudaSectionComponent,
     OfertasComponent,
-    PreguntasComponent
+    PreguntasComponent,
+    QuienesSomosComponent
   ],
   imports: [
     BrowserModule,

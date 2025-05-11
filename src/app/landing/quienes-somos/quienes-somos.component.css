@@ -1,0 +1,78 @@
+.quienes-somos {
+  padding: 60px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.tabs {
+  max-width: 900px;
+  width: 100%;
+}
+
+.tab-buttons {
+  display: flex;
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 30px;
+}
+
+.tab-buttons button {
+  flex: 1;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2a4e68;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.tab-buttons button.active {
+  color: #f39c12;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 25%;
+  height: 4px;
+  background-color: #f39c12;
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.tab-content {
+background-color: #e6f0fa;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #2c3e50;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.front {
+  font-size: 32px;
+  color: #2a4e68;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto 40px auto;
+  font-weight: bold;
+  text-align: center;
+}
+
+.front::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #f39c12;
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}

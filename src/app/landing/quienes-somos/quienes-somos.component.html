@@ -1,0 +1,21 @@
+<section class="quienes-somos">
+  <h2 class="front">¿Quiénes somos?</h2>
+
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button 
+        *ngFor="let tab of tabs; let i = index" 
+        [class.active]="i === activeTab"
+        (click)="selectTab(i)">
+        {{ tab.title }}
+      </button>
+      <div class="tab-indicator" [style.transform]="'translateX(' + activeTab * 100 + '%)'"></div>
+    </div>
+
+    <div class="tab-content">
+      <div *ngFor="let tab of tabs; let i = index" [hidden]="i !== activeTab">
+        <p>{{ tab.content }}</p>
+      </div>
+    </div>
+  </div>
+</section>
