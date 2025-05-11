@@ -1,11 +1,19 @@
+.servicios-wrapper {
+  background-color: #e0f2ff; /* Azul clarito */
+  width: 100%;
+  padding: 60px 0; /* Más alto arriba y abajo */
+}
+
+
 .servicios-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
-  gap: 30px; /* Aumentamos el gap entre tarjetas */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
   padding: 30px 10px;
   max-width: 1200px;
   margin: auto;
-  grid-auto-rows: minmax(140px, auto); /* Ajuste para que las filas tengan un tamaño mínimo */
+  grid-auto-rows: minmax(140px, auto);
+  position: relative; /* Necesario para posicionar al perro dentro */
 }
 
 .tarjeta-servicio {
@@ -98,4 +106,21 @@
   font-size: 13px;
   color: #444;
   margin-top: 6px;
+}
+.perrito {
+  position: absolute;
+  bottom: 0; /* Lo posiciona en la parte inferior de .servicios-container */
+  left: 100%;
+  width: 200px;
+  animation: correr 5s infinite linear;
+  pointer-events: none; /* Para que no bloquee clics */
+}
+
+@keyframes correr {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -200px;
+  }
 }
