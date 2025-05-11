@@ -1,162 +1,96 @@
-/* Fuente importada de Google Fonts - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Estilos generales para formularios de login y registro */
-.formularioLogin,
-.formularioRegistro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #1d95db;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow: hidden;
+.formularioLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white;
+  padding: 20px;
 }
 
-/* Efecto de burbujas decorativas */
-.formularioLogin::before,
-.formularioRegistro::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    top: -50px;
-    left: -50px;
-}
-
-.formularioLogin::after,
-.formularioRegistro::after {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    bottom: -30px;
-    right: -30px;
-}
-
-.formularioLogin::before,
-.formularioLogin::after {
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Contenedor del formulario */
 .formularioContainer {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
-    position: relative;
-    z-index: 10;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transform-style: preserve-3d;
-    transition: all 0.5s ease;
+background-color: #e8f4fb; /* Azul claro, suave y profesional */
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
 }
 
-.formularioContainer:hover {
-    transform: translateY(-5px) scale(1.005);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+.formularioContainer h1 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #3c5b6f;
+  text-align: center;
+  position: relative;
 }
 
-/* Títulos */
-.formularioContainer h2 {
-    margin-bottom: 30px;
-    color: #1d95db;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    position: relative;
-    text-align: center;
+.formularioContainer h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #f39c12; /* Naranja bonito */
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
 }
 
-.formularioContainer h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(to right, #1d95db, #23a3ed);
-    border-radius: 3px;
-}
 
-/* Formulario */
+/* Estilo general para inputs */
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Grupos de campos */
-.form-group {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* Etiquetas */
 label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 1rem;
-    color: #555;
-    transition: all 0.3s ease;
-    text-align: center;
-    width: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
 }
 
-/* Campos de entrada */
-input,
-select {
-    width: 100%;
-    padding: 14px 18px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
-    transition: all 0.3s ease;
-    text-align: center;
-    max-width: 100%;
-    box-sizing: border-box;
+input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border 0.3s;
+  color:#000000;
+  background-color: #d1e4ee;
 }
 
-input:focus,
-select:focus {
-    border-color: #1d95db;
-    outline: none;
-    box-shadow: 0 5px 15px rgba(29, 149, 219, 0.2);
-    background-color: #fff;
-    transform: translateY(-2px);
+input:focus {
+  border-color: #72c0ea;
+  outline: none;
+  box-shadow: 0 0 5px #72c0ea55;
 }
 
-/* Placeholder estilizado */
-::placeholder {
-    color: #aaa;
-    font-weight: 300;
-    text-align: center;
+.error-message {
+  font-size: 13px;
+  color: #e74c3c;
+  margin-top: -10px;
+  margin-bottom: 5px;
 }
+
+/* Responsive */
+@media (max-width: 500px) {
+  .formularioContainer {
+    padding: 25px 20px;
+  }
+
+  .formularioContainer h1 {
+    font-size: 20px;
+  }
+}
+
 
 /* Estilo para los botones */
 button {
     padding: 16px;
-    background: linear-gradient(to right, #1d95db, #23a3ed);
-    color: white;
+    background: #72c0ea;
+    color: #feffff;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -172,7 +106,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(to right, #158bbd, #1d95db);
+    background:#63bbea;
     transform: translateY(-3px);
     box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
 }
@@ -180,118 +114,7 @@ button:hover {
 button:active {
     transform: translateY(1px);
 }
-
-/* Enlace de registro */
-.registro {
-    margin-top: 25px;
-    font-size: 15px;
-    color: #666;
-    text-align: center;
-    width: 100%;
-}
-
-.registro a {
-    color: #1d95db;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-}
-
-.registro a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #1d95db;
-    transition: width 0.3s ease;
-}
-
-.registro a:hover::after {
-    width: 100%;
-}
-
-/* Estilos para opciones de select */
-option {
-    padding: 12px;
-    font-size: 1rem;
-    background-color: #fff;
-    color: #333;
-    text-align: center;
-}
-
-/* Iconos en los campos (opcional) */
-.form-group i {
-    position: absolute;
-    right: 15px;
-    top: 42px;
-    color: #999;
-    font-size: 18px;
-}
-
-/* Animación de entrada */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.formularioContainer {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-/* Diseño responsive */
-@media (max-width: 768px) {
-    .formularioContainer {
-        padding: 30px;
-    }
-
-    .formularioContainer h2 {
-        font-size: 26px;
-    }
-
-    input,
-    select {
-        padding: 12px;
-    }
-
-    button {
-        padding: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .formularioContainer {
-        width: 95%;
-        padding: 25px;
-    }
-
-    .formularioContainer h2 {
-        font-size: 24px;
-    }
-
-    .registro {
-        font-size: 14px;
-    }
-}
-
-/* Estilos para autocompletado de navegadores */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #333;
-    -webkit-box-shadow: 0 0 0px 1000px #f9f9f9 inset;
-    transition: background-color 5000s ease-in-out 0s;
-    text-align: center;
-}
-
-.error-message {
-    color: #e74c3c;
-    font-size: 0.8rem;
-    margin-top: -0.5rem;
-    margin-bottom: 1rem;
-    display: block;
-    text-align: center;
+.boton-container {
+  display: flex;
+  justify-content: center;
 }

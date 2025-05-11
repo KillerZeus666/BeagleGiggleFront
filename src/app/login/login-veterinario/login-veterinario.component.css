@@ -85,7 +85,7 @@ input:focus {
 /* Botón */
 button {
     padding: 14px;
-    background-color: #3c5b6f;
+    background-color:#72c0ea  ;
     color: white;
     border: none;
     border-radius: 5px;
@@ -95,7 +95,7 @@ button {
 }
 
 button:hover {
-    background-color: #5e7e92;
+    background-color:  #63bbea;
 }
 
 /* Enlace de registro */
