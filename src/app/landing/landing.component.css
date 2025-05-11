@@ -44,6 +44,50 @@ h1 {
   font-weight: 700;
 }
 
+
+
+.carousel-text h1, .carousel-text p {
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', sans-serif; /* O puedes elegir otra fuente */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.carousel-text h1 {
+  font-size: 3rem;  /* Tamaño grande para el título */
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.carousel-text p {
+  font-size: 1.2rem;  /* Tamaño más pequeño para la descripción */
+  max-width: 80%;
+  margin: 0 auto;
+  font-weight: 300; /* Para que sea más liviana que el título */
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 15px;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  color: white;
+}
+
 h2 {
   font-size: 2.4rem;
   text-align: center;
