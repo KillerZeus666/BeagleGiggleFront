@@ -316,10 +316,32 @@ p {
   color: var(--text-color);
 }
 
+.front {
+  font-size: 28px; /* Un poco más grande */
+  color: #2a4e68;  /* Azul */
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 30px auto;
+  display: block; /* Para que ocupe todo el ancho disponible */
+}
+
+.front::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #f39c12; /* Naranja */
+  margin: 8px auto 0 auto; /* Centrado horizontalmente */
+  border-radius: 2px;
+}
+
+
+
 /* Sección de Testimonios */
 .testimonials-section {
   padding: 80px 20px;
-  background-color: #f8f6ef; /* Beige suave */
+  background-color: #e0f7ff; /* azul clarito */
   margin: 40px 0;
 }
 

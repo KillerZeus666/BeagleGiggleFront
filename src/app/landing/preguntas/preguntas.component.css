@@ -8,13 +8,27 @@
 }
 
 .faq-title {
-    text-align: center;
-    font-size: 1.5rem; /* Más pequeño */
-    color: #2c3e50;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 28px; /* Más grande */
+  color: #2a4e68;  /* Azul similar al de .front */
+  text-align: center;
+  font-weight: bold;
+  position: relative;
+  margin: 0 auto 30px auto;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
 }
+
+.faq-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #f39c12; /* Naranja */
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
 
 .faq-item {
     margin-bottom: 12px;
