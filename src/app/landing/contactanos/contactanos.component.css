@@ -100,3 +100,31 @@ textarea {
     height: 300px;
   }
 }
+
+.title-with-paws {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.paw-image {
+  height: 40px;
+  opacity: 0.8;
+  animation: fade-paws 4s infinite linear;
+}
+
+@keyframes fade-paws {
+  0% {
+    opacity: 0.2;
+    transform: translateX(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateX(0px);
+  }
+}
