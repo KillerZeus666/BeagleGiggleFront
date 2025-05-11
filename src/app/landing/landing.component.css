@@ -937,7 +937,7 @@ section.in-view {
 .hero-button {
   display: inline-block;
   background-color: var(--primary-color);
-  color:#72c0ea;
+  color:#cbecf4;
   font-size: 1rem;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -948,6 +948,6 @@ section.in-view {
 }
 
 .hero-button:hover {
-  background-color: var(--primary-color-dark, #ffffff);
+  background-color: #64bbea;
   text-decoration: none;
 }
