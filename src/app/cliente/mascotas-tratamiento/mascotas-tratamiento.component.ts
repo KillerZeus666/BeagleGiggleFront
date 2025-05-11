@@ -45,11 +45,18 @@ export class MascotasTratamientoComponent {
   }
 
   verTratamiento(id: number) {
+    const idCliente = Number(this.route.snapshot.paramMap.get('id'));
     console.log('ID de mascota:', id); // Verifica qué valor se está recibiendo
     if (id && !isNaN(id)) {
-      this.router.navigate(['tratamiento/mascota', id]);
+      this.router.navigate(['tratamiento/mascota', id], {
+      state: { idCliente }
+    });
     } else {
       console.error('ID de mascota no válido:', id);
     }
+
+
   }
+
+
 }

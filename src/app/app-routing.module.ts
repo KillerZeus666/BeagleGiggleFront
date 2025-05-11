@@ -32,6 +32,7 @@ import { VeterinarioFormComponent } from './veterinario/veterinario-form/veterin
 import { CitaDetailComponent } from './cita/cita-detail/cita-detail.component';
 import { CitaFormComponent } from './cita/cita-form/cita-form.component';
 import { ServiciosComponent } from './landing/servicios/servicios.component';
+import { FacturaTableComponent } from './factura/factura-table/factura-table.component';
 
 
 
@@ -74,6 +75,7 @@ const routes: Routes = [
   {path: 'editar-cita/:id', component:CitaFormComponent},
   {path: 'servicios-clinicos', component: ServiciosComponent},
   {path: 'detalles-cita/:id', component:CitaDetailComponent},
+  {path: 'facturas/cliente/:id',component:FacturaTableComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 

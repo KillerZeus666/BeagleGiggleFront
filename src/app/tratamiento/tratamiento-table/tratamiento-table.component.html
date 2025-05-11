@@ -37,6 +37,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let tratamiento of tratamientos">
+              <td><input type="checkbox" [value]="tratamiento.idTratamiento" (change)="onCheckboxChange($event, tratamiento)"></td>
               <td>{{ tratamiento.codigo }}</td>
               <td>{{ tratamiento.fecha | date:'yyyy/MM/dd' }}</td>
               <td>{{ tratamiento.detalles }}</td>
@@ -47,7 +48,16 @@
         </table>
       </div>
     </div>
+    <div *ngIf="tratamientosSeleccionados.length > 0" class="facturar-container">
+    <label for="metodoPago">Método de Pago:</label>
+    <select [(ngModel)]="metodoDePago" id="metodoPago">
+      <option value="" disabled selected>Seleccione un método</option>
+      <option value="Efectivo">Efectivo</option>
+      <option value="Tarjeta">Tarjeta</option>
+      <option value="Transferencia">Transferencia</option>
+    </select>
+    <button (click)="facturar()">Facturar</button>
+  </div>
   </div> <!-- End main -->
-
 </body>
 </html>

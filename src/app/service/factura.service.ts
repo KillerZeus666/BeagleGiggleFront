@@ -65,7 +65,10 @@ export class FacturaService {
     idsFacturas.forEach(id => {
       params = params.append('idsFacturas', id);
     });
-    return this.http.put<string>(`${this.baseUrl}/pagar/facturas`, {}, { params });
+    return this.http.put(`${this.baseUrl}/pagar/facturas`, {}, {
+    params,
+    responseType: 'text'
+});
   }
 
 }
