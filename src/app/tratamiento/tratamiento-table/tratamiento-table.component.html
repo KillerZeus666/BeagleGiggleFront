@@ -1,59 +1,53 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Dashboard Veterinaria</title>
-</head>
-<body>
+<app-navegacion></app-navegacion>
 
-  <app-navegacion></app-navegacion>
-
-  <!-- ========================= Main ==================== -->
-  <div class="main">
-    <div class="topbar">
-
-      <div class="user">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDcaEWpYQklMDUzSJPss_l5V9T7yC2xtK7OA&s" alt="Usuario">
-      </div>
-    </div>
-
-    <div class="container-principal">
-      <h1>Listado de Tratamientos</h1>
-
-      <div class="contenedor-boton">
-      </div>
-      <div class="tabla-container">
-        <table class="tabla">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Fecha</th>
-              <th>Detalles</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let tratamiento of tratamientos">
-              <td><input type="checkbox" [value]="tratamiento.idTratamiento" (change)="onCheckboxChange($event, tratamiento)"></td>
-              <td>{{ tratamiento.codigo }}</td>
-              <td>{{ tratamiento.fecha | date:'yyyy/MM/dd' }}</td>
-              <td>{{ tratamiento.detalles }}</td>
-              <td class="action-buttons">
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div *ngIf="tratamientosSeleccionados.length > 0" class="facturar-container">
-    <label for="metodoPago">Método de Pago:</label>
-    <select [(ngModel)]="metodoDePago" id="metodoPago">
-      <option value="" disabled selected>Seleccione un método</option>
-      <option value="Efectivo">Efectivo</option>
-      <option value="Tarjeta">Tarjeta</option>
-      <option value="Transferencia">Transferencia</option>
-    </select>
-    <button (click)="facturar()">Facturar</button>
+<div class="tratamientos-container">
+  <div class="tratamientos-header">
+    <h2>Listado de Tratamientos</h2>
   </div>
-  </div> <!-- End main -->
-</body>
-</html>
+
+  <div class="table-responsive">
+    <table class="tratamientos-table">
+      <thead>
+        <tr>
+          <th width="50px">Sel.</th>
+          <th>Código</th>
+          <th>Fecha</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tratamiento of tratamientos">
+          <td>
+            <label class="checkbox-container">
+              <input type="checkbox"
+                     [value]="tratamiento.idTratamiento"
+                     (change)="onCheckboxChange($event, tratamiento)">
+              <span class="checkmark"></span>
+            </label>
+          </td>
+          <td>{{ tratamiento.codigo }}</td>
+          <td>{{ tratamiento.fecha | date:'dd/MM/yyyy' }}</td>
+          <td>{{ tratamiento.detalles }}</td>
+        </tr>
+        <tr *ngIf="tratamientos.length === 0">
+          <td colspan="4" class="no-results">No hay tratamientos registrados</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="tratamientosSeleccionados.length > 0" class="facturar-container">
+    <div class="metodo-pago-container">
+      <label for="metodoPago">Método de Pago:</label>
+      <select [(ngModel)]="metodoDePago" id="metodoPago" class="select-pago">
+        <option value="" disabled selected>Seleccione un método</option>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta">Tarjeta</option>
+        <option value="Transferencia">Transferencia</option>
+      </select>
+    </div>
+    <button class="btn btn-success" (click)="facturar()">
+      <i class="fas fa-file-invoice-dollar"></i> Facturar {{ tratamientosSeleccionados.length }} seleccionados
+    </button>
+  </div>
+</div>
