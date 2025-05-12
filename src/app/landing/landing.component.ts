@@ -130,18 +130,15 @@ export class LandingComponent implements OnInit, AfterViewInit {
   }
 
   cargarTestimonios(): void {
-    this.isLoadingTestimonios = true;
-    this.errorTestimonios = '';
-    
     this.testimonioService.obtenerTestimonios().subscribe({
       next: (data: TestimonioCL[]) => {
         this.testimonios = data;
         this.isLoadingTestimonios = false;
-        console.log('Testimonios cargados:', this.testimonios);
+        setTimeout(() => this.checkScroll(), 100);
       },
       error: (err) => {
         console.error('Error al cargar testimonios:', err);
-        this.errorTestimonios = 'Error al cargar los testimonios. Por favor, intente nuevamente.';
+        this.errorTestimonios = 'Error al cargar los testimonios';
         this.isLoadingTestimonios = false;
       }
     });

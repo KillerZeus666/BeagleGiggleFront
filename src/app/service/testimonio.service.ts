@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TestimonioCL } from '../model/testimonio-cl';
 import { ClienteCL } from '../model/cliente-cl';
 import { ServicioCL } from '../model/servicio-cl';
@@ -16,22 +16,24 @@ export class TestimonioService {
 
   obtenerTestimonios(): Observable<TestimonioCL[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
-      map(data => data.map(item => this.convertToTestimonioCL(item))),
-      catchError(error => {
-        console.error('Error fetching testimonios:', error);
-        return throwError(() => new Error('Error al cargar testimonios'));
-      })
+      map(data => data.map(item => this.convertToTestimonioCL(item)))
     );
   }
 
   private convertToTestimonioCL(data: any): TestimonioCL {
-    return new TestimonioCL(
-      data.idTestimonio,
-      data.texto,
-      data.calificacion,
-      new Date(data.fecha),
-      new ClienteCL(0, data.nombreCliente, data.imagenCliente),
-      new ServicioCL(0, data.nombreServicio)
-    );
+    const testimonio = new TestimonioCL();
+    testimonio.idTestimonio = data.idTestimonio;
+    testimonio.texto = data.texto;
+    testimonio.calificacion = data.calificacion;
+    testimonio.fecha = new Date(data.fecha);
+    
+    testimonio.cliente = new ClienteCL();
+    testimonio.cliente.nombre = data.nombreCliente;
+    testimonio.cliente.foto = data.imagenCliente;
+    
+    testimonio.servicio = new ServicioCL();
+    testimonio.servicio.nombre = data.nombreServicio;
+    
+    return testimonio;
   }
 }
