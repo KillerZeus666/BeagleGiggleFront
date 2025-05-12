@@ -26,14 +26,20 @@ export class TestimonioCL {
   }
 
   public static fromBackendData(data: any): TestimonioCL {
-    return new TestimonioCL(
-      data.idTestimonio,
-      data.texto,
-      data.calificacion,
-      new Date(data.fecha),
-      ClienteCL.fromBackendData(data.cliente),
-      ServicioCL.fromBackendData(data.servicio)
-    );
+    const testimonio = new TestimonioCL();
+    testimonio.idTestimonio = data.idTestimonio;
+    testimonio.texto = data.texto;
+    testimonio.calificacion = data.calificacion;
+    testimonio.fecha = new Date(data.fecha);
+    
+    testimonio.cliente = new ClienteCL();
+    testimonio.cliente.nombre = data.nombreCliente || '';
+    testimonio.cliente.foto = data.imagenCliente || '';
+    
+    testimonio.servicio = new ServicioCL();
+    testimonio.servicio.nombre = data.nombreServicio || '';
+    
+    return testimonio;
   }
 
   public toBackendFormat(): any {
@@ -42,8 +48,13 @@ export class TestimonioCL {
       texto: this.texto,
       calificacion: this.calificacion,
       fecha: this.fecha.toISOString().split('T')[0],
-      cliente: this.cliente.idCliente,
-      servicio: this.servicio.idServicio,
+      cliente: {
+        nombre: this.cliente.nombre,
+        foto: this.cliente.foto
+      },
+      servicio: {
+        nombre: this.servicio.nombre
+      }
     };
   }
 }
