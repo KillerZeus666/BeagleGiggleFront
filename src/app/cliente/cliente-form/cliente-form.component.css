@@ -58,7 +58,7 @@ input {
   font-size: 15px;
   transition: border 0.3s;
   color:#000000;
-  background-color: #d1e4ee;
+  background-color: #f0f8ff; 
 }
 
 input:focus {
