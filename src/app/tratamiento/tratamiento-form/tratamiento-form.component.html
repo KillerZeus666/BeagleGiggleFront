@@ -64,13 +64,13 @@
       <label>Medicamentos:</label>
       <div class="medicamentos-container" formArrayName="medicamentos">
         <div class="medicamento-item" *ngFor="let medicamento of medicamentosArray.controls; let i = index" [formGroupName]="i">
-          <select formControlName="idMedicamento" required class="small-select">
+          <select formControlName="idMedicamento" required class="small-select select-medicamento">
             <option value="">Seleccione un medicamento</option>
             <option *ngFor="let med of medicamentosDisponibles" [value]="med.idMedicamento">
               {{ med.nombre }}
             </option>
           </select>
-          <input type="text" formControlName="dosis" placeholder="Dosis" required>
+          <input type="text" formControlName="dosis" class="input-dosis" placeholder="Dosis" required>
           <button type="button" class="btn btn-remove" (click)="removeMedicamento(i)">-</button>
         </div>
       </div>
@@ -79,7 +79,7 @@
 
     <div class="form-footer">
       <button type="button" class="btn" (click)="resetForm()">Cancelar</button>
-      <button type="submit" class="btn" [disabled]="loading || tratamientoForm.invalid">
+      <button type="submit" class="btn btn-guardar" [disabled]="loading || tratamientoForm.invalid">
         {{ loading ? 'Guardando...' : 'Guardar Tratamiento' }}
       </button>
     </div>
