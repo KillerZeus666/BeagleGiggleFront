@@ -1,19 +1,234 @@
-.acciones {
-  margin-bottom: 1em;
+/* ================== ESTRUCTURA PRINCIPAL ================== */
+.facturas-container {
+  margin-left: 300px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  min-height: calc(100vh - 4rem);
+  background-color: #f5f7fa;
 }
 
-table {
+.facturas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.facturas-header h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ================== TABLA ================== */
+.table-responsive {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.facturas-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 800px;
 }
 
-thead th {
-  border-bottom: 1px solid #ccc;
+.facturas-table th {
+  background-color: #3498db;
+  color: white;
+  padding: 1rem;
   text-align: left;
-  padding: 0.5em;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
 }
 
-tbody td {
-  padding: 0.5em;
-  border-bottom: 1px solid #eee;
+.facturas-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.facturas-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.facturas-table tr.disabled {
+  opacity: 0.6;
+  background-color: #f8f9fa;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #7f8c8d;
+}
+
+/* ================== BOTONES ================== */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ================== BADGES ================== */
+.badge {
+  padding: 0.35rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-success {
+  background-color: #d5f5e3;
+  color: #27ae60;
+}
+
+.badge-warning {
+  background-color: #fef9e7;
+  color: #f39c12;
+}
+
+/* ================== CHECKBOX ================== */
+.checkbox-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ddd;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #3498db;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ================== ALERTAS ================== */
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.alert-success {
+  background-color: #d5f5e3;
+  color: #27ae60;
+  border-left: 4px solid #2ecc71;
+}
+
+.alert-danger {
+  background-color: #fadbd8;
+  color: #e74c3c;
+  border-left: 4px solid #c0392b;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 1200px) {
+  .facturas-container {
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .facturas-container {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .facturas-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acciones {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .facturas-table th,
+  .facturas-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .badge {
+    padding: 0.25rem 0.5rem;
+  }
 }

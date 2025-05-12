@@ -66,7 +66,8 @@ const routes: Routes = [
   {path: 'historial-tratamientos/:id', component:HistorialTratamientosComponent},
   {path: 'detalles-admin/:id', component: AdminDetailComponent},
   {path: 'mascotas-atendidas/:id', component:MascotasAtendidasComponent},
-  {path: 'tratamiento/mascota/:id', component: TratamientoTableComponent},
+  {path: 'tratamiento', component: TratamientoTableComponent}, // Ruta modificada (sin /mascota/:id)
+  {path: 'tratamiento/mascota/:id', component: TratamientoTableComponent}, // Ruta alternativa mantenida
   {path: 'detalles-tratamiento/:id', component:TratamientoDetailComponent},
   {path: 'crear-veterinario', component:VeterinarioFormComponent},
   {path: 'editar-veterinario/:id', component:VeterinarioFormComponent},
@@ -81,7 +82,6 @@ const routes: Routes = [
   {path: 'login-veterinario', component: LoginVeterinarioComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
-
 ];
 
 @NgModule({
