@@ -58,6 +58,8 @@ import { PreguntasComponent } from './landing/preguntas/preguntas.component';
 import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.component';
 import { ClientesDestacadosComponent } from './landing/clientes-destacados/clientes-destacados.component';
 import { ContactanosComponent } from './landing/contactanos/contactanos.component';
+import { LoginClienteComponent } from './login/login-cliente/login-cliente.component';
+import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
 
 
 
@@ -113,7 +115,9 @@ import { ContactanosComponent } from './landing/contactanos/contactanos.componen
     PreguntasComponent,
     QuienesSomosComponent,
     ClientesDestacadosComponent,
-    ContactanosComponent
+    ContactanosComponent,
+    LoginClienteComponent,
+    LoginVeterinarioComponent
   ],
   imports: [
     BrowserModule,

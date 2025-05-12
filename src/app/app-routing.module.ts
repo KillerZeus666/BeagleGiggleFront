@@ -35,7 +35,8 @@ import { ServiciosComponent } from './landing/servicios/servicios.component';
 import { FacturaTableComponent } from './factura/factura-table/factura-table.component';
 import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.component';
 import { ClientesDestacadosComponent } from './landing/clientes-destacados/clientes-destacados.component';
-
+import { LoginClienteComponent } from './login/login-cliente/login-cliente.component';
+import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -76,6 +77,8 @@ const routes: Routes = [
   {path: 'facturas/cliente/:id',component:FacturaTableComponent},
   {path: 'quienes-somos', component: QuienesSomosComponent},
   {path: 'clientes-destacados', component: ClientesDestacadosComponent},
+  {path: 'login-cliente', component: LoginClienteComponent},
+  {path: 'login-veterinario', component: LoginVeterinarioComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 

@@ -1,6 +1,6 @@
 <section class="formularioLogin">
   <div class="formularioContainer">
-      <h1>{{ editMode ? 'Editar Cliente' : 'Agregar Cliente' }}</h1>
+      <h1>{{ editMode ? 'Editar Cliente' : 'Nuevo Cliente' }}</h1>
       <form #clienteForm="ngForm" (ngSubmit)="guardarCliente()" autocomplete="off">
           <!-- Nombre -->
           <label for="nombre">Nombre:</label>
@@ -129,9 +129,12 @@
               Las contraseñas no coinciden
           </div>
 
-          <button class="crear_cliente" type="submit" [disabled]="clienteForm.invalid || Formcliente.contrasena !== confirmPassword">
-              {{ editMode ? 'Actualizar' : 'Agregar' }}
-          </button>
+         <div class="boton-container">
+            <button class="crear_cliente" type="submit" [disabled]="clienteForm.invalid || Formcliente.contrasena !== confirmPassword">
+                {{ editMode ? 'Actualizar' : 'Agregar' }}
+            </button>
+        </div>
+
       </form>
   </div>
 </section>

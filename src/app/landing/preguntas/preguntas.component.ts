@@ -25,7 +25,7 @@ export class PreguntasComponent {
     },
     { 
       question: "¿Puedo cancelar mi pedido?", 
-      answer: "Los pedidos pueden cancelarse antes de que sean enviados. Contacta con nuestro servicio al cliente para hacerlo.", 
+      answer: "Los pedidos no pueden cancelarse. Contacta con nuestro servicio al cliente para más información.", 
       open: false 
     }
   ];
