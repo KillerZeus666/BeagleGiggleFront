@@ -4,12 +4,12 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: white;
+  background-color: #f4f8fb; /* Fondo claro */
   padding: 20px;
 }
 
 .formularioContainer {
-background-color: #e8f4fb; /* Azul claro, suave y profesional */
+  background-color: white; /* Azul claro, suave y profesional */
   padding: 40px 30px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
