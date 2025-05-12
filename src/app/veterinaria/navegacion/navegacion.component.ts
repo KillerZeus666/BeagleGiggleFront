@@ -108,4 +108,16 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
   navegarTratamientosVeterinario(): void {
     this.router.navigate(['/tratamiento/veterinario/1']);
   }
+
+  // Nuevo método para navegar a tratamientos como Admin
+  navegarATratamientos(): void {
+    if (this.userType === 'Admin') {
+      this.router.navigate(['/tratamiento']).then(success => {
+        if (!success) {
+          console.error('Error: No se pudo cargar el componente de tratamientos');
+          this.router.navigate(['/dashboard']);
+        }
+      });
+    }
+  }
 }
