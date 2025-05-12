@@ -14,6 +14,7 @@
     <!-- Buscador de medicamentos -->
     <div class="buscador">
       <input
+        id="input-busqueda-medicamento"
         type="text"
         [(ngModel)]="nombreMedicamentoBuscar"
         placeholder="Buscar medicamento por su nombre..."
@@ -57,13 +58,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let medicamento of medicamentos">
-            <td>{{ medicamento.idMedicamento }}</td>
-            <td>{{ medicamento.nombre }}</td>
-            <td>{{ medicamento.precioCompra | currency:'$' }}</td>
-            <td>{{ medicamento.precioVenta | currency:'$' }}</td>
-            <td>{{ medicamento.unidadesDisponibles }}</td>
-            <td>{{ medicamento.unidadesVendidas }}</td>
+          <tr *ngFor="let medicamento of medicamentos" class="medicamento-fila">
+            <td class="medicamento-id">{{ medicamento.idMedicamento }}</td>
+            <td class="medicamento-nombre">{{ medicamento.nombre }}</td>
+            <td class="medicamento-precio-compra">{{ medicamento.precioCompra | currency:'$' }}</td>
+            <td class="medicamento-precio-venta">{{ medicamento.precioVenta | currency:'$' }}</td>
+            <td class="medicamento-disponibles">{{ medicamento.unidadesDisponibles }}</td>
+            <td class="medicamento-vendidos">{{ medicamento.unidadesVendidas }}</td>
           </tr>
         </tbody>
       </table>

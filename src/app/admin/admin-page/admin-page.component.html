@@ -8,7 +8,7 @@
 
       <div class="kpi-container">
         <div class="kpi-card" (click)="toggleTratamientosRecientesList()" style="cursor: pointer;">
-          <div class="kpi-number">{{ stats.tratamientosMes }}</div>
+          <div class="kpi-number" id="tratamientos-mes">{{ stats.tratamientosMes }}</div>
           <div class="kpi-label">Tratamientos últimos 30 días</div>
         </div>
         <div class="kpi-card" (click)="toggleVeterinariosActivosList()" style="cursor: pointer;">
@@ -47,9 +47,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let medicamento of top3Medicamentos">
-                <td>{{medicamento.nombre}}</td>
-                <td>{{medicamento.cantidad}}</td>
+              <tr *ngFor="let medicamento of top3Medicamentos" class="medicamento-row">
+                <td class="medicamento-nombre">{{medicamento.nombre}}</td>
+                <td class="medicamento-cantidad">{{medicamento.cantidad}}</td>
               </tr>
             </tbody>
           </table>
@@ -58,16 +58,14 @@
 
       <div class="kpi-container">
         <div class="kpi-card">
-          <div class="kpi-number">{{ stats.ventasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
+          <div class="kpi-number" id="ventas-totales">{{ stats.ventasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
           <div class="kpi-label">Ventas Totales</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-number">{{ stats.gananciasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
+          <div class="kpi-number" id="ganancias-totales">{{ stats.gananciasTotales | currency:'USD':'symbol':'1.0-0' }}</div>
           <div class="kpi-label">Ganancias Totales</div>
         </div>
       </div>
-
     </main>
-
   </div>
 </div>

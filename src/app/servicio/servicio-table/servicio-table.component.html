@@ -25,11 +25,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let servicio of servicios">
-          <td>{{ servicio.idServicio }}</td>
-          <td>{{ servicio.nombre }}</td>
-          <td>{{ servicio.descripcion }}</td>
-          <td>{{ servicio.precioBase | currency:'USD':'symbol':'1.2-2' }}</td>
+        <tr *ngFor="let servicio of servicios" class="servicio-fila">
+          <td class="servicio-id">{{ servicio.idServicio }}</td>
+          <td class="servicio-nombre">{{ servicio.nombre }}</td>
+          <td class="servicio-descripcion">{{ servicio.descripcion }}</td>
+          <td class="servicio-precio">{{ servicio.precioBase | currency:'USD':'symbol':'1.2-2' }}</td>
         </tr>
         <tr *ngIf="servicios.length === 0">
           <td colspan="4" class="no-results">No hay servicios registrados</td>

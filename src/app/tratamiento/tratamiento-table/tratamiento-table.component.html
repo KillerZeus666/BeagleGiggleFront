@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tratamiento of tratamientos">
+        <tr *ngFor="let tratamiento of tratamientos" class="tratamiento-fila">
           <td>
             <label class="checkbox-container">
               <input type="checkbox"
@@ -25,9 +25,9 @@
               <span class="checkmark"></span>
             </label>
           </td>
-          <td>{{ tratamiento.codigo }}</td>
-          <td>{{ tratamiento.fecha | date:'dd/MM/yyyy' }}</td>
-          <td>{{ tratamiento.detalles }}</td>
+          <td class="tratamiento-codigo">{{ tratamiento.codigo }}</td>
+          <td class="tratamiento-fecha">{{ tratamiento.fecha | date:'dd/MM/yyyy' }}</td>
+          <td class="tratamiento-detalles">{{ tratamiento.detalles }}</td>
         </tr>
         <tr *ngIf="tratamientos.length === 0">
           <td colspan="4" class="no-results">No hay tratamientos registrados</td>
