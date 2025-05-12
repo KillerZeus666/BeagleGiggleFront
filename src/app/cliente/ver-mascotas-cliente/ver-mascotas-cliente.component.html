@@ -2,7 +2,6 @@
 
 <div class="main" id="mainContent">
   <div class="topbar">
-    <!-- Aquí podrías poner cosas de la topbar -->
   </div>
 
   <app-cartas-cliente [cantidadMascotas]="cantidadMascotas"></app-cartas-cliente>
@@ -22,26 +21,26 @@
               <table>
                 <thead>
                   <tr>
-                    <td>Foto</td>
-                    <td>Nombre</td>
-                    <td>Raza</td>
-                    <td>Estado</td>
-                    <td>Acciones</td>
+                    <td class="header-foto">Foto</td>
+                    <td class="header-nombre">Nombre</td>
+                    <td class="header-raza">Raza</td>
+                    <td class="header-estado">Estado</td>
+                    <td class="header-acciones">Acciones</td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let mascota of mascotas">
-                    <td>
+                  <tr *ngFor="let mascota of mascotas" class="fila-mascota">
+                    <td class="celda-foto">
                       <img [src]="mascota.foto" alt="Foto de mascota" class="img-mascota" [ngClass]="mascota.estado == 1 ? 'img-inactiva' : ''" />
                     </td>
-                    <td>{{ mascota.nombre }}</td>
-                    <td>{{ mascota.raza }}</td>
-                    <td>
-                      <span [class.status]="true" [class.completed]="mascota.estado == 0" [class.inactive]="mascota.estado == 1">
+                    <td class="celda-nombre">{{ mascota.nombre }}</td>
+                    <td class="celda-raza">{{ mascota.raza }}</td>
+                    <td class="celda-estado">
+                      <span class="status" [class.completed]="mascota.estado == 0" [class.inactive]="mascota.estado == 1">
                         {{ mascota.estado == 0 ? 'Activo' : 'Inactivo' }}
                       </span>
                     </td>
-                    <td>
+                    <td class="celda-acciones">
                       <button (click)="mostrarMascota(mascota.idMascota)" class="btn-detalles">Detalles</button>
                     </td>
                   </tr>
