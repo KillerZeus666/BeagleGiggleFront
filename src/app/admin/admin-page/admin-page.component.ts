@@ -24,11 +24,11 @@ export class AdminPageComponent implements AfterViewInit {
   stats = {
     totalMascotas: 0,
     mascotasActivas: 0,
-    tratamientosMes: 120,
-    veterinariosActivos: 15,
-    veterinariosInactivos: 3,
-    ventasTotales: 5000,
-    gananciasTotales: 2000
+    tratamientosMes: 0,
+    veterinariosActivos: 0,
+    veterinariosInactivos: 0,
+    ventasTotales: 0,
+    gananciasTotales: 0
   };
   mascotas: MascotaCL[] = [];
   loading = true;
