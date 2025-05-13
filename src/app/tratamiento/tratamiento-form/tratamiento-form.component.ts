@@ -30,7 +30,8 @@ export class TratamientoFormComponent implements OnInit{
     private tratamientoService: TratamientoService,
     private servicioService: ServicioService,
     private mascotaService: MascotaService,
-    private medicamentoService: MedicamentoService
+    private medicamentoService: MedicamentoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -112,13 +113,11 @@ export class TratamientoFormComponent implements OnInit{
     this.errorMessage = null;
 
     const formValue = this.tratamientoForm.value;
-   // Crear una instancia usando solo los datos del formulario (idTratamiento = 0, valores iniciales)
     const tratamiento = new TratamientoCL(
-      0,                              // idTratamiento
-      formValue.codigo,              // código
-      new Date(formValue.fecha),     // fecha (convertido de string a Date)
-      formValue.detalles             // detalles
-      // veterinario, mascota, servicio y tratamientoMedicamentos se dejan como undefined por ahora
+      0,
+      formValue.codigo,
+      new Date(formValue.fecha),
+      formValue.detalles
     );
 
     const idsMedicamentos = formValue.medicamentos.map((m: any) => m.idMedicamento);
@@ -131,8 +130,8 @@ export class TratamientoFormComponent implements OnInit{
       idsMedicamentos
     ).subscribe({
       next: () => {
-        this.showSuccess('Tratamiento creado exitosamente');
         this.resetForm();
+        this.router.navigate(['/historial-tratamientos', 2]);
       },
       error: (err) => {
         this.showError('Error al crear el tratamiento: ' + err.message);
