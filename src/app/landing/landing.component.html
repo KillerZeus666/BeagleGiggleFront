@@ -8,7 +8,7 @@
     <p>{{ carouselItems[currentSlide].description }}</p>
   </div>
 
-  <!-- Controles del carrusel 
+  <!-- Controles del carrusel
   <div class="carousel-nav">
     <button class="carousel-prev" (click)="prevSlide()" aria-label="Anterior">
       <ion-icon name="chevron-back-outline"></ion-icon>
@@ -36,7 +36,7 @@
   <section #section id="conocenos">
     <app-quienes-somos></app-quienes-somos>
   </section>
-  
+
   <!-- Sección de Ayuda -->
   <section #section id="ayuda" >
     <app-ayuda-section></app-ayuda-section>
@@ -53,8 +53,8 @@
     <app-ofertas></app-ofertas>
     <img src="https://media1.giphy.com/media/VSTPSY8NeIY2SNNHnH/giphy.gif?cid=6c09b952d61erpnfhq1l6bxp41cqphbjvpyqcqa9b4azqtp4&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="Perro corriendo" class="perrito">
   </section>
-    
-  <!-- Sección de Preguntas Frecuentes --> 
+
+  <!-- Sección de Preguntas Frecuentes -->
   <section #section id="preguntas">
     <app-preguntas></app-preguntas>
   </section>
@@ -62,7 +62,7 @@
 
 <!-- Sección de Testimonios -->
 <section #section id="testimonios" class="testimonials-section">
-  
+
   <h2 class="front">Testimonios de clientes</h2>
   <div *ngIf="isLoadingTestimonios" class="loading-spinner">
     <div class="spinner"></div>
@@ -98,7 +98,7 @@
   </div>
 </section>
 
-  <!-- Sección de Citas 
+  <!-- Sección de Citas
   <section #section id="contactanos" class="appointment-section">
     <h2>Agenda tu cita</h2>
     <div class="appointment-container">
@@ -177,7 +177,7 @@
     </div>
   </section>
 -->
-  
+
   <!-- Sección de Contáctanos -->
   <section #section id="contactanos" class="contact-section">
     <app-contactanos></app-contactanos>
@@ -190,14 +190,14 @@
 
 </main>
 
-<!-- Botón flotante de WhatsApp mejorado -->
+<!-- Botón flotante de WhatsApp -->
 <a
-  href="https://wa.me/573154467881?text=Hola%20quiero%20agendar%20una%20cita"
+  href="https://wa.me/15551810446?text=Hola%20quiero%20agendar%20una%20cita"
   class="whatsapp-float"
   target="_blank"
   aria-label="Chat en WhatsApp">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
   <span class="whatsapp-tooltip">¡Agenda tu cita!</span>
-</a>
 
+</a>
 <app-footer></app-footer>
