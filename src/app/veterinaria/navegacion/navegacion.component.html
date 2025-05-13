@@ -32,12 +32,12 @@
       </a>
     </li>
 
-    <li *ngIf="userType === 'Admin'">
-      <a routerLink="/tratamiento" class="nav-link tratamientos-link" (click)="navegarATratamientos()">
-        <span class="icon"><ion-icon name="bandage-outline"></ion-icon></span>
-        <span class="title">Tratamientos</span>
-      </a>
-    </li>
+  <li *ngIf="userType === 'Admin'">
+  <a routerLink="/tratamiento" class="nav-link tratamientos-link">
+    <span class="icon"><ion-icon name="bandage-outline"></ion-icon></span>
+    <span class="title">Tratamientos</span>
+  </a>
+</li>
 
     <li *ngIf="userType === 'Admin'">
       <a routerLink="/servicios" class="nav-link servicios-link">
