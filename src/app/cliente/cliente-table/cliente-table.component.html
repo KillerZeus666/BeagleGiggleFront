@@ -45,6 +45,10 @@
         </div>
 
         <div class="tabla-container">
+          <div *ngIf="clienteList.length === 0" class="mensaje-sin-clientes">
+  No hay clientes registrados.
+</div>
+
             <table class="tabla">
                 <thead>
                     <tr>

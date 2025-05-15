@@ -183,3 +183,46 @@
 .details table {
   min-height: 100px;
 }
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 400px; /* o usa 100% si estás seguro del alto de su contenedor */
+  width: 100%;
+  margin-top: 40px; /* espacio superior para separarlo del título "Mis mascotas" */
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  color: #1e88e5;
+  margin-bottom: 10px;
+}
+
+.empty-state-title {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.empty-state-message {
+  font-size: 16px;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+
+.empty-state-action {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.empty-state-action:hover {
+  background-color: #1565c0;
+}

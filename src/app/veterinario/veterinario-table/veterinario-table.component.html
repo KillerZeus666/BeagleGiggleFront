@@ -46,49 +46,62 @@
     </div>
 
     <div class="vets-table-wrapper">
-      <table class="vets-table">
-        <thead class="vets-table-header">
-          <tr>
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Cédula</th>
-            <th>Especialidad</th>
-            <th>Sede</th>
-            <th>Estado</th>
-            <th>Detalles</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody class="vets-table-body">
-          <tr *ngFor="let veterinario of veterinarioList" class="vet-row">
-            <td class="vet-photo-cell">
-              <img [src]="veterinario.foto" alt="Foto de {{veterinario.nombre}}" class="vet-photo" />
-            </td>
-            <td class="vet-name">{{ veterinario.nombre }}</td>
-            <td class="vet-id">{{ veterinario.cedula }}</td>
-            <td class="vet-specialty">{{ veterinario.especialidad }}</td>
-            <td class="vet-branch">{{ veterinario.sede }}</td>
-            <td class="vet-status">
-              <span [class.active]="veterinario.estado === 1" [class.inactive]="veterinario.estado !== 1">
-                {{ veterinario.estado === 1 ? 'Activo' : 'Inactivo' }}
-              </span>
-            </td>
-            <td class="vet-details-cell">
-              <button (click)="mostrarVeterinario(veterinario.idVeterinario)" class="vet-details-button">
-                Ver detalles
-              </button>
-            </td>
-            <td class="vet-actions-cell">
-              <button (click)="abrirFormularioEditarVeterinario(veterinario.idVeterinario)" class="vet-edit-button">
-                Editar
-              </button>
-              <button (click)="eliminarVeterinario(veterinario.idVeterinario)" class="vet-delete-button">
-                {{ veterinario.estado === 1 ? 'Desactivar' : 'Activar' }}
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- ... (el resto del HTML se mantiene igual hasta la tabla) ... -->
+<table class="vets-table">
+  <thead class="vets-table-header">
+    <tr>
+      <th>Foto</th>
+      <th>Nombre</th>
+      <th>Cédula</th>
+      <th>Especialidad</th>
+      <th>Sede</th>
+      <th>Estado</th>
+      <th>Detalles</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="vets-table-body">
+    <tr *ngFor="let veterinario of veterinarioList" class="vet-row">
+      <td class="vet-photo-cell">
+        <img [src]="veterinario.foto" alt="Foto de {{veterinario.nombre}}" class="vet-photo" />
+      </td>
+      <td class="vet-name">{{ veterinario.nombre }}</td>
+      <td class="vet-id">{{ veterinario.cedula }}</td>
+      <td class="vet-specialty">{{ veterinario.especialidad }}</td>
+      <td class="vet-branch">{{ veterinario.sede }}</td>
+      <td class="vet-status">
+        <span [class.active]="veterinario.estado === 1" [class.inactive]="veterinario.estado !== 1">
+          {{ veterinario.estado === 1 ? 'Activo' : 'Inactivo' }}
+        </span>
+      </td>
+      <td class="vet-details-cell" style="text-align: center;">
+        <button
+          (click)="mostrarVeterinario(veterinario.idVeterinario)"
+          class="vet-details-button"
+          style="display: inline-block; width: 120px; margin: 0 auto;">
+          Ver detalles
+        </button>
+      </td>
+      <td class="vet-actions-cell" style="text-align: center; white-space: nowrap;">
+        <div style="display: flex; justify-content: center; gap: 8px;">
+          <button
+            (click)="abrirFormularioEditarVeterinario(veterinario.idVeterinario)"
+            class="vet-edit-button"
+            style="width: 80px;">
+            Editar
+          </button>
+          <button
+            (click)="eliminarVeterinario(veterinario.idVeterinario)"
+            class="vet-delete-button"
+            style="width: 100px;">
+            {{ veterinario.estado === 1 ? 'Desactivar' : 'Activar' }}
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- ... (el resto del HTML se mantiene igual) ... -->
     </div>
   </main>
 </div>

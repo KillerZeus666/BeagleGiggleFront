@@ -1,28 +1,30 @@
+<app-navegacion></app-navegacion>
+
 <div class="contenido-principal" *ngIf="cita">
     <section class="container-principal">
-      <h1>Detalles de la Cita</h1>
-  
       <div class="card-detalles">
+        <h1>Detalles de la Cita</h1>
+
         <div class="fila">
           <span class="etiqueta">Fecha y hora:</span>
           <span class="valor">{{ cita.fechaHora | date:'fullDate' }} - {{ cita.fechaHora | date:'shortTime' }}</span>
         </div>
-  
+
         <div class="fila">
           <span class="etiqueta">Mascota:</span>
           <span class="valor">{{ cita.mascota.nombre }}</span>
         </div>
-  
+
         <div class="fila">
           <span class="etiqueta">Dueño:</span>
           <span class="valor">{{ cita.mascota.cliente?.nombre || 'No especificado' }}</span>
         </div>
-  
+
         <div class="fila">
           <span class="etiqueta">Servicio:</span>
           <span class="valor">{{ cita.servicio?.nombre || 'No especificado' }}</span>
         </div>
-  
+
         <div class="fila">
             <span class="etiqueta">Estado:</span>
             <span class="valor">{{ cita.estado || 'No especificado' }}</span>
@@ -30,4 +32,3 @@
       </div>
     </section>
   </div>
-  

@@ -11,8 +11,7 @@
 
     <div class="mascotas-container">
       <div *ngIf="mascotas && mascotas.length > 0; else noMascotas" class="mascotas-flex-container">
-  <div class="table-container">
-
+        <div class="table-container">
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
@@ -70,11 +69,18 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
+
       <ng-template #noMascotas>
-        <p>No hay mascotas registradas.</p>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <i class="fas fa-paw"></i>
+          </div>
+          <h3 class="empty-state-title">No hay mascotas registradas</h3>
+          <p class="empty-state-message">Aún no has agregado ninguna mascota a tu perfil. ¡Comienza agregando tu primera mascota!</p>
+          <button class="empty-state-action">Agregar Mascota</button>
+        </div>
       </ng-template>
     </div>
   </section>

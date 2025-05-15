@@ -328,3 +328,10 @@ h1 {
     width: 100%;
   }
 }
+
+.mensaje-sin-clientes {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 20px;
+  color: #666;
+}

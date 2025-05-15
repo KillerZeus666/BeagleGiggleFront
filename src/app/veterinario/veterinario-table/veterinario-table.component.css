@@ -146,14 +146,58 @@
   white-space: nowrap;
   min-width: 100px;
   text-align: center;
-  flex: 1; /* Añadido: para que los botones compartan el espacio disponible de manera igual */
   display: inline-block; /* Añadido: para asegurar un comportamiento consistente */
 }
 
-.buttons-container {
+/* Alineación vertical para todas las celdas */
+.vets-table td {
+  vertical-align: middle;
+  padding: 12px 8px; /* Asegura padding consistente */
+}
+
+/* Contenedor de botones de acción */
+.vet-actions-cell {
   display: flex;
-  gap: 10px; /* Espacio entre botones */
-  justify-content: center; /* Alineación horizontal al centro */
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+/* Estilos unificados para todos los botones */
+.vet-details-button,
+.vet-edit-button,
+.vet-delete-button {
+  /* Dimensiones idénticas */
+  height: 36px;
+  min-width: 100px;
+  box-sizing: border-box;
+
+  /* Alineación interna */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Estilos visuales (manteniendo tus configuraciones) */
+  padding: 27px 20px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* Ajustes específicos para cada botón */
+.vet-details-button { width: 120px; background-color: #4CAF50; }
+.vet-edit-button { width: 80px; background-color: #2196F3; }
+.vet-delete-button { width: 100px; background-color: #f44336; }
+
+/* Estado "Activar" */
+.vet-delete-button.inactive-state {
+  background-color: #FFC107;
+  color: #000;
 }
 
 /* COLORES */

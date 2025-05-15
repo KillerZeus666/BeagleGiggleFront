@@ -45,7 +45,6 @@ h1 {
 }
 
 
-
 .carousel-text h1, .carousel-text p {
   text-align: center;
   color: white;
@@ -137,6 +136,7 @@ p {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: calc(100 * var(--vh, 1vh));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,8 +146,31 @@ p {
   background-attachment: fixed;
   overflow: hidden;
   transition: background-position 12s ease-in-out, background-image 1s ease-in-out;
+  will-change: background-image;
+  backface-visibility: hidden;
+  margin: 0;
+  padding: 0;
 }
 
+.slide-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.slide-background.active {
+  opacity: 1;
+}
+
+.slide-background:not(.active) {
+  opacity: 0;
+}
 .description-section:hover {
   background-position: center 30%;
 }
