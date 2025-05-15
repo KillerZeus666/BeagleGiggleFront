@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ClienteCL } from '../model/cliente-cl';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { UserCl } from '../model/user-cl';
 
 @Injectable({
   providedIn: 'root'
@@ -38,4 +39,22 @@ export class ClienteService {
         params: { nombre }  // Pasa el nombre como parámetro de búsqueda
       });
     }
+  
+  login(usuario:UserCl):Observable<String>{
+    return this.http.post(`${this.baseUrl}/login`,usuario, {
+      responseType :'text'
+    });
+  }
+
+  clienteHome():Observable<ClienteCL>{
+    return this.http.get<ClienteCL>(`${this.baseUrl}/details`);
+  }
+
+  loginSencillo(username: string, password: string): Observable<ClienteCL> {
+    const params = new HttpParams()
+      .set('username', username)
+      .set('password', password);
+
+    return this.http.get<ClienteCL>(`${this.baseUrl}/login-sencillo`, { params });
+  }
 }

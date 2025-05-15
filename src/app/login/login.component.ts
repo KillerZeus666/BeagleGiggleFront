@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { ClienteCL } from '../model/cliente-cl';
+import { ClienteService } from '../service/cliente.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,9 @@ export class LoginComponent implements OnInit {
   password = '';
   errorMessage = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  cliente!: ClienteCL;
+
+  constructor(private router: Router, private authService: AuthService, private clienteService:ClienteService) {}
 
   ngOnInit(): void {
     // Solo llenar el formulario automáticamente para pruebas
@@ -21,16 +25,26 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+
+    this.clienteService.loginSencillo(this.username,this.password).subscribe({
+      next: (clienteData) => {
+        this.cliente = clienteData;
+      },
+      error: (err) =>{
+        console.error(err);
+      }
+    });
+
     // Validar si coincide con los datos quemados
-    if (this.username === 'carlosg' && this.password === 'pass2') {
+    if (this.cliente !== null && this.cliente !== undefined) {
       // Login manual (quemado) para cliente
       this.authService.login({
-        id: 2,
+        id: this.cliente.idCliente,
         tipo: 'Cliente',
-        nombre: 'Carlos Gómez',
-        foto: 'https://www.donnamoderna.com/content/uploads/2022/07/Donna-sorridente-830x625.jpg'
+        nombre: this.cliente.nombre,
+        foto: this.cliente.foto
       });
-      this.router.navigate(['/mascotas-cliente/2']);
+      this.router.navigate(['/mascotas-cliente',this.cliente.idCliente]);
     } else if (this.username === 'admin' && this.password === '1234') {
       // Login manual (quemado) para admin
       this.authService.login({
