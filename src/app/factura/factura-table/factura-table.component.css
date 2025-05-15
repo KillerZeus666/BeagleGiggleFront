@@ -81,6 +81,12 @@
   border: none;
 }
 
+.facturas-header .acciones {
+  display: flex;
+  gap: 2rem;
+}
+
+
 .btn-primary {
   background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;

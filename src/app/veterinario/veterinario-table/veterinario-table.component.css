@@ -120,17 +120,18 @@
   color: #ef4444;
 }
 
-/* CELDA DE BOTONES */
+/* CELDA DE BOTONES - Ajustado */
 .vet-actions-cell {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   flex-wrap: nowrap;
-  padding: 0;
+  padding: 8px;
+  width: 100%;
 }
 
-/* BOTONES */
+/* BOTONES - Sin cambios */
 .vet-details-button,
 .vet-edit-button,
 .vet-delete-button {
@@ -145,6 +146,14 @@
   white-space: nowrap;
   min-width: 100px;
   text-align: center;
+  flex: 1; /* Añadido: para que los botones compartan el espacio disponible de manera igual */
+  display: inline-block; /* Añadido: para asegurar un comportamiento consistente */
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px; /* Espacio entre botones */
+  justify-content: center; /* Alineación horizontal al centro */
 }
 
 /* COLORES */

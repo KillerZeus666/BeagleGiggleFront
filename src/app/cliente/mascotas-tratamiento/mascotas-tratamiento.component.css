@@ -1,21 +1,35 @@
+/* Contenedor principal - solución mejorada */
 .detail-container {
   background: white;
-  padding: 1.5rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Ajuste para sidebar */
+.navigation ~ .detail-container {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+}
+
+.navigation.active ~ .detail-container {
+  margin-left: 80px;
+  width: calc(100% - 80px);
 }
 
 .detail-title {
   color: #205375;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.8rem;
 }
 
 .detail-title:after {
@@ -24,49 +38,54 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
+  width: 100px;
+  height: 4px;
   background: linear-gradient(90deg, #40a8c4, #205375);
+  border-radius: 2px;
 }
 
 .mascotas-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.8rem;
   width: 100%;
 }
 
 .mascota-card {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 280px;
 }
 
 .mascota-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .card-content {
   display: flex;
-  padding: 1.2rem;
-  gap: 1.2rem;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  flex: 1;
+  flex-direction: column;
 }
-
 .pet-image-container {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 3px solid #40a8c4;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background: #f0f8ff;
-  flex-shrink: 0;
+  margin: 0 auto;
 }
+
 
 .pet-image {
   width: 100%;
@@ -78,18 +97,23 @@
 .pet-data {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
+  gap: 1rem;
   width: 100%;
+  align-content: start;
 }
 
 .data-item {
   background-color: #f5f9fa;
   color: #333;
-  padding: 0.6rem;
-  border-radius: 6px;
+  padding: 0.8rem;
+  border-radius: 8px;
   text-align: left;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border-left: 3px solid #40a8c4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #40a8c4;
+  min-height: 60px; /* Altura mínima consistente */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .status-item.active {
@@ -103,73 +127,202 @@
 }
 
 .data-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #666;
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
 }
 
 .data-value {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #205375;
+  line-height: 1.4;
 }
 
 .tratamiento-button {
   background: linear-gradient(135deg, #40a8c4, #205375);
   color: white;
   border: none;
-  padding: 0.8rem;
+  padding: 1rem;
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  gap: 0.6rem;
+  margin-top: auto; /* Empuja el botón hacia abajo */
 }
 
 .tratamiento-button:hover {
   background: linear-gradient(135deg, #205375, #40a8c4);
-  box-shadow: 0 2px 8px rgba(32, 83, 117, 0.3);
+  box-shadow: 0 4px 10px rgba(32, 83, 117, 0.3);
 }
 
 .tratamiento-button i {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .no-selection-message {
-  padding: 2rem;
+  padding: 2.5rem;
   background-color: #f8f9fa;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
   color: #666;
   text-align: center;
-  border: 1px dashed #ddd;
+  border: 2px dashed #ddd;
+  grid-column: 1 / -1;
 }
 
-@media (max-width: 768px) {
-  .mascotas-list {
-      grid-template-columns: 1fr;
+/* Responsive - Mobile First Approach */
+@media (max-width: 1200px) {
+  .detail-container {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .detail-title {
+    font-size: 1.6rem;
   }
 
   .card-content {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .pet-data {
-      grid-template-columns: 1fr;
+    padding: 1.2rem;
+    gap: 1.2rem;
   }
 
   .pet-image-container {
-      width: 100px;
-      height: 100px;
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation ~ .detail-container,
+  .navigation.active ~ .detail-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0;
+  }
+
+  .mascotas-list {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .card-content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .pet-data {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .detail-container {
+    padding: 1.2rem;
+  }
+
+  .detail-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-content {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .pet-image-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .pet-data {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .data-item {
+    padding: 0.7rem;
+  }
+
+  .tratamiento-button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .detail-title {
+    font-size: 1.3rem;
+  }
+
+  .data-value {
+    font-size: 0.9rem;
+  }
+
+  .data-label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mascotas-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation ~ .detail-container,
+  .navigation.active ~ .detail-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .mascota-card {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mascotas-list {
+    grid-template-columns: 1fr;
+  }
+
+  .card-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .pet-image-container {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pet-image-container {
+    margin: 0 auto;
+  }
+
+  .pet-data {
+    grid-template-columns: 1fr;
   }
 }

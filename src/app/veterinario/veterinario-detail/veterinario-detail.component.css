@@ -2,18 +2,28 @@
 .vet-detail-container {
     display: flex;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 60px 20px 60px 270px; /* 250px de sidebar + 20px de padding */
+    margin-left: 0;
+    transition: padding-left 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Ajuste cuando el sidebar está colapsado */
+.navigation.active ~ .vet-detail-container {
+    padding-left: 100px; /* 80px de sidebar colapsado + 20px de padding */
 }
 
 /* Tarjeta del veterinario */
 .vet-detail-card {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
+    background: linear-gradient(145deg, #b3e0ff, #99c2ff);
     border-radius: 12px;
     padding: 40px;
     max-width: 1200px;
-    width: 80%;
+    width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
@@ -56,7 +66,7 @@
 }
 
 .vet-img-container:hover {
-    transform: scale(1.05); /* Efecto hover */
+    transform: scale(1.05);
 }
 
 .vet-img {
@@ -76,7 +86,7 @@
 }
 
 .vet-field {
-    background-color: #1d95db; /* Azul para los ítems */
+    background-color: #1d95db;
     color: white;
     padding: 20px;
     border-radius: 8px;
@@ -107,6 +117,14 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+    .vet-detail-container {
+        padding: 60px 20px;
+    }
+
+    .navigation.active ~ .vet-detail-container {
+        padding-left: 20px;
+    }
+
     .vet-detail-card {
         width: 90%;
         padding: 30px;
@@ -123,7 +141,7 @@
     }
 
     .vet-data {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        grid-template-columns: 1fr;
         max-width: 100%;
     }
 }
@@ -140,5 +158,24 @@
 
     .vet-data {
         gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .vet-detail-container {
+        padding: 40px 15px;
+    }
+
+    .vet-detail-card h1 {
+        font-size: 24px;
+    }
+
+    .vet-field {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .vet-value {
+        font-size: 18px;
     }
 }

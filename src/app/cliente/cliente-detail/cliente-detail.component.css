@@ -1,42 +1,37 @@
-/* .page-container: mover hacia la derecha y hacerlo más pequeño */
+/* Contenedor de página - solución definitiva */
 .page-container {
     display: flex;
-    width: 80%; /* Reduce el tamaño a un 80% del ancho de la ventana */
     flex-direction: column;
-    background:white; /* Gradiente suave */
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    padding-top: 80px;
-    padding-bottom: 60px;
-    position: relative;
-    min-height: 100vh; /* Ocupará toda la altura de la ventana */
-    margin-left:19%; /* Esto empuja el contenedor hacia la derecha */
+    background: white;
+    padding: 80px 20px 60px 270px; /* 250px sidebar + 20px padding */
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: padding-left 0.3s ease;
+    width: 100%;
 }
 
-/* Pseudo-elemento para la opacidad */
-.page-container::before {
-    content: '';
-    background:white; /* Gradiente suave */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+/* Ajuste cuando el sidebar está colapsado */
+.navigation.active ~ .page-container {
+    padding-left: 100px; /* 80px sidebar colapsado + 20px padding */
 }
 
 /* Contenedor principal */
 .container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    background: linear-gradient(145deg, #b3e0ff, #99c2ff); /* Gradiente suave */
+    background: linear-gradient(145deg, #b3e0ff, #99c2ff);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
     z-index: 2;
+}
+
+/* Eliminamos el pseudo-elemento ya que no es necesario */
+.page-container::before {
+    display: none;
 }
 
 /* Título */
@@ -51,7 +46,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Contenido: mejor distribución horizontal */
+/* Contenido */
 .content {
     display: flex;
     justify-content: space-between;
@@ -75,7 +70,7 @@ h1 {
 }
 
 .img-container:hover {
-    transform: scale(1.05); /* Efecto de hover */
+    transform: scale(1.05);
 }
 
 .mascota-img {
@@ -96,7 +91,7 @@ h1 {
 }
 
 .dato, .btn-detalles {
-    background-color: #1d95db; /* Azul para los ítems */
+    background-color: #1d95db;
     color: white;
     padding: 20px;
     border-radius: 8px;
@@ -129,6 +124,7 @@ h1 {
     background-color: #205375;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 .btn-detalles:hover {
@@ -139,13 +135,21 @@ h1 {
 
 /* Responsive */
 @media (max-width: 1024px) {
+    .page-container {
+        padding: 80px 20px 60px 20px;
+    }
+
+    .navigation.active ~ .page-container {
+        padding-left: 20px;
+    }
+
     .container {
         max-width: 90%;
         padding: 30px;
     }
 
     .content {
-        flex-direction: column; /* Pila los elementos en pantallas pequeñas */
+        flex-direction: column;
         align-items: center;
     }
 
@@ -155,7 +159,7 @@ h1 {
     }
 
     .datos {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        grid-template-columns: 1fr;
         max-width: 100%;
     }
 }
@@ -172,5 +176,28 @@ h1 {
 
     .datos {
         gap: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-container {
+        padding: 60px 15px 40px 15px;
+    }
+
+    .dato, .btn-detalles {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .info {
+        font-size: 18px;
+    }
+
+    .label {
+        font-size: 14px;
     }
 }

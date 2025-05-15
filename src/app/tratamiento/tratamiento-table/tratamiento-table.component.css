@@ -1,12 +1,12 @@
 /* ================== CONTENEDOR PRINCIPAL ================== */
 .tratamientos-container {
-  margin-left: 300px;
+  margin-left: 300px; /* Ancho cuando sidebar está expandido */
   padding: 2rem;
   transition: all 0.3s ease;
   min-height: calc(100vh - 4rem);
   background-color: #f5f7fa;
+  width: calc(100% - 300px); /* Asegura que el ancho se ajuste */
 }
-
 .tratamientos-header {
   display: flex;
   justify-content: space-between;
@@ -184,43 +184,32 @@
   transform: rotate(45deg);
 }
 
-/* ================== RESPONSIVE ================== */
+.navigation.active ~ .main .tratamientos-container {
+  margin-left: 80px; /* Ancho cuando sidebar está colapsado */
+  width: calc(100% - 80px);
+}
+
+/* Ajustes responsive */
 @media (max-width: 1200px) {
   .tratamientos-container {
     margin-left: 80px;
+    width: calc(100% - 80px);
+  }
+
+  .navigation.active ~ .main .tratamientos-container {
+    margin-left: 80px;
+    width: calc(100% - 80px);
   }
 }
 
 @media (max-width: 768px) {
   .tratamientos-container {
     margin-left: 0;
-    padding: 1rem;
-  }
-
-  .facturar-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .metodo-pago-container {
     width: 100%;
   }
 
-  .select-pago {
+  .navigation.active ~ .main .tratamientos-container {
+    margin-left: 0;
     width: 100%;
-  }
-
-  .btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .tratamientos-table th,
-  .tratamientos-table td {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.85rem;
   }
 }
