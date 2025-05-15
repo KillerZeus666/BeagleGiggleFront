@@ -67,5 +67,5 @@ export class LoginClienteComponent implements OnInit {
         }
       );
     }
-  }
+  } 
 }
