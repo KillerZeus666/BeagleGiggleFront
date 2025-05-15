@@ -19,11 +19,12 @@ export class TratamientoService {
     return this.http.get<TratamientoCL>(`${this.baseUrl}/${id}`)
   }
 
-  crearTratamiento( tratamiento: TratamientoCL,
+  crearTratamiento(
+    tratamiento: TratamientoCL,
     idMascota: number,
     idServicio: number,
     idVeterinario: number | null,
-    idsMedicamentos: number[]
+    medicamentos: { [idMedicamento: number]: number }
   ): Observable<TratamientoCL> {
     let params = new HttpParams()
       .set('idMascota', idMascota.toString())
@@ -33,12 +34,18 @@ export class TratamientoService {
       params = params.set('idVeterinario', idVeterinario.toString());
     }
 
-    idsMedicamentos.forEach(id => {
-      params = params.append('idsMedicamentos', id.toString());
+    // Agregar cada medicamento con su dosis en formato "id:dosis"
+    Object.entries(medicamentos).forEach(([idMedicamento, dosis]) => {
+      params = params.append('medicamentos', `${idMedicamento}:${dosis}`);
     });
 
-    return this.http.post<TratamientoCL>(`${this.baseUrl}/crear`, tratamiento, { params });
+    return this.http.post<TratamientoCL>(
+      `${this.baseUrl}/crear`,
+      tratamiento,
+      { params }
+    );
   }
+
 
   actualizarTratamiento(
     id: number,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MedicamentoCL } from 'src/app/model/medicamento-cl';
 import { ServicioCL } from 'src/app/model/servicio-cl';
@@ -8,23 +8,25 @@ import { MascotaService } from 'src/app/service/mascota.service';
 import { MedicamentoService } from 'src/app/service/medicamento.service';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-tratamiento-form',
   templateUrl: './tratamiento-form.component.html',
   styleUrls: ['./tratamiento-form.component.css']
 })
-export class TratamientoFormComponent implements OnInit{
+export class TratamientoFormComponent implements OnInit {
   tratamientoForm!: FormGroup;
   loading = false;
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
-  servicios: ServicioCL[] = []; 
-  mascotas: MascotaCL[] = [];  
-  medicamentosDisponibles: MedicamentoCL[] = []; 
+  servicios: ServicioCL[] = [];
+  mascotas: MascotaCL[] = [];
+  medicamentosDisponibles: MedicamentoCL[] = [];
 
-  idVeterinario: number=0;
+  idVeterinario: number = 0;
+
   constructor(
     private fb: FormBuilder,
     private tratamientoService: TratamientoService,
@@ -36,7 +38,6 @@ export class TratamientoFormComponent implements OnInit{
 
   ngOnInit(): void {
     const id = history.state?.id || 0;
-    console.log('idVeterinario recibido:', id); 
     this.idVeterinario = id;
 
     this.tratamientoForm = this.fb.group({
@@ -49,40 +50,26 @@ export class TratamientoFormComponent implements OnInit{
       medicamentos: this.fb.array([this.createMedicamentoGroup()])
     });
 
-    console.log(this.idVeterinario);
+    this.servicioService.findAll().subscribe({
+      next: (serviciodata) => { this.servicios = serviciodata; },
+      error: (err) => { console.error('Error al obtener los servicios', err); }
+    });
 
-      this.servicioService.findAll().subscribe({
-        next: (serviciodata) => {
-          this.servicios=serviciodata;
-        },
-        error: (err) =>{
-          console.error('Error al obtener los servicios',err);
-        }
-      });
+    this.mascotaService.findAll().subscribe({
+      next: (mascotadata) => { this.mascotas = mascotadata; },
+      error: (err) => { console.error('Error al obtener las mascotas', err); }
+    });
 
-      this.mascotaService.findAll().subscribe({
-        next: (mascotadata) =>{
-          this.mascotas=mascotadata;
-        },
-        error: (err) =>{
-          console.error('Error al obtener las mascotas',err)
-        }
-      });
-
-      this.medicamentoService.findAll().subscribe({
-        next: (medicamentodata) =>{
-          this.medicamentosDisponibles = medicamentodata
-        },
-        error: (err) =>{
-          console.error('Error al obtener los medicamentos',err);
-        }
-      });
+    this.medicamentoService.findAll().subscribe({
+      next: (medicamentodata) => { this.medicamentosDisponibles = medicamentodata; },
+      error: (err) => { console.error('Error al obtener los medicamentos', err); }
+    });
   }
 
   createMedicamentoGroup(): FormGroup {
     return this.fb.group({
       idMedicamento: ['', Validators.required],
-      dosis: ['', Validators.required]
+      dosis: ['', [Validators.required, Validators.min(1)]]
     });
   }
 
@@ -113,6 +100,7 @@ export class TratamientoFormComponent implements OnInit{
     this.errorMessage = null;
 
     const formValue = this.tratamientoForm.value;
+
     const tratamiento = new TratamientoCL(
       0,
       formValue.codigo,
@@ -120,14 +108,19 @@ export class TratamientoFormComponent implements OnInit{
       formValue.detalles
     );
 
-    const idsMedicamentos = formValue.medicamentos.map((m: any) => m.idMedicamento);
+    // Construimos un Map (hashmap) con idMedicamento como clave y dosis como valor
+    const medicamentosMap: { [key: number]: number } = {};
+    formValue.medicamentos.forEach((m: any) => {
+      medicamentosMap[m.idMedicamento] = +m.dosis; // Convertir dosis a número
+    });
 
+    // Aquí llamamos al servicio con el mapa en vez del array simple
     this.tratamientoService.crearTratamiento(
       tratamiento,
       formValue.idMascota,
       formValue.idServicio,
       formValue.idVeterinario,
-      idsMedicamentos
+      medicamentosMap
     ).subscribe({
       next: () => {
         this.resetForm();
@@ -149,7 +142,10 @@ export class TratamientoFormComponent implements OnInit{
       idMascota: '',
       idVeterinario: this.idVeterinario,
       detalles: '',
+      medicamentos: [] // Limpia el array de medicamentos
     });
+    // Al menos un medicamento debe quedar para evitar errores
+    this.medicamentosArray.push(this.createMedicamentoGroup());
   }
 
   private showSuccess(message: string): void {
@@ -159,6 +155,6 @@ export class TratamientoFormComponent implements OnInit{
 
   private showError(message: string): void {
     this.errorMessage = message;
-    this.loading = false;
-  }
+    this.loading = false;
+  }
 }
