@@ -9,12 +9,12 @@
   }
   
 .associated-foundations h2 {
+  font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   padding-top: 40px;
   font-size: 2rem;  /* Similar al tamaño del otro título */
   color: #2a4e68;
   margin-top: 0;
-  text-transform: uppercase;
   letter-spacing: 2px;
 }
 
