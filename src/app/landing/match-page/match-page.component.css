@@ -23,6 +23,17 @@ main {
   flex-direction: column;
 }
 
+.form-group input,
+.form-group select {
+  width: 100%;      /* que ocupen todo el ancho del contenedor */
+  padding: 8px;     /* espacio interior */
+  font-size: 16px;  /* tamaño de letra */
+  box-sizing: border-box; /* para que padding no afecte el ancho */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
 /* Estilos de cada tarjeta */
 .card {
   background: white;
