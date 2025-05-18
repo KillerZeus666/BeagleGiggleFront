@@ -132,22 +132,35 @@
 }
 
 /* BOTONES - Sin cambios */
-.vet-details-button,
-.vet-edit-button,
-.vet-delete-button {
-  padding: 8px 20px;
-  border-radius: 20px;
-  border: none;
-  font-size: 14px;
-  font-weight: 500;
+.btn-detalles,
+.btn-editar,
+.btn-eliminar {
+  width: 100px;         /* Tamaño fijo */
+  padding: 8px 12px;    /* Tamaño de relleno uniforme */
+  font-size: 13px;
+  border-radius: 15px;
   cursor: pointer;
+  border: none;
   color: white;
-  transition: transform 0.3s ease;
   white-space: nowrap;
-  min-width: 100px;
+  display: inline-block;
   text-align: center;
-  display: inline-block; /* Añadido: para asegurar un comportamiento consistente */
+  box-sizing: border-box;
 }
+
+/* Evita que en responsive cambien de tamaño */
+@media (max-width: 992px),
+       (max-width: 768px),
+       (max-width: 576px) {
+  .btn-detalles,
+  .btn-editar,
+  .btn-eliminar {
+    width: 100px !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+  }
+}
+
 
 /* Alineación vertical para todas las celdas */
 .vets-table td {
