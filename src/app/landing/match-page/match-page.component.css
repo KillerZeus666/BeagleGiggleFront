@@ -1,114 +1,41 @@
-
-/* Main empujado para que no quede debajo del header */
+/* Empuja el main para que no quede debajo del header */
 main {
-  padding-top: 115px; /* Igual a la altura del header */
-
+  padding-top: 115px; /* altura aproximada del header */
 }
 
-/* Contenedor de las tarjetas */
-.match-container {
-  max-width: 320px;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  padding: 20px;
-  text-align: center;
-  background-color: #fff;
-  
-  /* Para centrar también el contenido y que no se estire */
+/* Contenedor principal con layout flex: resultados a la izquierda, filtros a la derecha */
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Área de resultados: ocupa más espacio, fondo claro, scroll vertical */
+.resultados {
+  flex: 3;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
   flex-direction: column;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;      /* que ocupen todo el ancho del contenedor */
-  padding: 8px;     /* espacio interior */
-  font-size: 16px;  /* tamaño de letra */
-  box-sizing: border-box; /* para que padding no afecte el ancho */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-
-/* Estilos de cada tarjeta */
-.card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  width: 350px;
-  flex-shrink: 0;
-  text-align: center;
-  padding: 15px;
-  transition: transform 0.3s ease;
-}
-.match-container img {
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-  max-height: 300px;
-}
-
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
+/* Título dentro de resultados */
+.resultados h2 {
   margin-bottom: 10px;
+  color: #1e3a5f;
 }
 
-.card h3 {
-  margin: 10px 0 5px;
-  color: #2a4e68;
-}
-
-.card p {
-  font-size: 1rem;
-  color: #555;
+/* Contenedor de etiquetas de filtros activos */
+.filtros-activos {
   margin-bottom: 15px;
 }
 
-.card button {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.card button:hover {
-  background-color: #357abd;
-}
-/* Contenedor principal: resultados a la izquierda, filtros a la derecha en columna */
-.contenedor-principal {
-  display: flex;
-  max-width: 1200px;
-  margin: 40px auto;
-  gap: 30px;
-}
-
-/* Resultados - ocupa más espacio y muestra tags arriba */
-.resultados {
-  flex: 1 1 65%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Contenedor de tags */
-.tags-filtros {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
+/* Etiquetas de filtros activos (tags) */
 .tag {
   background-color: #4a90e2;
   color: white;
@@ -116,96 +43,77 @@ main {
   border-radius: 20px;
   font-weight: 600;
   font-size: 0.9rem;
-  display: flex;
+  margin-right: 8px;
+  display: inline-flex;
   align-items: center;
   cursor: default;
 }
 
-.tag span {
-  margin-left: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Tarjeta de mascota */
-.card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease;
-  align-self: flex-start;
-}
-
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-.card h3 {
-  margin: 10px 0 5px;
-  color: #2a4e68;
-}
-
-.card p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.card button {
-  background-color: #4a90e2;
-  color: white;
+/* Botón para eliminar filtro dentro de tag */
+.tag button {
+  background: transparent;
   border: none;
-  border-radius: 25px;
-  padding: 12px 24px;
-  cursor: pointer;
+  color: white;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease;
+  margin-left: 8px;
+  cursor: pointer;
+  line-height: 1;
 }
 
-.card button:hover {
-  background-color: #357abd;
+/* Tarjetas de mascotas */
+.tarjeta {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
-/* Filtros - sidebar a la derecha */
+/* Efecto hover en tarjeta */
+.tarjeta:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Área de filtros (sidebar) */
 .filtros {
   flex: 0 0 320px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px 25px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
   height: fit-content;
 }
 
-.filtros label {
-  font-weight: 600;
+/* Título de filtros */
+.filtros h2 {
+  margin-bottom: 10px;
   color: #1e3a5f;
-  font-size: 1rem;
+}
+
+/* Agrupa cada input/label */
+.form-group {
   display: flex;
   flex-direction: column;
 }
 
+/* Estilo para inputs y selects */
 .filtros input[type="number"],
 .filtros select {
   padding: 10px 14px;
   border: 1.8px solid #cbd5e1;
-  border-radius: 12px;
-  margin-top: 8px;
-  font-size: 1.1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 6px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Estilo foco para inputs y selects */
 .filtros input[type="number"]:focus,
 .filtros select:focus {
   outline: none;
@@ -213,6 +121,7 @@ main {
   box-shadow: 0 0 8px #4a90e2aa;
 }
 
+/* Botones en filtros */
 .filtros button {
   background-color: #4a90e2;
   color: white;
@@ -222,10 +131,11 @@ main {
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 700;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease;
   box-shadow: 0 4px 8px rgba(74, 144, 226, 0.4);
 }
 
+/* Hover en botones */
 .filtros button:hover {
   background-color: #357abd;
   box-shadow: 0 6px 12px rgba(53, 122, 189, 0.6);
@@ -233,7 +143,7 @@ main {
 
 /* Responsive: apilar en pantallas pequeñas */
 @media (max-width: 900px) {
-  .contenedor-principal {
+  .container {
     flex-direction: column;
   }
   .filtros {
@@ -244,109 +154,9 @@ main {
   }
   .resultados {
     order: 1;
+    max-height: none;
   }
-  .card {
+  .tarjeta {
     max-width: 100%;
   }
-}
-.container {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-/* Resultados - izquierda */
-.resultados {
-  flex: 3;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
-  background: #fafafa;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.tarjeta {
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-}
-
-.tarjeta:hover {
-  box-shadow: 0 0 10px #888;
-}
-
-.filtros-activos {
-  margin-bottom: 15px;
-}
-
-.tag {
-  display: inline-block;
-  background-color: #007bff;
-  color: white;
-  border-radius: 12px;
-  padding: 5px 10px;
-  margin: 2px 5px 2px 0;
-  font-size: 14px;
-  cursor: default;
-}
-
-.tag button {
-  background: transparent;
-  border: none;
-  color: white;
-  margin-left: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Filtros - derecha */
-.filtros {
-  flex: 1;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
-  background: #fff;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 5px 8px;
-  box-sizing: border-box;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-button {
-  margin-right: 10px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 3px;
-  background-color: #007bff;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
