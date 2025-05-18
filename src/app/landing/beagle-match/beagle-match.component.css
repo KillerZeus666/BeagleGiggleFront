@@ -66,3 +66,11 @@
 .btn-primary:hover {
   background-color: #357abd;
 }
+
+.heart-icon {
+  display: block;       /* convierte la imagen en bloque para que funcione margin auto */
+  margin: 0 auto;       /* margen automático para centrar horizontalmente */
+  width: 40px;
+  height: auto;
+  border-radius: 5px;
+}
