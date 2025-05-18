@@ -1,0 +1,38 @@
+/* Empuja el main para que no quede debajo del header */
+main {
+  padding-top: 115px; /* altura aproximada del header */
+}
+
+.blog-header {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.blog-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2a4e68; /* Color solicitado */
+  margin-bottom: 0.5rem;
+  display: inline-block; 
+
+}
+
+.blog-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.blog-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: orange;
+  margin: 0.5rem auto 0; /* espacio encima y centrado */
+  border-radius: 2px;
+}
