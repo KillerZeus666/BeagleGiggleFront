@@ -63,6 +63,7 @@ import { LoginVeterinarioComponent } from './login/login-veterinario/login-veter
 import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.component';
 import { MatchPageComponent } from './landing/match-page/match-page.component';
 import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-page.component';
+import { BlogComponent } from './veterinaria/blog/blog.component';
 
 
 
@@ -123,7 +124,8 @@ import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-pag
     LoginVeterinarioComponent,
     BeagleMatchComponent,
     MatchPageComponent,
-    BeaglePageComponent
+    BeaglePageComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
