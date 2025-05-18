@@ -18,6 +18,7 @@ interface Filtros {
 export class MatchPageComponent implements OnInit {
   mascotaList: MascotaCL[] = [];
   mascotasFiltradas: MascotaCL[] = [];
+  mascotasFavoritas: MascotaCL[] = [];
   indiceActual: number = 0;
 
   filtros: Filtros = {
@@ -112,7 +113,7 @@ get mascotaActual() {
 }
 
 darLike() {
-  // Aquí puedes guardar en favoritos, por ejemplo
+  this.mascotasFavoritas.push(this.mascotaActual);
   console.log('Like a', this.mascotaActual.nombre);
   this.siguienteMascota();
 }
