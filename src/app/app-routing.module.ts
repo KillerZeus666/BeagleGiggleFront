@@ -41,6 +41,7 @@ import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.compon
 import { MatchPageComponent } from './landing/match-page/match-page.component';
 import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.component';
 import { BlogComponent } from './veterinaria/blog/blog.component';
+import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -88,6 +89,7 @@ const routes: Routes = [
   {path : 'calcular-edad', component: CalcularEdadComponent},
   {path: 'login-veterinario', component: LoginVeterinarioComponent},
   { path: 'blog', component: BlogComponent},
+  { path: 'articulo/:id', component: MostrarArticuloComponent },
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

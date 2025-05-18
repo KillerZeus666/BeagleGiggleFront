@@ -9,7 +9,8 @@
   </section>
 
   <section class="articulos-container">
-    <div *ngFor="let articulo of articulos" class="articulo-card">
+<div *ngFor="let articulo of articulos" class="articulo-card" 
+     (click)="verArticulo(articulo.id)">
       <img [src]="articulo.imagenes[0]" [alt]="articulo.titulo" class="articulo-imagen" />
       
       <div class="articulo-texto">

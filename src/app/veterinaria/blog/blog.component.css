@@ -7,6 +7,8 @@ main {
   color: #2a4e68;
 }
 
+
+
 /* Header del blog */
 .blog-header {
   text-align: center;
@@ -21,7 +23,22 @@ main {
   color: #2a4e68;
   margin-bottom: 0.5rem;
   position: relative;
+  display: inline-block;
+  padding-bottom: 0; /* quita el padding aquí */
 }
+
+.blog-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;                
+  transform: translateX(-50%); 
+  height: 4px;
+  width: 50px;
+  background-color: orange;
+  border-radius: 2px;
+}
+
 
 .blog-subtitle {
   font-size: 1.2rem;

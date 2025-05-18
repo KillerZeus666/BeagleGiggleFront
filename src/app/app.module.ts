@@ -65,6 +65,7 @@ import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.compon
 import { MatchPageComponent } from './landing/match-page/match-page.component';
 import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-page.component';
 import { BlogComponent } from './veterinaria/blog/blog.component';
+import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 
 registerLocaleData(localeEs);
 
@@ -127,7 +128,8 @@ registerLocaleData(localeEs);
     BeagleMatchComponent,
     MatchPageComponent,
     BeaglePageComponent,
-    BlogComponent
+    BlogComponent,
+    MostrarArticuloComponent
   ],
   imports: [
     BrowserModule,
