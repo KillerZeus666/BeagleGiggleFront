@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
 
 import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
@@ -65,6 +66,7 @@ import { MatchPageComponent } from './landing/match-page/match-page.component';
 import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-page.component';
 import { BlogComponent } from './veterinaria/blog/blog.component';
 
+registerLocaleData(localeEs);
 
 
 @NgModule({
@@ -136,9 +138,10 @@ import { BlogComponent } from './veterinaria/blog/blog.component';
     ReactiveFormsModule,
     NgChartsModule
   ],
-  providers: [],
+    providers: [
+    { provide: LOCALE_ID, useValue: 'es' }   
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  
-
 })
 export class AppModule { }
