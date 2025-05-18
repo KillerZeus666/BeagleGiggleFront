@@ -113,6 +113,7 @@ main {
   padding: 10px 14px;
   border: 1.8px solid #cbd5e1;
   border-radius: 8px;
+  background-color: #e0f0ff; /* color de fondo que quieras */
   font-size: 1rem;
   margin-top: 6px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -206,4 +207,94 @@ main {
 
 .btn-limpiar:hover {
   background-color: #cbd5e1;
+}
+
+
+.tarjeta-profesional {
+  max-width: 360px;
+  background-color: #f9fbfd; /* azul muy claro */
+  border: 1px solid #c4d0e1;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.foto-mascota {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid #c4d0e1;
+}
+
+.info-mascota {
+  padding: 20px 25px;
+}
+
+.info-mascota h3 {
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #0b3d91; /* azul oscuro */
+  text-align: center;
+}
+
+.atributos-mascota {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.atributo {
+  background-color: #e3eaf7;
+  padding: 10px 5px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.etiqueta {
+  display: block;
+  font-size: 0.85rem;
+  color: #546e91; /* azul grisáceo */
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.valor {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.botones-tinder {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn-dislike,
+.btn-like {
+  cursor: pointer;
+  font-size: 1.8rem;
+  border: none;
+  background: none;
+  transition: transform 0.15s ease-in-out;
+}
+
+.btn-dislike:hover {
+  color: #d9534f; /* rojo suave */
+  transform: scale(1.2);
+}
+
+.btn-like:hover {
+  color: #0275d8; /* azul vivo */
+  transform: scale(1.2);
 }

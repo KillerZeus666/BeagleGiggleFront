@@ -106,4 +106,29 @@ eliminarFiltro(campo: keyof Filtros): void {
   this.aplicarFiltros();
 }
 
+
+get mascotaActual() {
+  return this.mascotasFiltradas[this.indiceActual];
+}
+
+darLike() {
+  // Aquí puedes guardar en favoritos, por ejemplo
+  console.log('Like a', this.mascotaActual.nombre);
+  this.siguienteMascota();
+}
+
+darDislike() {
+  console.log('Dislike a', this.mascotaActual.nombre);
+  this.siguienteMascota();
+}
+
+siguienteMascota() {
+  if (this.indiceActual < this.mascotasFiltradas.length - 1) {
+    this.indiceActual++;
+  } else {
+    // Reinicias o haces algo especial
+    console.log('Fin de la lista');
+  }
+}
+
 }
