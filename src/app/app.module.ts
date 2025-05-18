@@ -62,6 +62,7 @@ import { LoginClienteComponent } from './login/login-cliente/login-cliente.compo
 import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
 import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.component';
 import { MatchPageComponent } from './landing/match-page/match-page.component';
+import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-page.component';
 
 
 
@@ -121,7 +122,8 @@ import { MatchPageComponent } from './landing/match-page/match-page.component';
     LoginClienteComponent,
     LoginVeterinarioComponent,
     BeagleMatchComponent,
-    MatchPageComponent
+    MatchPageComponent,
+    BeaglePageComponent
   ],
   imports: [
     BrowserModule,

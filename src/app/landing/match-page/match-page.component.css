@@ -298,3 +298,13 @@ main {
   color: #0275d8; /* azul vivo */
   transform: scale(1.2);
 }
+
+
+.titulo-seccion h2 {
+  color: #1e3a5f;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: rem;
+
+}
+
