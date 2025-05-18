@@ -60,6 +60,7 @@ import { ClientesDestacadosComponent } from './landing/clientes-destacados/clien
 import { ContactanosComponent } from './landing/contactanos/contactanos.component';
 import { LoginClienteComponent } from './login/login-cliente/login-cliente.component';
 import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
+import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.component';
 
 
 
@@ -117,7 +118,8 @@ import { LoginVeterinarioComponent } from './login/login-veterinario/login-veter
     ClientesDestacadosComponent,
     ContactanosComponent,
     LoginClienteComponent,
-    LoginVeterinarioComponent
+    LoginVeterinarioComponent,
+    BeagleMatchComponent
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ color: #2a4e68; /* Azul oscuro elegante */
 }
 .btn-leer-mas {
   display: inline-block;
-    background-color: #72c0ea;
+  background-color: #72c0ea;
   color: white;
   padding: 12px 24px;
   text-align: center;
@@ -48,5 +48,5 @@ color: #2a4e68; /* Azul oscuro elegante */
 }
 
 .btn-leer-mas:hover {
-    background-color: #63bbea;
+background-color: #357abd;
 }
