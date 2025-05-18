@@ -118,10 +118,16 @@
   </div>
 
 
-
-
-
-
+    <div *ngIf="mascotasFavoritas.length > 0" class="match-container">
+    <h3>🎉 ¡Felicidades! Tu mascota está a punto de hacer match con estas mascotas:</h3>
+    
+    <div class="match-grid">
+        <div *ngFor="let mascota of mascotasFavoritas" class="match-card">
+        <img [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" class="match-photo" />
+        <p class="match-name">{{ mascota.nombre }}</p>
+        </div>
+    </div>
+    </div>
 
 
 </main>
