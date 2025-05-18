@@ -81,9 +81,12 @@
         <input type="number" [(ngModel)]="filtros.pesoMax" name="pesoMax" min="0" step="0.1" />
       </div>
 
-      <button type="submit">Filtrar</button>
-      <button type="button" (click)="limpiarFiltros()">Limpiar filtros</button>
-    </form>
+
+    <div class="botones-filtro">
+        <button class="btn-filtrar" type="submit">Filtrar</button>
+        <button class="btn-limpiar" type="button" (click)="limpiarFiltros()">Limpiar filtros</button>
+   </div>
+ </form>
   </div>
 </div>
 
