@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./beagle-match.component.css']
 })
 export class BeagleMatchComponent {
-
 }

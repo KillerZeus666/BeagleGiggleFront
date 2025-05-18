@@ -38,6 +38,7 @@ import { ClientesDestacadosComponent } from './landing/clientes-destacados/clien
 import { LoginClienteComponent } from './login/login-cliente/login-cliente.component';
 import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
 import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.component';
+import { MatchPageComponent } from './landing/match-page/match-page.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -81,6 +82,7 @@ const routes: Routes = [
   {path: 'clientes-destacados', component: ClientesDestacadosComponent},
   {path: 'login-cliente', component: LoginClienteComponent},
   {path: 'beagle-match', component: BeagleMatchComponent},
+  {path: 'match-page', component: MatchPageComponent},
   {path: 'login-veterinario', component: LoginVeterinarioComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
