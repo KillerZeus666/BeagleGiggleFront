@@ -3,6 +3,13 @@ import { Router } from '@angular/router';
 import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
 
+interface Filtros {
+  edadMin: number | null;
+  edadMax: number | null;
+  raza: string;
+  pesoMax: number | null;
+}
+
 @Component({
   selector: 'app-match-page',
   templateUrl: './match-page.component.html',
@@ -13,11 +20,11 @@ export class MatchPageComponent implements OnInit {
   mascotasFiltradas: MascotaCL[] = [];
   indiceActual: number = 0;
 
-  filtros = {
-    edadMin: null as number | null,
-    edadMax: null as number | null,
+  filtros: Filtros = {
+    edadMin: null,
+    edadMax: null,
     raza: '',
-    pesoMax: null as number | null
+    pesoMax: null
   };
 
   listaOriginal: MascotaCL[] = [];
@@ -89,4 +96,14 @@ export class MatchPageComponent implements OnInit {
   mostrarMascota(id: number): void {
     this.router.navigate(['/detalles-mascota', id]);
   }
+
+eliminarFiltro(campo: keyof Filtros): void {
+  if (typeof this.filtros[campo] === 'string') {
+    (this.filtros[campo] as string) = '';
+  } else {
+    (this.filtros[campo] as number | null) = null;
+  }
+  this.aplicarFiltros();
+}
+
 }

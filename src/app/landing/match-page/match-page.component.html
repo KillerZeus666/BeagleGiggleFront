@@ -1,65 +1,73 @@
 <app-header></app-header>
 
-<main>
-  <h2>Beagle Match</h2>
+<main> 
+<div class="container">
+  <!-- Resultados con tarjetas a la izquierda -->
+  <div class="resultados">
+    <h2>Resultados ({{ mascotasFiltradas.length }})</h2>
 
- <div class="contenedor-principal">
-  <div class="filtros">
-    <label>
-      Edad mínima:
-      <input type="number" [(ngModel)]="filtros.edadMin" placeholder="Ej. 1" />
-    </label>
+    <!-- Mostrar etiquetas de filtros activos -->
+    <div class="filtros-activos" *ngIf="filtros.raza || filtros.edadMin || filtros.edadMax || filtros.pesoMax">
+      <span *ngIf="filtros.raza" class="tag">
+        Raza: {{ filtros.raza }}
+        <button (click)="eliminarFiltro('raza')">&times;</button>
+      </span>
+      <span *ngIf="filtros.edadMin !== null" class="tag">
+        Edad Min: {{ filtros.edadMin }}
+        <button (click)="eliminarFiltro('edadMin')">&times;</button>
+      </span>
+      <span *ngIf="filtros.edadMax !== null" class="tag">
+        Edad Max: {{ filtros.edadMax }}
+        <button (click)="eliminarFiltro('edadMax')">&times;</button>
+      </span>
+      <span *ngIf="filtros.pesoMax !== null" class="tag">
+        Peso Max: {{ filtros.pesoMax }}
+        <button (click)="eliminarFiltro('pesoMax')">&times;</button>
+      </span>
+    </div>
 
-    <label>
-      Edad máxima:
-      <input type="number" [(ngModel)]="filtros.edadMax" placeholder="Ej. 10" />
-    </label>
-
-    <label>
-      Raza:
-      <select [(ngModel)]="filtros.raza">
-        <option value="">Todas</option>
-        <option value="Beagle">Beagle</option>
-        <option value="Boxer">Boxer</option>
-        <option value="Bulldog">Bulldog</option>
-        <option value="Bulldog Francés">Bulldog Francés</option>
-        <option value="Chihuahua">Chihuahua</option>
-        <option value="Dálmata">Dálmata</option>
-        <option value="Golden Retriever">Golden Retriever</option>
-        <option value="Husky">Husky</option>
-        <option value="Labrador">Labrador</option>
-        <option value="Pastor Alemán">Pastor Alemán</option>
-        <option value="Pastor Belga">Pastor Belga</option>
-        <option value="Poodle">Poodle</option>
-        <option value="Shiba Inu">Shiba Inu</option>
-      </select>
-    </label>
-
-    <label>
-      Peso máximo (kg):
-      <input type="number" [(ngModel)]="filtros.pesoMax" placeholder="Ej. 20" />
-    </label>
-
-    <button (click)="aplicarFiltros()">Filtrar</button>
-    <button (click)="limpiarFiltros()">Limpiar filtros</button>
-  </div>
-
-  <div *ngIf="mascotasFiltradas.length > 0; else noMascotas">
-    <div class="card">
-      <img [src]="mascotasFiltradas[indiceActual].foto" alt="{{mascotasFiltradas[indiceActual].nombre}}" />
-      <h3>{{ mascotasFiltradas[indiceActual].nombre }}</h3>
-      <p>{{ mascotasFiltradas[indiceActual].raza }} - {{ mascotasFiltradas[indiceActual].edad }} años - {{ mascotasFiltradas[indiceActual].peso }} kg</p>
-      <button (click)="mostrarMascota(mascotasFiltradas[indiceActual].idMascota)">Ver detalles</button>
-
-      <div class="acciones">
-        <button (click)="noMeGusta()">❌ No me gusta</button>
-        <button (click)="meGusta()">❤️ Me gusta</button>
+    <!-- Tarjetas de mascotas filtradas -->
+    <div *ngIf="mascotasFiltradas.length > 0; else noHayMascotas">
+      <div class="tarjeta" *ngFor="let mascota of mascotasFiltradas; let i = index" (click)="mostrarMascota(mascota.idMascota)">
+        <h3>{{ mascota.nombre }}</h3>
+        <p>Raza: {{ mascota.raza }}</p>
+        <p>Edad: {{ mascota.edad }} años</p>
+        <p>Peso: {{ mascota.peso }} kg</p>
       </div>
     </div>
+    <ng-template #noHayMascotas>
+      <p>No hay mascotas que coincidan con los filtros.</p>
+    </ng-template>
+  </div>
+
+  <!-- Filtros a la derecha -->
+  <div class="filtros">
+    <h2>Filtros</h2>
+    <form (ngSubmit)="aplicarFiltros()">
+      <div class="form-group">
+        <label>Raza:</label>
+        <input type="text" [(ngModel)]="filtros.raza" name="raza" />
+      </div>
+
+      <div class="form-group">
+        <label>Edad Mínima:</label>
+        <input type="number" [(ngModel)]="filtros.edadMin" name="edadMin" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label>Edad Máxima:</label>
+        <input type="number" [(ngModel)]="filtros.edadMax" name="edadMax" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label>Peso Máximo (kg):</label>
+        <input type="number" [(ngModel)]="filtros.pesoMax" name="pesoMax" min="0" step="0.1" />
+      </div>
+
+      <button type="submit">Filtrar</button>
+      <button type="button" (click)="limpiarFiltros()">Limpiar filtros</button>
+    </form>
   </div>
 </div>
 
-  <ng-template #noMascotas>
-    <p>No hay mascotas para mostrar.</p>
-  </ng-template>
 </main>
