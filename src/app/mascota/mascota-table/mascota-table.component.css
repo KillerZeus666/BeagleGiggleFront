@@ -178,6 +178,8 @@ h1 {
   border: none;
   color: white;
   white-space: nowrap;
+  width: 100px;
+  text-align: center; 
 }
 
 .btn-detalles {
