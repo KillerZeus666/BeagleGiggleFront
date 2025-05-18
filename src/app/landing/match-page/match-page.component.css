@@ -1,18 +1,32 @@
-
 /* Main empujado para que no quede debajo del header */
 main {
   padding-top: 115px; /* Igual a la altura del header */
+  
+  /* Centrar la tarjeta horizontal y verticalmente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 115px);
+  background-color: #f5f7fa;
+  flex-direction: column;
 }
 
 /* Contenedor de las tarjetas */
-.match-container { 
+.match-container {
+  max-width: 320px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  
+  /* Para centrar también el contenido y que no se estire */
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Estilos de cada tarjeta */
@@ -26,6 +40,13 @@ main {
   padding: 15px;
   transition: transform 0.3s ease;
 }
+.match-container img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 300px;
+}
+
 
 .card img {
   width: 100%;
@@ -135,6 +156,24 @@ main {
   box-shadow: none;
 }
 
+.filtros select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: white;
+  cursor: pointer;
+}
+
+.filtros select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px #4a90e2aa;
+}
+
+
 /* Responsive: apilar en pantallas chicas */
 @media (max-width: 680px) {
   .filtros {
@@ -157,4 +196,24 @@ main {
     align-self: stretch;
     height: 48px;
   }
+}
+
+.botones-match {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.botones-match button {
+  font-size: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.botones-match button:hover {
+  transform: scale(1.2);
 }

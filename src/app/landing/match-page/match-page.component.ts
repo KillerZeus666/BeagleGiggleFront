@@ -9,10 +9,18 @@ import { MascotaService } from 'src/app/service/mascota.service';
   styleUrls: ['./match-page.component.css']
 })
 export class MatchPageComponent implements OnInit {
-  selectedMascota: MascotaCL | null = null;
   mascotaList: MascotaCL[] = [];
-  nombreABuscar: string = '';
-  User: any; // Variable para almacenar el usuario actual
+  mascotasFiltradas: MascotaCL[] = [];
+  indiceActual: number = 0;
+
+  filtros = {
+    edadMin: null as number | null,
+    edadMax: null as number | null,
+    raza: '',
+    pesoMax: null as number | null
+  };
+
+  listaOriginal: MascotaCL[] = [];
 
   constructor(
     private mascotaService: MascotaService,
@@ -21,13 +29,15 @@ export class MatchPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarMascotas();
-    // Si quieres obtener info del usuario
   }
 
   cargarMascotas(): void {
     this.mascotaService.findAll().subscribe({
       next: (mascotas: MascotaCL[]) => {
         this.mascotaList = mascotas;
+        this.listaOriginal = [...mascotas];  // guardamos la lista original
+        this.mascotasFiltradas = [...mascotas];
+        this.indiceActual = 0;
       },
       error: (err) => {
         console.error('Error al cargar las mascotas:', err);
@@ -35,56 +45,48 @@ export class MatchPageComponent implements OnInit {
     });
   }
 
-  mostrarMascota(id: number): void {
-    this.router.navigate(['/detalles-mascota', id]);
-  }
-
-  buscar(): void {
-    const nombre = this.nombreABuscar.trim();
-    if (nombre === '') {
-      this.cargarMascotas(); // recarga todas si el campo está vacío
-    } else {
-      this.mascotaService.buscarPorNombre(nombre).subscribe({
-        next: (resultados: MascotaCL[]) => {
-          this.mascotaList = resultados;
-        },
-        error: (err) => {
-          console.error('Error al buscar mascotas:', err);
-        }
-      });
-    }
-  }
-    // Objeto para bindear los filtros
-  filtros = {
-    edadMin: null,
-    edadMax: null,
-    raza: '',
-    pesoMax: null
-  };
-
-  // Lista que se muestra con el filtro aplicado
-  mascotasFiltradas = [...this.mascotaList];
-
-  aplicarFiltros() {
-    this.mascotasFiltradas = this.mascotaList.filter(mascota => {
-      const cumpleEdadMin = this.filtros.edadMin == null || mascota.edad >= this.filtros.edadMin;
-      const cumpleEdadMax = this.filtros.edadMax == null || mascota.edad <= this.filtros.edadMax;
-      const cumpleRaza = this.filtros.raza.trim() === '' || mascota.raza.toLowerCase().includes(this.filtros.raza.trim().toLowerCase());
-      const cumplePesoMax = this.filtros.pesoMax == null || mascota.peso <= this.filtros.pesoMax;
-
-      return cumpleEdadMin && cumpleEdadMax && cumpleRaza && cumplePesoMax;
+  aplicarFiltros(): void {
+    this.mascotasFiltradas = this.listaOriginal.filter(mascota => {
+      return (!this.filtros.raza || mascota.raza === this.filtros.raza) &&
+             (!this.filtros.edadMin || mascota.edad >= this.filtros.edadMin) &&
+             (!this.filtros.edadMax || mascota.edad <= this.filtros.edadMax) &&
+             (!this.filtros.pesoMax || mascota.peso <= this.filtros.pesoMax);
     });
+    this.indiceActual = 0;
   }
 
-  limpiarFiltros() {
+  limpiarFiltros(): void {
     this.filtros = {
       edadMin: null,
       edadMax: null,
       raza: '',
       pesoMax: null
     };
-    this.mascotasFiltradas = [...this.mascotaList];
+    this.mascotasFiltradas = [...this.listaOriginal];
+    this.indiceActual = 0;
   }
 
+  meGusta(): void {
+    const mascota = this.mascotasFiltradas[this.indiceActual];
+    console.log('Me gusta:', mascota);
+    this.pasarSiguiente();
+  }
 
+  noMeGusta(): void {
+    const mascota = this.mascotasFiltradas[this.indiceActual];
+    console.log('No me gusta:', mascota);
+    this.pasarSiguiente();
+  }
+
+  pasarSiguiente(): void {
+    if (this.indiceActual < this.mascotasFiltradas.length - 1) {
+      this.indiceActual++;
+    } else {
+      alert('No hay más mascotas.');
+    }
+  }
+
+  mostrarMascota(id: number): void {
+    this.router.navigate(['/detalles-mascota', id]);
+  }
 }

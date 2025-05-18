@@ -3,7 +3,6 @@
 <main>
   <h2>Beagle Match</h2>
 
-  <!-- Filtros -->
   <div class="filtros">
     <label>
       Edad mínima:
@@ -17,7 +16,22 @@
 
     <label>
       Raza:
-      <input type="text" [(ngModel)]="filtros.raza" placeholder="Ej. Beagle" />
+      <select [(ngModel)]="filtros.raza">
+        <option value="">Todas</option>
+        <option value="Beagle">Beagle</option>
+        <option value="Boxer">Boxer</option>
+        <option value="Bulldog">Bulldog</option>
+        <option value="Bulldog Francés">Bulldog Francés</option>
+        <option value="Chihuahua">Chihuahua</option>
+        <option value="Dálmata">Dálmata</option>
+        <option value="Golden Retriever">Golden Retriever</option>
+        <option value="Husky">Husky</option>
+        <option value="Labrador">Labrador</option>
+        <option value="Pastor Alemán">Pastor Alemán</option>
+        <option value="Pastor Belga">Pastor Belga</option>
+        <option value="Poodle">Poodle</option>
+        <option value="Shiba Inu">Shiba Inu</option>
+      </select>
     </label>
 
     <label>
@@ -29,13 +43,17 @@
     <button (click)="limpiarFiltros()">Limpiar filtros</button>
   </div>
 
-  <!-- Aquí iría la lista de mascotas filtradas -->
-  <div class="match-container" *ngIf="mascotasFiltradas.length > 0; else noMascotas">
-    <div class="card" *ngFor="let mascota of mascotasFiltradas">
-      <img [src]="mascota.foto" alt="{{mascota.nombre}}" />
-      <h3>{{ mascota.nombre }}</h3>
-      <p>{{ mascota.raza }} - {{ mascota.edad }} años - {{ mascota.peso }} kg</p>
-      <button (click)="mostrarMascota(mascota.idMascota)">Ver detalles</button>
+  <div *ngIf="mascotasFiltradas.length > 0; else noMascotas">
+    <div class="card">
+      <img [src]="mascotasFiltradas[indiceActual].foto" alt="{{mascotasFiltradas[indiceActual].nombre}}" />
+      <h3>{{ mascotasFiltradas[indiceActual].nombre }}</h3>
+      <p>{{ mascotasFiltradas[indiceActual].raza }} - {{ mascotasFiltradas[indiceActual].edad }} años - {{ mascotasFiltradas[indiceActual].peso }} kg</p>
+      <button (click)="mostrarMascota(mascotasFiltradas[indiceActual].idMascota)">Ver detalles</button>
+
+      <div class="acciones">
+        <button (click)="noMeGusta()">❌ No me gusta</button>
+        <button (click)="meGusta()">❤️ Me gusta</button>
+      </div>
     </div>
   </div>
 
