@@ -1,0 +1,143 @@
+
+/* Main empujado para que no quede debajo del header */
+main {
+  padding-top: 115px; /* Igual a la altura del header */
+}
+
+/* Contenedor de las tarjetas */
+.match-container { 
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Estilos de cada tarjeta */
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 250px;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  color: #2a4e68;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #357abd;
+}
+
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 25px;
+  padding: 10px 0;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filtros label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #2a4e68;
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.filtros input[type="number"],
+.filtros input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.filtros input[type="number"]:focus,
+.filtros input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px #4a90e2aa;
+}
+
+.botones-filtros {
+  display: flex;
+  gap: 12px;
+  margin-left: auto; /* Empuja los botones al final de la fila */
+}
+
+.botones-filtros button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.botones-filtros button:hover {
+  background-color: #357abd;
+}
+
+.btn-limpiar {
+  background-color: #aaa;
+}
+
+.btn-limpiar:hover {
+  background-color: #777;
+}
+
+/* Responsive: en pantallas pequeñas, apilar los filtros */
+@media (max-width: 600px) {
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .botones-filtros {
+    margin-left: 0;
+    justify-content: center;
+  }
+}

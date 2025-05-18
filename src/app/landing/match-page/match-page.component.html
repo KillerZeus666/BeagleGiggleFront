@@ -1,1 +1,45 @@
-<p>match-page works!</p>
+<app-header></app-header>
+
+<main>
+  <h2>Beagle Match</h2>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <label>
+      Edad mínima:
+      <input type="number" [(ngModel)]="filtros.edadMin" placeholder="Ej. 1" />
+    </label>
+
+    <label>
+      Edad máxima:
+      <input type="number" [(ngModel)]="filtros.edadMax" placeholder="Ej. 10" />
+    </label>
+
+    <label>
+      Raza:
+      <input type="text" [(ngModel)]="filtros.raza" placeholder="Ej. Beagle" />
+    </label>
+
+    <label>
+      Peso máximo (kg):
+      <input type="number" [(ngModel)]="filtros.pesoMax" placeholder="Ej. 20" />
+    </label>
+
+    <button (click)="aplicarFiltros()">Filtrar</button>
+    <button (click)="limpiarFiltros()">Limpiar filtros</button>
+  </div>
+
+  <!-- Aquí iría la lista de mascotas filtradas -->
+  <div class="match-container" *ngIf="mascotasFiltradas.length > 0; else noMascotas">
+    <div class="card" *ngFor="let mascota of mascotasFiltradas">
+      <img [src]="mascota.foto" alt="{{mascota.nombre}}" />
+      <h3>{{ mascota.nombre }}</h3>
+      <p>{{ mascota.raza }} - {{ mascota.edad }} años - {{ mascota.peso }} kg</p>
+      <button (click)="mostrarMascota(mascota.idMascota)">Ver detalles</button>
+    </div>
+  </div>
+
+  <ng-template #noMascotas>
+    <p>No hay mascotas para mostrar.</p>
+  </ng-template>
+</main>
