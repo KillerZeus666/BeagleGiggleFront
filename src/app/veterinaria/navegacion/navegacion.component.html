@@ -82,35 +82,35 @@
     </li>
 
     <li *ngIf="userType === 'Veterinario' || userType === 'Cliente'">
-      <a routerLink="/citas-veterinario/2" class="nav-link">
+      <a [routerLink]="getCitas()" class="nav-link">
         <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
         <span class="title">Citas</span>
       </a>
     </li>
 
     <li>
-      <a (click)="getPerfilLink()" class="nav-link">
+      <a [routerLink]="getPerfilLink()" class="nav-link">
         <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
         <span class="title">Perfil</span>
       </a>
     </li>
 
     <li *ngIf="userType === 'Cliente'">
-      <a routerLink="/mascotas-cliente/2" class="nav-link">
+      <a [routerLink]="getMascotasCliente()" class="nav-link">
         <span class="icon"><ion-icon name="paw-outline"></ion-icon></span>
         <span class="title">Mascotas</span>
       </a>
     </li>
 
     <li *ngIf="userType === 'Cliente'">
-      <a routerLink="/mascotas-tratamiento/2" class="nav-link">
+      <a [routerLink]="getMascotasEnTratamiento()" class="nav-link">
         <span class="icon"><ion-icon name="paw-outline"></ion-icon></span>
         <span class="title">Mascotas en tratamiento</span>
       </a>
     </li>
 
     <li *ngIf="userType === 'Cliente'">
-      <a routerLink="/facturas/cliente/2" class="nav-link">
+      <a [routerLink]="getFacturasCLiente()" class="nav-link">
         <span class="icon"><ion-icon name="paw-outline"></ion-icon></span>
         <span class="title">Facturas</span>
       </a>

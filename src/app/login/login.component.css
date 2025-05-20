@@ -140,3 +140,19 @@ input:-webkit-autofill {
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: 0 0 0px 1000px white inset !important;
 }
+/* Añade esto a tu CSS para mejorar el estilo del select */
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  color: #555;
+}
+
+select:focus {
+  border-color: #3c5b6f;
+  outline: none;
+}

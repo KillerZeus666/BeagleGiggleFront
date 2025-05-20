@@ -92,16 +92,36 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  getPerfilLink(): void {
-    if (this.userType === 'Admin') {
-      this.router.navigate(['/detalles-admin', this.userId]);
-    } else if (this.userType === 'Veterinario') {
-      this.router.navigate(['/detalles-veterinario/2']);
-    } else if (this.userType === 'Cliente') {
-      this.router.navigate(['/detalles-cliente/2']);
-    }
+  getPerfilLink(): any[] {
+  if (this.userType === 'Admin') {
+    return ['/detalles-admin', this.userId];
+  } else if (this.userType === 'Veterinario') {
+    return ['/detalles-veterinario', this.userId];
+  } else if (this.userType === 'Cliente') {
+    return ['/detalles-cliente', this.userId];
+  } else {
+    return ['/']; // ruta por defecto o de fallback
+  }
+}
+
+getCitas():any[]{
+  return ['/citas',this.userId];
+}
+
+//CLIENTE
+  getMascotasCliente(): any[] {
+    return ['/mascotas-cliente', this.userId];
   }
 
+  getMascotasEnTratamiento(): any[]{
+    return ['/mascotas-tratamiento', this.userId];
+  }
+
+  getFacturasCLiente():any[]{
+    return ['/facturas/cliente', this.userId];
+  }
+//VETERINARIO
+//ADMINISTRADOR
   navegarCitasVeterinario(): void {
     this.router.navigate(['/citas-veterinario', this.userId]);
   }

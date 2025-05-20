@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ClienteCL } from '../model/cliente-cl';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { UserCl } from '../model/user-cl';
 
 @Injectable({
@@ -47,6 +47,11 @@ export class ClienteService {
   }
 
   clienteHome():Observable<ClienteCL>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
     return this.http.get<ClienteCL>(`${this.baseUrl}/details`);
   }
 

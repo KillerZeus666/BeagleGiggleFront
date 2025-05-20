@@ -19,7 +19,7 @@ import { ErrorsPageComponent } from './errors/errors-page/errors-page.component'
 import { FooterComponent } from './veterinaria/footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { FundacionesComponent } from './landing/fundaciones/fundaciones.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
 import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
 import { ClienteDetailComponent } from './cliente/cliente-detail/cliente-detail.component';
@@ -66,6 +66,7 @@ import { MatchPageComponent } from './landing/match-page/match-page.component';
 import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-page.component';
 import { BlogComponent } from './veterinaria/blog/blog.component';
 import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 registerLocaleData(localeEs);
 
@@ -141,7 +142,8 @@ registerLocaleData(localeEs);
     NgChartsModule
   ],
     providers: [
-    { provide: LOCALE_ID, useValue: 'es' }   
+    { provide: LOCALE_ID, useValue: 'es'},
+    { provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true}   
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  

@@ -58,7 +58,7 @@ const routes: Routes = [
   {path: 'editar-cliente/:id', component:ClienteFormComponent},
   {path: 'mascotas-cliente/:id', component:VerMascotasClienteComponent},
   {path: 'mascotas-tratamiento/:id', component:MascotasTratamientoComponent},
-  {path: 'citas-veterinario/:id', component:VerCitasVeterinarioComponent},
+  {path: 'citas/:id', component:VerCitasVeterinarioComponent},
   {path: 'veterinarios', component:VeterinarioTableComponent},
   {path: 'crear-tratamiento', component:TratamientoFormComponent},
   {path: 'inicio-sesion', component: LoginComponent },

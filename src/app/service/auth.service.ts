@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   getUserId(): number | null {
-    return this.user()?.id || null;
+    return this.getUser()?.id || null;
   }
 
   getUserType(): string | null {
