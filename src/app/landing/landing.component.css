@@ -410,56 +410,116 @@ p {
 
 
 
-/* Sección de Testimonios */
+/* Sección de Testimonios - Versión mejorada */
 .testimonials-section {
   padding: 80px 20px;
-  background-color: #e0f7ff; /* azul clarito */
+  background-color: #e0f7ff;
   margin: 40px 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
-}
-.huella {
-  position: absolute;
-  animation: moverHuellas 5s infinite linear;
-  width: 50px; /* Ajusta el tamaño de las huellas */
+  padding: 20px 0;
 }
 
-@keyframes moverHuellas {
-  0% {
-    top: 20px;  /* Ajusta la posición inicial de la huella */
-    left: -60px; /* Comienza fuera de la pantalla a la izquierda */
-  }
-  50% {
-    top: 30px;  /* Ajusta la altura para cambiar el "camino" de las huellas */
-    left: 50%;  /* Las huellas se moverán hacia el centro */
-  }
-  100% {
-    top: 60px;  /* Ajusta la altura al final del movimiento */
-    left: 100%; /* Sale de la pantalla por la derecha */
-  }
-}
 .testimonial {
   background: var(--white);
   padding: 25px;
-  border-radius: var(--border-radius);
+  border-radius: 12px;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
   position: relative;
-  border-radius: 5%;
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+.testimonial-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.testimonial-image {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.testimonial-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.testimonial-meta {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.testimonial-rating {
+  color: var(--accent-color);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin: 5px 0;
+}
+
+.testimonial-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: auto;
+}
+
+/* Efectos hover mejorados */
 .testimonial:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
+.testimonial:hover .testimonial-image {
+  transform: scale(1.05);
+  border-color: var(--secondary-color);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .testimonial-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .testimonial-text {
+    margin-top: 15px;
+  }
+}
+
+/* Animaciones más sutiles */
 .testimonial::before {
   content: '';
   position: absolute;
@@ -469,69 +529,17 @@ p {
   height: 200%;
   background: linear-gradient(
     to bottom right,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2),
     rgba(255, 255, 255, 0)
   );
   transform: rotate(30deg);
-  transition: all 0.5s ease;
+  transition: all 0.7s ease;
+  opacity: 0.7;
 }
 
 .testimonial:hover::before {
   left: 100%;
-}
-
-.testimonial-content {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.testimonial-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent-color);
-  transition: var(--transition);
-}
-
-.testimonial:hover .testimonial-image {
-  transform: scale(1.1);
-  border-color: var(--secondary-color);
-}
-
-.testimonial-details {
-  flex: 1;
-}
-
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: 10px;
-}
-
-.testimonial-meta {
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-}
-
-.testimonial-client {
-  font-weight: bold;
-  color: var(--dark-color);
-}
-
-.testimonial-service {
-  color: var(--text-light);
-}
-
-.testimonial-rating {
-  color: var(--accent-color);
-  font-size: 1.2rem;
-  letter-spacing: 3px;
-}
-
-.testimonial-date {
-  font-size: 0.8rem;
-  color: var(--text-light);
+  opacity: 0;
 }
 
 /* Sección de Citas */

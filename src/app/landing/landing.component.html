@@ -72,30 +72,30 @@
     {{ errorTestimonios }}
     <button (click)="reintentarCarga()">Reintentar</button>
   </div>
-  <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
-    <div class="testimonial" *ngFor="let testimonio of testimonios">
-      <div class="testimonial-content">
-        <img
-          [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
-          [alt]="testimonio.cliente.nombre"
-          class="testimonial-image"
-        />
-        <div class="testimonial-details">
-          <p class="testimonial-text">"{{ testimonio.texto }}"</p>
-          <div class="testimonial-meta">
-            <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
-            <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
-          </div>
-          <div class="testimonial-rating">
-            {{ getRatingStars(testimonio) }}
-          </div>
-          <div class="testimonial-date">
-            {{ formatDate(testimonio) }}
-          </div>
+<div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
+  <div class="testimonial" *ngFor="let testimonio of testimonios">
+    <div class="testimonial-content">
+      <img
+        [src]="testimonio.cliente?.foto || 'assets/images/default-avatar.png'"
+        [alt]="testimonio.cliente?.nombre || 'Cliente'"
+        class="testimonial-image"
+      />
+      <div class="testimonial-details">
+        <p class="testimonial-text">"{{ testimonio.texto || 'Testimonio no disponible' }}"</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-client">{{ testimonio.cliente?.nombre || 'Cliente' }}</span>
+          <span class="testimonial-service" *ngIf="testimonio.servicio?.nombre">- {{ testimonio.servicio.nombre }}</span>
+        </div>
+        <div class="testimonial-rating">
+          {{ getRatingStars(testimonio) }}
+        </div>
+        <div class="testimonial-date">
+          {{ formatDate(testimonio) || 'Fecha no disponible' }}
         </div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
   <!-- Sección de Citas
