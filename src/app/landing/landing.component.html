@@ -62,30 +62,32 @@
 
 
 <!-- Sección de Testimonios -->
-<section #section id="testimonios" class="testimonials-section">
-
+<section id="testimonios" class="testimonials-section">
   <h2 class="front">Testimonios de clientes</h2>
+  
   <div *ngIf="isLoadingTestimonios" class="loading-spinner">
     <div class="spinner"></div>
     <p>Cargando testimonios...</p>
   </div>
+  
   <div *ngIf="errorTestimonios" class="error-message">
     {{ errorTestimonios }}
     <button (click)="reintentarCarga()">Reintentar</button>
   </div>
+  
   <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
     <div class="testimonial" *ngFor="let testimonio of testimonios">
       <div class="testimonial-content">
         <img
-          [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
-          [alt]="testimonio.cliente.nombre"
+          [src]="testimonio.imagenCliente || 'assets/images/default-avatar.png'"
+          [alt]="testimonio.cliente"
           class="testimonial-image"
         />
         <div class="testimonial-details">
           <p class="testimonial-text">"{{ testimonio.texto }}"</p>
           <div class="testimonial-meta">
-            <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
-            <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
+            <span class="testimonial-client">{{ testimonio.cliente }}</span>
+            <span class="testimonial-service">- {{ testimonio.servicio }}</span>
           </div>
           <div class="testimonial-rating">
             {{ getRatingStars(testimonio) }}

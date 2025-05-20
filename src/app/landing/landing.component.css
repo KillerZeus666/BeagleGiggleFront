@@ -17,8 +17,6 @@ html, body {
   padding: 0;
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -416,8 +414,6 @@ p {
   border-radius: 2px;
 }
 
-
-
 /* Sección de Testimonios */
 .testimonials-section {
   padding: 80px 20px;
@@ -432,26 +428,7 @@ p {
   max-width: 1200px;
   margin: 0 auto;
 }
-.huella {
-  position: absolute;
-  animation: moverHuellas 5s infinite linear;
-  width: 50px; /* Ajusta el tamaño de las huellas */
-}
 
-@keyframes moverHuellas {
-  0% {
-    top: 20px;  /* Ajusta la posición inicial de la huella */
-    left: -60px; /* Comienza fuera de la pantalla a la izquierda */
-  }
-  50% {
-    top: 30px;  /* Ajusta la altura para cambiar el "camino" de las huellas */
-    left: 50%;  /* Las huellas se moverán hacia el centro */
-  }
-  100% {
-    top: 60px;  /* Ajusta la altura al final del movimiento */
-    left: 100%; /* Sale de la pantalla por la derecha */
-  }
-}
 .testimonial {
   background: var(--white);
   padding: 25px;
@@ -540,6 +517,27 @@ p {
 .testimonial-date {
   font-size: 0.8rem;
   color: var(--text-light);
+}
+
+.huella {
+  position: absolute;
+  animation: moverHuellas 5s infinite linear;
+  width: 50px; /* Ajusta el tamaño de las huellas */
+}
+
+@keyframes moverHuellas {
+  0% {
+    top: 20px;  /* Ajusta la posición inicial de la huella */
+    left: -60px; /* Comienza fuera de la pantalla a la izquierda */
+  }
+  50% {
+    top: 30px;  /* Ajusta la altura para cambiar el "camino" de las huellas */
+    left: 50%;  /* Las huellas se moverán hacia el centro */
+  }
+  100% {
+    top: 60px;  /* Ajusta la altura al final del movimiento */
+    left: 100%; /* Sale de la pantalla por la derecha */
+  }
 }
 
 /* Sección de Citas */
