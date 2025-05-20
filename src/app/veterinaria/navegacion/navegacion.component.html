@@ -68,14 +68,14 @@
     </li>
 
     <li *ngIf="userType === 'Veterinario'">
-      <a routerLink="/mascotas-atendidas/2" class="nav-link">
+      <a [routerLink]="getMascotasAtendidas()" class="nav-link">
         <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
         <span class="title">Mascotas atendidas</span>
       </a>
     </li>
 
     <li *ngIf="userType === 'Veterinario'">
-      <a routerLink="/historial-tratamientos/2" class="nav-link historial-link">
+      <a [routerLink]="getTratamientosVeterinario()" class="nav-link historial-link">
         <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
         <span class="title">Historial</span>
       </a>
