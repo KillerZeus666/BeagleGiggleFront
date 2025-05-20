@@ -52,12 +52,14 @@
             <td>{{ mascota.fechaNacimiento | date:'yyyy/MM/dd' }}</td>
             <td>{{ mascota.fechaIngreso | date:'yyyy/MM/dd' }}</td>
             <td>{{ mascota.fechaSalida ? (mascota.fechaSalida | date:'yyyy/MM/dd') : '-' }}</td>
-            <td>{{ mascota.estado === 1 ? 'Activo' : 'Inactivo' }}</td>
+            <td>{{ mascota.estado === 0 ? 'Activo' : 'Inactivo' }}</td>
             <td>{{ mascota.cliente?.nombre }}</td>
             <td>
               <button class="btn-detalles" (click)="mostrarMascota(mascota.idMascota)">Detalles</button>
               <button  class="btn-editar" (click)="abrirFormularioMascotaEdicion(mascota.idMascota)">Editar</button>
-              <button *ngIf="esAdmin()" class="btn-eliminar" (click)="eliminarMascota(mascota)">Eliminar</button>
+              <button class="btn-eliminar" (click)="eliminarMascota(mascota)">
+                {{ mascota.estado === 0 ? 'Desactivar' : 'Activar' }}
+              </button>
             </td>
           </tr>
         </tbody>

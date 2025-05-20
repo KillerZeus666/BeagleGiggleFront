@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
 
 import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
@@ -60,7 +61,13 @@ import { ClientesDestacadosComponent } from './landing/clientes-destacados/clien
 import { ContactanosComponent } from './landing/contactanos/contactanos.component';
 import { LoginClienteComponent } from './login/login-cliente/login-cliente.component';
 import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
+import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.component';
+import { MatchPageComponent } from './landing/match-page/match-page.component';
+import { BeaglePageComponent } from './landing/match-page/beagle-page/beagle-page.component';
+import { BlogComponent } from './veterinaria/blog/blog.component';
+import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 
+registerLocaleData(localeEs);
 
 
 @NgModule({
@@ -117,7 +124,12 @@ import { LoginVeterinarioComponent } from './login/login-veterinario/login-veter
     ClientesDestacadosComponent,
     ContactanosComponent,
     LoginClienteComponent,
-    LoginVeterinarioComponent
+    LoginVeterinarioComponent,
+    BeagleMatchComponent,
+    MatchPageComponent,
+    BeaglePageComponent,
+    BlogComponent,
+    MostrarArticuloComponent
   ],
   imports: [
     BrowserModule,
@@ -128,9 +140,10 @@ import { LoginVeterinarioComponent } from './login/login-veterinario/login-veter
     ReactiveFormsModule,
     NgChartsModule
   ],
-  providers: [],
+    providers: [
+    { provide: LOCALE_ID, useValue: 'es' }   
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  
-
 })
 export class AppModule { }

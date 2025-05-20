@@ -1,0 +1,140 @@
+/* Contenedor principal */
+main {
+  padding-top: 115px; /* altura del header */
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2a4e68;
+}
+
+
+
+/* Header del blog */
+.blog-header {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.blog-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2a4e68;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0; /* quita el padding aquí */
+}
+
+.blog-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;                
+  transform: translateX(-50%); 
+  height: 4px;
+  width: 50px;
+  background-color: orange;
+  border-radius: 2px;
+}
+
+
+.blog-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Contenedor de las tarjetas */
+.articulos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  padding: 0 1rem 3rem;
+}
+
+/* Tarjeta */
+.articulo-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fbff;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgb(42 78 104 / 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.articulo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgb(42 78 104 / 0.15);
+}
+
+/* Imagen */
+.articulo-imagen {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Texto debajo de la imagen con decoración */
+.articulo-texto {
+  padding: 1.5rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e6f0fb 0%, #ffffff 100%);
+  border-top: 4px solid #2a4e68;
+  box-shadow: inset 0 4px 8px rgba(42, 78, 104, 0.05);
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+/* Título con línea naranja decorativa */
+.articulo-titulo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2a4e68;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.articulo-titulo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: #f18f01;
+  border-radius: 2px;
+}
+
+/* Meta info: autor y fecha */
+.articulo-meta {
+  font-size: 0.9rem;
+  color: #6b8096;
+  font-style: italic;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  border-top: 1px solid #d2dbe8;
+  padding-top: 0.8rem;
+}
+
+.articulo-autor {
+  flex: 1;
+}
+
+.articulo-fecha {
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: #4a6ea9;
+  font-weight: 600;
+}

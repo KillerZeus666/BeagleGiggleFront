@@ -37,6 +37,11 @@ import { QuienesSomosComponent } from './landing/quienes-somos/quienes-somos.com
 import { ClientesDestacadosComponent } from './landing/clientes-destacados/clientes-destacados.component';
 import { LoginClienteComponent } from './login/login-cliente/login-cliente.component';
 import { LoginVeterinarioComponent } from './login/login-veterinario/login-veterinario.component';
+import { BeagleMatchComponent } from './landing/beagle-match/beagle-match.component';
+import { MatchPageComponent } from './landing/match-page/match-page.component';
+import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.component';
+import { BlogComponent } from './veterinaria/blog/blog.component';
+import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -66,8 +71,8 @@ const routes: Routes = [
   {path: 'historial-tratamientos/:id', component:HistorialTratamientosComponent},
   {path: 'detalles-admin/:id', component: AdminDetailComponent},
   {path: 'mascotas-atendidas/:id', component:MascotasAtendidasComponent},
-  {path: 'tratamiento', component: TratamientoTableComponent}, // Ruta modificada (sin /mascota/:id)
-  {path: 'tratamiento/mascota/:id', component: TratamientoTableComponent}, // Ruta alternativa mantenida
+  {path: 'tratamiento', component: TratamientoTableComponent}, 
+  {path: 'tratamiento/mascota/:id', component: TratamientoTableComponent},
   {path: 'detalles-tratamiento/:id', component:TratamientoDetailComponent},
   {path: 'crear-veterinario', component:VeterinarioFormComponent},
   {path: 'editar-veterinario/:id', component:VeterinarioFormComponent},
@@ -79,7 +84,12 @@ const routes: Routes = [
   {path: 'quienes-somos', component: QuienesSomosComponent},
   {path: 'clientes-destacados', component: ClientesDestacadosComponent},
   {path: 'login-cliente', component: LoginClienteComponent},
+  {path: 'beagle-match', component: BeagleMatchComponent},
+  {path: 'match-page', component: MatchPageComponent},
+  {path : 'calcular-edad', component: CalcularEdadComponent},
   {path: 'login-veterinario', component: LoginVeterinarioComponent},
+  { path: 'blog', component: BlogComponent},
+  { path: 'articulo/:id', component: MostrarArticuloComponent },
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

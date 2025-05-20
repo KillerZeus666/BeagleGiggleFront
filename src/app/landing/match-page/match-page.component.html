@@ -1,0 +1,134 @@
+<app-header></app-header>
+
+
+<main>
+    
+    <app-beagle-page></app-beagle-page>
+
+    <div class="titulo-seccion">
+    <h2>BeagleMatch</h2>
+    </div>
+
+  <div class="container">
+
+    <!-- Resultados con tarjetas a la izquierda -->
+    <div class="resultados">
+      <h2>Resultados ({{ mascotasFiltradas.length }})</h2>
+
+      <!-- Mostrar etiquetas de filtros activos -->
+      <div class="filtros-activos" *ngIf="filtros.raza || filtros.edadMin || filtros.edadMax || filtros.pesoMax">
+        <span *ngIf="filtros.raza" class="tag">
+          Raza: {{ filtros.raza }}
+          <button (click)="eliminarFiltro('raza')">&times;</button>
+        </span>
+        <span *ngIf="filtros.edadMin !== null" class="tag">
+          Edad Min: {{ filtros.edadMin }}
+          <button (click)="eliminarFiltro('edadMin')">&times;</button>
+        </span>
+        <span *ngIf="filtros.edadMax !== null" class="tag">
+          Edad Max: {{ filtros.edadMax }}
+          <button (click)="eliminarFiltro('edadMax')">&times;</button>
+        </span>
+        <span *ngIf="filtros.pesoMax !== null" class="tag">
+          Peso Max: {{ filtros.pesoMax }}
+          <button (click)="eliminarFiltro('pesoMax')">&times;</button>
+        </span>
+      </div>
+
+        <!-- Tarjeta profesional sobria -->
+    <div *ngIf="mascotasFiltradas.length > 0; else noHayMascotas">
+    <div *ngIf="mascotaActual" class="tarjeta-profesional">
+        <img [src]="mascotaActual.foto" alt="Foto de {{ mascotaActual.nombre }}" class="foto-mascota" />
+        <div class="info-mascota">
+        <h3>{{ mascotaActual.nombre }}</h3>
+        <div class="atributos-mascota">
+            <div class="atributo">
+            <span class="etiqueta">Raza</span>
+            <span class="valor">{{ mascotaActual.raza }}</span>
+            </div>
+            <div class="atributo">
+            <span class="etiqueta">Edad</span>
+            <span class="valor">{{ mascotaActual.edad }} años</span>
+            </div>
+            <div class="atributo">
+            <span class="etiqueta">Peso</span>
+            <span class="valor">{{ mascotaActual.peso }} kg</span>
+            </div>
+        </div>
+        <div class="botones-tinder">
+            <button class="btn-dislike" (click)="darDislike()">✖️</button>
+            <button class="btn-like" (click)="darLike()">❤️</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+      <ng-template #noHayMascotas>
+        <p>No hay mascotas que coincidan con los filtros.</p>
+      </ng-template>
+    </div>
+
+    <!-- Filtros a la derecha -->
+    <div class="filtros">
+      <h2>Filtros</h2>
+      <form (ngSubmit)="aplicarFiltros()">
+
+        <div class="form-group">
+          <label>Raza:</label>
+          <select [(ngModel)]="filtros.raza" name="raza">
+            <option value="">Todas</option>
+            <option value="Beagle">Beagle</option>
+            <option value="Boxer">Boxer</option>
+            <option value="Bulldog">Bulldog</option>
+            <option value="Bulldog Francés">Bulldog Francés</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Dálmata">Dálmata</option>
+            <option value="Golden Retriever">Golden Retriever</option>
+            <option value="Husky">Husky</option>
+            <option value="Labrador">Labrador</option>
+            <option value="Pastor Alemán">Pastor Alemán</option>
+            <option value="Pastor Belga">Pastor Belga</option>
+            <option value="Poodle">Poodle</option>
+            <option value="Shiba Inu">Shiba Inu</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Edad Mínima:</label>
+          <input type="number" [(ngModel)]="filtros.edadMin" name="edadMin" min="0" />
+        </div>
+
+        <div class="form-group">
+          <label>Edad Máxima:</label>
+          <input type="number" [(ngModel)]="filtros.edadMax" name="edadMax" min="0" />
+        </div>
+
+        <div class="form-group">
+          <label>Peso Máximo (kg):</label>
+          <input type="number" [(ngModel)]="filtros.pesoMax" name="pesoMax" min="0" step="0.1" />
+        </div>
+
+        <div class="botones-filtro">
+          <button class="btn-filtrar" type="submit">Filtrar</button>
+          <button class="btn-limpiar" type="button" (click)="limpiarFiltros()">Limpiar filtros</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+    <div *ngIf="mascotasFavoritas.length > 0" class="match-container">
+    <h3>🎉 ¡Felicidades! Tu mascota está a punto de hacer match con estas mascotas:</h3>
+    
+    <div class="match-grid">
+        <div *ngFor="let mascota of mascotasFavoritas" class="match-card">
+        <img [src]="mascota.foto" alt="Foto de {{ mascota.nombre }}" class="match-photo" />
+        <p class="match-name">{{ mascota.nombre }}</p>
+        </div>
+    </div>
+    </div>
+
+
+</main>
+<app-footer></app-footer>

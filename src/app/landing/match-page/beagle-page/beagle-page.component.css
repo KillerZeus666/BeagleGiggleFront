@@ -1,0 +1,106 @@
+.beaglematch-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+  border-radius: 15px;
+  margin: 30px auto;  /* <-- así centras horizontalmente */
+  gap: 20px;
+  flex-wrap: nowrap;
+  max-width: 900px;    /* o el ancho que quieras */
+}
+
+.image {
+  flex: 0 0 250px;        /* ancho fijo para la imagen */
+  margin-right: 20px;     /* espacio extra a la derecha */
+}
+
+.image img {
+  width: 100%;            /* que la imagen use el ancho del div */
+  height: auto;
+  border-radius: 10px;    /* opcional, para bordes redondeados */
+}
+
+.content {
+  flex: 1 1 auto;          /* que ocupe el resto del espacio */
+  max-width: 600px;        /* ancho máximo para no quedar muy ancho */
+}
+
+.content h2 {
+  color: #2a4e68;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.content p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  color: #0d0d0d;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 1.2px;
+  text-align: left;  /* alinear a la izquierda para que quede natural */
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #72c0ea;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border: none;       
+  outline: none;       
+}
+
+
+.btn-primary:hover {
+  background-color: #357abd;
+}
+
+.heart-icon {
+  display: block;       /* convierte la imagen en bloque para que funcione margin auto */
+  margin: 0 auto;       /* margen automático para centrar horizontalmente */
+  width: 40px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.beaglematch-section {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.beaglematch-section .content h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.beaglematch-section .description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.beaglematch-section .tagline {
+  font-style: italic;
+  color: #4a90e2;
+  font-weight: 600;
+}
