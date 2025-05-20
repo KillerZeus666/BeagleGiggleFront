@@ -15,25 +15,8 @@ export class TestimonioService {
   constructor(private http: HttpClient) { }
 
   obtenerTestimonios(): Observable<TestimonioCL[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
-      map(data => data.map(item => this.convertToTestimonioCL(item)))
+    return this.http.get<TestimonioCL[]>(this.apiUrl).pipe(
+      map(data => data.map(item => TestimonioCL.fromBackendData(item)))
     );
-  }
-
-  private convertToTestimonioCL(data: any): TestimonioCL {
-    const testimonio = new TestimonioCL();
-    testimonio.idTestimonio = data.idTestimonio;
-    testimonio.texto = data.texto;
-    testimonio.calificacion = data.calificacion;
-    testimonio.fecha = new Date(data.fecha);
-    
-    testimonio.cliente = new ClienteCL();
-    testimonio.cliente.nombre = data.nombreCliente;
-    testimonio.cliente.foto = data.imagenCliente;
-    
-    testimonio.servicio = new ServicioCL();
-    testimonio.servicio.nombre = data.nombreServicio;
-    
-    return testimonio;
   }
 }
