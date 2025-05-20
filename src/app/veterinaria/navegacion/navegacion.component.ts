@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class NavegacionComponent implements AfterViewInit, OnDestroy {
+  userId: number | null = null;
   userType: string | null = null;
   userName: string = '';
   userPhoto = 'https://example.com/path-to-your-image.jpg';
@@ -25,6 +26,7 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
     this.userType = this.authService.getUserType();
     this.userName = this.authService.getUserName();
     this.userPhoto = this.authService.getUserPhoto();
+    this.userId = this.authService.getUserId();
   }
 
   ngAfterViewInit(): void {
@@ -90,23 +92,22 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  getPerfilLink(): string[] {
+  getPerfilLink(): void {
     if (this.userType === 'Admin') {
-      return ['/detalles-admin/1'];
+      this.router.navigate(['/detalles-admin', this.userId]);
     } else if (this.userType === 'Veterinario') {
-      return ['/detalles-veterinario/2'];
+      this.router.navigate(['/detalles-veterinario/2']);
     } else if (this.userType === 'Cliente') {
-      return ['/detalles-cliente/2'];
+      this.router.navigate(['/detalles-cliente/2']);
     }
-    return ['/'];
   }
 
   navegarCitasVeterinario(): void {
-    this.router.navigate(['/citas-veterinario/2']);
+    this.router.navigate(['/citas-veterinario', this.userId]);
   }
 
   navegarTratamientosVeterinario(): void {
-    this.router.navigate(['/tratamiento/veterinario/1']);
+    this.router.navigate(['/tratamiento/veterinario/',this.userId]);
   }
 
   // Nuevo método para navegar a tratamientos como Admin
