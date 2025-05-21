@@ -37,154 +37,109 @@ export class LoginComponent implements OnInit {
     this.password = 'pass2';
   }
 
-  onSubmit() {
-    this.errorMessage = ''; 
-    if (this.userType === 'cliente') {
-      this.loginCliente();
-    } else if (this.userType === 'admin') {
-      this.loginAdmin();
-    } else if (this.userType === 'veterinario') {
-      this.loginVeterinario();
-    }
+   onSubmit() {
+    this.errorMessage = '';
+
+    this.authService.iniciarSesion(this.username, this.password).subscribe({
+      next: (response) => {
+        try {
+          // Guardar token
+          localStorage.setItem('token', response.token);
+
+          // Guardar usuario en authService (opcional)
+          this.authService.login({
+            username: response.username,
+            roles: response.roles,
+            token: response.token
+          });
+
+          // Asumimos que el rol está en response.roles (lista de strings)
+          if (response.roles.includes('CLIENTE')) {
+            this.loadClienteData();
+          } else if (response.roles.includes('ADMIN')) {
+            this.loadAdminData();
+          } else if (response.roles.includes('VETERINARIO')) {
+            this.loadVeterinarioData();
+          } else {
+            this.errorMessage = 'Usuario sin rol válido';
+          }
+        } catch (e) {
+          this.errorMessage = 'Error al procesar la respuesta del servidor';
+          console.error('Error procesando la respuesta del login:', e);
+        }
+      },
+      error: (err) => {
+        console.error('Error de inicio de sesión:', err);
+        this.errorMessage = err.status === 401
+          ? 'Credenciales incorrectas'
+          : 'Error al conectar con el servidor';
+      }
+    });
   }
 
-  private loginCliente() {
-  this.usuario = {
-    nombreUsuario: this.username,
-    contrasena: this.password
-  };
-
-  this.clienteService.login(this.usuario).subscribe({
-    next: (response) => {
-      try {
-        localStorage.setItem('token', String(response));
-
-        this.clienteService.clienteHome().subscribe({
-          next: (data) => {
-            this.cliente = data;
-            if (this.cliente) {
-              this.authService.login({
-                id: this.cliente.idCliente,
-                tipo: 'Cliente',
-                nombre: this.cliente.nombre,
-                foto: this.cliente.foto
-              });
-
-              this.router.navigate(['/mascotas-cliente', this.authService.getUserId()]);
-            } else {
-              this.errorMessage = 'Credenciales de cliente incorrectas';
-            }
-          },
-          error: (e) => {
-            console.error('Error al obtener datos del cliente:', e);
-            this.errorMessage = 'No se pudieron obtener los datos del cliente';
-          }
-        });
-
-      } catch (e) {
-        this.errorMessage = 'Error al procesar la respuesta del servidor';
-        console.error('Error procesando la respuesta del login:', e);
+  private loadClienteData() {
+    this.clienteService.clienteHome().subscribe({
+      next: (cliente) => {
+        if (cliente) {
+          this.authService.login({
+            id: cliente.idCliente,
+            tipo: 'Cliente',
+            nombre: cliente.nombre,
+            foto: cliente.foto
+          });
+          this.router.navigate(['/mascotas-cliente', cliente.idCliente]);
+        } else {
+          this.errorMessage = 'No se encontraron datos de cliente';
+        }
+      },
+      error: (e) => {
+        console.error('Error al obtener datos del cliente:', e);
+        this.errorMessage = 'Error al obtener datos del cliente';
       }
-    },
-    error: (err) => {
-      console.error('Error de inicio de sesión:', err);
-      this.errorMessage = err.status === 401
-        ? 'Credenciales incorrectas'
-        : 'Error al conectar con el servidor';
-    }
-  });
-}
-
-
-  private loginAdmin() {
-    this.usuario = {
-    nombreUsuario: this.username,
-    contrasena: this.password
-  };
-
-  this.adminService.login(this.usuario).subscribe({
-    next: (response) =>{
-      try{
-        localStorage.setItem('token', String(response));
-
-        this.adminService.AdminHome().subscribe({
-          next:(data) => {
-            this.admin = data;
-            if(this.admin){
-              this.authService.login({
-                id:this.admin.idAdministrador,
-                tipo: 'Admin',
-                nombre: this.admin.nombre,
-                foto: this.admin.foto
-              });
-
-              this.router.navigate(['/admin']);
-            }
-          },
-          error: (e) => {
-            console.error('Error al obtener datos del admin:', e);
-            this.errorMessage = 'No se pudieron obtener los datos del admin';
-          }
-        })
-      }catch(e){
-        this.errorMessage = 'Error al procesar la respuesta del servidor';
-        console.error('Error procesando la respuesta del login:', e);
-      }
-    },
-    error: (err) => {
-      console.error('Error de inicio de sesión:', err);
-      this.errorMessage = err.status === 401
-        ? 'Credenciales incorrectas'
-        : 'Error al conectar con el servidor';
-    }
-  });
-  
+    });
   }
 
-  private loginVeterinario() {
-    this.usuario = {
-    nombreUsuario: this.username,
-    contrasena: this.password
-  };
-
-  this.veterinarioService.login(this.usuario).subscribe({
-    next: (response) => {
-      try {
-        localStorage.setItem('token', String(response));
-
-        this.veterinarioService.veterinarioHome().subscribe({
-          next: (data) => {
-            this.veterinario = data;
-            if (this.veterinario) {
-              this.authService.login({
-                id: this.veterinario.idVeterinario,
-                tipo: 'Veterinario',
-                nombre: this.veterinario.nombre,
-                foto: this.veterinario.foto
-              });
-
-              this.router.navigate(['/detalles-veterinario', this.authService.getUserId()]);
-            } else {
-              this.errorMessage = 'Credenciales de cliente incorrectas';
-            }
-          },
-          error: (e) => {
-            console.error('Error al obtener datos del veterinario:', e);
-            this.errorMessage = 'No se pudieron obtener los datos del veterinario';
-          }
-        });
-
-      } catch (e) {
-        this.errorMessage = 'Error al procesar la respuesta del servidor';
-        console.error('Error procesando la respuesta del login:', e);
+  private loadAdminData() {
+    this.adminService.AdminHome().subscribe({
+      next: (admin) => {
+        if (admin) {
+          this.authService.login({
+            id: admin.idAdministrador,
+            tipo: 'Admin',
+            nombre: admin.nombre,
+            foto: admin.foto
+          });
+          this.router.navigate(['/admin']);
+        } else {
+          this.errorMessage = 'No se encontraron datos de administrador';
+        }
+      },
+      error: (e) => {
+        console.error('Error al obtener datos del admin:', e);
+        this.errorMessage = 'Error al obtener datos del admin';
       }
-    },
-    error: (err) => {
-      console.error('Error de inicio de sesión:', err);
-      this.errorMessage = err.status === 401
-        ? 'Credenciales incorrectas'
-        : 'Error al conectar con el servidor';
-    }
-  });
+    });
+  }
+
+  private loadVeterinarioData() {
+    this.veterinarioService.veterinarioHome().subscribe({
+      next: (veterinario) => {
+        if (veterinario) {
+          this.authService.login({
+            id: veterinario.idVeterinario,
+            tipo: 'Veterinario',
+            nombre: veterinario.nombre,
+            foto: veterinario.foto
+          });
+          this.router.navigate(['/detalles-veterinario', veterinario.idVeterinario]);
+        } else {
+          this.errorMessage = 'No se encontraron datos de veterinario';
+        }
+      },
+      error: (e) => {
+        console.error('Error al obtener datos del veterinario:', e);
+        this.errorMessage = 'Error al obtener datos del veterinario';
+      }
+    });
   }
 }

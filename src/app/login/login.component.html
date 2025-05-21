@@ -4,17 +4,7 @@
     <div class="formularioContainer">
       <h2>Iniciar Sesión</h2>
       <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-        <label for="userType">Tipo de usuario:</label>
-        <select 
-          id="userType" 
-          name="userType" 
-          [(ngModel)]="userType" 
-          required
-        >
-          <option value="cliente">Cliente</option>
-          <option value="veterinario">Veterinario</option>
-          <option value="admin">Administrador</option>
-        </select>
+        
         <label for="username">Usuario:</label>
         <input
           type="text"
