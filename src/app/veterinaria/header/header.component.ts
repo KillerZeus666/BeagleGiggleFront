@@ -19,9 +19,10 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userType = this.authService.getUserType();
-    this.userName = this.authService.getUserName();
-    this.userPhoto = this.authService.getUserPhoto();
+    const user = this.authService.getUser();
+    this.userType = user.tipo;
+    this.userName = user.nombre;
+    this.userPhoto = user.foto || 'https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png';  
   }
 
   toggleMenu(): void {

@@ -18,7 +18,7 @@
     
     <div class="user-menu" [ngSwitch]="userType">
       <!-- Sección para Cliente -->
-      <div *ngSwitchCase="'CLIENTE'" class="dropdown" [class.active]="isMenuOpen">
+      <div *ngSwitchCase="'Cliente'" class="dropdown" [class.active]="isMenuOpen">
         <button class="login-btn user-btn" (click)="toggleMenu()">
           <span>{{ userName }}</span>
           <img [src]="userPhoto" alt="Foto del Cliente" class="user-img" />
@@ -30,7 +30,7 @@
       </div>
   
       <!-- Sección para Veterinario -->
-      <div *ngSwitchCase="'VETERINARIO'" class="dropdown" [class.active]="isMenuOpen">
+      <div *ngSwitchCase="'Veterinario'" class="dropdown" [class.active]="isMenuOpen">
         <button class="login-btn user-btn" (click)="toggleMenu()">
           <span>{{ userName }}</span>
           <img [src]="userPhoto" alt="Foto del Veterinario" class="user-img" />
@@ -42,7 +42,7 @@
       </div>
   
       <!-- Sección para Administrador -->
-      <div *ngSwitchCase="'ADMINISTRADOR'" class="dropdown" [class.active]="isMenuOpen">
+      <div *ngSwitchCase="'Admin'" class="dropdown" [class.active]="isMenuOpen">
         <button class="login-btn user-btn" (click)="toggleMenu()">
           <span>Administrador</span>
         </button>
