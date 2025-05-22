@@ -19,7 +19,9 @@ export class AuthService {
 
   logout() {
     this.user = null;
-    localStorage.removeItem('user');
+    localStorage.removeItem('token'); // borra el JWT
+    localStorage.removeItem('username'); // si guardas otros datos como el nombre de usuario
+    localStorage.removeItem('roles');
   }
 
   getUser() {
