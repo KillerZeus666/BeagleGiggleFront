@@ -13,7 +13,8 @@ export class ContactanosComponent {
   templateID = 'template_2025';
   userID = 'qOciVGceMq0WS14pD';
 
-  sendEmail(formValues: { name: string; email: string; title: string; message: string }) {
+  // Recibimos también el formulario para poder resetearlo
+  sendEmail(formValues: { name: string; email: string; title: string; message: string }, form: any) {
     emailjs.send(this.serviceID, this.templateID, {
       name: formValues.name,
       email: formValues.email,
@@ -22,7 +23,8 @@ export class ContactanosComponent {
     }, this.userID)
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
-      alert('Mensaje enviado correctamente');
+      alert('Mensaje enviado correctamente, pronto nos pondremos en contacto contigo.');
+      form.reset(); // Limpiamos el formulario
     }, (error) => {
       console.log('FAILED...', error);
       alert('Error al enviar el mensaje, intenta de nuevo.');

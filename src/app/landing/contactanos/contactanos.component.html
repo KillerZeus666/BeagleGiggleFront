@@ -13,9 +13,9 @@
     <!-- Formulario de contacto -->
     <div class="contact-form-container">
       <h2>Contáctanos</h2>
-      <p class="subtitle">¿Necesitas ayuda? Escríbenos un mensaje.</p>
+      <p class="subtitle">¿Necesitas ayuda? Escríbenos un mensaje y nos contactaremos contigo lo más antes posible.</p>
 
-      <form class="contact-form" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm.value)" novalidate>
+    <form class="contact-form" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm.value, contactForm)" novalidate>
         <input
           name="name"
           type="text"
