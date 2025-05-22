@@ -8,6 +8,18 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent {
   articulos = [
+       {
+      id: 'Spotify',
+      titulo: 'PlayList para relajar a tu mascota',
+      descripcion: `La música también es parte del bienestar de tu mascota. Descubre una playlist pensada especialmente para relajar y estimular a tu perro o gato. ¡Haz clic y escúchala ahora!`,
+      fecha: new Date(2025, 7, 20),
+      autor: 'Por Dra. Angela Beltrán',
+      imagenes: [
+        'https://www.aon.es/personales/seguro-perro-gato/wp-content/uploads/sites/2/2023/06/afecta_la_musica_a_las_mascotas.png',
+        'https://www.zooplus.es/magazine/wp-content/uploads/2021/03/ejercicio-para-perros.jpeg'
+      ],
+      ruta: '/playlist'
+    },
     {
       id: 'vacunar-mascota',
       titulo: '¿Por qué es vital vacunar a tu mascota?',
@@ -19,7 +31,8 @@ export class BlogComponent {
       imagenes: [
         'https://media.istockphoto.com/id/966384466/es/foto/imagen-recortada-del-beagle-de-cartera-hombre-al-veterinario-hacer-inyecci%C3%B3n-jeringa-que.jpg?s=612x612&w=0&k=20&c=tDYz1Eq1XBlQ1-fsy9rohx_1iIzE-ijNqfzRby7C3x0=',
         'https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-mascota_23-2149143887.jpg'
-      ]
+      ],
+      ruta: '/playlist'
     },
     {
       id: 'alimentacion-saludable-perros-adultos',
@@ -32,7 +45,8 @@ export class BlogComponent {
       imagenes: [
         'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2017/02/12/58a04e1be0ec8.jpeg',
         'https://vivirenelpoblado.com/wp-content/uploads/2019/05/comida-naturlal-mascota.jpg'
-      ]
+      ],
+      ruta: '/playlist'
     },
     {
       id: 'ejercicio-estimulacion-cachorros',
@@ -45,8 +59,10 @@ export class BlogComponent {
       imagenes: [
         'https://www.novecan.com/blog/wp-content/uploads/2023/08/golden-retriever-dog-exercising-2023-08-03-16-56-10-utc.webp',
         'https://www.zooplus.es/magazine/wp-content/uploads/2021/03/ejercicio-para-perros.jpeg'
-      ]
-    }
+      ],
+      ruta: '/playlist'
+    },
+
   ];
 
   constructor(private router: Router) {}
@@ -54,4 +70,9 @@ export class BlogComponent {
   verArticulo(id: string) {
     this.router.navigate(['/articulo', id]);
   }
+
+  navegar(ruta: string) {
+  this.router.navigate([ruta]);
+}
+
 }

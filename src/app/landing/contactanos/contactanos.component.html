@@ -1,6 +1,6 @@
 <section class="contact-section">
   <div class="contact-grid">
-    
+
     <!-- Mapa simulado -->
     <div class="map-container">
       <div class="map">
@@ -14,12 +14,38 @@
     <div class="contact-form-container">
       <h2>Contáctanos</h2>
       <p class="subtitle">¿Necesitas ayuda? Escríbenos un mensaje.</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Tu nombre" required>
-        <input type="email" placeholder="Tu correo electrónico" required>
-        <textarea placeholder="Tu mensaje..." required></textarea>
-        <button type="submit" class="submit-btn">Enviar</button>
+
+      <form class="contact-form" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm.value)" novalidate>
+        <input
+          name="name"
+          type="text"
+          placeholder="Tu nombre"
+          ngModel
+          required
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Tu correo electrónico"
+          ngModel
+          required
+        />
+        <input
+          name="title"
+          type="text"
+          placeholder="Asunto"
+          ngModel
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Tu mensaje..."
+          ngModel
+          required
+        ></textarea>
+        <button type="submit" class="submit-btn" [disabled]="!contactForm.valid">Enviar</button>
       </form>
+
     </div>
 
   </div>
