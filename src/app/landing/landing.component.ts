@@ -4,7 +4,6 @@ import { TestimonioService } from 'src/app/service/testimonio.service';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { TestimonioCL } from 'src/app/model/testimonio-cl';
 
 @Component({
   selector: 'app-landing',
@@ -16,7 +15,7 @@ export class LandingComponent implements OnInit, AfterViewInit {
   servicios: any[] = [];
   isLoading = true;
   errorMessage = '';
-  testimonios: TestimonioCL[] = [];
+  testimonios: any[] = [];
   isLoadingTestimonios = true;
   errorTestimonios = '';
 
@@ -59,12 +58,10 @@ export class LandingComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // Verificar las secciones visibles al cargar
     setTimeout(() => this.checkScroll(), 500);
   }
 
   ngOnDestroy(): void {
-    // Limpiar el intervalo del carrusel al destruir el componente
     if (this.carouselInterval) {
       clearInterval(this.carouselInterval);
     }
@@ -90,7 +87,6 @@ export class LandingComponent implements OnInit, AfterViewInit {
   goToSlide(index: number): void {
     this.currentSlide = index;
     this.updateCarousel();
-    // Reiniciar el intervalo al cambiar slide manualmente
     this.resetCarouselInterval();
   }
 
@@ -100,7 +96,6 @@ export class LandingComponent implements OnInit, AfterViewInit {
       heroSection.style.backgroundImage = this.carouselItems[this.currentSlide].background;
     }
 
-    // Actualizar indicadores
     document.querySelectorAll('.indicator').forEach((ind, i) => {
       ind.classList.toggle('active', i === this.currentSlide);
     });
@@ -131,7 +126,7 @@ export class LandingComponent implements OnInit, AfterViewInit {
 
   cargarTestimonios(): void {
     this.testimonioService.obtenerTestimonios().subscribe({
-      next: (data: TestimonioCL[]) => {
+      next: (data: any[]) => {
         this.testimonios = data;
         this.isLoadingTestimonios = false;
         setTimeout(() => this.checkScroll(), 100);
@@ -164,12 +159,19 @@ export class LandingComponent implements OnInit, AfterViewInit {
   }
 
   // Métodos auxiliares
-  getRatingStars(testimonio: TestimonioCL): string {
-    return '⭐'.repeat(testimonio.calificacion);
+  getRatingStars(testimonio: any): string {
+    if (!testimonio || !testimonio.calificacion) return '⭐';
+    return '⭐'.repeat(Math.min(Math.max(1, testimonio.calificacion), 5));
   }
 
-  formatDate(testimonio: TestimonioCL): string {
-    return this.datePipe.transform(testimonio.fecha, 'dd/MM/yyyy') || '';
+  formatDate(testimonio: any): string {
+    if (!testimonio || !testimonio.fecha) return '';
+    try {
+      return this.datePipe.transform(testimonio.fecha, 'dd/MM/yyyy') || '';
+    } catch (e) {
+      console.error('Error formateando fecha:', e);
+      return '';
+    }
   }
 
   reintentarCarga(): void {

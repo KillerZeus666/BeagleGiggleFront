@@ -64,30 +64,29 @@
 <!-- Sección de Testimonios -->
 <section id="testimonios" class="testimonials-section">
   <h2 class="front">Testimonios de clientes</h2>
-  
+
   <div *ngIf="isLoadingTestimonios" class="loading-spinner">
     <div class="spinner"></div>
     <p>Cargando testimonios...</p>
   </div>
-  
+
   <div *ngIf="errorTestimonios" class="error-message">
     {{ errorTestimonios }}
     <button (click)="reintentarCarga()">Reintentar</button>
   </div>
-  
   <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
     <div class="testimonial" *ngFor="let testimonio of testimonios">
       <div class="testimonial-content">
         <img
-          [src]="testimonio.imagenCliente || 'assets/images/default-avatar.png'"
-          [alt]="testimonio.cliente"
+          [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
+          [alt]="testimonio.cliente.nombre"
           class="testimonial-image"
         />
         <div class="testimonial-details">
           <p class="testimonial-text">"{{ testimonio.texto }}"</p>
           <div class="testimonial-meta">
-            <span class="testimonial-client">{{ testimonio.cliente }}</span>
-            <span class="testimonial-service">- {{ testimonio.servicio }}</span>
+            <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
+            <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
           </div>
           <div class="testimonial-rating">
             {{ getRatingStars(testimonio) }}
@@ -106,7 +105,7 @@
 
   <app-fundaciones></app-fundaciones>
 
-  <!-- Sección de Contáctanos -->
+  <!-- Sección de Contáctanos
   <section #section id="contactanos" class="contact-section">
     <app-contactanos></app-contactanos>
   </section>
