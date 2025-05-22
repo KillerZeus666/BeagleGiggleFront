@@ -1,0 +1,33 @@
+
+.spotify-iframe {
+  border-radius: 12px;
+  height: 450px;
+  width: 100%;
+}
+
+.spotify-wrapper {
+  max-width: 600px;
+  margin: 4rem auto 2rem;
+  text-align: center;
+}
+
+.title-with-gif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.title-with-gif h2 {
+  font-size: 2rem;
+  color: #2a4e68;
+  margin: 0;
+}
+
+.gif-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 40px; 
+
+}

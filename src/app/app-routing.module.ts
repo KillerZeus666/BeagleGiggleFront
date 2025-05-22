@@ -42,6 +42,7 @@ import { MatchPageComponent } from './landing/match-page/match-page.component';
 import { CalcularEdadComponent } from './cliente/calcular-edad/calcular-edad.component';
 import { BlogComponent } from './veterinaria/blog/blog.component';
 import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
+import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -90,6 +91,7 @@ const routes: Routes = [
   {path: 'login-veterinario', component: LoginVeterinarioComponent},
   { path: 'blog', component: BlogComponent},
   { path: 'articulo/:id', component: MostrarArticuloComponent },
+  {path: 'playlist', component: PlaylistComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];
