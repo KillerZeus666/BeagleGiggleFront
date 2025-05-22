@@ -121,14 +121,15 @@ getCitas():any[]{
     return ['/facturas/cliente', this.userId];
   }
 //VETERINARIO
-//ADMINISTRADOR
-  navegarCitasVeterinario(): void {
-    this.router.navigate(['/citas-veterinario', this.userId]);
+  getMascotasAtendidas():any[]{
+    return ['/mascotas-atendidas',this.userId];
   }
 
-  navegarTratamientosVeterinario(): void {
-    this.router.navigate(['/tratamiento/veterinario/',this.userId]);
+  getTratamientosVeterinario(): any[] {
+    return ['/historial-tratamientos',this.userId];
   }
+//ADMINISTRADOR
+  
 
   // Nuevo método para navegar a tratamientos como Admin
   navegarATratamientos(): void {

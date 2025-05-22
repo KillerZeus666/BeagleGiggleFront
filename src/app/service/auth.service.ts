@@ -8,7 +8,7 @@ import { ClienteCL } from '../model/cliente-cl';
 })
 export class AuthService {
   private user: any = null;
-  private apiUrl = 'http://localhost:8082'; // Cambia esto si tu API tiene otro puerto o URL base
+  private apiUrl = 'http://localhost:8082/auth'; // Cambia esto si tu API tiene otro puerto o URL base
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,11 @@ export class AuthService {
 
   logout() {
     this.user = null;
+    localStorage.removeItem('token'); // borra el JWT
+    localStorage.removeItem('username'); // si guardas otros datos como el nombre de usuario
+    localStorage.removeItem('roles');
     localStorage.removeItem('user');
+    localStorage.removeItem("userRole"); 
   }
 
   getUser() {
@@ -57,11 +61,9 @@ export class AuthService {
 
 
 /** Nuevo método para iniciar sesión */
-iniciarSesion(nombreUsuario: string, contrasena: string) {
-  return this.http.post<any>('http://localhost:8082/api/inicio_sesion', {
-    nombreUsuario,
-    contrasena
-  });
-}
+iniciarSesion(username: string, password: string): Observable<any> {
+    const credentials = { username, password };
+    return this.http.post<any>(`${this.apiUrl}/inicio_sesion`, credentials);
+  }
 
 }
