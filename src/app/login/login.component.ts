@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         try {
           // Guardar token
           localStorage.setItem('token', response.token);
-
+          localStorage.setItem('userRole', response.roles[0]); // Guardar el primer rol
           // Guardar usuario en authService (opcional)
           this.authService.login({
             username: response.username,
