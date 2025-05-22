@@ -1,0 +1,367 @@
+/* Empuja el main para que no quede debajo del header */
+main {
+  padding-top: 115px; /* altura aproximada del header */
+}
+
+/* Contenedor principal con layout flex: resultados a la izquierda, filtros a la derecha */
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Área de resultados: ocupa más espacio, fondo claro, scroll vertical */
+.resultados {
+  flex: 3;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título dentro de resultados */
+.resultados h2 {
+  margin-bottom: 10px;
+  color: #1e3a5f;
+}
+
+/* Contenedor de etiquetas de filtros activos */
+.filtros-activos {
+  margin-bottom: 15px;
+}
+
+/* Etiquetas de filtros activos (tags) */
+.tag {
+  background-color: #4a90e2;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+}
+
+
+
+
+/* Botón para eliminar filtro dentro de tag */
+.tag button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;         /* Puedes ajustar si lo quieres más grande o pequeño */
+  margin-left: 8px;
+  cursor: pointer;
+  line-height: 1.4;        /* Aumenta altura de línea para evitar que se vea tan ajustado */
+  padding: 4px 6px;        /* Da espacio interno para que no se vea aplastado */
+  border-radius: 4px;      /* Opcional: redondea los bordes para mejor estética */
+}
+
+
+/* Tarjetas de mascotas */
+.tarjeta {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Efecto hover en tarjeta */
+.tarjeta:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Área de filtros (sidebar) */
+.filtros {
+  flex: 0 0 320px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: fit-content;
+}
+
+/* Título de filtros */
+.filtros h2 {
+  margin-bottom: 10px;
+  color: #1e3a5f;
+}
+
+/* Agrupa cada input/label */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo para inputs y selects */
+.filtros input[type="number"],
+.filtros select {
+  padding: 10px 14px;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #e0f0ff; /* color de fondo que quieras */
+  font-size: 1rem;
+  margin-top: 6px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Estilo foco para inputs y selects */
+.filtros input[type="number"]:focus,
+.filtros select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px #4a90e2aa;
+}
+
+/* Botones en filtros */
+.filtros button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.4);
+}
+
+/* Hover en botones */
+.filtros button:hover {
+  background-color: #357abd;
+  box-shadow: 0 6px 12px rgba(53, 122, 189, 0.6);
+}
+
+/* Responsive: apilar en pantallas pequeñas */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .filtros {
+    width: 100%;
+    flex: none;
+    order: 2;
+    margin-top: 30px;
+  }
+  .resultados {
+    order: 1;
+    max-height: none;
+  }
+  .tarjeta {
+    max-width: 100%;
+  }
+}
+
+/* Contenedor para centrar y espaciar los botones */
+.botones-filtro {
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* o "flex-start" si los quieres alineados a la izquierda */
+  margin-top: 20px;
+}
+
+/* Estilo base común para ambos */
+.botones-filtro button {
+  width: 140px;
+  height: 45px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+/* Botón Filtrar (azul) */
+.btn-filtrar {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-filtrar:hover {
+  background-color: #357abd;
+}
+
+/* Botón Limpiar filtros (gris claro) */
+.btn-limpiar {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.btn-limpiar:hover {
+  background-color: #cbd5e1;
+}
+
+
+.tarjeta-profesional {
+  max-width: 360px;
+  background-color: #f9fbfd; /* azul muy claro */
+  border: 1px solid #c4d0e1;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.foto-mascota {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid #c4d0e1;
+}
+
+.info-mascota {
+  padding: 20px 25px;
+}
+
+.info-mascota h3 {
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #0b3d91; /* azul oscuro */
+  text-align: center;
+}
+
+.atributos-mascota {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.atributo {
+  background-color: #e3eaf7;
+  padding: 10px 5px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.etiqueta {
+  display: block;
+  font-size: 0.85rem;
+  color: #546e91; /* azul grisáceo */
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.valor {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.botones-tinder {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn-dislike,
+.btn-like {
+  cursor: pointer;
+  font-size: 1.8rem;
+  border: none;
+  background: none;
+  transition: transform 0.15s ease-in-out;
+}
+
+.btn-dislike:hover {
+  color: #d9534f; /* rojo suave */
+  transform: scale(1.2);
+}
+
+.btn-like:hover {
+  color: #0275d8; /* azul vivo */
+  transform: scale(1.2);
+}
+
+
+.titulo-seccion h2 {
+  color: #1e3a5f;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: rem;
+
+}
+
+.match-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
+  padding: 1rem 1.5rem;
+}
+
+.match-container h3 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  column-gap: 2.4rem; /* espacio horizontal más amplio */
+
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+background: linear-gradient(135deg, #70bfe9, #a1d6f7);
+  width: 100%;
+  max-width: 220px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  cursor: default;
+  transition: background-color 0.2s ease;
+}
+
+.match-card:hover {
+  background-color:#95d2f3;
+}
+
+.match-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2c3e50;
+}
+
+.match-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0;
+}

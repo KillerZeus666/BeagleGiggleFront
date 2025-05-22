@@ -1,127 +1,171 @@
+/* 🔹 Footer principal */
 footer {
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    color: black;
-    background-color: #72c0ea;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: black;
+  background-color: #72c0ea;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
 }
-  
-  .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1280px;
-    margin: auto;
-  }
-  
-  /* Sección principal con los elementos en una fila */
+
+/* 🔹 Contenedor general */
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  margin: auto;
+}
+
+/* 🔹 Barra superior */
+.footer-top-bar {
+  background-color: #1e80b9;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  letter-spacing: 1px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer-top-bar img {
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+  animation: pawBounce 2s infinite ease-in-out;
+}
+
+/* 🔹 Contenido principal del footer */
+.footer-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  padding: 20px;
+  background-color: #72c0ea;
+  color: #333;
+}
+
+/* 🔹 Secciones del footer */
+.footer-section,
+.footer-logo {
+  flex: 1 1 200px;
+  min-width: 200px;
+  text-align: left;
+  font-size: 14px;
+  color: inherit;
+}
+
+.footer-section {
+  text-align: left;
+}
+
+/* 🔹 Títulos de sección */
+.footer-section h3,
+.footer-logo h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid orange; /* Rayita naranja */
+  width: fit-content;
+  color: #00456d; /* Texto azul */
+}
+
+/* 🔹 Lista de elementos */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li,
+.footer-logo li {
+  font-size: 14px;
+  margin: 4px 0;
+  color: black;
+  transition: color 0.3s;
+}
+
+.footer-section ul li:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 Enlaces */
+.footer-section a,
+.footer-section ul li a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover,
+.footer-section ul li a:hover {
+  color: #1e80b9; /* Azul en hover */
+}
+
+/* 🔹 Logo en el footer */
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo img {
+  margin: 10px 0;
+  width: 120px;
+  height: auto;
+  filter: brightness(0.8);
+}
+
+/* 🔹 Redes sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+footer .social-links a {
+  margin: 0 5px;
+}
+
+footer .social-links img {
+  width: 30px;
+  height: auto;
+  filter: brightness(0.9);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+footer .social-links a:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.5);
+}
+
+/* 🔹 Derechos de autor */
+.footer-copyright {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 15px;
+}
+
+/* 🔹 Responsive para móviles */
+@media (max-width: 768px) {
   .footer-info {
-    display: flex;
-    justify-content: space-between; /* Distribuye los elementos con el logo en el centro */
-    align-items: center; /* Asegura alineación vertical */
-    flex-wrap: wrap;
-    gap: 30px;
-    width: 90%;
-  }
-  
-  /* Ajuste individual de cada sección */
-  .footer-section {
-    flex: 1;
-    text-align: center;
-    min-width: 200px;
-  }
-  
-  .footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-    padding-bottom: 5px;
-    display: inline-block;
-    width: 150px;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-section ul li {
-    font-size: 14px;
-    margin: 4px 0;
-    transition: color 0.3s;
-  }
-  
-  .footer-section ul li:hover {
-    text-decoration: underline;
-  }
-  
-  /* Estilos del logo en el centro */
-  .footer-logo {
-    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centra el logo */
-    min-width: 200px;
-    flex: 1;
+    text-align: center;
+    gap: 20px;
   }
-  
-  .footer-logo img {
-    margin-top: 10px;
-    width: 120px;
-    height: auto;
-    filter: brightness(0.8);
-    margin-bottom: 10px;
+
+  .footer-section {
+    width: 100%;
   }
-  
-  /* Redes sociales alineadas debajo del logo */
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 5px;
+
+  .footer-logo {
+    order: -1; /* Logo arriba */
   }
-  
-  footer .social-links a {
-    margin: 0 5px;
-  }
-  
-  footer .social-links img {
-    transition: transform 0.3s ease, filter 0.3s ease;
-    width: 30px;
-    height: auto;
-    filter: brightness(0.9);
-  }
-  
-  footer .social-links a:hover img {
-    transform: scale(1.2);
-    filter: brightness(1.5);
-  }
-  
-  /* Pie de página con derechos de autor */
-  .footer-copyright {
-    font-size: 12px;
-    opacity: 0.7;
-    margin-top: 15px;
-  }
-  
-  /* 📱 Diseño responsive para móviles */
-  @media (max-width: 768px) {
-    .footer-info {
-      flex-direction: column; /* Elementos en columna */
-      align-items: center;
-      text-align: center;
-      gap: 20px;
-    }
-  
-    .footer-section {
-      width: 100%;
-    }
-  
-    .footer-logo {
-      order: -1; /* Mueve el logo arriba */
-    }
-  }
+}

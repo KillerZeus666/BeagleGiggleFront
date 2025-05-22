@@ -30,6 +30,10 @@ export class AuthService {
     return this.user;
   }
 
+  getUserId(): number | null {
+    return this.getUser()?.id || null;
+  }
+
   getUserType(): string | null {
     return this.getUser()?.tipo || null;
   }

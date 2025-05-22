@@ -54,6 +54,7 @@
     <img src="https://media1.giphy.com/media/VSTPSY8NeIY2SNNHnH/giphy.gif?cid=6c09b952d61erpnfhq1l6bxp41cqphbjvpyqcqa9b4azqtp4&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="Perro corriendo" class="perrito">
   </section>
 
+
   <!-- Sección de Preguntas Frecuentes -->
   <section #section id="preguntas">
     <app-preguntas></app-preguntas>
@@ -61,128 +62,53 @@
 
 
 <!-- Sección de Testimonios -->
-<section #section id="testimonios" class="testimonials-section">
-
+<section id="testimonios" class="testimonials-section">
   <h2 class="front">Testimonios de clientes</h2>
+
   <div *ngIf="isLoadingTestimonios" class="loading-spinner">
     <div class="spinner"></div>
     <p>Cargando testimonios...</p>
   </div>
+
   <div *ngIf="errorTestimonios" class="error-message">
     {{ errorTestimonios }}
     <button (click)="reintentarCarga()">Reintentar</button>
   </div>
-<div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
-  <div class="testimonial" *ngFor="let testimonio of testimonios">
-    <div class="testimonial-content">
-      <img
-        [src]="testimonio.cliente?.foto || 'assets/images/default-avatar.png'"
-        [alt]="testimonio.cliente?.nombre || 'Cliente'"
-        class="testimonial-image"
-      />
-      <div class="testimonial-details">
-        <p class="testimonial-text">"{{ testimonio.texto || 'Testimonio no disponible' }}"</p>
-        <div class="testimonial-meta">
-          <span class="testimonial-client">{{ testimonio.cliente?.nombre || 'Cliente' }}</span>
-          <span class="testimonial-service" *ngIf="testimonio.servicio?.nombre">- {{ testimonio.servicio.nombre }}</span>
-        </div>
-        <div class="testimonial-rating">
-          {{ getRatingStars(testimonio) }}
-        </div>
-        <div class="testimonial-date">
-          {{ formatDate(testimonio) || 'Fecha no disponible' }}
+  <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
+    <div class="testimonial" *ngFor="let testimonio of testimonios">
+      <div class="testimonial-content">
+        <img
+          [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
+          [alt]="testimonio.cliente.nombre"
+          class="testimonial-image"
+        />
+        <div class="testimonial-details">
+          <p class="testimonial-text">"{{ testimonio.texto }}"</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
+            <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
+          </div>
+          <div class="testimonial-rating">
+            {{ getRatingStars(testimonio) }}
+          </div>
+          <div class="testimonial-date">
+            {{ formatDate(testimonio) }}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
-  <!-- Sección de Citas
-  <section #section id="contactanos" class="appointment-section">
-    <h2>Agenda tu cita</h2>
-    <div class="appointment-container">
-      <div class="form-container">
-        <form id="appointment-form">
-          <label for="appointment-name">Tu nombre</label>
-          <input
-            type="text"
-            id="appointment-name"
-            placeholder="Ejemplo: Juan Pérez"
-            required
-          />
+  <!-- Sección de BeagleMatch -->
+  <app-beagle-match></app-beagle-match>
 
-          <label for="appointment-details">Detalles de la cita</label>
-          <textarea
-            id="appointment-details"
-            placeholder="Describe el motivo de la consulta..."
-            required
-          ></textarea>
 
-          <label for="appointment-service">Tipo de servicio</label>
-          <select id="appointment-service" required>
-            <option value="">Selecciona un servicio</option>
-            <option value="Consulta general">Consulta general</option>
-            <option value="Cirugía">Cirugía</option>
-            <option value="Estética">Estética</option>
-            <option value="Vacunación">Vacunación</option>
-            <option value="Otro">Otro</option>
-          </select>
-
-          <label for="appointment-image">Foto de tu mascota (URL)</label>
-          <input
-            type="url"
-            id="appointment-image"
-            placeholder="https://ejemplo.com/mascota.jpg"
-            required
-          />
-
-          <input type="hidden" id="selected-vet" required />
-          <button type="submit" id="appointment-btn" disabled>
-            <span>Agendar cita</span>
-          </button>
-        </form>
-      </div>
-
-      <div class="map-container">
-        <h3>Ubicación</h3>
-        <div class="vet-map">
-          <div class="vet-option" id="vet1" data-vet="Veterinaria Los Pinos">
-            <img
-              src="https://i.postimg.cc/431p87Bz/vet1.png"
-              alt="Veterinaria Los Pinos"
-            />
-            <span>Los Pinos</span>
-          </div>
-          <div
-            class="vet-option"
-            id="vet2"
-            data-vet="Veterinaria Patitas Felices"
-          >
-            <img
-              src="https://i.postimg.cc/nzcBNFPN/vet2.png"
-              alt="Veterinaria Patitas Felices"
-            />
-            <span>Patitas Felices</span>
-          </div>
-          <div class="vet-option" id="vet3" data-vet="Veterinaria Huellas">
-            <img
-              src="https://i.postimg.cc/gJS8p99j/vet3.png"
-              alt="Veterinaria Huellas"
-            />
-            <span>Huellas</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
--->
-
-  <!-- Sección de Contáctanos -->
+  <!-- Sección de Contáctanos
   <section #section id="contactanos" class="contact-section">
     <app-contactanos></app-contactanos>
   </section>
-
+-->
 
   <app-fundaciones></app-fundaciones>
 

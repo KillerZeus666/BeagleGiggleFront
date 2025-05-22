@@ -8,13 +8,13 @@
 }
 
 .faq-title {
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 28px; /* Más grande */
   color: #2a4e68;  /* Azul similar al de .front */
   text-align: center;
   font-weight: bold;
   position: relative;
   margin: 0 auto 30px auto;
-  text-transform: uppercase;
   letter-spacing: 1px;
   display: block;
 }
@@ -50,6 +50,13 @@
     transition: background-color 0.3s ease;
     font-size: 0.95rem; /* Más pequeño */
 }
+.faq-question h3 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 1.2rem; /* Más grande */
+}
+
 
 .faq-question:hover {
     background-color: #7faedb;

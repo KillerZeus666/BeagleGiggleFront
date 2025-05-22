@@ -11,6 +11,12 @@
   --black: #000000;
 }
 
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -408,9 +414,13 @@ p {
   border-radius: 2px;
 }
 
+<<<<<<< HEAD
 
 
 /* Sección de Testimonios - Versión mejorada */
+=======
+/* Sección de Testimonios */
+>>>>>>> ecc22a96335518ff5435a6d1764cd523754e2048
 .testimonials-section {
   padding: 80px 20px;
   background-color: #e0f7ff;
@@ -425,7 +435,10 @@ p {
   gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
+<<<<<<< HEAD
   padding: 20px 0;
+=======
+>>>>>>> ecc22a96335518ff5435a6d1764cd523754e2048
 }
 
 .testimonial {
@@ -540,6 +553,27 @@ p {
 .testimonial:hover::before {
   left: 100%;
   opacity: 0;
+}
+
+.huella {
+  position: absolute;
+  animation: moverHuellas 5s infinite linear;
+  width: 50px; /* Ajusta el tamaño de las huellas */
+}
+
+@keyframes moverHuellas {
+  0% {
+    top: 20px;  /* Ajusta la posición inicial de la huella */
+    left: -60px; /* Comienza fuera de la pantalla a la izquierda */
+  }
+  50% {
+    top: 30px;  /* Ajusta la altura para cambiar el "camino" de las huellas */
+    left: 50%;  /* Las huellas se moverán hacia el centro */
+  }
+  100% {
+    top: 60px;  /* Ajusta la altura al final del movimiento */
+    left: 100%; /* Sale de la pantalla por la derecha */
+  }
 }
 
 /* Sección de Citas */

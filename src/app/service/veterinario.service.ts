@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { VeterinarioCL } from '../model/veterinario-cl';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { CitaCL } from '../model/cita-cl';
 import { MascotaCL } from '../model/mascota-cl';
 import { TratamientoCL } from '../model/tratamiento-cl';
+import { UserCl } from '../model/user-cl';
 
 @Injectable({
   providedIn: 'root'
@@ -108,5 +109,19 @@ export class VeterinarioService {
       return this.http.get<VeterinarioCL[]>(`${this.baseUrl}/buscar`, {
         params: { nombre }
       });
-    }
+  }
+
+  veterinarioHome():Observable<VeterinarioCL>{
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+      return this.http.get<VeterinarioCL>(`${this.baseUrl}/details`);
+  }
+  
+  login(usuario:UserCl):Observable<String>{
+    return this.http.post(`${this.baseUrl}/login`,usuario, {
+      responseType :'text'
+    });
+  }
 }

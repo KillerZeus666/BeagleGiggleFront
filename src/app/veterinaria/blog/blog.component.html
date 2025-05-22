@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<main>
+  <section class="blog-header">
+    <h1 class="blog-title">Beagle Giggle Blog</h1>
+    <p class="blog-subtitle">
+      Descubre lo último en salud, cuidado y bienestar para tu mejor amigo de cuatro patas.
+    </p>
+  </section>
+
+  <section class="articulos-container">
+<div *ngFor="let articulo of articulos" class="articulo-card" 
+     (click)="verArticulo(articulo.id)">
+      <img [src]="articulo.imagenes[0]" [alt]="articulo.titulo" class="articulo-imagen" />
+      
+      <div class="articulo-texto">
+        <h2 class="articulo-titulo">{{ articulo.titulo }}</h2>
+        <p class="articulo-fecha">{{ articulo.fecha | date:'longDate' }}</p>
+        <div class="articulo-meta">
+          <span class="articulo-autor">Por {{ articulo.autor }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>
