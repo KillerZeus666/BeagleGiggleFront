@@ -9,6 +9,7 @@ import { TratamientoCL } from 'src/app/model/tratamiento-cl';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { ChartService } from 'src/app/service/chart.service';
 import { ServicioService } from 'src/app/service/servicio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -42,13 +43,14 @@ export class AdminPageComponent implements AfterViewInit {
   showTratamientosRecientesList = false;
   tratamientosRecientes: TratamientoCL[] = [];
   top3Medicamentos: {nombre: string, cantidad: number}[] = [];
-  
+
   constructor(
     private authService: AuthService, 
     private mascotaService: MascotaService,
     private veterinarioService: VeterinarioService,
     private tratamientoService: TratamientoService,
     private chartService: ChartService,
+    private router: Router,
     private servicioService: ServicioService
   ) {}
 
@@ -360,4 +362,12 @@ export class AdminPageComponent implements AfterViewInit {
   
     this.chartService.createChart(ctx, config);
   }
+
+    logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/home']).then(() => {
+      window.location.reload();
+    });
+  }
+
 }

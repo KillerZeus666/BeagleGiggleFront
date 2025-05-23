@@ -3,11 +3,19 @@
 <div class="container">  <!-- <== Agregado -->
   <div class="main" id="mainContent">
 
-    <div class="user">
-      <a [routerLink]="['/detalles-admin', 1]">
-        <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+    
+    <!-- Icono para cerrar sesión -->
+    <header class="top-bar">
+      <div class="user">
+        <a [routerLink]="['/detalles-admin', 1]">
+          <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+        </a>
+      </div>
+
+      <a (click)="logout()" title="Cerrar sesión">
+        <img class="logout-icon" src="https://static.vecteezy.com/system/resources/previews/006/693/054/non_2x/logout-icon-template-black-color-editable-log-out-icon-symbol-flat-illustration-for-graphic-and-web-design-free-vector.jpg" alt="Cerrar sesión">
       </a>
-    </div>
+    </header>
 
 
     <main class="dashboard-main">
