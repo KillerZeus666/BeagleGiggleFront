@@ -10,13 +10,14 @@
   <div class="container">
 
     <!-- Mensaje para usuarios NO logueados -->
-      <div class="mensaje-login">
-        <div class="mensaje-login-contenido">
-          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login required" class="icono-login" />
-          <p>✨ Por favor, <strong>inicia sesión</strong> para ver las mascotas disponibles. 🐶</p>
-    <button routerLink="/inicio-sesion" class="btn-login">Iniciar Sesión</button>
-        </div>
+    <div class="mensaje-login" *ngIf="!isLoggedIn">
+      <div class="mensaje-login-contenido">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Login required" class="icono-login" />
+        <p>✨ Por favor, <strong>inicia sesión</strong> para ver las mascotas disponibles. 🐶</p>
+        <button routerLink="/inicio-sesion" class="btn-login">Iniciar Sesión</button>
       </div>
+    </div>
+
 
 
     <!-- Todo lo siguiente se muestra solo si el usuario está logueado -->
@@ -70,9 +71,15 @@
           </div>
         </div>
 
-        <ng-template #noHayMascotas>
-          <p>No hay mascotas que coincidan con los filtros.</p>
-        </ng-template>
+        
+      <ng-template #noHayMascotas>
+        <div class="no-mascotas-box">
+          <span class="no-mascotas-icon">🐶</span>
+          <p class="no-mascotas-titulo">Sin resultados</p>
+          <p class="no-mascotas-texto">Prueba cambiando los filtros</p>
+        </div>
+      </ng-template>
+
       </div>
 
       <div class="filtros">

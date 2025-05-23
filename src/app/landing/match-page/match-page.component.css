@@ -415,3 +415,35 @@ background: linear-gradient(135deg, #70bfe9, #a1d6f7);
   color: #2c3e50;
   margin: 0;
 }
+
+
+.no-mascotas-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 300px;
+  margin: 1rem auto;
+}
+
+.no-mascotas-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.no-mascotas-titulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.2rem;
+}
+
+.no-mascotas-texto {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
