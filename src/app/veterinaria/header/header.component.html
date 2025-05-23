@@ -24,7 +24,7 @@
           <img [src]="userPhoto" alt="Foto del Cliente" class="user-img" />
         </button>
         <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a routerLink="/mascota/mascotas">Ver Mascotas</a>
+          <a [routerLink]="['/mascotas-cliente', userId]">Ver Mascotas</a>
           <a (click)="logout()">Cerrar sesión</a>
         </div>
       </div>
@@ -47,7 +47,7 @@
           <span>Administrador</span>
         </button>
         <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a routerLink="/admin/dashboard">Panel de Control</a>
+          <a routerLink="/admin">Panel de Control</a>
           <a (click)="logout()">Cerrar sesión</a>
         </div>
       </div>
