@@ -1,11 +1,11 @@
 <app-navegacion></app-navegacion>
 
 <div class="main">
-  <div class="topbar">
     <div class="user">
-      <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+      <a [routerLink]="['/detalles-admin', 1]">
+        <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
+      </a>
     </div>
-  </div>
 
   <main class="container-principal">
     <h1>Lista de Medicamentos</h1>

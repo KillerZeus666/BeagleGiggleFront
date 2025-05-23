@@ -142,3 +142,19 @@ h1 {
     font-size: 1.3rem;
   }
 }
+
+
+.user {
+  margin: 20px; /* Margen exterior */
+  padding: 15px; /* Relleno interior */
+  border: 1px solid #ccc; /* Opcional: para ver mejor los límites del contenedor */
+  border-radius: 10px; /* Bordes redondeados */
+  max-width: 300px; /* Controla el ancho máximo */
+}
+
+.user img {
+  width: 100%; /* Que la imagen se adapte al contenedor */
+  height: auto; /* Mantener proporciones */
+  border-radius: 8px; /* Redondeo a la imagen también */
+  display: block; /* Elimina espacio inferior */
+}
