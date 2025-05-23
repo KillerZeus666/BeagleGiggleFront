@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MascotaCL } from 'src/app/model/mascota-cl';
 import { MascotaService } from 'src/app/service/mascota.service';
+import { AuthService } from 'src/app/service/auth.service';  // <-- Importa el AuthService
 
 interface Filtros {
   edadMin: number | null;
@@ -20,6 +21,8 @@ export class MatchPageComponent implements OnInit {
   mascotasFiltradas: MascotaCL[] = [];
   mascotasFavoritas: MascotaCL[] = [];
   indiceActual: number = 0;
+  isLoggedIn: boolean = false;
+
 
   filtros: Filtros = {
     edadMin: null,
@@ -32,12 +35,19 @@ export class MatchPageComponent implements OnInit {
 
   constructor(
     private mascotaService: MascotaService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService  // <-- Inyecta el AuthService
   ) {}
 
   ngOnInit(): void {
     this.cargarMascotas();
+    this.isLoggedIn = this.authService.isLoggedIn();
+
   }
+
+  irALogin() {
+  this.router.navigate(['/inicio-sesion']); // Ajusta la ruta según tu configuración real
+}
 
   cargarMascotas(): void {
     this.mascotaService.findAll().subscribe({
