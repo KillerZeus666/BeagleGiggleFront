@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent {
   articulos = [
-       {
+    {
       id: 'Spotify',
       titulo: 'PlayList para relajar a tu mascota',
       descripcion: `La música también es parte del bienestar de tu mascota. Descubre una playlist pensada especialmente para relajar y estimular a tu perro o gato. ¡Haz clic y escúchala ahora!`,
@@ -35,22 +35,20 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
       ruta: '/test-salud-mascota'
     },
     {
-    id: 'edad-humana-mascota',
-    titulo: 'Conoce la edad humana de tu mascota',
-    descripcion: `
+      id: 'edad-humana-mascota',
+      titulo: 'Conoce la edad humana de tu mascota',
+      descripcion: `
       ¿Sabías que la edad de tu mascota no se calcula igual que la humana? 
       Aquí te ayudamos a conocer cuántos años "humanos" tiene tu perro o gato.
     `,
-    fecha: new Date(2025, 1, 26),
-    autor: 'MVZ Ana Gómez',
-    imagenes: [
-      'https://urgenciesveterinaries.com/wp-content/uploads/2021/03/perros-braquicefalos-survet-01.jpg'
-    ],
-    ruta: '/edad-humana-mascota',
-
-    // Propiedad para indicar que este artículo debe mostrar la calculadora
-    incluyeCalculadoraEdad: true
-     },
+      fecha: new Date(2025, 1, 26),
+      autor: 'Dr. Julio Bermúdez',
+      imagenes: [
+        'https://urgenciesveterinaries.com/wp-content/uploads/2021/03/perros-braquicefalos-survet-01.jpg'
+      ],
+      ruta: '/edad-humana-mascota',
+      incluyeCalculadoraEdad: true
+    },
     {
       id: 'cumpleanios-mascota',
       titulo: '¡Tu mascota está de cumpleaños!',
@@ -60,18 +58,30 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
         Desde premios hasta recomendaciones personalizadas.
       `,
       fecha: new Date(2025, 2, 30),
-      autor: 'MVZ Ana Gómez',
+      autor: 'Dra. Ana Gómez',
       imagenes: [
         'https://www.wasky.es/wp-content/uploads/cabecera-60.jpg'
       ],
       ruta: '/cumpleanios-mascota',
-
-      // Propiedad personalizada que podrías usar para mostrar contenido especial de cumpleaños
       incluyeSorpresasCumple: true
+    },
+    {
+      id: 'generador-nombres',
+      titulo: '¿Buscas el nombre perfecto para tu mascota?',
+      descripcion: `
+        ¡Estás en el lugar correcto! 🐾
+        Nuestro generador de nombres te ayudará a encontrar el nombre ideal para tu nuevo compañero peludo. 
+        Solo dinos si es macho o hembra y te daremos opciones adorables, originales y llenas de personalidad.
+      `,
+      fecha: new Date(2025, 3, 23),
+      autor: 'Dr. Fernando Higuera',
+      imagenes: [
+        'https://www.zooplus.es/magazine/wp-content/uploads/2019/02/feat-768x496.jpeg'
+      ],
+      ruta: '/generador-nombres',
+      incluyeGeneradorNombres: true
     }
-
-
-  ];
+  ].sort((a, b) => b.fecha.getTime() - a.fecha.getTime()); // Orden descendente por fecha
 
   constructor(private router: Router) {}
 
@@ -80,7 +90,6 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
   }
 
   navegar(ruta: string) {
-  this.router.navigate([ruta]);
-}
-
+    this.router.navigate([ruta]);
+  }
 }

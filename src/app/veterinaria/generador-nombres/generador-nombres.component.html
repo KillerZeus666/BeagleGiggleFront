@@ -1,0 +1,18 @@
+<section class="generador-nombres">
+  <h2>¿Aún no tienes nombre para tu mascota?</h2>
+  <p>¡Te ayudamos a elegir uno especial! Dinos si es macho o hembra y genera uno automáticamente.</p>
+
+  <div class="generador-form">
+    <label>
+      <input type="radio" name="genero" [(ngModel)]="generoMascota" value="macho" /> Macho
+    </label>
+    <label>
+      <input type="radio" name="genero" [(ngModel)]="generoMascota" value="hembra" /> Hembra
+    </label>
+    <button (click)="generarNombre()">Generar nombre</button>
+  </div>
+
+  <div *ngIf="nombreGenerado" class="resultado-nombre">
+    <p>✨ Nombre sugerido: <strong>{{ nombreGenerado }}</strong></p>
+  </div>
+</section>

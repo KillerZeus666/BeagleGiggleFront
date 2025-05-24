@@ -1,0 +1,33 @@
+.generador-nombres {
+  background: #f8fafd;
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.generador-form {
+  margin: 20px 0;
+}
+
+.generador-form label {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.generador-form button {
+  background-color: #2a4e68;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.resultado-nombre {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #2a4e68;
+}

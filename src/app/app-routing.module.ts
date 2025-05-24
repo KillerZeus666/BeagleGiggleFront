@@ -48,6 +48,7 @@ import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-sal
 import { EdadMascotaComponent } from './mascota/edad-mascota/edad-mascota.component';
 import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-premios.component';
 import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
+import { GeneradorNombresComponent } from './veterinaria/generador-nombres/generador-nombres.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -98,6 +99,7 @@ const routes: Routes = [
   {path: 'playlist', component: PlaylistComponent},
   {path: 'edad-humana-mascota', component: EdadMascotaComponent},
   {path: 'cumpleanios-mascota', component: CumpleaniosComponent},
+  {path: 'generador-nombres', component: GeneradorNombresComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];
