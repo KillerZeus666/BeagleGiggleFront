@@ -1,23 +1,63 @@
-<div class="test-container">
-  <h2>Test de Salud de tu Mascota</h2>
+<app-header></app-header>
+<div class="articulo-general">
 
-  <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
-    <p>{{ pregunta.texto }}</p>
-    <label>
-      <input type="radio" name="respuesta{{ i }}" value="si" [(ngModel)]="pregunta.respuesta" /> Sí
-    </label>
-    <label>
-      <input type="radio" name="respuesta{{ i }}" value="no" [(ngModel)]="pregunta.respuesta" /> No
-    </label>
-  </div>
+  <header>
+    <h1>¿Está tu mascota realmente saludable? Realiza este test rápido desde casa</h1>
+    <p class="intro">
+      A veces las mascotas no nos muestran signos claros cuando algo no está bien. Con este test podrás evaluar algunos aspectos importantes de su salud y detectar señales tempranas para actuar a tiempo. 
+      Recuerda que esto no reemplaza al veterinario, pero te ayudará a cuidarla mejor.
+    </p>
+  </header>
 
-    <div class="botones">
-        <button (click)="calcularResultado()" class="btn-evaluar">Evaluar</button>
-        <button (click)="reiniciar()" class="btn-reiniciar">Reiniciar</button>
-    </div>
+  <main>
 
-  <div *ngIf="resultado" class="resultado">
-    <h3>Resultado:</h3>
-    <p>{{ resultado }}</p>
-  </div>
+    <section class="test-salud">
+
+      <h2>Test de Salud de tu Mascota</h2>
+
+      <div class="test-container">
+        <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
+          <p>{{ pregunta.texto }}</p>
+          <label>
+            <input type="radio" name="respuesta{{ i }}" value="si" [(ngModel)]="pregunta.respuesta" /> Sí
+          </label>
+          <label>
+            <input type="radio" name="respuesta{{ i }}" value="no" [(ngModel)]="pregunta.respuesta" /> No
+          </label>
+        </div>
+
+        <div class="botones">
+          <button (click)="calcularResultado()" class="btn-evaluar">Evaluar</button>
+          <button (click)="reiniciar()" class="btn-reiniciar">Reiniciar</button>
+        </div>
+
+        <div *ngIf="resultado" class="resultado">
+          <h3>Resultado:</h3>
+          <p>{{ resultado }}</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="consejos-salud">
+
+      <h2>Consejos para mantener a tu mascota saludable</h2>
+      <ul>
+        <li><strong>Alimentación adecuada:</strong> Proporciónale una dieta equilibrada según su edad, raza y condición física.</li>
+        <li><strong>Ejercicio diario:</strong> Mantén una rutina activa para su bienestar físico y mental.</li>
+        <li><strong>Chequeos veterinarios:</strong> Visítalo regularmente para prevenir enfermedades.</li>
+        <li><strong>Vacunas y antiparásitos:</strong> Cumple con el calendario de vacunación y desparasitación.</li>
+        <li><strong>Atención a su comportamiento:</strong> Cambios pueden indicar problemas de salud.</li>
+      </ul>
+
+    </section>
+
+    <section class="recordatorio-final">
+      <p>
+        Recuerda, este test es solo una guía. Ante cualquier duda o síntoma extraño, acude a un veterinario de confianza para un diagnóstico profesional.
+      </p>
+    </section>
+
+  </main>
+
 </div>

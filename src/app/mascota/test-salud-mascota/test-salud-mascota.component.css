@@ -1,72 +1,215 @@
-.test-container {
-  max-width: 480px;
-  margin: 2rem auto;
-  background: #ffffff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #2b3e51;
+/* Reset básico para asegurar consistencia */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1.2rem;
+
+/* Contenedor general que ocupa casi toda la pantalla */
+.articulo-general {
+  max-width: 1200px; /* Máximo ancho legible para pantalla grande */
+  margin: 2rem auto 4rem auto;
+  padding: 2rem 2.5rem;
+  padding-top: 90px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(31, 60, 88, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: #2e3e50;
+  line-height: 1.65;
+  font-size: 1.1rem;
+}
+
+/* Header del artículo */
+.articulo-general header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f3c58;
+  margin-bottom: 0.5rem;
   text-align: center;
+}
+
+.intro {
+  font-size: 1.15rem;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #3b5169;
+  text-align: justify;
+}
+
+/* Main sección */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Sección test */
+.test-salud {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.test-salud h2 {
+  font-size: 1.8rem;
   color: #2a4e68;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  text-align: center;
 }
 
+/* Contenedor del test */
+.test-container {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  font-size: 1rem;
+  color: #2b3e51;
+  user-select: none;
+}
+
+/* Cada pregunta */
 .pregunta {
-  background-color: #f2f9fc; /* Muy suave y relacionado al azul base */
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.8rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  border-left: 4px solid #72c0ea;
+  background-color: #f2f9fc;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.1rem;
+  border-radius: 10px;
+  border-left: 5px solid #72c0ea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #325d87;
 }
 
+.pregunta p {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+/* Etiquetas de respuesta */
 label {
-  margin-right: 1rem;
-  font-weight: 500;
+  margin-left: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
+  font-size: 0.95rem;
+  color: #2a4e68;
+  user-select: none;
 }
 
 input[type="radio"] {
   margin-right: 0.4rem;
+  cursor: pointer;
+}
+
+/* Botones */
+.botones {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
 }
 
 button {
-  margin-top: 1rem;
-  margin-right: 0.5rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.65rem 1.6rem;
   border: none;
-  border-radius: 20px;
-  background-color: #72c0ea; /* Azul elegante */
-  color: #fff;
-  font-weight: 600;
+  border-radius: 28px;
+  background-color: #72c0ea;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
   transition: background-color 0.3s ease;
-  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(114, 192, 234, 0.5);
+  user-select: none;
 }
 
 button:hover {
-  background-color: #5caed5; /* Azul ligeramente más oscuro al pasar */
+  background-color: #5caed5;
 }
 
+/* Resultado */
 .resultado {
-  margin-top: 1.5rem;
-  background-color: #e3f4fb; /* Fondo muy claro para destacar resultado */
-  padding: 1rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  border-left: 5px solid #72c0ea;
+  margin-top: 2.4rem;
+  background-color: #e3f4fb;
+  padding: 1.3rem 1.5rem;
+  border-radius: 12px;
+  border-left: 6px solid #72c0ea;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f3c58;
+  text-align: center;
 }
 
-.botones {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+/* Consejos */
+.consejos-salud {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background-color: #f7fbfe;
+  border-radius: 16px;
+  border: 1.5px solid #a9d3f0;
+}
+
+.consejos-salud h2 {
+  color: #2a4e68;
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin-bottom: 1.3rem;
+  text-align: center;
+}
+
+.consejos-salud ul {
+  list-style: disc;
+  padding-left: 1.6rem;
+  color: #325d87;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.consejos-salud ul li {
+  margin-bottom: 0.9rem;
+}
+
+/* Recordatorio final */
+.recordatorio-final {
+  max-width: 700px;
+  margin: 0 auto;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #527a9b;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .articulo-general {
+    padding: 1rem 1.5rem;
+  }
+  .test-container,
+  .test-salud,
+  .consejos-salud,
+  .recordatorio-final {
+    max-width: 100%;
+  }
+  .pregunta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .botones {
+    flex-direction: column;
+  }
+  button {
+    width: 100%;
+  }
 }

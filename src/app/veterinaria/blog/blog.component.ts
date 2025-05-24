@@ -21,33 +21,36 @@ export class BlogComponent {
       ruta: '/playlist'
     },
     {
-      id: 'vacunar-mascota',
-      titulo: '¿Por qué es vital vacunar a tu mascota?',
-      descripcion: `Las vacunas son fundamentales para proteger a tu mascota contra enfermedades graves como la rabia, parvovirus y moquillo. Vacunar a tiempo no solo cuida la salud de tu amigo peludo, sino que también previene brotes que pueden afectar a toda la comunidad. 
-      
-      Recuerda consultar con tu veterinario el calendario de vacunación adecuado según la edad y raza de tu mascota.`,
+      id: 'test-salud-mascota',
+      titulo: 'Evalúa el estado de salud de tu mascota en 1 minuto',
+      descripcion: `¿Notas que tu mascota no se comporta como siempre? Con nuestro test rápido podrás detectar señales comunes de alerta como fatiga, pérdida de apetito o síntomas respiratorios.
+
+Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir cuándo es momento de actuar. ¡Hazlo ahora y cuida a quien más te quiere!`,
       fecha: new Date(2025, 8, 1),
       autor: 'Dra. Lina Rodríguez',
       imagenes: [
-        'https://media.istockphoto.com/id/966384466/es/foto/imagen-recortada-del-beagle-de-cartera-hombre-al-veterinario-hacer-inyecci%C3%B3n-jeringa-que.jpg?s=612x612&w=0&k=20&c=tDYz1Eq1XBlQ1-fsy9rohx_1iIzE-ijNqfzRby7C3x0=',
-        'https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-mascota_23-2149143887.jpg'
+        'https://cdn.nubika.es/wp-content/uploads/2024/02/14153319/test-inteligencia-perros.png',
+        'https://cdn.nubika.es/wp-content/uploads/2024/02/14153319/test-inteligencia-perros.png'
       ],
-      ruta: '/playlist'
+      ruta: '/test-salud-mascota'
     },
     {
-      id: 'alimentacion-saludable-perros-adultos',
-      titulo: 'Alimentación saludable para perros adultos',
-      descripcion: `Una dieta equilibrada es la base para una vida larga y saludable de tu perro adulto. Es importante incluir proteínas de calidad, grasas saludables, vitaminas y minerales. Evita alimentos procesados con altos niveles de conservantes y azúcares. 
-      
-      Además, siempre asegúrate de que tenga acceso a agua fresca y suficiente ejercicio diario.`,
-      fecha: new Date(2025, 7, 28),
-      autor: 'MVZ Carlos Sánchez',
-      imagenes: [
-        'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2017/02/12/58a04e1be0ec8.jpeg',
-        'https://vivirenelpoblado.com/wp-content/uploads/2019/05/comida-naturlal-mascota.jpg'
-      ],
-      ruta: '/playlist'
-    },
+    id: 'edad-humana-mascota',
+    titulo: 'Conoce la edad humana de tu mascota',
+    descripcion: `
+      ¿Sabías que la edad de tu mascota no se calcula igual que la humana? 
+      Aquí te ayudamos a conocer cuántos años "humanos" tiene tu perro o gato.
+    `,
+    fecha: new Date(2025, 7, 30),
+    autor: 'MVZ Ana Gómez',
+    imagenes: [
+      'https://www.wasky.es/wp-content/uploads/cabecera-60.jpg'
+    ],
+    ruta: '/edad-humana-mascota',
+
+    // Propiedad para indicar que este artículo debe mostrar la calculadora
+    incluyeCalculadoraEdad: true
+     },
     {
       id: 'ejercicio-estimulacion-cachorros',
       titulo: 'Ejercicio y estimulación mental para cachorros',
