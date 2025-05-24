@@ -68,6 +68,7 @@ import { BlogComponent } from './veterinaria/blog/blog.component';
 import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
+import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
 
 registerLocaleData(localeEs);
 
@@ -132,7 +133,8 @@ registerLocaleData(localeEs);
     BeaglePageComponent,
     BlogComponent,
     MostrarArticuloComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    TestSaludMascotaComponent
   ],
   imports: [
     BrowserModule,

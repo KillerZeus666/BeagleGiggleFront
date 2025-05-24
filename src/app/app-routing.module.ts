@@ -44,6 +44,7 @@ import { BlogComponent } from './veterinaria/blog/blog.component';
 import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
 import { roleGuard } from './guards/role.guard';
+import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -88,6 +89,7 @@ const routes: Routes = [
   {path: 'beagle-match', component: BeagleMatchComponent},
   {path: 'match-page', component: MatchPageComponent},
   {path : 'calcular-edad', component: CalcularEdadComponent},
+  {path: 'test-salud-mascota', component: TestSaludMascotaComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'articulo/:id', component: MostrarArticuloComponent },
   {path: 'playlist', component: PlaylistComponent},

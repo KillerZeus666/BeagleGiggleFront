@@ -1,0 +1,23 @@
+<div class="test-container">
+  <h2>Test de Salud de tu Mascota</h2>
+
+  <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
+    <p>{{ pregunta.texto }}</p>
+    <label>
+      <input type="radio" name="respuesta{{ i }}" value="si" [(ngModel)]="pregunta.respuesta" /> Sí
+    </label>
+    <label>
+      <input type="radio" name="respuesta{{ i }}" value="no" [(ngModel)]="pregunta.respuesta" /> No
+    </label>
+  </div>
+
+    <div class="botones">
+        <button (click)="calcularResultado()" class="btn-evaluar">Evaluar</button>
+        <button (click)="reiniciar()" class="btn-reiniciar">Reiniciar</button>
+    </div>
+
+  <div *ngIf="resultado" class="resultado">
+    <h3>Resultado:</h3>
+    <p>{{ resultado }}</p>
+  </div>
+</div>
