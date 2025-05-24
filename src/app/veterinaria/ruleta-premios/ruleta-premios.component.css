@@ -26,7 +26,7 @@
   padding: 10px 20px;
   font-size: 1.1rem;
   background-color: #4fa9d5;
-  color: white;
+  color: rgb(16, 16, 16);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -35,5 +35,5 @@
 .resultado {
   margin-top: 20px;
   font-size: 1.2rem;
-  color: #4fa9d5;
+  color: #2a4e68;
 }
