@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, Renderer2 } from '@angular/core';
 import emailjs from 'emailjs-com';
 
 @Component({
@@ -6,14 +6,14 @@ import emailjs from 'emailjs-com';
   templateUrl: './contactanos.component.html',
   styleUrls: ['./contactanos.component.css']
 })
-export class ContactanosComponent {
+export class ContactanosComponent implements AfterViewInit {
 
-  // Cambia estos valores por los que te dio EmailJS
   serviceID = 'service_2025';
   templateID = 'template_2025';
   userID = 'qOciVGceMq0WS14pD';
 
-  // Recibimos también el formulario para poder resetearlo
+  constructor(private renderer: Renderer2) {}
+
   sendEmail(formValues: { name: string; email: string; title: string; message: string }, form: any) {
     emailjs.send(this.serviceID, this.templateID, {
       name: formValues.name,
@@ -24,10 +24,46 @@ export class ContactanosComponent {
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
       alert('Mensaje enviado correctamente, pronto nos pondremos en contacto contigo.');
-      form.reset(); // Limpiamos el formulario
+      form.reset();
     }, (error) => {
       console.log('FAILED...', error);
       alert('Error al enviar el mensaje, intenta de nuevo.');
+    });
+  }
+
+  ngAfterViewInit(): void {
+    const markers = document.querySelectorAll('.vet-marker');
+
+    markers.forEach(marker => {
+      // Crear tooltip div
+      const tooltip = this.renderer.createElement('div');
+      this.renderer.addClass(tooltip, 'vet-tooltip');
+      const name = marker.getAttribute('data-name') || '';
+      const text = this.renderer.createText(name);
+      this.renderer.appendChild(tooltip, text);
+      this.renderer.appendChild(marker, tooltip);
+
+      // Click en el marker
+      this.renderer.listen(marker, 'click', (event) => {
+        event.stopPropagation();
+
+        // Ocultar tooltips de otros markers
+        document.querySelectorAll('.vet-tooltip').forEach(tt => {
+          if (tt !== tooltip) {
+            tt.classList.remove('show');
+          }
+        });
+
+        // Toggle el tooltip del marker actual
+        tooltip.classList.toggle('show');
+      });
+    });
+
+    // Clic fuera para cerrar tooltips
+    this.renderer.listen(document, 'click', () => {
+      document.querySelectorAll('.vet-tooltip').forEach(tt => {
+        tt.classList.remove('show');
+      });
     });
   }
 }
