@@ -1,0 +1,196 @@
+:root {
+  --azul-principal: #0077b6;
+  --azul-claro: #caf0f8;
+  --azul-fondo: #e0f4ff;
+  --gris-suave: #f8f9fa;
+  --texto: #222;
+  --font-size-general: 1.2rem; /* tamaño de letra uniforme */
+}
+
+
+
+.articulo-general {
+  background-color: white;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 3rem 3rem 4rem;
+  padding-top: 110px;
+  border-radius: 16px;
+  border-top: 8px solid var(--azul-principal);
+  line-height: 1.7;
+  font-size: var(--font-size-general);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #2a4e68;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--azul-principal);
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.intro {
+  background-color: var(--azul-claro);
+  padding: 1.3rem 2rem;
+  border-radius: 12px;
+  border-left: 8px solid var(--azul-principal);
+  margin-bottom: 1rem;
+  font-size: var(--font-size-general);
+  text-align: justify;
+  max-width: 800px;
+}
+
+.calculadora-edad {
+  background-color: var(--azul-fondo);
+  padding: 2.5rem;
+  border-left: 8px solid var(--azul-principal);
+  border-radius: 14px;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: var(--font-size-general);
+}
+
+.calculadora-edad h2 {
+  font-size: 2rem;
+  color: #2a4e68;
+  margin-bottom: 1.5rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  font-size: var(--font-size-general);
+}
+
+label {
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-general);
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+select,
+input[type="number"] {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--azul-principal);
+  font-size: var(--font-size-general);
+  background-color: #f0fbff;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+}
+
+select:focus,
+input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 119, 182, 0.4);
+  background-color: var(--azul-claro);
+}
+
+input[name="edad"],
+select[name="raza"] {
+  background-color: var(--azul-claro);
+  font-weight: bold;
+  border: 2px solid #0096c7;
+  color: #034078;
+}
+
+.btn-calcular {
+  background-color: #5295d8;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: var(--font-size-general);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.2s ease;
+  align-self: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.btn-calcular:hover {
+  background-color: #005f87;
+}
+
+.consejos-edad {
+  background-color: #f9fbfd;
+  padding: 2rem 2.5rem;
+  border-radius: 14px;
+  border-left: 6px solid var(--azul-principal);
+  max-width: 700px;
+  margin: 3rem auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #3a5068;
+}
+
+.consejos-edad h3 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--azul-principal);
+  text-align: center;
+}
+
+.consejos-edad .contenido {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: justify-center;
+}
+
+.consejos-edad .texto {
+  flex: 1 1 350px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.consejos-edad .imagen {
+  flex: 1 1 250px;
+  display: flex;
+  justify-content: center;
+}
+
+.consejos-edad .imagen img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.resultado {
+  margin-top: 2rem;
+  background-color: #f0fbff;
+  padding: 1.8rem 2.5rem;
+  border-radius: 12px;
+  color: #034078;
+  font-size: 1.2rem; /* o var(--font-size-general) */
+  border-left: 6px solid var(--azul-principal);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 119, 182, 0.1); /* sombra sutil */
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  line-height: 1.5;
+  transition: box-shadow 0.3s ease;
+}
+

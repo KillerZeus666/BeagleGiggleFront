@@ -69,6 +69,7 @@ import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mo
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
 import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
+import { EdadMascotaComponent } from './mascota/edad-mascota/edad-mascota.component';
 
 registerLocaleData(localeEs);
 
@@ -134,7 +135,8 @@ registerLocaleData(localeEs);
     BlogComponent,
     MostrarArticuloComponent,
     PlaylistComponent,
-    TestSaludMascotaComponent
+    TestSaludMascotaComponent,
+    EdadMascotaComponent
   ],
   imports: [
     BrowserModule,
