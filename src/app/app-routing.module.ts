@@ -47,6 +47,7 @@ import { roleGuard } from './guards/role.guard';
 import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
 import { EdadMascotaComponent } from './mascota/edad-mascota/edad-mascota.component';
 import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-premios.component';
+import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -96,7 +97,7 @@ const routes: Routes = [
   {path: 'articulo/:id', component: MostrarArticuloComponent },
   {path: 'playlist', component: PlaylistComponent},
   {path: 'edad-humana-mascota', component: EdadMascotaComponent},
-  {path: 'cumpleanios-mascota', component: RuletaPremiosComponent},
+  {path: 'cumpleanios-mascota', component: CumpleaniosComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

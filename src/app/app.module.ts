@@ -71,6 +71,7 @@ import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
 import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
 import { EdadMascotaComponent } from './mascota/edad-mascota/edad-mascota.component';
 import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-premios.component';
+import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
 
 registerLocaleData(localeEs);
 
@@ -138,7 +139,8 @@ registerLocaleData(localeEs);
     PlaylistComponent,
     TestSaludMascotaComponent,
     EdadMascotaComponent,
-    RuletaPremiosComponent
+    RuletaPremiosComponent,
+    CumpleaniosComponent
   ],
   imports: [
     BrowserModule,

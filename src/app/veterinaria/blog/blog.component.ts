@@ -41,7 +41,7 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
       ¿Sabías que la edad de tu mascota no se calcula igual que la humana? 
       Aquí te ayudamos a conocer cuántos años "humanos" tiene tu perro o gato.
     `,
-    fecha: new Date(2025, 7, 30),
+    fecha: new Date(2025, 1, 26),
     autor: 'MVZ Ana Gómez',
     imagenes: [
       'https://urgenciesveterinaries.com/wp-content/uploads/2021/03/perros-braquicefalos-survet-01.jpg'
@@ -59,7 +59,7 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
         Descubre las sorpresas que BeagleGiggle tiene preparadas para celebrar su día especial. 
         Desde premios hasta recomendaciones personalizadas.
       `,
-      fecha: new Date(2025, 7, 30),
+      fecha: new Date(2025, 2, 30),
       autor: 'MVZ Ana Gómez',
       imagenes: [
         'https://www.wasky.es/wp-content/uploads/cabecera-60.jpg'
