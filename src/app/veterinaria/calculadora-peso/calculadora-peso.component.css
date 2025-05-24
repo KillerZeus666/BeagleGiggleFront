@@ -1,0 +1,66 @@
+.calculadora-peso {
+  background: #fefefe;
+  margin-top: 100px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #2a4e68;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.calculadora-peso h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.calculadora-peso p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.formulario-peso {
+  display: grid;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.formulario-peso label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 500;
+}
+
+.formulario-peso input,
+.formulario-peso select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #2a4e68;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  background-color: #eaf4fc;
+  padding: 15px;
+  border-radius: 10px;
+  color: #2a4e68;
+}
+
+.imagen-final {
+  margin-top: 20px;
+  max-width: 100px;
+  opacity: 0.8;
+}

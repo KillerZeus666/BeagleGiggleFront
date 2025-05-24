@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<section class="calculadora-peso">
+  <h2>🐾 Calculadora de Peso Ideal</h2>
+  <p>Ingresa los datos de tu mascota y descubre si está en su peso ideal.</p>
+
+  <form class="formulario-peso">
+    <label>
+      Especie:
+      <select [(ngModel)]="especie" name="especie">
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+      </select>
+    </label>
+
+    <label>
+      Raza:
+      <input type="text" [(ngModel)]="raza" name="raza" placeholder="Ej. Labrador" />
+    </label>
+
+    <label>
+      Edad (años):
+      <input type="number" [(ngModel)]="edad" name="edad" min="0" />
+    </label>
+
+    <label>
+      Peso actual (kg):
+      <input type="number" [(ngModel)]="peso" name="peso" min="0" step="0.1" />
+    </label>
+
+    <button type="button" (click)="calcularPesoIdeal()">Calcular</button>
+  </form>
+
+  <div *ngIf="resultado" class="resultado">
+    <p>{{ resultado }}</p>
+  </div>
+
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="mascota feliz" class="imagen-final" />
+</section>

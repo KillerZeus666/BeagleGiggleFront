@@ -80,7 +80,25 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
       ],
       ruta: '/generador-nombres',
       incluyeGeneradorNombres: true
-    }
+    },
+    {
+    id: 'calculadora-peso',
+    titulo: '¿Tu mascota está en su peso ideal?',
+    descripcion: `
+      ¡Descúbrelo ahora! ⚖️🐶🐱
+      Con nuestra calculadora de peso ideal puedes saber si tu perro o gato está en un rango saludable de peso.
+      Solo ingresa su edad, raza, especie y peso actual, y obtendrás una recomendación útil y fácil de entender.
+      ¡Cuida su salud con solo unos clics!
+    `,
+    fecha: new Date(2025, 4, 24),
+    autor: 'Dra. Camila Suárez',
+    imagenes: [
+      'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2022/03/28/62420b2966e43.jpeg'
+    ],
+    ruta: '/calculadora-peso',
+    incluyeCalculadoraPeso: true
+  }
+
   ].sort((a, b) => b.fecha.getTime() - a.fecha.getTime()); // Orden descendente por fecha
 
   constructor(private router: Router) {}
