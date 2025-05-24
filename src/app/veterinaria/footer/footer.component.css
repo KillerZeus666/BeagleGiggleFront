@@ -22,14 +22,13 @@ footer {
 
 /* 🔹 Barra superior */
 .footer-top-bar {
-  background-color: #1e80b9;
+  background-color: #72c0ea;
   color: black;
   font-weight: 600;
   text-align: center;
   padding: 10px 0;
   font-size: 16px;
   letter-spacing: 1px;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .footer-top-bar img {
