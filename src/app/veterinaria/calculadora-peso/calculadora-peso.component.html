@@ -1,39 +1,39 @@
+
 <app-header></app-header>
 
-<section class="calculadora-peso">
-  <h2>🐾 Calculadora de Peso Ideal</h2>
-  <p>Ingresa los datos de tu mascota y descubre si está en su peso ideal.</p>
-
-  <form class="formulario-peso">
-    <label>
-      Especie:
-      <select [(ngModel)]="especie" name="especie">
-        <option value="perro">Perro</option>
-        <option value="gato">Gato</option>
-      </select>
-    </label>
-
-    <label>
-      Raza:
-      <input type="text" [(ngModel)]="raza" name="raza" placeholder="Ej. Labrador" />
-    </label>
-
-    <label>
-      Edad (años):
-      <input type="number" [(ngModel)]="edad" name="edad" min="0" />
-    </label>
-
-    <label>
-      Peso actual (kg):
-      <input type="number" [(ngModel)]="peso" name="peso" min="0" step="0.1" />
-    </label>
-
-    <button type="button" (click)="calcularPesoIdeal()">Calcular</button>
-  </form>
-
-  <div *ngIf="resultado" class="resultado">
-    <p>{{ resultado }}</p>
+<section class="peso-natural">
+  <div class="texto-intro">
+    <h2>¿Tu mascota está en su peso ideal?</h2>
+    <p>Calcula rápidamente el peso ideal de tu peludito según su especie y tamaño.</p>
   </div>
 
-  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="mascota feliz" class="imagen-final" />
+  <div class="contenedor-flex">
+    <div class="formulario">
+      <label>Especie:
+        <select [(ngModel)]="especie">
+          <option value="perro">Perro</option>
+          <option value="gato">Gato</option>
+        </select>
+      </label>
+
+      <label *ngIf="especie === 'perro'">Tamaño:
+        <select [(ngModel)]="tamano">
+          <option value="pequeño">Pequeño</option>
+          <option value="mediano">Mediano</option>
+          <option value="grande">Grande</option>
+        </select>
+      </label>
+
+      <label>Peso actual (kg):
+        <input type="number" [(ngModel)]="pesoActual" />
+      </label>
+
+      <button (click)="calcularPesoIdeal()">Calcular</button>
+    </div>
+
+    <div *ngIf="mensaje" class="resultado">
+      <img [src]="imagenResultado" alt="Estado" />
+      <p><strong>{{ mensaje }}</strong></p>
+    </div>
+  </div>
 </section>

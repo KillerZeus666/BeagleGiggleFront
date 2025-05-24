@@ -6,35 +6,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculadora-peso.component.css']
 })
 export class CalculadoraPesoComponent {
-  especie = 'perro';
-  raza = '';
-  edad = 0;
-  peso = 0;
-  resultado = '';
+  pesoActual: number = 0;
+especie: string = '';
+tamano: string = '';
+mensaje: string = '';
+imagenResultado: string = '';
 
-  calcularPesoIdeal() {
-    if (this.edad <= 0 || this.peso <= 0) {
-      this.resultado = 'Por favor, completa todos los campos con datos válidos.';
-      return;
-    }
+calcularPesoIdeal() {
+  let pesoIdealMin = 0;
+  let pesoIdealMax = 0;
 
-    let pesoIdealMin = 0;
-    let pesoIdealMax = 0;
-
-    if (this.especie === 'perro') {
-      pesoIdealMin = this.edad * 2;
-      pesoIdealMax = this.edad * 3;
-    } else if (this.especie === 'gato') {
-      pesoIdealMin = 3;
-      pesoIdealMax = 5;
-    }
-
-    if (this.peso < pesoIdealMin) {
-      this.resultado = 'Tu mascota podría estar por debajo de su peso ideal. 🐾 ¡Consulta a tu veterinario!';
-    } else if (this.peso > pesoIdealMax) {
-      this.resultado = 'Tu mascota podría tener sobrepeso. 💡 Considera una dieta o más actividad física.';
-    } else {
-      this.resultado = '¡Tu mascota está en su peso ideal! 🎉';
-    }
+  if (this.especie === 'perro') {
+    if (this.tamano === 'pequeño') [pesoIdealMin, pesoIdealMax] = [3, 7];
+    else if (this.tamano === 'mediano') [pesoIdealMin, pesoIdealMax] = [10, 20];
+    else if (this.tamano === 'grande') [pesoIdealMin, pesoIdealMax] = [25, 40];
+  } else if (this.especie === 'gato') {
+    [pesoIdealMin, pesoIdealMax] = [3, 6];
   }
+
+  if (this.pesoActual < pesoIdealMin) {
+    this.mensaje = 'Tu mascota está por debajo del peso ideal.';
+    this.imagenResultado = 'https://cdn-icons-png.flaticon.com/512/616/616408.png';
+  } else if (this.pesoActual > pesoIdealMax) {
+    this.mensaje = 'Tu mascota tiene sobrepeso.';
+    this.imagenResultado = 'https://cdn-icons-png.flaticon.com/512/616/616408.png';
+  } else {
+    this.mensaje = '¡Tu mascota está en su peso ideal!';
+    this.imagenResultado = 'https://cdn-icons-png.flaticon.com/512/616/616408.png';
+  }
+}
+
 }
