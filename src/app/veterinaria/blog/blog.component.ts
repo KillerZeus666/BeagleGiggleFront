@@ -44,7 +44,7 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
     fecha: new Date(2025, 7, 30),
     autor: 'MVZ Ana Gómez',
     imagenes: [
-      'https://www.wasky.es/wp-content/uploads/cabecera-60.jpg'
+      'https://urgenciesveterinaries.com/wp-content/uploads/2021/03/perros-braquicefalos-survet-01.jpg'
     ],
     ruta: '/edad-humana-mascota',
 
@@ -52,19 +52,24 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
     incluyeCalculadoraEdad: true
      },
     {
-      id: 'ejercicio-estimulacion-cachorros',
-      titulo: 'Ejercicio y estimulación mental para cachorros',
-      descripcion: `Los cachorros necesitan más que cariño: requieren ejercicio físico y mental para crecer fuertes y felices. Juegos de búsqueda, caminatas cortas y juguetes interactivos ayudan a desarrollar su inteligencia y controlar la energía. 
-      
-      Esto previene comportamientos destructivos y favorece una mejor adaptación social.`,
-      fecha: new Date(2025, 7, 20),
-      autor: 'Lic. Ana María Torres',
+      id: 'cumpleanios-mascota',
+      titulo: '¡Tu mascota está de cumpleaños!',
+      descripcion: `
+        ¿Hoy es el cumpleaños de tu peludo? 🎉 
+        Descubre las sorpresas que BeagleGiggle tiene preparadas para celebrar su día especial. 
+        Desde premios hasta recomendaciones personalizadas.
+      `,
+      fecha: new Date(2025, 7, 30),
+      autor: 'MVZ Ana Gómez',
       imagenes: [
-        'https://www.novecan.com/blog/wp-content/uploads/2023/08/golden-retriever-dog-exercising-2023-08-03-16-56-10-utc.webp',
-        'https://www.zooplus.es/magazine/wp-content/uploads/2021/03/ejercicio-para-perros.jpeg'
+        'https://www.wasky.es/wp-content/uploads/cabecera-60.jpg'
       ],
-      ruta: '/playlist'
-    },
+      ruta: '/cumpleanios-mascota',
+
+      // Propiedad personalizada que podrías usar para mostrar contenido especial de cumpleaños
+      incluyeSorpresasCumple: true
+    }
+
 
   ];
 
