@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { VeterinarioCL } from 'src/app/model/veterinario-cl';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { Router } from '@angular/router';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-veterinario-table',
@@ -79,4 +82,22 @@ export class VeterinarioTableComponent implements OnInit {
         });
       }
     }
+
+    exportarExcel(): void {
+  const veterinariosExportar = this.veterinarioList.map(vet => ({
+    Nombre: vet.nombre,
+    Cédula: vet.cedula,
+    Especialidad: vet.especialidad,
+    Sede: vet.sede,
+    Estado: vet.estado === 1 ? 'Activo' : 'Inactivo'
+  }));
+
+  const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(veterinariosExportar);
+  const workbook: XLSX.WorkBook = { Sheets: { 'Veterinarios': worksheet }, SheetNames: ['Veterinarios'] };
+  const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+  const blob: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+  FileSaver.saveAs(blob, 'ListaVeterinarios.xlsx');
+}
+
 }
