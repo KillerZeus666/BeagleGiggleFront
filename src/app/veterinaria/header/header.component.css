@@ -61,20 +61,21 @@ header {
   }
   
   .login-btn {
-    background-color: #56a8d3;
+    background-color:#4fa9d5;
     color: rgb(0, 0, 0);
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
+    text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .login-btn:hover {
-    background-color: #477d9a;
+    background-color:#3d8db6;
     transform: scale(1.05);
   }
   
