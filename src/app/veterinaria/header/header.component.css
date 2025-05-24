@@ -153,3 +153,64 @@ header {
       margin-top: 10px;
     }
   }
+
+  .sos-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 5px;
+  transition: transform 0.2s ease;
+}
+
+.sos-btn:hover {
+  transform: scale(1.05);
+}
+
+.sos-btn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.sos-num {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sos-btn {
+  position: relative;
+}
+
+.sos-tooltip {
+  position: absolute;
+  bottom: -90px; /* Ajusta según tu diseño */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #333;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.sos-btn:hover .sos-tooltip {
+  opacity: 1;
+}

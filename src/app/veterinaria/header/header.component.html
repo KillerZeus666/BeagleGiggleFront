@@ -15,6 +15,8 @@
       </ul>
     </nav>
     
+   
+
     
     <div class="user-menu" [ngSwitch]="userType">
       <!-- Sección para Cliente -->
@@ -52,13 +54,27 @@
         </div>
       </div>
   
-      <!-- Opción de inicio de sesión si no hay usuario logueado -->
+      <!-- Dentro de *ngSwitchDefault*, justo después del botón de inicio de sesión -->
       <div *ngSwitchDefault class="user-menu">
+          <!-- Botón SOS -->
+        <a class="sos-btn" title="">
+          <img src="https://i.postimg.cc/CdpKrKD5/viber.png" alt="SOS" />
+          <span class="sos-num">+57 (315) 446-811</span>
+          <div class="sos-tooltip">
+            <strong>Línea de Emergencia</strong><br />
+            Esta es nuestra línea de emergencia. No dudes en llamarnos si tu mascota necesita ayuda.
+          </div>
+        </a>
+
+
+
         <a routerLink="/inicio-sesion" class="login-btn user-btn">
           <span>Iniciar sesión</span>
           <img src="https://i.postimg.cc/BvvZDsSr/proximo.png" 
-               alt="Icono de usuario" class="user-img" />
+              alt="Icono de usuario" class="user-img" />
         </a>
+      
       </div>
+
     </div>
   </header>
