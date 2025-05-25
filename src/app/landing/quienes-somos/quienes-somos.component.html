@@ -20,24 +20,5 @@
   </div>
 </section>
 
-<section class="sedes-section">
-  <h2 class="front">Nuestras Sedes</h2>
-  <div class="sedes-container">
-    <div class="sede-card" *ngFor="let sede of sedes" (click)="toggleFlip(sede)">
-      <div class="card-inner" [class.flipped]="sede.flipped">
-        <!-- Frontal -->
-        <div class="card-front">
-          <img [src]="sede.image" alt="{{ sede.name }}" />
-          <h3>{{ sede.name }}</h3>
-          <p>{{ sede.description }}</p>
-        </div>
-        <!-- Reverso -->
-        <div class="card-back">
-          <h3>Dirección</h3>
-          <p>{{ sede.address }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <app-presentacion-tienda></app-presentacion-tienda>
 

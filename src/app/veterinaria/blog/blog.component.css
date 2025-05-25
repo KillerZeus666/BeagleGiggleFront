@@ -1,7 +1,7 @@
 /* Contenedor principal */
 main {
   padding-top: 115px; /* altura del header */
-  max-width: 960px;
+  max-width: 1500px;
   margin: 0 auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #2a4e68;
@@ -51,7 +51,7 @@ main {
 /* Contenedor de las tarjetas */
 .articulos-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.8rem;
   padding: 0 1rem 3rem;
 }
