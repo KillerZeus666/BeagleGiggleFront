@@ -51,6 +51,7 @@ import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.comp
 import { GeneradorNombresComponent } from './veterinaria/generador-nombres/generador-nombres.component';
 import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calculadora-peso.component';
 import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
+import { ProductosComponent } from './veterinaria/productos/productos.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -104,6 +105,7 @@ const routes: Routes = [
   {path: 'generador-nombres', component: GeneradorNombresComponent},
   {path: 'calculadora-peso', component: CalculadoraPesoComponent},
   {path: 'publicacion', component: PublicacionComponent},
+  {path: 'productos', component: ProductosComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];
