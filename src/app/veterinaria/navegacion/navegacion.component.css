@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root {
@@ -36,6 +35,9 @@ body {
   overflow: hidden;
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .navigation.active {
@@ -62,7 +64,6 @@ body {
 
 .navigation ul li:nth-child(2) {
   margin-bottom: 40px;
-  pointer-events: none;
 }
 
 .navigation ul li a {
@@ -102,7 +103,7 @@ body {
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.3px;
-  color: var(--white);
+  color: black;
   transition: all 0.3s ease;
 }
 
@@ -165,7 +166,7 @@ body {
 /* Toggle Button */
 .toggle {
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: 5px;
   width: 45px;
   height: 45px;
