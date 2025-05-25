@@ -3,14 +3,13 @@
   <h2 class="subtitulo-tienda">Productos para perros y gatos con amor 💙</h2>
 
   <div class="productos-grid">
-    <div *ngFor="let producto of productos" class="producto-card">
-      <img *ngIf="producto.images && producto.images.length"
-           [src]="producto.images[0]"
-           alt="{{ producto.name }}"
-           class="producto-imagen" />
-      <h3 class="producto-nombre">{{ producto.name }}</h3>
-      <p class="producto-categoria">{{ producto.breadcrumb }}</p>
-      <p class="producto-precio">{{ producto.Price }}</p>
+    <div *ngFor="let producto of productos">
+      <div *ngIf="producto.images && producto.images.length > 0" class="producto-card">
+        <img [src]="producto.images[0]" alt="{{ producto.name }}" class="producto-imagen" />
+        <h3 class="producto-nombre">{{ producto.name }}</h3>
+        <!-- Mostrar precio convertido en COP -->
+        <p class="producto-precio">{{ producto.PriceCOP | currency:'COP':'symbol':'1.0-0' }}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -20,4 +20,5 @@ export interface Producto {
   feeding_instructions: string;
   uniq_id: string;
   scraped_at: string;
+  PriceCOP?: number;
 }
