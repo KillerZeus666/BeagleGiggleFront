@@ -159,4 +159,9 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
       });
     }
   }
+
+  getTestimonios(): string {
+  return '/testimonios';
+}
+
 }
