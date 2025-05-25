@@ -1,6 +1,7 @@
 .tienda-container {
   width: 100vw;       /* ancho total de la ventana */
-  height: 100vh;      /* altura total de la ventana */
+  height: 100vh;
+  margin-top: 100px;      /* altura total de la ventana */
   padding: 50px 20px;
   background-color: #f0f6fb;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
