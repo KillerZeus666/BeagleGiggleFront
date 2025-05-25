@@ -58,26 +58,31 @@ export class CitaFormComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.userType = this.authService.getUserType();
-    const idCita = Number(this.route.snapshot.paramMap.get('id'));
-    
-    if (idCita) {
-      this.modoEdicion = true;
-      this.loadCita(idCita);
-    } else {
-      // Solo cargamos veterinario asignado si es veterinario
-      if (this.userType === 'Veterinario') {
-        this.idVeterinario = history.state.idVeterinario;
-        if (this.idVeterinario) {
-          this.loadVeterinario(this.idVeterinario);
-        }
+  this.userType = this.authService.getUserType();
+  const idCitaParam = this.route.snapshot.paramMap.get('id');
+  const idCita = Number(idCitaParam);
+  console.log('idCitaParam:', idCitaParam, 'idCita:', idCita);
+
+  if (!isNaN(idCita) && idCita > 0) {
+    this.modoEdicion = true;
+    this.loadCita(idCita);
+    console.log('Modo edición de cita');
+  } else {
+    this.modoEdicion = false;
+    console.log('Modo creación de cita');
+    // Solo cargamos veterinario asignado si es veterinario
+    if (this.userType === 'Veterinario') {
+      this.idVeterinario = history.state.idVeterinario;
+      if (this.idVeterinario) {
+        this.loadVeterinario(this.idVeterinario);
       }
     }
-    
-    this.loadMascotas();
-    this.loadServicios();
-    this.loadVeterinarios(); // Esto carga la lista de veterinarios disponibles
   }
+
+  this.loadMascotas();
+  this.loadServicios();
+  this.loadVeterinarios();
+}
 
 
   private loadCita(idCita: number): void {
@@ -169,10 +174,13 @@ export class CitaFormComponent implements OnInit{
 
   guardarCita(): void {
     this.markAllAsTouched();
-    
+    console.log(this.modoEdicion ? 'Editando cita' : 'Creando cita');
     // Validate the form
     const validation = this.Formcita.validate();
     if (!validation.isValid) {
+      console.warn('Errores de validación:', validation.errors);
+      this.errors = validation.errors;
+      alert('Errores de validación: ' + validation.errors.join(', '));
       this.errors = validation.errors;
       return;
     }
@@ -188,8 +196,10 @@ export class CitaFormComponent implements OnInit{
     }
 
     if (this.modoEdicion) {
+      console.log('Modo edición');
       this.updateCita();
     } else {
+      console.log('Modo creación');
       this.createCita();
     }
   }
@@ -212,9 +222,11 @@ export class CitaFormComponent implements OnInit{
   }
 
   private createCita(): void {
-    this.citaService.crearCita(this.Formcita.toBackendFormat()).subscribe({
-      next: (response) => {
+    console.log('Enviando cita:', this.Formcita); // <-- Añade esto
+    this.citaService.crearCita(this.Formcita).subscribe({
+      next: () => {
         window.history.back();
+        alert('Cita creada correctamente');
       },
       error: (err) => {
         console.error('Error creating appointment:', err);
