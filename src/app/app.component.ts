@@ -10,7 +10,6 @@ export class AppComponent {
   userType = 'Administrador';
 
   constructor() {
-    console.log("User Type:", this.userType); // Verifica el valor en la consola
+    console.log("User Type:", this.userType);
   }
 }
-

@@ -2,22 +2,18 @@
 
 <!-- Sección Hero/Carrusel -->
 <section #section class="description-section">
+  <div *ngFor="let item of carouselItems; let i = index" 
+       class="slide-background" 
+       [class.active]="i === currentSlide"
+       [style.background-image]="'url(' + item.background + ')'">
+  </div>
+  
   <div class="overlay"></div>
   <div class="description-text">
     <h1>{{ carouselItems[currentSlide].title }}</h1>
     <p>{{ carouselItems[currentSlide].description }}</p>
   </div>
-
-  <!-- Controles del carrusel
-  <div class="carousel-nav">
-    <button class="carousel-prev" (click)="prevSlide()" aria-label="Anterior">
-      <ion-icon name="chevron-back-outline"></ion-icon>
-    </button>
-    <button class="carousel-next" (click)="nextSlide()" aria-label="Siguiente">
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </button>
-  </div>-->
-
+  
   <!-- Indicadores del carrusel -->
   <div class="carousel-indicators">
     <span *ngFor="let item of carouselItems; let i = index"
@@ -30,75 +26,38 @@
 </section>
 
 <main>
-
-
   <!-- Sección de Quiénes Somos -->
   <section #section id="conocenos">
     <app-quienes-somos></app-quienes-somos>
   </section>
 
   <!-- Sección de Ayuda -->
-  <section #section id="ayuda" >
+  <section #section id="ayuda">
     <app-ayuda-section></app-ayuda-section>
   </section>
 
-    <!-- Sección de Servicios -->
-   <section #section id="servicios">
+  <!-- Sección de Servicios -->
+  <section #section id="servicios">
     <app-servicios></app-servicios>
-   </section>
-
+  </section>
 
   <!-- Sección de Ofertas -->
   <section #section id="ofertas">
     <app-ofertas></app-ofertas>
-    <img src="https://media1.giphy.com/media/VSTPSY8NeIY2SNNHnH/giphy.gif?cid=6c09b952d61erpnfhq1l6bxp41cqphbjvpyqcqa9b4azqtp4&ep=v1_stickers_search&rid=giphy.gif&ct=s" alt="Perro corriendo" class="perrito">
+    <img
+      src="https://media1.giphy.com/media/VSTPSY8NeIY2SNNHnH/giphy.gif?cid=6c09b952d61erpnfhq1l6bxp41cqphbjvpyqcqa9b4azqtp4&ep=v1_stickers_search&rid=giphy.gif&ct=s"
+      alt="Perro corriendo"
+      class="perrito"
+    />
   </section>
-
 
   <!-- Sección de Preguntas Frecuentes -->
   <section #section id="preguntas">
     <app-preguntas></app-preguntas>
   </section>
 
-
-<!-- Sección de Testimonios -->
-<section id="testimonios" class="testimonials-section">
-  <h2 class="front">Testimonios de clientes</h2>
-
-  <div *ngIf="isLoadingTestimonios" class="loading-spinner">
-    <div class="spinner"></div>
-    <p>Cargando testimonios...</p>
-  </div>
-
-  <div *ngIf="errorTestimonios" class="error-message">
-    {{ errorTestimonios }}
-    <button (click)="reintentarCarga()">Reintentar</button>
-  </div>
-  <div class="testimonial-grid" *ngIf="!isLoadingTestimonios && !errorTestimonios">
-    <div class="testimonial" *ngFor="let testimonio of testimonios">
-      <div class="testimonial-content">
-        <img
-          [src]="testimonio.cliente.foto || 'assets/images/default-avatar.png'"
-          [alt]="testimonio.cliente.nombre"
-          class="testimonial-image"
-        />
-        <div class="testimonial-details">
-          <p class="testimonial-text">"{{ testimonio.texto }}"</p>
-          <div class="testimonial-meta">
-            <span class="testimonial-client">{{ testimonio.cliente.nombre }}</span>
-            <span class="testimonial-service">- {{ testimonio.servicio.nombre }}</span>
-          </div>
-          <div class="testimonial-rating">
-            {{ getRatingStars(testimonio) }}
-          </div>
-          <div class="testimonial-date">
-            {{ formatDate(testimonio) }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- Sección de testimonios -->
+  <app-testimonios></app-testimonios>
 
   <!-- Sección de BeagleMatch -->
   <app-beagle-match></app-beagle-match>
@@ -109,8 +68,6 @@
   <section #section id="contactanos" class="contact-section">
     <app-contactanos></app-contactanos>
   </section>
-
-
 </main>
 
 <!-- Botón flotante de WhatsApp -->
@@ -118,9 +75,12 @@
   href="https://wa.me/15551810446?text=Hola%20quiero%20agendar%20una%20cita"
   class="whatsapp-float"
   target="_blank"
-  aria-label="Chat en WhatsApp">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  aria-label="Chat en WhatsApp"
+>
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+    alt="WhatsApp"
+  />
   <span class="whatsapp-tooltip">¡Agenda tu cita!</span>
-
 </a>
 <app-footer></app-footer>

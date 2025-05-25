@@ -10,11 +10,13 @@
   --gray: #f5f5f5;
   --black1: #222;
   --black2: #999;
+  --hover-blue: #1a85c5;
 }
 
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: #f8f9fa;
 }
 
 .container {
@@ -29,19 +31,17 @@ body {
   height: 100%;
   background: var(--blue);
   border-left: 10px solid var(--blue);
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
   overflow: hidden;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .navigation.active {
-  width: 80px;
-}
-
-app-navegacion {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  width: 65px;
 }
 
 .navigation ul {
@@ -49,6 +49,7 @@ app-navegacion {
   top: 0;
   left: 0;
   width: 100%;
+  padding-top: 20px;
 }
 
 .navigation ul li {
@@ -57,107 +58,150 @@ app-navegacion {
   list-style: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
 }
 
-.navigation ul li:hover,
-.navigation ul li.hovered {
-  background-color: var(--white);
-}
-
-.navigation ul li:nth-child(1) {
+.navigation ul li:nth-child(2) {
   margin-bottom: 40px;
-  pointer-events: none;
 }
 
 .navigation ul li a {
   position: relative;
-  display: block;
-  width: 100%;
   display: flex;
+  width: 100%;
   text-decoration: none;
   color: var(--white);
-  margin-bottom: 30px;
-}
-
-.navigation ul li:hover a,
-.navigation ul li.hovered a {
-  color: var(--blue);
+  padding: 12px 0;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
 .navigation ul li a .icon {
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 60px;
-  height: 60px;
-  line-height: 75px;
-  text-align: center;
+  height: 40px;
 }
 
 .navigation ul li a .icon ion-icon {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
 }
 
 .navigation ul li a .title {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 10px;
-  height: 60px;
-  line-height: 60px;
+  padding: 0 15px 0 0;
+  height: 40px;
+  line-height: 1.3;
   text-align: start;
   white-space: nowrap;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   color: black;
+  transition: all 0.3s ease;
 }
 
 .navigation ul li a .title img {
   width: 40px;
   height: 40px;
   object-fit: cover;
+  margin-right: 10px;
 }
 
-.navigation ul li a .title span {
-  font-size: 18px;
-  font-weight: 500;
+/* Hover Effects */
+.navigation ul li:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* --------- curve outside ---------- */
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before {
-  content: "";
+.navigation ul li:not(.active):hover a .title,
+.navigation ul li:not(.active):hover a .icon ion-icon {
+  color: var(--white);
+  transform: translateX(3px);
+}
+
+/* Active Route Styles */
+.nav-link.active-route {
+  background-color: var(--white);
+  color: var(--blue) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link.active-route .icon ion-icon,
+.nav-link.active-route .title {
+  color: var(--blue) !important;
+  font-weight: 600;
+}
+
+.nav-link.active-route::before {
+  content: '';
   position: absolute;
-  right: 0;
-  top: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px 35px 0 10px var(--white);
-  pointer-events: none;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 4px;
+  background-color: var(--blue);
+  border-radius: 0 4px 4px 0;
 }
 
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
-  content: "";
+.navigation li.active {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Logo Styles */
+.nav-logo {
+  height: 32px;
+  margin-right: 12px;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+/* Toggle Button */
+.toggle {
   position: absolute;
-  right: 0;
-  bottom: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
+  top: 30px;
+  left: 5px;
+  width: 45px;
+  height: 45px;
+  background: var(--white);
+  color: var(--blue);
   border-radius: 50%;
-  box-shadow: 35px -35px 0 10px var(--white);
-  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
-/* ===================== Main ===================== */
+.toggle:hover {
+  background: var(--gray);
+  transform: scale(1.05);
+}
+
+.toggle ion-icon {
+  font-size: 1.8rem;
+  color: var(--blue);
+  transition: all 0.3s ease;
+}
+
+/* ===================== Main Content ===================== */
 .main {
   position: absolute;
   width: calc(100% - 300px);
   left: 300px;
   min-height: 100vh;
   background: var(--white);
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
+  padding: 20px;
 }
 
 .main.active {
@@ -167,11 +211,15 @@ app-navegacion {
 
 .topbar {
   width: 100%;
-  height: 60px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 20px;
+  background: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .search {
@@ -187,29 +235,43 @@ app-navegacion {
 
 .search label input {
   width: 100%;
-  height: 40px;
-  border-radius: 40px;
-  padding: 5px 20px;
-  padding-left: 35px;
-  font-size: 18px;
+  height: 45px;
+  border-radius: 25px;
+  padding: 5px 25px 5px 45px;
+  font-size: 1rem;
   outline: none;
   border: 1px solid var(--black2);
+  transition: all 0.3s ease;
+}
+
+.search label input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(29, 149, 219, 0.2);
 }
 
 .search label ion-icon {
   position: absolute;
-  top: 0;
-  left: 10px;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
   font-size: 1.2rem;
+  color: var(--black2);
 }
 
 .user {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid var(--gray);
+}
+
+.user:hover {
+  transform: scale(1.05);
+  border-color: var(--blue);
 }
 
 .user img {
@@ -221,43 +283,64 @@ app-navegacion {
   object-fit: cover;
 }
 
-/* =============== Botón hamburguesa mejorado =============== */
-.toggle {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 45px;
-  height: 45px;
-  background: var(--white);
-  color: var(--blue);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 2000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: background 0.3s ease;
+/* Responsive Design */
+@media (max-width: 992px) {
+  .navigation {
+    width: 250px;
+  }
+  .main {
+    width: calc(100% - 250px);
+    left: 250px;
+  }
+  .search {
+    width: 300px;
+  }
 }
 
-.toggle:hover {
-  background: var(--gray);
-}
-
-.toggle ion-icon {
-  font-size: 28px;
-  color: var(--blue);
-}
-
-/* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
+  .navigation {
+    width: 80px;
+  }
+  .navigation.active {
+    width: 300px;
+  }
+  .main {
+    width: calc(100% - 80px);
+    left: 80px;
+  }
+  .main.active {
+    width: calc(100% - 300px);
+    left: 300px;
+  }
+  .search {
+    width: 200px;
+  }
+  .navigation ul li a .title {
+    display: none;
+  }
+  .navigation.active ul li a .title {
+    display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .topbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px;
+  }
+  .search {
+    width: 100%;
+    margin: 10px 0;
+  order: 3;
+  }
   .toggle {
-    top: 10px;
-    left: 10px;
+    top: 15px;
+    left: 15px;
     width: 40px;
     height: 40px;
   }
   .toggle ion-icon {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }

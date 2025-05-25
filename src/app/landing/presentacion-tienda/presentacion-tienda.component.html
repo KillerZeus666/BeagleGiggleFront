@@ -1,0 +1,26 @@
+<div class="beaglestore-container">
+  <div class="left-section">
+    <h1>BeagleStore</h1>
+    <p class="subtitle">
+      Conoce los productos que solo puedes adquirir en nuestras tiendas.
+    </p>
+    <button (click)="goToProductos()">Ver productos</button>
+    <img
+      class="store-image"
+      src="https://img.freepik.com/premium-photo/beagle-pet-store-aisle-looking-curiously-products_931778-36870.jpg"
+      alt="Imagen tienda BeagleStore"
+    />
+  </div>
+
+  <div class="right-section">
+    <h2>Nuestras Sedes</h2>
+    <div class="sede-card" *ngFor="let sede of sedes">
+      <img class="sede-img" [src]="sede.image" [alt]="sede.name" />
+      <div class="sede-info">
+        <h3>{{ sede.name }}</h3>
+        <p class="description">{{ sede.description }}</p>
+        <p class="address">{{ sede.address }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,11 +6,13 @@
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
+    padding-top: 25px;
     background-color: #f4f8fb; /* Fondo claro */
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
     position: relative;
+    padding-bottom: 0px;
 }
 
 /* Pseudo-elemento para la opacidad */
@@ -30,6 +32,7 @@
 .formularioContainer {
     background: white;
     padding: 30px;
+    padding-bottom: 0px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -101,7 +104,7 @@ button:hover {
 /* Enlace de registro */
 .registro {
     margin-top: 15px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .registro a {
@@ -140,7 +143,7 @@ input:-webkit-autofill {
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: 0 0 0px 1000px white inset !important;
 }
-/* Añade esto a tu CSS para mejorar el estilo del select */
+
 select {
   width: 100%;
   padding: 12px;
