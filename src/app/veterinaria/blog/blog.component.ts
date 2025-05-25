@@ -97,7 +97,25 @@ Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir c
     ],
     ruta: '/calculadora-peso',
     incluyeCalculadoraPeso: true
+  },
+  {
+    id: 'publicacion',
+    titulo:'¿Perdiste o encontraste una mascota?',
+    descripcion: `
+      ¡Descúbrelo ahora! ⚖️🐶🐱
+      Con nuestra calculadora de peso ideal puedes saber si tu perro o gato está en un rango saludable de peso.
+      Solo ingresa su edad, raza, especie y peso actual, y obtendrás una recomendación útil y fácil de entender.
+      ¡Cuida su salud con solo unos clics!
+    `,
+    fecha: new Date(2025, 2, 26),
+    autor: 'Equipo BeagleGiggle',
+    imagenes: [
+      'https://media.istockphoto.com/id/1346490163/es/foto/divertido-perro-beagle-mira-atentamente-en-una-lupa.jpg?s=612x612&w=0&k=20&c=wHDUJOoEU_ZjgDMAY9eruZlS8_rF7uTZQ6oxtbK0fF8='
+    ],
+    ruta: '/publicacion',
+    incluyeCalculadoraPeso: true
   }
+
 
   ].sort((a, b) => b.fecha.getTime() - a.fecha.getTime()); // Orden descendente por fecha
 
