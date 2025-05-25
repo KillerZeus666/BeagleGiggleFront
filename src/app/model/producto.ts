@@ -21,4 +21,6 @@ export interface Producto {
   uniq_id: string;
   scraped_at: string;
   PriceCOP?: number;
+  type: 'Dog' | 'Cat';
+
 }

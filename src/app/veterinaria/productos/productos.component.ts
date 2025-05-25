@@ -8,59 +8,86 @@ import { ProductosService } from 'src/app/service/productos.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  productos: (Producto & { PriceCOP: number, images: string[] })[] = [];
+  productos: (Producto & { PriceCOP: number, images: string[], categoriaDetectada: string })[] = [];
+  todosLosProductos: (Producto & { PriceCOP: number, images: string[], categoriaDetectada: string })[] = [];
   tasaCambio: number = 3900;
   favoritos: Producto[] = [];
 
+  // Variables para filtros
+  categoriaSeleccionada: string = '';
+  precioMaximo: number | null = null;
+  categorias: string[] = [];
 
   constructor(private productosService: ProductosService) {}
 
   ngOnInit(): void {
     this.productosService.getProductos().subscribe(data => {
-      this.productos = data
-        .map(p => {
-          let imagenes: string[] = [];
-          try {
-            imagenes = typeof p.images === 'string'
-              ? JSON.parse(p.images.replace(/'/g, '"'))
-              : p.images;
-          } catch (e) {
-            console.error('Error al parsear imágenes', p.images);
-          }
+      const productosProcesados = data.map(p => {
+        let imagenes: string[] = [];
+        try {
+          imagenes = typeof p.images === 'string'
+            ? JSON.parse(p.images.replace(/'/g, '"'))
+            : p.images;
+        } catch (e) {
+          console.error('Error al parsear imágenes', p.images);
+        }
 
-          // Limpiar el string para dejar solo números y punto decimal
-          const precioString = p.Price.toString().replace(/[^0-9.]/g, '');
-          const precioNumero = parseFloat(precioString);
+        const precioString = p.Price.toString().replace(/[^0-9.]/g, '');
+        const precioNumero = parseFloat(precioString);
 
-          console.log('Precio original:', p.Price, 'Precio limpio:', precioString, 'Precio número:', precioNumero);
+        // Detectar categoría desde breadcrumb
+        let categoria = '';
+        const breadcrumbLower = (p.breadcrumb || '').toLowerCase();
+        if (breadcrumbLower.includes('dog')) {
+          categoria = 'Perros';
+        } else if (breadcrumbLower.includes('cat')) {
+          categoria = 'Gatos';
+        } else {
+          categoria = 'Otros';
+        }
 
-          return {
-            ...p,
-            images: imagenes,
-            PriceCOP: isNaN(precioNumero) ? 0 : precioNumero * this.tasaCambio
-          };
-        })
-        .filter(p => p.images && p.images.length > 0);
+        return {
+          ...p,
+          images: imagenes,
+          PriceCOP: isNaN(precioNumero) ? 0 : precioNumero * this.tasaCambio,
+          categoriaDetectada: categoria
+        };
+      });
+
+      // Filtrar productos válidos (con imágenes)
+      this.todosLosProductos = productosProcesados.filter(p => p.images.length > 0);
+      this.productos = [...this.todosLosProductos];
+
+      // Extraer categorías únicas
+      this.categorias = [...new Set(this.todosLosProductos.map(p => p.categoriaDetectada))];
     });
   }
 
-   agregarAFavoritos(producto: Producto) {
-    if (!this.favoritos.find(p => p.name === producto.name)) {
-      this.favoritos.push(producto);
-      alert(`${producto.name} agregado a favoritos! 💙`);
-    }
+  filtrarProductos() {
+    this.productos = this.todosLosProductos.filter(p => {
+      const coincideCategoria = this.categoriaSeleccionada ? p.categoriaDetectada === this.categoriaSeleccionada : true;
+      const coincidePrecio = this.precioMaximo ? p.PriceCOP <= this.precioMaximo : true;
+      return coincideCategoria && coincidePrecio;
+    });
   }
-    esFavorito(producto: Producto): boolean {
+
+  resetFiltros() {
+    this.categoriaSeleccionada = '';
+    this.precioMaximo = null;
+    this.productos = [...this.todosLosProductos];
+  }
+
+  esFavorito(producto: Producto): boolean {
     return this.favoritos.some(p => p.name === producto.name);
   }
 
-  toggleFavorito(producto: Producto) {
-    if (this.esFavorito(producto)) {
-      // Quitar de favoritos
-      this.favoritos = this.favoritos.filter(p => p.name !== producto.name);
-    } else {
-      // Agregar a favoritos
-      this.favoritos.push(producto);
-    }
+ toggleFavorito(producto: Producto): void {
+  if (this.esFavorito(producto)) {
+    this.favoritos = this.favoritos.filter(p => p.uniq_id !== producto.uniq_id);
+  } else {
+    this.favoritos.push(producto);
   }
+  // No llamar a notificaciones ni alertas aquí.
+}
+
 }

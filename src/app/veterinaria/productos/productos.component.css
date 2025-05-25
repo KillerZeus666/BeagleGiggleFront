@@ -1,54 +1,82 @@
 .tienda-container {
-  width: 100vw;       /* ancho total de la ventana */
+  width: 100vw;
   height: 100vh;
-  margin-top: 100px;      /* altura total de la ventana */
+  margin-top: 100px;
   padding: 50px 20px;
   background-color: #f0f6fb;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #1b3a57;
-  overflow-y: auto;   /* para que se pueda hacer scroll si hay mucho contenido */
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
-
-.titulo-tienda {
+.filtros-container {
   text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #0e2a47; /* azul muy profundo */
-  letter-spacing: 1px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
 }
 
-.subtitulo-tienda {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-  font-weight: 400;
-  color: #4a7099; /* azul grisáceo */
+.filtro-label {
+  font-weight: 600;
+  color: #0e2a47;
+  margin-right: 6px;
+}
+
+.filtro-select,
+.filtro-input {
+  padding: 8px 12px;
+  border: 1px solid #186ba8;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #1b3a57;
+}
+
+.filtro-input {
+  width: 140px;
+}
+
+.btn-reset {
+  background-color: #e6f2fb;
+  border: 1px solid #186ba8;
+  color: #186ba8;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-reset:hover {
+  background-color: #cde6f9;
 }
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* máximo 4 por fila */
   gap: 30px;
+  padding: 0 20px;
+  justify-content: center;
 }
 
 .producto-card {
+  position: relative; /* para posicionar el botón favorito */
   background-color: #ffffff;
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(18, 55, 82, 0.1);
   padding: 24px 20px 28px;
   text-align: center;
-  cursor: pointer;
-  position: relative;
-  transition: box-shadow 0.3s ease, transform 0.25s ease;
   height: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 15px;
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
 }
 
 .producto-card:hover {
@@ -56,7 +84,6 @@
   transform: translateY(-6px);
 }
 
-/* Línea degradada azul arriba */
 .producto-card::before {
   content: "";
   position: absolute;
@@ -75,8 +102,6 @@
   object-fit: contain;
   border-radius: 12px;
   background-color: #fefefe;
-  flex-shrink: 0;
-  margin-bottom: 12px;
   box-shadow: 0 4px 10px rgba(42, 149, 215, 0.15);
 }
 
@@ -90,64 +115,31 @@
 }
 
 .producto-precio {
-  font-size: 1.3rem;
-  font-weight: 700;
+  margin: 4px 0;
   color: #0e3a6f;
-  border-top: 1px solid #d0dbec;
-  padding-top: 14px;
-  margin-top: auto;
-  width: 100%;
-  text-align: center;
 }
 
-/* Botón elegante azul */
-.btn-comprar {
-  margin-top: 15px;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #3b82f6 0%, #1e40af 100%);
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-comprar:hover {
-  background: linear-gradient(90deg, #2563eb 0%, #1e3a8a 100%);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
-}
 .btn-favorito {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: transparent;
+  top: 16px;
+  right: 16px;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50%;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-favorito:hover {
   background-color: rgba(24, 107, 168, 0.15);
-  stroke: #0e3a6f; /* cambia el color del borde del SVG al hacer hover */
 }
 
-.btn-favorito svg {
-  stroke: #186ba8;
+.icon-corazon {
   width: 24px;
   height: 24px;
-  transition: stroke 0.3s ease;
-}
-.productos-grid {
-  display: grid;
-  /* Forzar 4 columnas iguales */
-  grid-template-columns: repeat(4, 1fr);
-  /* Espacio entre filas y columnas */
-  gap: 30px 20px; /* 30px vertical, 20px horizontal */
-  padding: 0 20px; /* Un poco de padding a los lados */
-  justify-content: center; /* Centrar el grid si sobra espacio */
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
