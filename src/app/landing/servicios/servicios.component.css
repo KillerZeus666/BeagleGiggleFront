@@ -1,98 +1,94 @@
 .servicios-wrapper {
   position: relative;
-  background-color: #e0f7ff; /* azul clarito */
+  background-color: #e0f7ff;
   overflow: hidden;
-  padding-bottom: 100px; /* da espacio para que se vean las olas debajo */
+  padding: 40px 0 100px;
 }
 
+/* Título */
 .titulo-servicios {
-    font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #2d3d5c; /* Puedes cambiar este color según tu preferencia */
-    margin-top: 40px; /* Añade más espacio en la parte superior */
-    margin-bottom: 20px; /* Mantén el espacio en la parte inferior */
-    letter-spacing: 2px;
-    font-size: 30px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2d3d5c;
+  margin: 0 0 30px;
+  padding: 0 20px;
 }
 
-
-
+/* Grid de servicios */
 .servicios-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-   z-index: 2;
-  padding: 30px 10px;
+  padding: 0 20px;
   max-width: 1200px;
-  margin: auto;
-  grid-auto-rows: minmax(140px, auto);
-  position: relative; /* Necesario para posicionar al perro dentro */
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
+/* Contenedor de cada tarjeta - CAMBIO CLAVE */
 .tarjeta-servicio {
   perspective: 1000px;
   width: 100%;
-  height: auto;
-  transition: transform 0.8s;
+  height: 140px; /* Altura fija */
+  margin: 0 auto; /* Centrado horizontal */
 }
 
+/* Tarjeta - CAMBIO CLAVE */
 .card {
   width: 100%;
   height: 100%;
   position: relative;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease;
   transform-style: preserve-3d;
-  border-radius: 12px; /* Bordes redondeados a la tarjeta */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform-origin: center center; /* Rotación desde el centro */
 }
 
 .tarjeta-servicio:hover .card {
-  transform: scale(1.05) rotateY(180deg); /* Efecto de escalado + giro */
+  transform: rotateY(180deg);
 }
 
-/* Comunes para frente y reverso */
+/* Estilos comunes para frente y reverso */
 .front, .back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
   display: flex;
-  align-items: center;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: all 0.3s ease; /* Transiciones suaves */
+  box-sizing: border-box; /* Incluye padding en dimensiones */
+  top: 0;
+  left: 0;
 }
 
 /* Frente de la tarjeta */
 .front {
   background-color: #ffffff;
-  padding: 10px;
+  padding: 15px;
   flex-direction: row;
+  align-items: center;
   gap: 15px;
-  border-radius: 12px; /* Borde redondeado en el frente */
 }
 
 .front img {
   width: 70px;
   height: 70px;
   object-fit: cover;
-  border-radius: 50%; /* Imagen redonda */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tarjeta-servicio:hover .front img {
-  transform: scale(1.1); /* Efecto de zoom en la imagen */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra al hacer hover */
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
 .front h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
   color: #2a4e68;
+  flex: 1;
 }
 
 /* Reverso de la tarjeta */
@@ -101,34 +97,37 @@
   transform: rotateY(180deg);
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 20px;
   text-align: center;
-  padding: 15px;
-  border-radius: 12px; /* Borde redondeado en el reverso */
 }
 
 .back p {
-  font-size: 14px;
+  font-size: 0.9rem;
   margin: 5px 0;
+  color: #333;
 }
 
 .back .precio {
   font-weight: bold;
-  color: #333;
-  font-size: 16px;
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #2a4e68;
 }
 
-.mensaje-cita {
-  font-size: 13px;
-  color: #444;
-  margin-top: 6px;
+/* Efecto hover para imágenes */
+.tarjeta-servicio:hover .front img {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 .perrito {
   position: absolute;
-  bottom: 0; /* Lo posiciona en la parte inferior de .servicios-container */
+  bottom: 0;
   left: 100%;
   width: 200px;
   animation: correr 5s infinite linear;
-  pointer-events: none; /* Para que no bloquee clics */
+  pointer-events: none;
 }
 
 @keyframes correr {
@@ -193,36 +192,32 @@
     }
 }
 
-/* Media Queries para Responsividad */
-
-/* Para dispositivos pequeños (móviles en orientación vertical) */
 @media (max-width: 768px) {
     .servicios-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .card {
-        width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
-        height: 300px; /* Ajustar el tamaño de las tarjetas */
+        width: 90%;
+        height: 300px;
     }
 
     .titulo-servicios {
-        font-size: 24px; /* Reducir el tamaño del título */
+        font-size: 24px;
     }
 }
 
-/* Para dispositivos más pequeños como móviles en orientación horizontal */
 @media (max-width: 480px) {
     .servicios-container {
-        grid-template-columns: 1fr; /* 1 columna en dispositivos más pequeños */
+        grid-template-columns: 1fr;
     }
 
     .card {
-        width: 95%; /* Ajustar el tamaño de las tarjetas */
-        height: 250px; /* Ajustar el tamaño de las tarjetas */
+        width: 95%;
+        height: 250px;
     }
 
     .titulo-servicios {
-        font-size: 20px; /* Reducir aún más el tamaño del título */
+        font-size: 20px;
     }
 }
