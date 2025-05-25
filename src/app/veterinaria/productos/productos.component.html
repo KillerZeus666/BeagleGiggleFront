@@ -1,9 +1,16 @@
-<div *ngFor="let producto of productos" class="producto">
-  <img *ngIf="producto.images && producto.images.length"
-       [src]="producto.images[0]"
-       alt="{{ producto.name }}"
-       width="150" />
-  <h3>{{ producto.name }}</h3>
-  <p>{{ producto.breadcrumb }}</p>
-  <p><strong>{{ producto.Price }}</strong></p>
+<div class="tienda-container">
+  <h1 class="titulo-tienda">🐾 Bienvenidos a PetCare Store 🐾</h1>
+  <h2 class="subtitulo-tienda">Productos para perros y gatos con amor 💙</h2>
+
+  <div class="productos-grid">
+    <div *ngFor="let producto of productos" class="producto-card">
+      <img *ngIf="producto.images && producto.images.length"
+           [src]="producto.images[0]"
+           alt="{{ producto.name }}"
+           class="producto-imagen" />
+      <h3 class="producto-nombre">{{ producto.name }}</h3>
+      <p class="producto-categoria">{{ producto.breadcrumb }}</p>
+      <p class="producto-precio">{{ producto.Price }}</p>
+    </div>
+  </div>
 </div>

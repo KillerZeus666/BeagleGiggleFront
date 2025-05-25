@@ -12,24 +12,24 @@ export class ProductosComponent implements OnInit {
 
   constructor(private productosService: ProductosService) {}
 
-  ngOnInit(): void {
-    this.productosService.getProductos().subscribe(data => {
-      this.productos = data.map(p => {
-        let imagenes = [];
-        try {
-          imagenes = typeof p.images === 'string'
-            ? JSON.parse(p.images.replace(/'/g, '"'))
-            : p.images;
-        } catch (e) {
-          console.error('Error al parsear imágenes', p.images);
-        }
+ngOnInit(): void {
+  this.productosService.getProductos().subscribe(data => {
+    this.productos = data.map(p => {
+      let imagenes = [];
+      try {
+        imagenes = typeof p.images === 'string'
+          ? JSON.parse(p.images.replace(/'/g, '"'))
+          : p.images;
+      } catch (e) {
+        console.error('Error al parsear imágenes', p.images);
+      }
 
-        return {
-          ...p,
-          images: imagenes
-        };
-      });
+      return {
+        ...p,
+        images: imagenes
+      };
     });
-  }
+  });
+}
 
 }
