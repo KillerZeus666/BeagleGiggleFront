@@ -1,103 +1,152 @@
 .tienda-container {
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100vw;       /* ancho total de la ventana */
+  height: 100vh;      /* altura total de la ventana */
   padding: 50px 20px;
-  background-color: #f5f9fc; /* fondo muy claro, casi blanco azulado */
+  background-color: #f0f6fb;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #1b3a57; /* azul oscuro muy elegante */
+  color: #1b3a57;
+  overflow-y: auto;   /* para que se pueda hacer scroll si hay mucho contenido */
+  box-sizing: border-box;
 }
+
 
 .titulo-tienda {
   text-align: center;
-  font-size: 2.8rem;
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 8px;
-  color: #16425b; /* azul profundo */
+  color: #0e2a47; /* azul muy profundo */
+  letter-spacing: 1px;
 }
 
 .subtitulo-tienda {
   text-align: center;
-  font-size: 1.4rem;
-  margin-bottom: 35px;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
   font-weight: 400;
-  color: #4a708b; /* azul grisáceo */
+  color: #4a7099; /* azul grisáceo */
 }
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 30px;
 }
 
 .producto-card {
-  background-color: #ffffff; /* blanco puro */
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(18, 55, 82, 0.07);
-  padding: 22px 18px 26px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(18, 55, 82, 0.1);
+  padding: 24px 20px 28px;
   text-align: center;
   cursor: pointer;
   position: relative;
-  transition: box-shadow 0.25s ease;
-  height: 400px; /* altura fija para que todas midan igual */
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
+  height: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 15px;
 }
 
 .producto-card:hover {
-  box-shadow: 0 6px 18px rgba(18, 55, 82, 0.12);
+  box-shadow: 0 14px 40px rgba(18, 55, 82, 0.18);
+  transform: translateY(-6px);
 }
 
-/* Línea azul arriba que cubre todo el ancho */
+/* Línea degradada azul arriba */
 .producto-card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #72c0ea 0%, #4a708b 100%);
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  height: 6px;
+  background: linear-gradient(90deg, #2a95d7 0%, #186ba8 100%);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
 }
 
 .producto-imagen {
-  width: 170px;
-  height: 170px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
-  border-radius: 10px;
-  background-color: #ffffff; /* mismo fondo blanco que la tarjeta */
+  border-radius: 12px;
+  background-color: #fefefe;
   flex-shrink: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 10px rgba(42, 149, 215, 0.15);
 }
 
 .producto-nombre {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   margin: 0;
-  color: #123752;
+  color: #134270;
   line-height: 1.3;
-  min-height: 3.2rem; /* altura fija para que no cambie tamaño de tarjeta */
-}
-
-.producto-categoria {
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: #567a9f;
-  margin: 0;
-  text-transform: capitalize;
-  min-height: 1.6rem; /* evitar salto de tamaño */
+  min-height: 3.6rem;
 }
 
 .producto-precio {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #16425b;
-  border-top: 1px solid #e1e8f0;
-  padding-top: 10px;
-  margin-top: auto; /* para que el precio quede siempre abajo */
+  color: #0e3a6f;
+  border-top: 1px solid #d0dbec;
+  padding-top: 14px;
+  margin-top: auto;
   width: 100%;
   text-align: center;
+}
+
+/* Botón elegante azul */
+.btn-comprar {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #1e3a8a 100%);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+}
+.btn-favorito {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-favorito:hover {
+  background-color: rgba(24, 107, 168, 0.15);
+  stroke: #0e3a6f; /* cambia el color del borde del SVG al hacer hover */
+}
+
+.btn-favorito svg {
+  stroke: #186ba8;
+  width: 24px;
+  height: 24px;
+  transition: stroke 0.3s ease;
+}
+.productos-grid {
+  display: grid;
+  /* Forzar 4 columnas iguales */
+  grid-template-columns: repeat(4, 1fr);
+  /* Espacio entre filas y columnas */
+  gap: 30px 20px; /* 30px vertical, 20px horizontal */
+  padding: 0 20px; /* Un poco de padding a los lados */
+  justify-content: center; /* Centrar el grid si sobra espacio */
 }

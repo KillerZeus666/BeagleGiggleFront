@@ -10,6 +10,8 @@ import { ProductosService } from 'src/app/service/productos.service';
 export class ProductosComponent implements OnInit {
   productos: (Producto & { PriceCOP: number, images: string[] })[] = [];
   tasaCambio: number = 3900;
+  favoritos: Producto[] = [];
+
 
   constructor(private productosService: ProductosService) {}
 
@@ -40,5 +42,25 @@ export class ProductosComponent implements OnInit {
         })
         .filter(p => p.images && p.images.length > 0);
     });
+  }
+
+   agregarAFavoritos(producto: Producto) {
+    if (!this.favoritos.find(p => p.name === producto.name)) {
+      this.favoritos.push(producto);
+      alert(`${producto.name} agregado a favoritos! 💙`);
+    }
+  }
+    esFavorito(producto: Producto): boolean {
+    return this.favoritos.some(p => p.name === producto.name);
+  }
+
+  toggleFavorito(producto: Producto) {
+    if (this.esFavorito(producto)) {
+      // Quitar de favoritos
+      this.favoritos = this.favoritos.filter(p => p.name !== producto.name);
+    } else {
+      // Agregar a favoritos
+      this.favoritos.push(producto);
+    }
   }
 }
