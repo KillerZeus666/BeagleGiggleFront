@@ -93,7 +93,7 @@
 
 /* Reverso de la tarjeta */
 .back {
-  background-color: #bddbec;
+  background-color:#8dcbed;
   transform: rotateY(180deg);
   flex-direction: column;
   justify-content: center;

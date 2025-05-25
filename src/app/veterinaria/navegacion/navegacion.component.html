@@ -110,6 +110,14 @@
     </li>
 
     <li *ngIf="userType === 'Cliente'">
+      <a [routerLink]="getTestimonios()" routerLinkActive="active-route" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+        <span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
+        <span class="title">Testimonios</span>
+      </a>
+    </li>
+
+
+    <li *ngIf="userType === 'Cliente'">
       <a [routerLink]="getFacturasCLiente()" routerLinkActive="active-route" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
         <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
         <span class="title">Facturas</span>

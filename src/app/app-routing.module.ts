@@ -52,6 +52,8 @@ import { GeneradorNombresComponent } from './veterinaria/generador-nombres/gener
 import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calculadora-peso.component';
 import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
 import { ProductosComponent } from './veterinaria/productos/productos.component';
+import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
+import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -106,6 +108,8 @@ const routes: Routes = [
   {path: 'calculadora-peso', component: CalculadoraPesoComponent},
   {path: 'publicacion', component: PublicacionComponent},
   {path: 'productos', component: ProductosComponent},
+  {path: 'testimonios', component: TestimoniosComponent},
+  {path: 'testimonios/:id', component: TestimoniosDetailComponent },
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

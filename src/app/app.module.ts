@@ -77,6 +77,8 @@ import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calcula
 import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
 import { ProductosComponent } from './veterinaria/productos/productos.component';
 import { PresentacionTiendaComponent } from './landing/presentacion-tienda/presentacion-tienda.component';
+import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
+import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
 
 registerLocaleData(localeEs);
 
@@ -150,7 +152,9 @@ registerLocaleData(localeEs);
     CalculadoraPesoComponent,
     PublicacionComponent,
     ProductosComponent,
-    PresentacionTiendaComponent
+    PresentacionTiendaComponent,
+    TestimoniosComponent,
+    TestimoniosDetailComponent
   ],
   imports: [
     BrowserModule,
