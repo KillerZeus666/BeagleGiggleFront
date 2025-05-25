@@ -1,63 +1,24 @@
-/* Estilos generales y reset */
-:root {
-  --primary-color: #3a7bd5;
-  --secondary-color: #00d2ff;
-  --accent-color: #e2b979;
-  --dark-color: #6e6e6e;  /* antes #909294 */
-  --light-color: #f8f9fa;
-  --text-color: #ffffff;
-  --text-light: #5a667a;  /* antes #4a5568 */
-  --white: #ffffff;
-  --black: #000000;
-}
-
-html, body {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-body {
+body { 
   font-family: 'Nunito Sans', sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--light-color);
-  overflow-x: hidden;
+  background-color: #e0f7ff; /* fondo pedido */
+  margin: 0;
+  padding: 0;
+  color: #4a4a4a;
 }
 
-/* Tipografía */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
-  line-height: 1.3;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
+.testimonials-section {
+  padding: 80px 20px;
+  background-color: #e0f7ff; /* mismo fondo para integración */
+  margin: 40px 0;
 }
 
 .front {
-  font-size: 28px; /* Un poco más grande */
-  color: #2a4e68;  /* Azul */
-  position: relative;
+  font-size: 28px;
   font-weight: bold;
+  color: #2d3d5c; /* color del título pedido */
   text-align: center;
-  margin: 0 auto 30px auto;
-  display: block; /* Para que ocupe todo el ancho disponible */
+  margin-bottom: 40px;
+  position: relative;
 }
 
 .front::after {
@@ -65,58 +26,71 @@ h1 {
   display: block;
   width: 60px;
   height: 4px;
-  background-color: #f39c12; /* Naranja */
-  margin: 8px auto 0 auto; /* Centrado horizontalmente */
+  background-color: #f39c12; /* naranja para la rayita */
+  margin: 10px auto 0;
   border-radius: 2px;
 }
 
-.testimonials-section {
-  padding: 80px 20px;
-  background-color: #e0f7ff;
-  margin: 40px 0;
-  position: relative;
-  overflow: hidden;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: #2d3d5c; /* color de títulos */
 }
 
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 0 10px;
 }
 
-
-
 .testimonial {
-  background: var(--white);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
+  background-color: #8dcbed; /* azul vibrante para tarjetas */
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(100, 115, 140, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  color: #000000; /* texto claro para buen contraste */
+}
+
+.testimonial:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(50, 100, 180, 0.3);
+}
+
+.testimonial::before {
+  content: "“";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 80px;
+  color: rgba(240, 247, 255, 0.3); /* marca de comillas clara y sutil */
+  font-family: Georgia, serif;
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .testimonial-content {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: flex-start;
-  flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-image {
-  width: 70px;
-  height: 70px;
-  min-width: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--accent-color);
-  transition: all 0.3s ease;
+  border: 2px solid #a3c4f3; /* marco azul pastel */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .testimonial-details {
@@ -126,95 +100,30 @@ h1 {
 }
 
 .testimonial-text {
-  font-style: italic;
-  margin-bottom: 15px;
-  line-height: 1.5;
-  flex: 1;
+  font-size: 0.95rem;
+  color: #000000; /* texto muy claro para contraste */
+  margin-bottom: 10px;
 }
 
 .testimonial-meta {
+  font-weight: 600;
   font-size: 0.9rem;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.testimonial-rating {
-  color:#FFD700 ;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  margin: 5px 0;
+  color: #000000; /* texto claro */
 }
 
 .testimonial-date {
-  font-size: 0.8rem;
-  color: var(--text-light);
-  margin-top: auto;
+  font-size: 0.75rem;
+  color: #000000; /* azul pastel claro */
+  margin-top: 4px;
 }
 
-/* Efectos hover mejorados */
-.testimonial:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-}
-
-.testimonial:hover .testimonial-image {
-  transform: scale(1.05);
-  border-color: var(--secondary-color);
-}
-
-/* Media queries para responsividad */
-@media (max-width: 768px) {
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .testimonial-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .testimonial-text {
-    margin-top: 15px;
-  }
-}
-
-/* Animaciones más sutiles */
-.testimonial::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0)
-  );
-  transform: rotate(30deg);
-  transition: all 0.7s ease;
-  opacity: 0.7;
-}
-
-.testimonial:hover::before {
-  left: 100%;
-  opacity: 0;
-}
-
-.huella {
-  position: absolute;
-  animation: moverHuellas 5s infinite linear;
-  width: 50px; /* Ajusta el tamaño de las huellas */
+.testimonial-rating {
+  color: #f2b880; /* naranja pastel para estrellas */
+  font-size: 1.5rem;
+  margin-top: 4px;
 }
 
 @media (max-width: 768px) {
- 
-  .services-section {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
   .testimonial-content {
     flex-direction: column;
     align-items: center;
@@ -222,7 +131,6 @@ h1 {
   }
 
   .testimonial-image {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
-
 }
