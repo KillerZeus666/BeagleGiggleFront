@@ -1,6 +1,6 @@
 .contenedor-principal {
   max-width: 900px;
-  margin: auto;
+  margin: 100px auto 0 auto; /* margen arriba 100px, y auto para centrar horizontalmente */
   padding: 30px;
   font-family: 'Segoe UI', sans-serif;
   background-color: #f2f7fb;
@@ -24,17 +24,23 @@ h2 {
 .selector-modo button {
   padding: 10px 20px;
   border: none;
-  background-color: #d9e9f7;
+  background: linear-gradient(90deg, #72c0ea 0%, #5da6db 70%);
   color: #003f7f;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0 4px 8px rgba(114, 192, 234, 0.5);
 }
 
 .selector-modo button.activo {
-  background-color: #003f7f;
+  background: linear-gradient(90deg, #0057b8 0%, #003f7f 100%);
   color: white;
+}
+
+.selector-modo button:hover:not(.activo) {
+  background: linear-gradient(90deg, #5da6db 0%, #4690c8 100%);
+  color: #002f5f;
 }
 
 .formulario {
@@ -59,18 +65,20 @@ h2 {
 }
 
 button[type="submit"] {
-  background-color: #0057b8;
+  background: linear-gradient(90deg, #72c0ea 0%, #4b97d3 100%);
   color: white;
   border: none;
   padding: 12px;
   border-radius: 8px;
   font-size: 15px;
   font-weight: bold;
-  transition: 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 12px rgba(114, 192, 234, 0.7);
 }
 
 button[type="submit"]:hover {
-  background-color: #003f7f;
+  background: linear-gradient(90deg, #4b97d3 0%, #0057b8 100%);
+  box-shadow: 0 8px 20px rgba(75, 151, 211, 0.8);
 }
 
 .filtro-visualizacion {

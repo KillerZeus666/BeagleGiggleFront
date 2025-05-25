@@ -32,7 +32,8 @@ export class PublicacionComponent implements OnInit {
       descripcion: this.nuevaPublicacion.descripcion || '',
       ultimaVezVisto: this.nuevaPublicacion.ultimaVezVisto || '',
       foto: this.imagenBase64,
-      encontrado: this.modoPublicacion === 'encontrada'
+      tipo: this.modoPublicacion === 'perdida' ? 'busqueda' : 'hallazgo', // ← aquí
+      encontrado: false
     };
 
     this.publicaciones.push(nueva);
@@ -41,6 +42,7 @@ export class PublicacionComponent implements OnInit {
     this.imagenBase64 = '';
     this.modoPublicacion = 'perdida';
   }
+
 
   marcarComoEncontrado(id: number) {
     const pub = this.publicaciones.find(p => p.id === id);

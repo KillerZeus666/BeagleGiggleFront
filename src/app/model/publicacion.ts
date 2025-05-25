@@ -3,6 +3,7 @@ export interface Publicacion {
   nombreMascota: string;
   descripcion: string;
   ultimaVezVisto: string;
-  foto: string; // base64
+  foto: string;
+  tipo: 'busqueda' | 'hallazgo'; // NUEVO
   encontrado: boolean;
 }

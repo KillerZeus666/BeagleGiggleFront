@@ -1,42 +1,58 @@
+<app-header></app-header>
+
 <div class="contenedor-principal">
   <h2>🐾 Gestión de Mascotas</h2>
 
   <!-- Selector de tipo de publicación -->
   <div class="selector-modo">
-    <button [class.activo]="modoPublicacion === 'perdida'" (click)="modoPublicacion = 'perdida'">Reportar Perdida</button>
-    <button [class.activo]="modoPublicacion === 'encontrada'" (click)="modoPublicacion = 'encontrada'">Reportar Encontrada</button>
+    <button [class.activo]="modoPublicacion === 'perdida'" (click)="cambiarModo('perdida')">Busco a mi mascota</button>
+    <button [class.activo]="modoPublicacion === 'encontrada'" (click)="cambiarModo('encontrada')">Encontré una mascota</button>
   </div>
 
   <!-- Formulario de publicación -->
   <form (ngSubmit)="guardarPublicacion()" class="formulario">
     <input type="text" placeholder="Nombre de la mascota" [(ngModel)]="nuevaPublicacion.nombreMascota" name="nombre" required>
     <textarea placeholder="Descripción" [(ngModel)]="nuevaPublicacion.descripcion" name="descripcion" required></textarea>
-    <input type="text" placeholder="Última vez visto" [(ngModel)]="nuevaPublicacion.ultimaVezVisto" name="ultimaVez" required>
+    <input type="text" placeholder="Última vez visto o encontrado" [(ngModel)]="nuevaPublicacion.ultimaVezVisto" name="ultimaVez" required>
     <input type="file" (change)="convertirImagen($event)" accept="image/*">
-    <button type="submit">📤 Publicar {{ modoPublicacion === 'perdida' ? 'Pérdida' : 'Encontrada' }}</button>
+    <button type="submit">
+      📤 Publicar {{ modoPublicacion === 'perdida' ? 'búsqueda' : 'hallazgo' }}
+    </button>
   </form>
 
   <!-- Filtro de visualización -->
   <div class="filtro-visualizacion">
-    <label>Ver:</label>
+    <label>Ver publicaciones:</label>
     <select [(ngModel)]="filtro" name="filtro">
       <option value="todas">Todas</option>
-      <option value="perdidas">Solo Perdidas</option>
-      <option value="encontradas">Solo Encontradas</option>
+      <option value="perdidas">Buscando mascota</option>
+      <option value="encontradas">Mascotas encontradas</option>
     </select>
   </div>
 
+  <!-- Tarjetas de publicaciones -->
   <div class="tarjetas">
     <div class="tarjeta" *ngFor="let pub of publicacionesFiltradas()">
-      <img [src]="pub.foto" alt="Foto mascota" />
+      <img [src]="pub.foto" alt="Foto de la mascota" />
       <div class="info">
         <h4>{{ pub.nombreMascota }}</h4>
         <p>{{ pub.descripcion }}</p>
-        <p><strong>Última vez visto:</strong> {{ pub.ultimaVezVisto }}</p>
+        <p><strong>Última vez visto/encontrado:</strong> {{ pub.ultimaVezVisto }}</p>
+
+        <span class="badge" [ngClass]="{
+          'badge-busqueda': pub.tipo === 'busqueda',
+          'badge-hallazgo': pub.tipo === 'hallazgo'
+        }">
+          {{ pub.tipo === 'busqueda' ? '🔍 Buscando a mi mascota' : '📢 Encontré esta mascota' }}
+        </span>
+
         <p class="estado" [ngClass]="{'encontrado': pub.encontrado, 'perdido': !pub.encontrado}">
-          {{ pub.encontrado ? '✅ Encontrada' : '❌ Perdida' }}
+          {{ pub.encontrado ? '✅ Ya se resolvió' : '🚨 Aún sin resolver' }}
         </p>
-        <button *ngIf="!pub.encontrado" (click)="marcarComoEncontrado(pub.id)">Marcar como encontrada</button>
+
+        <button *ngIf="!pub.encontrado && pub.tipo === 'busqueda'" (click)="marcarComoEncontrado(pub.id)">
+          Marcar como encontrada
+        </button>
       </div>
     </div>
   </div>
