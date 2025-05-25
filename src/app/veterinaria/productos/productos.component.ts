@@ -6,8 +6,7 @@ import { ProductosService } from 'src/app/service/productos.service';
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
-})
-export class ProductosComponent implements OnInit {
+})export class ProductosComponent implements OnInit {
   productos: (Producto & { PriceCOP: number, images: string[], categoriaDetectada: string })[] = [];
   todosLosProductos: (Producto & { PriceCOP: number, images: string[], categoriaDetectada: string })[] = [];
   tasaCambio: number = 3900;
@@ -16,6 +15,7 @@ export class ProductosComponent implements OnInit {
   // Variables para filtros
   categoriaSeleccionada: string = '';
   precioMaximo: number | null = null;
+  filtrarFavoritos: boolean = false;  // Nueva variable para filtro de favoritos
   categorias: string[] = [];
 
   constructor(private productosService: ProductosService) {}
@@ -35,7 +35,6 @@ export class ProductosComponent implements OnInit {
         const precioString = p.Price.toString().replace(/[^0-9.]/g, '');
         const precioNumero = parseFloat(precioString);
 
-        // Detectar categoría desde breadcrumb
         let categoria = '';
         const breadcrumbLower = (p.breadcrumb || '').toLowerCase();
         if (breadcrumbLower.includes('dog')) {
@@ -54,11 +53,8 @@ export class ProductosComponent implements OnInit {
         };
       });
 
-      // Filtrar productos válidos (con imágenes)
       this.todosLosProductos = productosProcesados.filter(p => p.images.length > 0);
       this.productos = [...this.todosLosProductos];
-
-      // Extraer categorías únicas
       this.categorias = [...new Set(this.todosLosProductos.map(p => p.categoriaDetectada))];
     });
   }
@@ -67,13 +63,16 @@ export class ProductosComponent implements OnInit {
     this.productos = this.todosLosProductos.filter(p => {
       const coincideCategoria = this.categoriaSeleccionada ? p.categoriaDetectada === this.categoriaSeleccionada : true;
       const coincidePrecio = this.precioMaximo ? p.PriceCOP <= this.precioMaximo : true;
-      return coincideCategoria && coincidePrecio;
+      const coincideFavorito = this.filtrarFavoritos ? this.esFavorito(p) : true;
+
+      return coincideCategoria && coincidePrecio && coincideFavorito;
     });
   }
 
   resetFiltros() {
     this.categoriaSeleccionada = '';
     this.precioMaximo = null;
+    this.filtrarFavoritos = false;
     this.productos = [...this.todosLosProductos];
   }
 
@@ -81,13 +80,11 @@ export class ProductosComponent implements OnInit {
     return this.favoritos.some(p => p.name === producto.name);
   }
 
- toggleFavorito(producto: Producto): void {
-  if (this.esFavorito(producto)) {
-    this.favoritos = this.favoritos.filter(p => p.uniq_id !== producto.uniq_id);
-  } else {
-    this.favoritos.push(producto);
+  toggleFavorito(producto: Producto): void {
+    if (this.esFavorito(producto)) {
+      this.favoritos = this.favoritos.filter(p => p.uniq_id !== producto.uniq_id);
+    } else {
+      this.favoritos.push(producto);
+    }
   }
-  // No llamar a notificaciones ni alertas aquí.
-}
-
 }
