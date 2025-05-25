@@ -1,0 +1,137 @@
+.contenedor-principal {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f7fb;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 80, 0.08);
+}
+
+h2 {
+  color: #003f7f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.selector-modo {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.selector-modo button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #d9e9f7;
+  color: #003f7f;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.selector-modo button.activo {
+  background-color: #003f7f;
+  color: white;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.formulario input[type="text"],
+.formulario textarea,
+.formulario select {
+  padding: 10px;
+  border: 1px solid #ccdff2;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.formulario textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #0057b8;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #003f7f;
+}
+
+.filtro-visualizacion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filtro-visualizacion select {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+}
+
+.tarjetas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tarjeta {
+  display: flex;
+  gap: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 80, 0.08);
+  padding: 15px;
+}
+
+.tarjeta img {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #0057b8;
+}
+
+.info {
+  flex: 1;
+}
+
+.estado {
+  font-weight: bold;
+}
+
+.encontrado {
+  color: green;
+}
+
+.perdido {
+  color: red;
+}
+
+.tarjeta button {
+  background-color: #ffb703;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+}

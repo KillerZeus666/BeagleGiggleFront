@@ -1,0 +1,43 @@
+<div class="contenedor-principal">
+  <h2>🐾 Gestión de Mascotas</h2>
+
+  <!-- Selector de tipo de publicación -->
+  <div class="selector-modo">
+    <button [class.activo]="modoPublicacion === 'perdida'" (click)="modoPublicacion = 'perdida'">Reportar Perdida</button>
+    <button [class.activo]="modoPublicacion === 'encontrada'" (click)="modoPublicacion = 'encontrada'">Reportar Encontrada</button>
+  </div>
+
+  <!-- Formulario de publicación -->
+  <form (ngSubmit)="guardarPublicacion()" class="formulario">
+    <input type="text" placeholder="Nombre de la mascota" [(ngModel)]="nuevaPublicacion.nombreMascota" name="nombre" required>
+    <textarea placeholder="Descripción" [(ngModel)]="nuevaPublicacion.descripcion" name="descripcion" required></textarea>
+    <input type="text" placeholder="Última vez visto" [(ngModel)]="nuevaPublicacion.ultimaVezVisto" name="ultimaVez" required>
+    <input type="file" (change)="convertirImagen($event)" accept="image/*">
+    <button type="submit">📤 Publicar {{ modoPublicacion === 'perdida' ? 'Pérdida' : 'Encontrada' }}</button>
+  </form>
+
+  <!-- Filtro de visualización -->
+  <div class="filtro-visualizacion">
+    <label>Ver:</label>
+    <select [(ngModel)]="filtro" name="filtro">
+      <option value="todas">Todas</option>
+      <option value="perdidas">Solo Perdidas</option>
+      <option value="encontradas">Solo Encontradas</option>
+    </select>
+  </div>
+
+  <div class="tarjetas">
+    <div class="tarjeta" *ngFor="let pub of publicacionesFiltradas()">
+      <img [src]="pub.foto" alt="Foto mascota" />
+      <div class="info">
+        <h4>{{ pub.nombreMascota }}</h4>
+        <p>{{ pub.descripcion }}</p>
+        <p><strong>Última vez visto:</strong> {{ pub.ultimaVezVisto }}</p>
+        <p class="estado" [ngClass]="{'encontrado': pub.encontrado, 'perdido': !pub.encontrado}">
+          {{ pub.encontrado ? '✅ Encontrada' : '❌ Perdida' }}
+        </p>
+        <button *ngIf="!pub.encontrado" (click)="marcarComoEncontrado(pub.id)">Marcar como encontrada</button>
+      </div>
+    </div>
+  </div>
+</div>

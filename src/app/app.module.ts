@@ -74,6 +74,7 @@ import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-prem
 import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
 import { GeneradorNombresComponent } from './veterinaria/generador-nombres/generador-nombres.component';
 import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calculadora-peso.component';
+import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
 
 registerLocaleData(localeEs);
 
@@ -144,7 +145,8 @@ registerLocaleData(localeEs);
     RuletaPremiosComponent,
     CumpleaniosComponent,
     GeneradorNombresComponent,
-    CalculadoraPesoComponent
+    CalculadoraPesoComponent,
+    PublicacionComponent
   ],
   imports: [
     BrowserModule,

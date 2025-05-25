@@ -50,6 +50,7 @@ import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-prem
 import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
 import { GeneradorNombresComponent } from './veterinaria/generador-nombres/generador-nombres.component';
 import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calculadora-peso.component';
+import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -102,6 +103,7 @@ const routes: Routes = [
   {path: 'cumpleanios-mascota', component: CumpleaniosComponent},
   {path: 'generador-nombres', component: GeneradorNombresComponent},
   {path: 'calculadora-peso', component: CalculadoraPesoComponent},
+  {path: 'publicacion', component: PublicacionComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];
