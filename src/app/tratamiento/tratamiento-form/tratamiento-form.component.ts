@@ -40,7 +40,7 @@ export class TratamientoFormComponent implements OnInit{
     this.idVeterinario = id;
 
     this.tratamientoForm = this.fb.group({
-      codigo: ['', Validators.required],
+      //codigo: ['', Validators.required],
       fecha: [new Date().toISOString().substring(0, 10), Validators.required],
       idServicio: ['', Validators.required],
       idMascota: ['', Validators.required],
@@ -131,7 +131,7 @@ export class TratamientoFormComponent implements OnInit{
     ).subscribe({
       next: () => {
         this.resetForm();
-        this.router.navigate(['/historial-tratamientos', 2]);
+        this.router.navigate(['/historial-tratamientos', this.idVeterinario]);
       },
       error: (err) => {
         this.showError('Error al crear el tratamiento: ' + err.message);
