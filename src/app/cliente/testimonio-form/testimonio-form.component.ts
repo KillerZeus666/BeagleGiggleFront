@@ -16,9 +16,10 @@ export class TestimonioFormComponent implements OnInit {
   @ViewChild('testimonioForm') testimonioForm!: NgForm;
   testimonio: TestimonioCreateCL = new TestimonioCreateCL();
   servicios: ServicioCL[] = [];
+  fecha: Date = new Date();
   idCliente: number = 0;
   errors: string[] = [];
-  hoverValue: number = 0; // Para el efecto hover
+  hoverValue: number = 0;
 
   constructor(
     private testimonioService: TestimonioService,
