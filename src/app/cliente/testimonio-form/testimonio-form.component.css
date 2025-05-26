@@ -1,0 +1,145 @@
+form {
+  max-width: 500px;
+  text-align: center;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+form:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+  text-align: center;
+  color: #1d95db;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  border-radius: 3px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  color: #555;
+  font-size: 1rem;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #1d95db;
+  outline: none;
+  box-shadow: 0 5px 15px rgba(29, 149, 219, 0.2);
+  background-color: #fff;
+  transform: translateY(-2px);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: left;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(29, 149, 219, 0.3);
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(to right, #158bbd, #1d95db);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
+}
+
+button[type="submit"]:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 576px) {
+  form {
+    padding: 1.8rem;
+    margin: 1.5rem auto;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  input, select, textarea {
+    padding: 12px;
+  }
+
+  button[type="submit"] {
+    padding: 14px;
+  }
+}

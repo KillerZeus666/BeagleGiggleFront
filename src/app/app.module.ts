@@ -79,6 +79,7 @@ import { ProductosComponent } from './veterinaria/productos/productos.component'
 import { PresentacionTiendaComponent } from './landing/presentacion-tienda/presentacion-tienda.component';
 import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
 import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
+import { TestimonioFormComponent } from './cliente/testimonio-form/testimonio-form.component';
 
 registerLocaleData(localeEs);
 
@@ -154,7 +155,8 @@ registerLocaleData(localeEs);
     ProductosComponent,
     PresentacionTiendaComponent,
     TestimoniosComponent,
-    TestimoniosDetailComponent
+    TestimoniosDetailComponent,
+    TestimonioFormComponent
   ],
   imports: [
     BrowserModule,
