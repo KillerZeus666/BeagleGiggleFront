@@ -1,14 +1,36 @@
-/* Contenedor principal - solución mejorada */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+app-navegacion {
+  flex-shrink: 0;
+  width: 250px; /* o el ancho que desees para el sidebar */
+}
+
 .detail-container {
-  background: white;
-  padding: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  padding: 40px;
   box-sizing: border-box;
-  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  margin-left: 350px; /* igual al ancho del sidebar */
+}
+
+.mascotas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Asegura que los card se vean bien centrados */
+.mascota-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Ajuste para sidebar */

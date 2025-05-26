@@ -1,29 +1,87 @@
-/* tratamiento-crear.component.css */
+.tratamiento-crear-bg {
+  background-color: #235784; /* Fondo celeste claro */
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
 .container {
   max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.container:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #5cadf4, #a5d8ff, #5cadf4);
+  z-index: -1;
+  border-radius: 22px;
+  background-size: 400%;
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 20s linear infinite;
+}
+
+.container:hover::before {
+  opacity: 0.3;
+}
+
+@keyframes animate {
+  0% { background-position: 0 0; }
+  50% { background-position: 300% 0; }
+  100% { background-position: 0 0; }
 }
 
 h1 {
-  color: #2c3e50;
+  color: #5cadf4;
   text-align: center;
   margin-bottom: 30px;
   font-weight: 600;
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #5cadf4, #a5d8ff);
+  border-radius: 2px;
 }
 
 .form-group {
   margin-bottom: 20px;
+  position: relative;
 }
 
 label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #2c3e50;
+  color: #495057;
+  transition: all 0.3s ease;
 }
 
 input[type="text"],
@@ -32,11 +90,13 @@ input[type="number"],
 textarea,
 select {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border 0.3s;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
@@ -44,18 +104,31 @@ input[type="date"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #3498db;
+  border-color: #5cadf4;
   outline: none;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  box-shadow: 0 5px 15px rgba(92, 173, 244, 0.2);
+  background-color: #fff;
+  transform: translateY(-2px);
 }
 
 textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
+  line-height: 1.6;
 }
 
 .medicamentos-container {
   margin-top: 15px;
+  border: 2px dashed #e9ecef;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.medicamentos-container:hover {
+  border-color: #5cadf4;
+  background-color: #f0f7ff;
 }
 
 .medicamento-item {
@@ -63,6 +136,11 @@ textarea {
   gap: 10px;
   margin-bottom: 10px;
   align-items: center;
+  transition: all 0.3s ease;
+}
+
+.medicamento-item:hover {
+  transform: translateX(5px);
 }
 
 .medicamento-item input {
@@ -70,41 +148,54 @@ textarea {
 }
 
 .btn {
-  background-color: #3498db;
+  background: linear-gradient(to right, #5cadf4, #7bc1ff);
   color: white;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 4px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(92, 173, 244, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .btn:hover {
-  background-color: #2980b9;
+  background: linear-gradient(to right, #4a9de3, #6cb3f0);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(92, 173, 244, 0.4);
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn-add {
-  background-color: #27ae60;
+  background: linear-gradient(to right, #28a745, #3dd469);
   margin-top: 10px;
 }
 
 .btn-add:hover {
-  background-color: #219653;
+  background: linear-gradient(to right, #218838, #34ce57);
 }
 
 .btn-remove {
-  background-color: #e74c3c;
+  background: linear-gradient(to right, #dc3545, #ff6b7b);
   padding: 12px 15px;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
 }
 
 .btn-remove:hover {
-  background-color: #c0392b;
+  background: linear-gradient(to right, #c82333, #e95968);
 }
 
 .form-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 15px;
   margin-top: 30px;
 }
 
@@ -112,36 +203,61 @@ textarea {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.alert:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #3c763d;
+  background-color: #e6ffed;
+  border-left: 4px solid #28a745;
+  color: #22863a;
 }
 
 .alert-danger {
-  background-color: #f2dede;
-  border-color: #ebccd1;
-  color: #a94442;
+  background-color: #ffebee;
+  border-left: 4px solid #dc3545;
+  color: #b71c1c;
 }
 
 .error-message {
-  color: #e74c3c;
+  color: #dc3545;
   font-size: 0.85em;
   margin-top: 5px;
+  transition: all 0.3s ease;
 }
 
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  background: #cccccc !important;
+}
+
+/* Efecto shake para errores */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #dc3545;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
 }
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .container {
     padding: 20px;
+    margin: 1.5rem;
   }
 
   .medicamento-item {
@@ -164,6 +280,6 @@ button:disabled {
 }
 
 .small-select {
-  width: 500px; /* más pequeño que antes */
-  padding: 5px;
+  width: 100%;
+  padding: 14px 18px;
 }

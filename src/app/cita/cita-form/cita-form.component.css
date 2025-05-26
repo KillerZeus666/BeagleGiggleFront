@@ -1,5 +1,4 @@
-/* Fuente importada de Google Fonts - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 
 /* Estilos base del formulario */
 form {
@@ -187,6 +186,15 @@ form::before {
 form:hover::before {
   opacity: 0.3;
 }
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+
 
 @keyframes animate {
   0% { background-position: 0 0; }

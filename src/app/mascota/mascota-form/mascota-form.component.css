@@ -215,3 +215,12 @@ form:hover::before {
     padding: 14px;
   }
 }
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}

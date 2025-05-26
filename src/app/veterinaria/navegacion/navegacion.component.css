@@ -76,7 +76,7 @@ app-navegacion {
   display: flex;
   text-decoration: none;
   color: var(--white);
-  margin-bottom: 30px;
+  margin-bottom: 13px;
 }
 
 .navigation ul li:hover a,

@@ -40,7 +40,6 @@ export class VerCitasVeterinarioComponent implements OnInit {
         }
       });
     }
-    
   }
 
   loadCitas(): void {
@@ -80,15 +79,15 @@ export class VerCitasVeterinarioComponent implements OnInit {
   agendarCita(): void {
     if(this.userType == 'Veterinario') {
       const idVeterinario = Number(this.route.snapshot.paramMap.get('id'));
-      this.router.navigate(['/agendar-cita'], { 
-        state: { idVeterinario: idVeterinario } 
+      this.router.navigate(['/agendar-cita'], {
+        state: { idVeterinario: idVeterinario }
       });
     } else if(this.userType == 'Cliente') {
       const idCliente = Number(this.route.snapshot.paramMap.get('id'));
       this.router.navigate(['/agendar-cita'], {
-        state: { idCliente: idCliente } // Corregido a minúscula 'l' en 'idCliente'
+        state: { idCliente: idCliente }
       });
-    } 
+    }
   }
 
   editarCita(idCita: number): void {
@@ -105,5 +104,13 @@ export class VerCitasVeterinarioComponent implements OnInit {
         }
       });
     }
+  }
+
+  // Nueva función para formatear el estado de la cita
+  formatearEstado(estado: string): string {
+    if (!estado) return '';
+
+    // Convertir a minúsculas y luego capitalizar la primera letra
+    return estado.charAt(0).toUpperCase() + estado.slice(1).toLowerCase();
   }
 }

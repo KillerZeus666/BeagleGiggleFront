@@ -29,6 +29,9 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   position: relative;
   animation: fadeIn 0.7s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* TÍTULO */
@@ -38,11 +41,9 @@
   font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
-  border-bottom: 3px solid #97d4f5;
+  border-bottom: 3px solid #5cadf4;
   padding-bottom: 0.5rem;
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* ================== CONTENIDO FLEX ================== */
@@ -52,6 +53,7 @@
   gap: 4rem;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
 /* ================== FOTO ================== */
@@ -60,8 +62,8 @@
   height: 220px;
   border-radius: 50%;
   overflow: hidden;
-  background: #97d4f5;
-  border: 5px solid #5cadf4;
+  background: #5cadf4;
+  border: 5px solid #1e88e5;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.4s ease;
   flex-shrink: 0;
@@ -71,7 +73,7 @@
   transform: scale(1.05);
 }
 
-.mascota-img {
+.img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -80,46 +82,40 @@
 /* ================== DATOS ================== */
 .datos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
   width: 100%;
-  flex-grow: 1;
 }
 
 .dato {
   background: linear-gradient(145deg, #5cadf4, #4098d7);
-  color: #2d3748;
+  color: white;
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #97d4f5;
-  transition: all 0.3s ease;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dato:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .label {
   display: block;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #4a5568;
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: #e0f2ff;
 }
 
 .info {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  color: #2d3748;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #e2e8f0;
 }
 
-/* ================== BOTONES (OPCIONAL) ================== */
+/* ================== BOTONES ================== */
 .acciones {
   display: flex;
   justify-content: center;
@@ -139,19 +135,37 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-editar {
-  background-color: #3182ce;
+.btn-primario {
+  background: linear-gradient(145deg, #5cadf4, #1e88e5);
   color: white;
 }
 
-.btn-volver {
-  background-color: #e2e8f0;
+.btn-secundario {
+  background: #edf2f7;
   color: #2d3748;
 }
 
 .btn-accion:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ================== SECCIONES ADICIONALES ================== */
+.seccion {
+  width: 100%;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.seccion h2 {
+  font-size: 2rem;
+  color: #2b2d42;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  border-bottom: 2px solid #5cadf4;
+  padding-bottom: 0.5rem;
+  width: fit-content;
 }
 
 /* ================== RESPONSIVE ================== */
@@ -166,17 +180,12 @@
     width: 200px;
     height: 200px;
   }
-
-  .datos {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
 }
 
 @media (max-width: 768px) {
   .page-container {
-    width: calc(100% - 200px);
-    margin-left: 200px;
+    width: calc(100% - 80px);
+    margin-left: 80px;
     padding: 3rem 1.5rem;
   }
 
@@ -213,14 +222,6 @@
   .img-container {
     width: 160px;
     height: 160px;
-  }
-
-  .label {
-    font-size: 0.9rem;
-  }
-
-  .info {
-    font-size: 1.1rem;
   }
 
   .acciones {

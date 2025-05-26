@@ -1,22 +1,87 @@
-/* ================== CONTENEDOR PRINCIPAL ================== */
+/* ================== VARIABLES Y ESTILOS BASE ================== */
+:root {
+  --primary-color: #3a7bd5;
+  --secondary-color: #00d2ff;
+  --dark-color: #6e6e6e;
+  --light-color: #f8f9fa;
+  --text-color: #ffffff;
+  --text-light: #5a667a;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+/* ================== ESTRUCTURA PRINCIPAL ================== */
+.main-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Sidebar (app-navegacion) */
+app-navegacion {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 270px;
+  z-index: 100;
+  height: 100vh;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+/* Contenedor de página principal */
+.page-container {
+  margin-left: 270px;
+  width: calc(100% - 270px);
+  padding: 2rem;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  background: linear-gradient(145deg, #f0f4f8, #d9e2ec);
+}
+
+/* Cuando el sidebar está colapsado */
+.sidebar-collapsed app-navegacion {
+  width: 80px;
+}
+
+.sidebar-collapsed .page-container {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+}
+
+/* ================== VISTA DE DETALLE ================== */
 .detail-container {
+  width: 100%;
+  max-width: 1200px;
   background: white;
-  padding: 2.5rem;
-  width: 90%;
-  max-width: 800px;
-  margin: 2rem auto;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  animation: fadeIn 0.6s ease;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  animation: fadeIn 0.7s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
-  position: relative;
-  left: auto;
 }
 
-/* ================== IMAGEN MASCOTA ================== */
+/* Título */
+.detail-title {
+  font-size: 2.5rem;
+  color: #2b2d42;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 3px solid #5cadf4;
+  padding-bottom: 0.5rem;
+  width: fit-content;
+}
+
+/* Imagen mascota */
 .pet-image-wrapper {
   display: flex;
   justify-content: center;
@@ -24,12 +89,12 @@
 }
 
 .pet-image-container {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   overflow: hidden;
-  background: #97d4f5;
-  border: 5px solid #5cadf4;
+  background: #5cadf4;
+  border: 5px solid #1e88e5;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.4s ease;
   flex-shrink: 0;
@@ -45,82 +110,138 @@
   object-fit: cover;
 }
 
-/* ================== DATOS MASCOTA ================== */
+/* Datos mascota */
 .pet-data {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   width: 100%;
-  justify-items: center;
 }
 
 .data-item {
   background: linear-gradient(145deg, #5cadf4, #4098d7);
+  color: white;
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #97d4f5;
-  transition: all 0.3s ease;
-  text-align: left;
-  width: 100%;
-  max-width: 300px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .data-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .data-label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #4a5568;
-  margin-bottom: 0.5rem;
   display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #e0f2ff;
 }
 
 .data-value {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
-  color: #2d3748;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #e2e8f0;
 }
 
-/* ================== MENSAJE SIN SELECCIÓN ================== */
+/* Mensaje sin selección */
 .no-selection-message {
   padding: 2rem;
-  background: linear-gradient(135deg, #f8fafc, #eef2f6);
+  background: linear-gradient(145deg, #f7fafc, #edf2f7);
   border-radius: 15px;
   font-size: 1.2rem;
   color: #4a5568;
   text-align: center;
-  border: 2px dashed #97d4f5;
-  width: 90%;
-  max-width: 400px;
+  border: 2px dashed #5cadf4;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* Botón para toggle del sidebar */
+.sidebar-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
 /* ================== RESPONSIVE ================== */
 @media (max-width: 992px) {
+  .page-container {
+    padding: 3rem 1.5rem;
+  }
+
   .detail-container {
-    padding: 2rem;
-    width: 95%;
+    padding: 2.5rem;
   }
 
   .pet-data {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
+  app-navegacion {
+    width: 80px;
+  }
+
+  .page-container {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+  }
+
   .detail-container {
-    padding: 1.8rem;
-    margin: 1.5rem auto;
-    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .pet-image-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .detail-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  app-navegacion {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  app-navegacion.mobile-visible {
+    transform: translateX(0);
+  }
+
+  .page-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .detail-container {
+    padding: 1.5rem;
+    border-radius: 15px;
   }
 
   .pet-image-container {
@@ -128,48 +249,27 @@
     height: 180px;
   }
 
-  .data-item {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .detail-container {
-    padding: 1.5rem;
-    border-radius: 12px;
-    gap: 1.8rem;
-    width: 98%;
-  }
-
-  .pet-image-container {
-    width: 160px;
-    height: 160px;
-    border-width: 4px;
+  .detail-title {
+    font-size: 2rem;
   }
 
   .data-label {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .data-value {
-    font-size: 1.1rem;
-  }
-
-  .no-selection-message {
-    padding: 1.5rem;
-    font-size: 1.1rem;
-    width: 95%;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 400px) {
   .pet-image-container {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
   }
 
-  .data-item {
-    padding: 1.2rem;
+  .detail-title {
+    font-size: 1.8rem;
   }
 }
 
