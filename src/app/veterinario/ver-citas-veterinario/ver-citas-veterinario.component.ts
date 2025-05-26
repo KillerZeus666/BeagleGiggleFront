@@ -32,11 +32,11 @@ export class VerCitasVeterinarioComponent implements OnInit {
     }
     else if(this.userType == 'Cliente'){
       this.citaService.obtenerCitasPorCliente(idCliente).subscribe({
-        next: (citadata) =>{
-          this.citas = citadata;
+        next: (citadata) => {
+          this.citas = citadata.filter(cita => cita.estado.toLowerCase() !== 'cancelada');
         },
         error: (err) => {
-          console.error('Error al obtener las citas',err);
+          console.error('Error al obtener las citas', err);
         }
       });
     }
@@ -64,7 +64,9 @@ export class VerCitasVeterinarioComponent implements OnInit {
 
   loadAllCitas(): void {
     this.citaService.obtenerTodasCitas().subscribe({
-      next: (citas) => this.citas = citas,
+      next: (citas) => {
+        this.citas = citas.filter(cita => cita.estado.toLowerCase() !== 'cancelada');
+    },
       error: (err) => console.error('Error al obtener todas las citas:', err)
     });
   }
@@ -98,7 +100,7 @@ export class VerCitasVeterinarioComponent implements OnInit {
   cancelarCita(idCita: number): void {
     if (confirm('¿Estás seguro de cancelar esta cita?')) {
       this.citaService.cancelarCita(idCita).subscribe({
-        next: () => this.loadCitas(),
+        next: () => this.loadAllCitas(),
         error: (error) => {
           console.error('Error al cancelar cita:', error);
           alert('Error al cancelar la cita');
