@@ -1,228 +1,342 @@
-/* ================== Order Details List ============== */
+/* ================== CONTENEDOR PRINCIPAL ================== */
 .details {
   position: relative;
   width: 100%;
-  padding: 20px;
+  padding: 30px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 40px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* ================== SECCIÓN DE PEDIDOS ================== */
 .details .recentOrders {
   position: relative;
   display: grid;
-  background: var(--white);
-  padding: 20px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  background: white;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
   border-radius: 20px;
   min-height: 200px;
+  border: 1px solid #e0f2fe;
 }
 
-.details .cardHeader {
+/* ================== CABECERA ================== */
+.cardHeader {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
 .cardHeader h2 {
-  font-weight: 600;
-  color: var(--blue);
+  font-weight: 700;
+  color: #1d95db;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 8px;
 }
 
+.cardHeader h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  border-radius: 3px;
+}
+
+/* ================== TABLA PREMIUM ================== */
 .details table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.details table thead {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .details table thead td {
-  font-weight: 600;
+  padding: 16px;
   text-align: left;
+  font-weight: 600;
 }
 
-.details .recentOrders table tr {
-  color: var(--black1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.details .recentOrders table tr:last-child {
-  border-bottom: none;
+/* FILAS CON EFECTO 3D */
+.details .recentOrders table tbody tr {
+  background: white;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.1),
+    0 4px 6px rgba(0,0,0,0.05),
+    0 5px 15px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .details .recentOrders table tbody tr:hover {
-  background: #e3f2fd;
+  transform: translateY(-3px);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.12),
+    0 8px 15px rgba(0,0,0,0.1),
+    0 10px 25px rgba(0,0,0,0.08);
 }
 
 .details .recentOrders table tr td {
-  padding: 10px;
+  padding: 14px;
+  color: #475569;
+  font-weight: 500;
 }
 
 .details .recentOrders table tr td:last-child {
-  text-align: end;
+  text-align: right;
 }
 
 .details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
+  text-align: right;
 }
 
 .details .recentOrders table tr td:nth-child(3) {
   text-align: center;
 }
 
+/* IMAGEN DE MASCOTA */
+.img-mascota {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.details .recentOrders table tr:hover .img-mascota {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* ESTADO MEJORADO */
 .status {
-  padding: 4px 10px; /* Aumenté el padding ligeramente para un aspecto más equilibrado */
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 4px;
-  display: inline-block; /* Asegura que los elementos se ajusten al contenido */
-  text-align: center; /* Centra el texto dentro de cada status */
-  line-height: 1.5; /* Ajusta el alto de línea para asegurar una visualización uniforme */
-  min-width: 80px; /* Ancho mínimo para que ambos tengan el mismo tamaño */
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 16px;
+  display: inline-block;
+  text-align: center;
+  min-width: 100px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .status.completed {
-  background: #8de02c; /* Color de fondo verde */
-  color: var(--white); /* Color del texto blanco */
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
 }
 
 .status.inactive {
-  background: #f00; /* Color de fondo rojo */
-  color: var(--white); /* Color del texto blanco */
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
 }
 
-.recomendaciones {
-  padding: 20px;
+/* BOTÓN DE DETALLES */
+.btn-detalles {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+
+  color: white;
+  padding: 10px 18px;
   border-radius: 20px;
-  color: #439ee9; /* Color azul para el texto */
-  text-align: justify;
-  font-size: 24px; /* Aumenta el tamaño del texto */
-  letter-spacing: 1px; /* Espaciado entre letras para mayor estilo */
-  margin-bottom: 20px; /* Espacio debajo del título */
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-detalles:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ================== SECCIÓN DE RECOMENDACIONES ================== */
+.recomendaciones {
+  padding: 30px;
+  border-radius: 20px;
+  background: #f8fafc;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.08);
+  border: 1px solid #e0f2fe;
 }
 
 .recomendaciones h3 {
-  margin-bottom: 20px;
+  color: #1e40af;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.recomendaciones h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+
+  border-radius: 3px;
 }
 
 .recomendaciones .tarjetas {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  position: relative;
 }
 
 .recomendaciones .tarjeta {
-  background: #b9e5ff; /* Fondo de tarjeta en azul pastel suave */
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #e0f2fe;
 }
 
 .recomendaciones .tarjeta:hover {
-  transform: translateY(-5px); /* Efecto de desplazamiento al pasar el mouse */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra sutil en hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .recomendaciones h4 {
-  color: #246ec2; /* Azul pastel suave para los títulos */
-  font-size: 18px;
+  color: #1e40af;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .recomendaciones p {
-  color: #000000; /* Gris suave para el texto */
-  font-size: 14px;
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
-
-.btn-detalles {
-  background-color: #1e88e5;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-detalles:hover {
-  background-color: #4f96e8;
-  transform: scale(1.05);
-}
-
-.img-mascota {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #1e88e5;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.table-container {
-  width: auto;
-  display: inline-block;
-}
-
-.mascotas-flex-container {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.details .recentOrders {
-  min-height: auto;
-  height: fit-content;
-  align-content: flex-start;
-}
-
-.details table {
-  min-height: 100px;
-}
-
+/* ================== ESTADO VACÍO ================== */
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 400px; /* o usa 100% si estás seguro del alto de su contenedor */
+  height: 300px;
   width: 100%;
-  margin-top: 40px; /* espacio superior para separarlo del título "Mis mascotas" */
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .empty-state-icon {
   font-size: 48px;
-  color: #1e88e5;
-  margin-bottom: 10px;
+  color: #3b82f6;
+  margin-bottom: 15px;
 }
 
 .empty-state-title {
-  font-size: 24px;
+  font-size: 1.25rem;
+  color: #1e40af;
   margin: 10px 0;
+  font-weight: 600;
 }
 
 .empty-state-message {
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 25px;
   max-width: 400px;
+  line-height: 1.5;
 }
 
 .empty-state-action {
-  background-color: #1e88e5;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
 .empty-state-action:hover {
-  background-color: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 1200px) {
+  .details {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    padding: 20px;
+  }
+
+  .details .recentOrders,
+  .recomendaciones {
+    padding: 20px;
+  }
+
+  .details table thead td,
+  .details .recentOrders table tr td {
+    padding: 12px 8px;
+    font-size: 0.85rem;
+  }
+
+  .img-mascota {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .details {
+    padding: 15px;
+  }
+
+  .cardHeader h2,
+  .recomendaciones h3 {
+    font-size: 1.2rem;
+  }
+
+  .status {
+    min-width: 80px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .btn-detalles {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
 }

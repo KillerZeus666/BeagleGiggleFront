@@ -45,7 +45,7 @@ app-navegacion {
 }
 
 .detail-title {
-  color: #205375;
+  color: #1d95db;
   font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
@@ -62,7 +62,7 @@ app-navegacion {
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, #40a8c4, #205375);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   border-radius: 2px;
 }
 
@@ -165,7 +165,7 @@ app-navegacion {
 }
 
 .tratamiento-button {
-  background: linear-gradient(135deg, #40a8c4, #205375);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);;
   color: white;
   border: none;
   padding: 1rem;
@@ -182,7 +182,7 @@ app-navegacion {
 }
 
 .tratamiento-button:hover {
-  background: linear-gradient(135deg, #205375, #40a8c4);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);;
   box-shadow: 0 4px 10px rgba(32, 83, 117, 0.3);
 }
 
