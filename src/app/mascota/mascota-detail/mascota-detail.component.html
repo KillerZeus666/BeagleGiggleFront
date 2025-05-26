@@ -1,10 +1,10 @@
-
-<app-navegacion></app-navegacion>
+<div class="main-container">
+  <app-navegacion></app-navegacion>
 
 
 <div class="detail-container">
     <h2 class="detail-title">Detalle de Mascota</h2>
-    
+
     <ng-container class="detail-content" *ngIf="mascota; else noMascotaSelected">
       <!-- Imagen de la mascota -->
       <div class="pet-image-container">
@@ -14,7 +14,7 @@
           class="pet-image"
         />
       </div>
-      
+
       <!-- Datos de la mascota -->
       <div class="pet-data">
         <div class="data-item">
@@ -61,10 +61,11 @@
         </div>
       </div>
     </ng-container>
-    
+
     <ng-template #noMascotaSelected>
       <div class="no-selection-message">
         <p>Seleccione una mascota de la tabla para ver sus detalles</p>
       </div>
     </ng-template>
   </div>
+</div>

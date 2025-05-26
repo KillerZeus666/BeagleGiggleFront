@@ -1,0 +1,62 @@
+<form #testimonioForm="ngForm" (ngSubmit)="onSubmit()">
+  <h1>Deja tu Testimonio</h1>
+  
+  <div class="form-group">
+    <label for="servicio">Servicio recibido</label>
+    <select
+      id="servicio"
+      name="servicio"
+      [(ngModel)]="testimonio.idServicio"
+      required
+      #servicio="ngModel"
+    >
+      <option value="" disabled selected>Selecciona un servicio</option>
+      <option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
+        {{servicio.nombre}}
+      </option>
+    </select>
+    <div *ngIf="servicio.invalid && (servicio.dirty || servicio.touched)" class="error-message">
+      Debes seleccionar un servicio
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="calificacion">Calificación (1-5)</label>
+    <input
+      type="number"
+      id="calificacion"
+      name="calificacion"
+      [(ngModel)]="testimonio.calificacion"
+      min="1"
+      max="5"
+      required
+      #calificacion="ngModel"
+    />
+    <div *ngIf="calificacion.invalid && (calificacion.dirty || calificacion.touched)" class="error-message">
+      La calificación debe estar entre 1 y 5
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="texto">Tu testimonio</label>
+    <textarea
+      id="texto"
+      name="texto"
+      [(ngModel)]="testimonio.texto"
+      rows="5"
+      required
+      minlength="10"
+      #texto="ngModel"
+    ></textarea>
+    <div *ngIf="texto.invalid && (texto.dirty || texto.touched)" class="error-message">
+      <div *ngIf="texto.errors?.['required']">El testimonio es requerido</div>
+      <div *ngIf="texto.errors?.['minlength']">Debe tener al menos 10 caracteres</div>
+    </div>
+  </div>
+
+  <div *ngIf="errors.length > 0" class="error-message">
+    <div *ngFor="let error of errors">{{error}}</div>
+  </div>
+
+  <button type="submit" [disabled]="testimonioForm.invalid">Enviar Testimonio</button>
+</form>

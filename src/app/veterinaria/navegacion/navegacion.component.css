@@ -72,9 +72,12 @@ body {
   width: 100%;
   text-decoration: none;
   color: var(--white);
-  padding: 12px 0;
-  align-items: center;
-  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
 }
 
 .navigation ul li a .icon {

@@ -2,7 +2,7 @@
 
 <div class="detail-container">
     <h2 class="detail-title">Mascotas en Tratamiento</h2>
-    
+
     <ng-container class="detail-content" *ngIf="mascotasEnTratamiento.length > 0; else noMascotas">
       <div class="mascotas-list">
         <div *ngFor="let mascota of mascotasEnTratamiento" class="mascota-card">
@@ -14,7 +14,7 @@
               class="pet-image"
             />
           </div>
-          
+
           <!-- Datos de la mascota -->
           <div class="pet-data">
             <div class="data-item">
@@ -48,7 +48,7 @@
         </div>
       </div>
     </ng-container>
-    
+
     <ng-template #noMascotas>
       <div class="no-selection-message">
         <p *ngIf="!loading">El cliente no tiene mascotas en tratamiento actualmente</p>

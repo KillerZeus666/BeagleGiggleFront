@@ -30,7 +30,7 @@
             <td data-label="Servicio">{{ cita.servicio?.nombre || 'No especificado' }}</td>
             <td data-label="Estado">
               <span class="estado-badge estado-{{ cita.estado.toLowerCase() }}">
-                {{ cita.estado }}
+                {{ cita.estado | titlecase }}
               </span>
             </td>
             <td data-label="Acciones">

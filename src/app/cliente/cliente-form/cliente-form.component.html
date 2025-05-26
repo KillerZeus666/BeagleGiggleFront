@@ -14,9 +14,11 @@
               minlength="3"
               #nombre="ngModel"
           />
-          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="error-message">
-              Nombre inválido
-          </div>
+         <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="error-message">
+           <span *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</span>
+           <span *ngIf="nombre.errors?.['minlength']">Debe tener al menos 3 caracteres.</span>
+         </div>
+
 
           <!-- Correo -->
           <label for="correo">Correo electrónico:</label>
@@ -31,8 +33,10 @@
               #correo="ngModel"
           />
           <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="error-message">
-              Correo inválido
+             <span *ngIf="correo.errors?.['required']">El correo es obligatorio.</span>
+             <span *ngIf="correo.errors?.['email']">Formato de correo inválido.</span>
           </div>
+
 
           <!-- Celular -->
           <label for="celular">Celular:</label>
@@ -47,7 +51,8 @@
               #celular="ngModel"
           />
           <div *ngIf="celular.invalid && (celular.dirty || celular.touched)" class="error-message">
-              Celular inválido
+            <span *ngIf="celular.errors?.['required']">El celular es obligatorio.</span>
+           <span *ngIf="celular.errors?.['pattern']">Debe tener exactamente 10 dígitos.</span>
           </div>
 
           <!-- Cédula -->
@@ -63,9 +68,12 @@
               maxlength="12"
               #cedula="ngModel"
           />
-          <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="error-message">
-              Cédula inválida
-          </div>
+         <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="error-message">
+           <span *ngIf="cedula.errors?.['required']">La cédula es obligatoria.</span>
+           <span *ngIf="cedula.errors?.['minlength']">Mínimo 8 caracteres.</span>
+           <span *ngIf="cedula.errors?.['maxlength']">Máximo 12 caracteres.</span>
+         </div>
+
 
           <!-- Usuario -->
           <label for="nombreUsuario">Usuario:</label>
@@ -80,8 +88,10 @@
               #nombreUsuario="ngModel"
           />
           <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)" class="error-message">
-              Usuario inválido
+           <span *ngIf="nombreUsuario.errors?.['required']">El nombre de usuario es obligatorio.</span>
+           <span *ngIf="nombreUsuario.errors?.['minlength']">Debe tener al menos 4 caracteres.</span>
           </div>
+
 
           <!-- Foto -->
           <label for="foto">Foto (URL):</label>
@@ -94,9 +104,11 @@
               required
               #foto="ngModel"
           />
-          <div *ngIf="foto.invalid && (foto.dirty || foto.touched)" class="error-message">
-              URL inválida
-          </div>
+         <div *ngIf="foto.invalid && (foto.dirty || foto.touched)" class="error-message">
+  <span *ngIf="foto.errors?.['required']">La URL de la foto es obligatoria.</span>
+  <span *ngIf="foto.errors?.['url']">Debe ser una URL válida.</span>
+</div>
+
 
           <!-- Contraseña -->
           <label for="contrasena">Contraseña:</label>
@@ -110,9 +122,11 @@
               minlength="4"
               #contrasena="ngModel"
           />
-          <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)" class="error-message">
-              Contraseña inválida
-          </div>
+       <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)" class="error-message">
+  <span *ngIf="contrasena.errors?.['required']">La contraseña es obligatoria.</span>
+  <span *ngIf="contrasena.errors?.['minlength']">Debe tener al menos 4 caracteres.</span>
+</div>
+
 
           <!-- Confirmar Contraseña -->
           <label for="confirm_password">Confirmar contraseña:</label>
@@ -125,9 +139,14 @@
               required
               #confirmPasswordInput="ngModel"
           />
-          <div *ngIf="Formcliente.contrasena !== confirmPassword && (confirmPasswordInput.dirty || confirmPasswordInput.touched)" class="error-message">
-              Las contraseñas no coinciden
-          </div>
+        <div *ngIf="confirmPasswordInput.invalid && (confirmPasswordInput.dirty || confirmPasswordInput.touched)" class="error-message">
+  <span>Debe confirmar la contraseña.</span>
+</div>
+
+<div *ngIf="Formcliente.contrasena !== confirmPassword && (confirmPasswordInput.dirty || confirmPasswordInput.touched)" class="error-message">
+  Las contraseñas no coinciden.
+</div>
+
 
          <div class="boton-container">
             <button class="crear_cliente" type="submit" [disabled]="clienteForm.invalid || Formcliente.contrasena !== confirmPassword">
