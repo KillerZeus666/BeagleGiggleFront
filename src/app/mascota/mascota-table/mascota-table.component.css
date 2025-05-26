@@ -204,6 +204,7 @@ h1::after {
   position: relative;
 }
 
+
 /* Efecto de tarjeta para cada fila */
 .tabla tbody tr {
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
@@ -234,6 +235,7 @@ h1::after {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
+
 
 /* Foto de perfil mejorada */
 .foto-tabla {
@@ -274,6 +276,38 @@ h1::after {
     0 8px 15px rgba(0,0,0,0.1),
     0 10px 25px rgba(0,0,0,0.08);
   z-index: 2;
+}
+
+/* ESTILOS PARA EL ESTADO */
+.tabla .pet-status {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 90px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid transparent;
+}
+
+.tabla .pet-status.active {
+  background-color: #ecfdf5;
+  color: #10b981;
+  border-color: #a7f3d0;
+}
+
+.tabla .pet-status.inactive {
+  background-color: #fef2f2;
+  color: #ef4444;
+  border-color: #fecaca;
+}
+
+/* Efecto hover */
+.tabla tbody tr:hover .pet-status {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 /* ================== BOTONES DE ACCIONES PREMIUM ================== */

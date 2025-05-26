@@ -192,17 +192,17 @@ h1 {
 }
 
 .btn-detalles {
-  background: #03a9f4;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   margin-bottom: 8px;
 }
 
 .btn-editar {
-  background: #8e24aa;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
   margin-bottom: 8px;
 }
 
 .btn-eliminar {
-  background: #e53935;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
 .btn-detalles:hover,
