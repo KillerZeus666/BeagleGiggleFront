@@ -95,7 +95,6 @@ button span {
   width: 350px;
   height: 350px;
   border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(36, 52, 71, 0.2);
   object-fit: cover;
   user-select: none;
   align-self: center;
