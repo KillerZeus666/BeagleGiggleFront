@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="tienda-container">
+    <div class="titulo-wrapper">
+        <div class="tienda-titulo">BeagleStore</div>
+        <div class="tienda-subtitulo">Productos que solo puedes adquirir en nuestras tiendas físicas</div>
+    </div>
+
+    <div class="filtros-container">
+    <label for="categoria" class="filtro-label">Categoría:</label>
+    <select id="categoria" [(ngModel)]="categoriaSeleccionada" (change)="filtrarProductos()" class="filtro-select">
+        <option value="">Todas</option>
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+    </select>
+
+    <label for="precio" class="filtro-label">Precio máximo:</label>
+    <input type="number" id="precio" [(ngModel)]="precioMaximo" (input)="filtrarProductos()" class="filtro-input" placeholder="COP..." />
+
+    <label for="favoritos" class="filtro-label">
+        <input type="checkbox" id="favoritos" [(ngModel)]="filtrarFavoritos" (change)="filtrarProductos()" />
+        Solo favoritos
+    </label>
+
+    <button class="btn-reset" (click)="resetFiltros()">Limpiar filtros</button>
+    </div>
+
+
+  <!-- GRID DE PRODUCTOS -->
+  <div class="productos-grid">
+    <div *ngFor="let producto of productos" class="producto-card">
+      <img [src]="producto.images[0]" alt="{{ producto.name }}" class="producto-imagen" />
+
+      <!-- Botón de favorito -->
+      <button class="btn-favorito" (click)="toggleFavorito(producto)" aria-label="Favorito">
+        <svg *ngIf="!esFavorito(producto)" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#186ba8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-corazon" viewBox="0 0 24 24">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <svg *ngIf="esFavorito(producto)" xmlns="http://www.w3.org/2000/svg" fill="#186ba8" stroke="#186ba8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-corazon" viewBox="0 0 24 24">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </button>
+
+      <h3 class="producto-nombre">{{ producto.name }}</h3>
+      <p class="producto-precio">{{ producto.PriceCOP | currency:'COP':'symbol':'1.0-0' }}</p>
+    </div>
+  </div>
+
+</div>

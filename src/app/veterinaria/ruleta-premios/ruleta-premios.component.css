@@ -1,0 +1,39 @@
+.contenedor {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.ruleta {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  border: 10px solid #4fa9d5;
+  border-radius: 50%;
+  background: conic-gradient(
+    #72c0ea 0% 14.28%,       /* azul claro */
+    #4fa9d5 14.28% 28.56%,   /* azul medio */
+    #50c878 28.56% 42.84%,   /* verde esmeralda */
+    #ffcb77 42.84% 57.12%,   /* amarillo pastel */
+    #ff9999 57.12% 71.4%,    /* rosa suave */
+    #a084ca 71.4% 85.68%,    /* lila pastel */
+    #ffc947 85.68% 100%      /* naranja dorado */
+  );
+  transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.boton-girar {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #4fa9d5;
+  color: rgb(16, 16, 16);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #2a4e68;
+}

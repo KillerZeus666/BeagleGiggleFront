@@ -7,14 +7,12 @@
 
 body {
   background: #f5f5f5;
-  padding: 20px;
 }
 
 .dashboard-main {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 h1 {
@@ -46,7 +44,7 @@ h1 {
 }
 
 .kpi-number {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1d95db;
   margin-bottom: 10px;
@@ -141,4 +139,37 @@ h1 {
   .section h2 {
     font-size: 1.3rem;
   }
+}
+
+
+.top-bar {
+  display: flex;
+  justify-content: space-between; /* <-- distribuye el contenido a los extremos */
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #ffffff;
+}
+
+.user {
+  margin: 0;
+  padding: 0;
+  max-width: 300px;
+}
+
+.user img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.logout-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logout-icon:hover {
+  transform: scale(1.1);
 }

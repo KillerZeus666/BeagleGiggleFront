@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
-import { Router } from '@angular/router'; // <--- importa el Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +11,19 @@ export class HeaderComponent implements OnInit {
   userType: string | null = null;
   userName: string = '';
   userPhoto: string = '';
+  userId: number | null = null;
   isMenuOpen: boolean = false;
 
   constructor(
     private authService: AuthService,
-    private router: Router // <--- inyecta el Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.userType = this.authService.getUserType();
+    this.userId = this.authService.getUserId();
     this.userName = this.authService.getUserName();
-    this.userPhoto = this.authService.getUserPhoto();
+    this.userPhoto = this.authService.getUserPhoto() || 'https://w7.pngwing.com/pngs/946/556/png-transparent-computer-icons-login-user-profile-client-smiley-%D0%B7%D0%BD%D0%B0%D1%87%D0%BA%D0%B8-windows-10-thumbnail.png';
   }
 
   toggleMenu(): void {
@@ -34,5 +36,8 @@ export class HeaderComponent implements OnInit {
       window.location.reload(); 
     });
   }
-  
+
+  getMascotasCliente(): any[] {
+    return ['/mascotas-cliente', this.userId];
+  }
 }

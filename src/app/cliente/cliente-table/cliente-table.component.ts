@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteCL } from 'src/app/model/cliente-cl';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service'; // Importar el servicio AuthService
+import { AuthService } from 'src/app/service/auth.service';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
+ // Importar el servicio AuthService
 
 @Component({
   selector: 'app-cliente-table',
@@ -94,4 +97,23 @@ export class ClienteTableComponent implements OnInit {
         });
       }
     }
+
+    exportarExcel(): void {
+  const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.clienteList.map(cliente => ({
+    Nombre: cliente.nombre,
+    Cédula: cliente.cedula,
+    Celular: cliente.celular,
+    Correo: cliente.correo
+  })));
+
+  const workbook: XLSX.WorkBook = {
+    Sheets: { 'Clientes': worksheet },
+    SheetNames: ['Clientes']
+  };
+
+  const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  const blob: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+  FileSaver.saveAs(blob, 'Listado_Clientes.xlsx');
+}
+
 }

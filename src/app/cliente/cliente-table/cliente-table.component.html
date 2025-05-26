@@ -10,14 +10,6 @@
 
 <!-- ========================= Main ==================== -->
 <div class="main">
-    <div class="topbar">
-
-        <div class="user">
-            <img src="https://portal.unbosque.edu.co/sites/default/files/inline-images/en-que-puede-trabajar-un-administrador-de-empresas.jpg" alt="Usuario">
-        </div>
-    </div>
-
-
 
     <!-- ========================= Lista de Clientes ==================== -->
     <main class="container-principal">
@@ -40,9 +32,19 @@
           </div>
 
 
+              <!-- Contenedor de exportar y filtro -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
+
+      <!-- Botón exportar -->
+      <button (click)="exportarExcel()" style="background: none; border: none; cursor: pointer;" title="Exportar a Excel">
+        <img src="https://i.postimg.cc/1XBG3w9x/guardar-carpeta.png" alt="Exportar" style="width: 32px;" />
+      </button>
+
         <div class="button-container">
             <a class="btn-agregar" (click)="abrirFormualarioAgregarCliente()">Nuevo Cliente</a>
         </div>
+
+    </div>
 
         <div class="tabla-container">
           <div *ngIf="clienteList.length === 0" class="mensaje-sin-clientes">

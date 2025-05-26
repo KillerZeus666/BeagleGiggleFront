@@ -13,6 +13,7 @@
           <th>Código</th>
           <th>Fecha</th>
           <th>Detalles</th>
+          <th>Estado de Factura</th>
         </tr>
       </thead>
       <tbody>
@@ -21,13 +22,17 @@
             <label class="checkbox-container">
               <input type="checkbox"
                      [value]="tratamiento.idTratamiento"
-                     (change)="onCheckboxChange($event, tratamiento)">
+                     (change)="onCheckboxChange($event, tratamiento)"
+                     [disabled]="puedeFacturar(tratamiento)">
               <span class="checkmark"></span>
             </label>
           </td>
           <td class="tratamiento-codigo">{{ tratamiento.codigo }}</td>
           <td class="tratamiento-fecha">{{ tratamiento.fecha | date:'dd/MM/yyyy' }}</td>
           <td class="tratamiento-detalles">{{ tratamiento.detalles }}</td>
+          <td>
+            {{ estadoFactura(tratamiento) }}
+          </td>
         </tr>
         <tr *ngIf="tratamientos.length === 0">
           <td colspan="4" class="no-results">No hay tratamientos registrados</td>

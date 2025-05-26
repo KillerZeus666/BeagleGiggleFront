@@ -1,0 +1,39 @@
+
+<app-header></app-header>
+
+<section class="peso-natural">
+  <div class="texto-intro">
+    <h2>¿Tu mascota está en su peso ideal?</h2>
+    <p>Calcula rápidamente el peso ideal de tu peludito según su especie y tamaño.</p>
+  </div>
+
+  <div class="contenedor-flex">
+    <div class="formulario">
+      <label>Especie:
+        <select [(ngModel)]="especie">
+          <option value="perro">Perro</option>
+          <option value="gato">Gato</option>
+        </select>
+      </label>
+
+      <label *ngIf="especie === 'perro'">Tamaño:
+        <select [(ngModel)]="tamano">
+          <option value="pequeño">Pequeño</option>
+          <option value="mediano">Mediano</option>
+          <option value="grande">Grande</option>
+        </select>
+      </label>
+
+      <label>Peso actual (kg):
+        <input type="number" [(ngModel)]="pesoActual" />
+      </label>
+
+      <button (click)="calcularPesoIdeal()">Calcular</button>
+    </div>
+
+    <div *ngIf="mensaje" class="resultado">
+      <img [src]="imagenResultado" alt="Estado" />
+      <p><strong>{{ mensaje }}</strong></p>
+    </div>
+  </div>
+</section>

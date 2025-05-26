@@ -1,4 +1,10 @@
-import { Component, AfterViewInit, ViewEncapsulation, Renderer2, OnDestroy } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ViewEncapsulation,
+  Renderer2,
+  OnDestroy,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -30,16 +36,26 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const listItems = document.querySelectorAll<HTMLLIElement>('.navigation li');
+    const listItems =
+      document.querySelectorAll<HTMLLIElement>('.navigation li');
     const toggle = document.querySelector<HTMLElement>('.toggle');
 
-    // Hover efecto
+    // Hover efecto - modificado para excluir elementos activos
     const hoverLink = function (this: HTMLLIElement): void {
-      listItems.forEach((item) => item.classList.remove('hovered'));
-      this.classList.add('hovered');
+      listItems.forEach((item) => {
+        // Solo remover hovered si no es el elemento activo
+        if (!item.classList.contains('active')) {
+          item.classList.remove('hovered');
+        }
+      });
+
+      // Solo agregar hovered si no es el elemento activo
+      if (!this.classList.contains('active')) {
+        this.classList.add('hovered');
+      }
     };
 
-    // Click efecto (active)
+    // Click efecto (active) - se mantiene igual
     const activeLink = function (this: HTMLLIElement): void {
       listItems.forEach((item) => item.classList.remove('active'));
       this.classList.add('active');
@@ -93,53 +109,58 @@ export class NavegacionComponent implements AfterViewInit, OnDestroy {
   }
 
   getPerfilLink(): any[] {
-  if (this.userType === 'Admin') {
-    return ['/detalles-admin', this.userId];
-  } else if (this.userType === 'Veterinario') {
-    return ['/detalles-veterinario', this.userId];
-  } else if (this.userType === 'Cliente') {
-    return ['/detalles-cliente', this.userId];
-  } else {
-    return ['/']; // ruta por defecto o de fallback
+    if (this.userType === 'Admin') {
+      return ['/detalles-admin', this.userId];
+    } else if (this.userType === 'Veterinario') {
+      return ['/detalles-veterinario', this.userId];
+    } else if (this.userType === 'Cliente') {
+      return ['/detalles-cliente', this.userId];
+    } else {
+      return ['/']; // ruta por defecto o de fallback
+    }
   }
-}
 
-getCitas():any[]{
-  return ['/citas',this.userId];
-}
+  getCitas(): any[] {
+    return ['/citas', this.userId];
+  }
 
-//CLIENTE
+  //CLIENTE
   getMascotasCliente(): any[] {
     return ['/mascotas-cliente', this.userId];
   }
 
-  getMascotasEnTratamiento(): any[]{
+  getMascotasEnTratamiento(): any[] {
     return ['/mascotas-tratamiento', this.userId];
   }
 
-  getFacturasCLiente():any[]{
+  getFacturasCLiente(): any[] {
     return ['/facturas/cliente', this.userId];
   }
-//VETERINARIO
-  getMascotasAtendidas():any[]{
-    return ['/mascotas-atendidas',this.userId];
+  //VETERINARIO
+  getMascotasAtendidas(): any[] {
+    return ['/mascotas-atendidas', this.userId];
   }
 
   getTratamientosVeterinario(): any[] {
-    return ['/historial-tratamientos',this.userId];
+    return ['/historial-tratamientos', this.userId];
   }
-//ADMINISTRADOR
-  
+  //ADMINISTRADOR
 
   // Nuevo método para navegar a tratamientos como Admin
   navegarATratamientos(): void {
     if (this.userType === 'Admin') {
-      this.router.navigate(['/tratamiento']).then(success => {
+      this.router.navigate(['/tratamiento']).then((success) => {
         if (!success) {
-          console.error('Error: No se pudo cargar el componente de tratamientos');
+          console.error(
+            'Error: No se pudo cargar el componente de tratamientos'
+          );
           this.router.navigate(['/dashboard']);
         }
       });
     }
   }
+    getTestimonios(): string {
+      return `/testimonios/${this.userId}`;
+    }
+
 }

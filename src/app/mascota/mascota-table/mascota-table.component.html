@@ -15,8 +15,21 @@
       <button (click)="buscar()" class="btn-buscar">Buscar</button>
     </div>
 
+
+
+    <!-- Contenedor de exportar y filtro -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
+
+      <!-- Botón exportar -->
+      <button (click)="exportarExcel()" style="background: none; border: none; cursor: pointer;" title="Exportar a Excel">
+        <img src="https://i.postimg.cc/1XBG3w9x/guardar-carpeta.png" alt="Exportar" style="width: 32px;" />
+      </button>
+
+
     <div class="button-container">
       <button (click)="abrirFormularioMascota()" class="btn-agregar">Crear Mascota</button>
+    </div>
+    
     </div>
 
     <div class="tabla-container">

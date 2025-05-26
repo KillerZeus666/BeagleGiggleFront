@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit, ElementRef, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TestimonioService } from 'src/app/service/testimonio.service';
 import { DatePipe } from '@angular/common';
@@ -11,7 +11,7 @@ import { ViewportScroller } from '@angular/common';
   styleUrls: ['./landing.component.css'],
   providers: [DatePipe]
 })
-export class LandingComponent implements OnInit, AfterViewInit {
+export class LandingComponent implements OnInit, AfterViewInit, OnDestroy {
   servicios: any[] = [];
   isLoading = true;
   errorMessage = '';
@@ -25,22 +25,22 @@ export class LandingComponent implements OnInit, AfterViewInit {
     {
       title: "Bienvenido a Nuestra Plataforma",
       description: "Descubre un espacio diseñado para brindarte los mejores servicios en salud y bienestar.",
-      background: "url('https://i.postimg.cc/KYgCr3Td/pexels-lum3n-44775-406014.jpg')"
+      background: "https://i.postimg.cc/KYgCr3Td/pexels-lum3n-44775-406014.jpg"
     },
     {
       title: "Cuidado Profesional",
       description: "Nuestro equipo veterinario está disponible las 24 horas para atender a tu mascota.",
-      background: "url('https://universidadeuropea.com/resources/media/images/medicina-veterinaria-1200x630.original.jpg')"
+      background: "https://universidadeuropea.com/resources/media/images/medicina-veterinaria-1200x630.original.jpg"
     },
     {
       title: "Tecnología de Vanguardia",
       description: "Contamos con equipos modernos para el mejor diagnóstico y tratamiento.",
-      background: "url('https://www.ladogmami.com/wp-content/uploads/2021/01/5.-Perro-feliz-10-senales-para-identificarlo-scaled.jpg')"
+      background: "https://www.ladogmami.com/wp-content/uploads/2021/01/5.-Perro-feliz-10-senales-para-identificarlo-scaled.jpg"
     }
   ];
   private carouselInterval: any;
+  private imagesLoaded = 0;
 
-  // Para animaciones al hacer scroll
   @ViewChildren('section') sections!: QueryList<ElementRef>;
 
   constructor(
@@ -52,9 +52,11 @@ export class LandingComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.preloadImages().then(() => {
+      this.startCarousel();
+    });
     this.cargarServicios();
     this.cargarTestimonios();
-    this.startCarousel();
   }
 
   ngAfterViewInit(): void {
@@ -67,6 +69,31 @@ export class LandingComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // Precarga de imágenes
+  preloadImages(): Promise<void> {
+    return new Promise((resolve) => {
+      const loadPromises = this.carouselItems.map(item => {
+        return new Promise<void>((imgResolve) => {
+          const img = new Image();
+          img.onload = () => {
+            this.imagesLoaded++;
+            imgResolve();
+          };
+          img.onerror = () => {
+            console.warn(`No se pudo cargar la imagen: ${item.background}`);
+            imgResolve();
+          };
+          img.src = item.background;
+        });
+      });
+
+      Promise.all(loadPromises).then(() => {
+        console.log(`Todas las imágenes precargadas (${this.imagesLoaded}/${this.carouselItems.length})`);
+        resolve();
+      });
+    });
+  }
+
   // Manejo del carrusel
   startCarousel(): void {
     this.carouselInterval = setInterval(() => {
@@ -76,29 +103,15 @@ export class LandingComponent implements OnInit, AfterViewInit {
 
   nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.carouselItems.length;
-    this.updateCarousel();
   }
 
   prevSlide(): void {
     this.currentSlide = (this.currentSlide - 1 + this.carouselItems.length) % this.carouselItems.length;
-    this.updateCarousel();
   }
 
   goToSlide(index: number): void {
     this.currentSlide = index;
-    this.updateCarousel();
     this.resetCarouselInterval();
-  }
-
-  updateCarousel(): void {
-    const heroSection = document.querySelector('.description-section') as HTMLElement;
-    if (heroSection) {
-      heroSection.style.backgroundImage = this.carouselItems[this.currentSlide].background;
-    }
-
-    document.querySelectorAll('.indicator').forEach((ind, i) => {
-      ind.classList.toggle('active', i === this.currentSlide);
-    });
   }
 
   resetCarouselInterval(): void {

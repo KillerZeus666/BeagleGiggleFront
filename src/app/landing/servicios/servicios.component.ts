@@ -65,6 +65,6 @@ export class ServiciosComponent implements OnInit, AfterViewInit {
   }
     // Método para mostrar el precio y mensaje cuando se hace clic en la tarjeta
     mostrarPrecio(servicio: any): void {
-      servicio.mostrarPrecio = true; // Actualiza el servicio para mostrar el precio
+      servicio.mostrarPrecio = true;
     }
 }

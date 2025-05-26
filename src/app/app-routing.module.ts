@@ -44,6 +44,16 @@ import { BlogComponent } from './veterinaria/blog/blog.component';
 import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
 import { roleGuard } from './guards/role.guard';
+import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
+import { EdadMascotaComponent } from './mascota/edad-mascota/edad-mascota.component';
+import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-premios.component';
+import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
+import { GeneradorNombresComponent } from './veterinaria/generador-nombres/generador-nombres.component';
+import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calculadora-peso.component';
+import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
+import { ProductosComponent } from './veterinaria/productos/productos.component';
+import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
+import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -88,9 +98,18 @@ const routes: Routes = [
   {path: 'beagle-match', component: BeagleMatchComponent},
   {path: 'match-page', component: MatchPageComponent},
   {path : 'calcular-edad', component: CalcularEdadComponent},
+  {path: 'test-salud-mascota', component: TestSaludMascotaComponent},
   {path: 'blog', component: BlogComponent},
   {path: 'articulo/:id', component: MostrarArticuloComponent },
   {path: 'playlist', component: PlaylistComponent},
+  {path: 'edad-humana-mascota', component: EdadMascotaComponent},
+  {path: 'cumpleanios-mascota', component: CumpleaniosComponent},
+  {path: 'generador-nombres', component: GeneradorNombresComponent},
+  {path: 'calculadora-peso', component: CalculadoraPesoComponent},
+  {path: 'publicacion', component: PublicacionComponent},
+  {path: 'productos', component: ProductosComponent},
+  {path: 'testimonios', component: TestimoniosComponent},
+  {path: 'testimonios/:id', component: TestimoniosDetailComponent },
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

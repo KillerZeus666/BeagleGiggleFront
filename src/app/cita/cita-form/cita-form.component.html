@@ -102,7 +102,8 @@
       </option>
     </select>
   
-    <label for="estado">Estado de la cita</label>
+    <div *ngIf="modoEdicion">
+      <label for="estado">Estado de la cita</label>
     <div *ngIf="modoEdicion; else estadoFijo">
       <select
         id="estado"
@@ -125,8 +126,11 @@
         [(ngModel)]="Formcita.estado"
         readonly
         class="estado-readonly"
+        *ngIf="modoEdicion"
       >
     </ng-template>
+    </div>
+    
   
-    <button type="submit">{{ modoEdicion ? 'Actualizar' : 'Agregar' }}</button>
+    <button type="submit" >{{ modoEdicion ? 'Actualizar' : 'Agregar' }}</button>
   </form>

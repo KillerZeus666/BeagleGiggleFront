@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MedicamentoCL } from 'src/app/model/medicamento-cl';
 import { MedicamentoService } from 'src/app/service/medicamento.service';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-medicamento-table',
@@ -72,4 +75,15 @@ export class MedicamentoTableComponent implements OnInit {
         break;
     }
   }
+
+
+    exportarExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.medicamentos);
+    const workbook: XLSX.WorkBook = { Sheets: { 'Medicamentos': worksheet }, SheetNames: ['Medicamentos'] };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+    const data: Blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    FileSaver.saveAs(data, 'medicamentos.xlsx');
+  }
+
 }

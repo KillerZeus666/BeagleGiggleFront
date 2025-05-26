@@ -61,20 +61,21 @@ header {
   }
   
   .login-btn {
-    background-color: #56a8d3;
+    background-color:#4fa9d5;
     color: rgb(0, 0, 0);
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
+    text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .login-btn:hover {
-    background-color: #477d9a;
+    background-color:#3d8db6;
     transform: scale(1.05);
   }
   
@@ -152,3 +153,64 @@ header {
       margin-top: 10px;
     }
   }
+
+  .sos-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 5px;
+  transition: transform 0.2s ease;
+}
+
+.sos-btn:hover {
+  transform: scale(1.05);
+}
+
+.sos-btn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.sos-num {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sos-btn {
+  position: relative;
+}
+
+.sos-tooltip {
+  position: absolute;
+  bottom: -90px; /* Ajusta según tu diseño */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  color: #333;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.sos-btn:hover .sos-tooltip {
+  opacity: 1;
+}

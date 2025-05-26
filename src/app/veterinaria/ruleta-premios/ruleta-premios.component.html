@@ -1,0 +1,10 @@
+<div class="contenedor">
+  <div class="ruleta" [style.transform]="'rotate(' + rotacion + 'deg)'"></div>
+  <button (click)="girarRuleta()" [disabled]="girando" class="boton-girar">
+    {{ girando ? 'Girando...' : 'Girar Ruleta 🎉' }}
+  </button>
+
+  <div *ngIf="premioGanado" class="resultado">
+    🎁 ¡Felicidades! Has ganado: <strong>{{ premioGanado }}</strong>
+  </div>
+</div>

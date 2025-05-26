@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class="articulo-general">
+  <header>
+    <h1>¿Cómo calcular la edad humana de tu mascota?</h1>
+    <p class="intro">
+      Comprender la etapa de vida en la que se encuentra tu mascota es clave para garantizar su bienestar. A menudo, se comete el error de asumir que los años de vida de perros y gatos se traducen de manera directa a años humanos. Sin embargo, el envejecimiento en animales no es lineal, y varía según su especie, raza y tamaño. Este artículo te ayudará a entender cómo convertir la edad de tu mascota en su equivalente humano y por qué es importante hacerlo.
+    </p>
+  </header>
+
+  <main>
+    <section class="calculadora-edad">
+      <h2>Calculadora de Edad Equivalente</h2>
+      <p>
+        Utiliza esta herramienta sencilla para estimar cuántos años humanos tiene tu perro o gato. Solo necesitas seleccionar el tipo de mascota y su edad actual.
+      </p>
+      <div class="formulario">
+        <label>
+          Tipo de mascota:
+          <select [(ngModel)]="tipoMascota">
+            <option value="perro">Perro</option>
+            <option value="gato">Gato</option>
+          </select>
+        </label>
+
+        <label>
+          Edad real (en años):
+          <input type="number" [(ngModel)]="edadMascota" min="0" />
+        </label>
+
+        <button class="btn-calcular" (click)="calcularEdadHumana()">Calcular</button>
+      </div>
+
+      <div *ngIf="edadHumana !== null" class="resultado">
+        <p>
+          Tu <strong>{{ tipoMascota }}</strong> de <strong>{{ edadMascota }}</strong> años tiene aproximadamente <strong>{{ edadHumana }}</strong> años humanos.
+        </p>
+      </div>
+    </section>
+
+    <section class="consejos-edad">
+    <div class="contenido">
+        <div class="texto">
+        <h3>¿Por qué es clave conocer la edad real de tu mascota?</h3>
+        <p>
+            Ajustar sus cuidados, alimentación y visitas al veterinario según su etapa vital asegura que viva feliz y saludable. Conocer su edad humana te ayuda a entender mejor sus necesidades.
+        </p>
+        </div>
+        <div class="imagen">
+        <img src="https://humanidades.com/wp-content/uploads/2017/02/perro-3-e1561679226953.jpg" alt="Mascota feliz" />
+        </div>
+    </div>
+    </section>
+
+
+  </main>
+</div>

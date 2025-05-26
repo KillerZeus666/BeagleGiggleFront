@@ -71,4 +71,8 @@ export class FacturaService {
 });
   }
 
+  obtenerFacturaPorTratamiento(idTratamiento: number): Observable<FacturaCL> {
+    return this.http.get<FacturaCL>(`${this.baseUrl}/por-tratamiento/${idTratamiento}`);
+  }
+
 }

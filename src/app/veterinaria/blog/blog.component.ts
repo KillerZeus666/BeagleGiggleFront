@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent {
   articulos = [
-       {
+    {
       id: 'Spotify',
       titulo: 'PlayList para relajar a tu mascota',
       descripcion: `La música también es parte del bienestar de tu mascota. Descubre una playlist pensada especialmente para relajar y estimular a tu perro o gato. ¡Haz clic y escúchala ahora!`,
@@ -21,49 +21,121 @@ export class BlogComponent {
       ruta: '/playlist'
     },
     {
-      id: 'vacunar-mascota',
-      titulo: '¿Por qué es vital vacunar a tu mascota?',
-      descripcion: `Las vacunas son fundamentales para proteger a tu mascota contra enfermedades graves como la rabia, parvovirus y moquillo. Vacunar a tiempo no solo cuida la salud de tu amigo peludo, sino que también previene brotes que pueden afectar a toda la comunidad. 
-      
-      Recuerda consultar con tu veterinario el calendario de vacunación adecuado según la edad y raza de tu mascota.`,
-      fecha: new Date(2025, 8, 1),
+      id: 'test-salud-mascota',
+      titulo: 'Evalúa el estado de salud de tu mascota en 1 minuto',
+      descripcion: `¿Notas que tu mascota no se comporta como siempre? Con nuestro test rápido podrás detectar señales comunes de alerta como fatiga, pérdida de apetito o síntomas respiratorios.
+
+Este test no reemplaza una consulta veterinaria, pero puede ayudarte a decidir cuándo es momento de actuar. ¡Hazlo ahora y cuida a quien más te quiere!`,
+      fecha: new Date(2025, 4, 1),
       autor: 'Dra. Lina Rodríguez',
       imagenes: [
-        'https://media.istockphoto.com/id/966384466/es/foto/imagen-recortada-del-beagle-de-cartera-hombre-al-veterinario-hacer-inyecci%C3%B3n-jeringa-que.jpg?s=612x612&w=0&k=20&c=tDYz1Eq1XBlQ1-fsy9rohx_1iIzE-ijNqfzRby7C3x0=',
-        'https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-mascota_23-2149143887.jpg'
+        'https://cdn.nubika.es/wp-content/uploads/2024/02/14153319/test-inteligencia-perros.png',
+        'https://cdn.nubika.es/wp-content/uploads/2024/02/14153319/test-inteligencia-perros.png'
       ],
-      ruta: '/playlist'
+      ruta: '/test-salud-mascota'
     },
     {
-      id: 'alimentacion-saludable-perros-adultos',
-      titulo: 'Alimentación saludable para perros adultos',
-      descripcion: `Una dieta equilibrada es la base para una vida larga y saludable de tu perro adulto. Es importante incluir proteínas de calidad, grasas saludables, vitaminas y minerales. Evita alimentos procesados con altos niveles de conservantes y azúcares. 
-      
-      Además, siempre asegúrate de que tenga acceso a agua fresca y suficiente ejercicio diario.`,
-      fecha: new Date(2025, 7, 28),
-      autor: 'MVZ Carlos Sánchez',
+      id: 'edad-humana-mascota',
+      titulo: 'Conoce la edad humana de tu mascota',
+      descripcion: `
+      ¿Sabías que la edad de tu mascota no se calcula igual que la humana? 
+      Aquí te ayudamos a conocer cuántos años "humanos" tiene tu perro o gato.
+    `,
+      fecha: new Date(2025, 1, 26),
+      autor: 'Dr. Julio Bermúdez',
       imagenes: [
-        'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2017/02/12/58a04e1be0ec8.jpeg',
-        'https://vivirenelpoblado.com/wp-content/uploads/2019/05/comida-naturlal-mascota.jpg'
+        'https://urgenciesveterinaries.com/wp-content/uploads/2021/03/perros-braquicefalos-survet-01.jpg'
       ],
-      ruta: '/playlist'
+      ruta: '/edad-humana-mascota',
+      incluyeCalculadoraEdad: true
     },
     {
-      id: 'ejercicio-estimulacion-cachorros',
-      titulo: 'Ejercicio y estimulación mental para cachorros',
-      descripcion: `Los cachorros necesitan más que cariño: requieren ejercicio físico y mental para crecer fuertes y felices. Juegos de búsqueda, caminatas cortas y juguetes interactivos ayudan a desarrollar su inteligencia y controlar la energía. 
-      
-      Esto previene comportamientos destructivos y favorece una mejor adaptación social.`,
-      fecha: new Date(2025, 7, 20),
-      autor: 'Lic. Ana María Torres',
+      id: 'cumpleanios-mascota',
+      titulo: '¡Tu mascota está de cumpleaños!',
+      descripcion: `
+        ¿Hoy es el cumpleaños de tu peludo? 🎉 
+        Descubre las sorpresas que BeagleGiggle tiene preparadas para celebrar su día especial. 
+        Desde premios hasta recomendaciones personalizadas.
+      `,
+      fecha: new Date(2025, 2, 30),
+      autor: 'Dra. Ana Gómez',
       imagenes: [
-        'https://www.novecan.com/blog/wp-content/uploads/2023/08/golden-retriever-dog-exercising-2023-08-03-16-56-10-utc.webp',
-        'https://www.zooplus.es/magazine/wp-content/uploads/2021/03/ejercicio-para-perros.jpeg'
+        'https://www.wasky.es/wp-content/uploads/cabecera-60.jpg'
       ],
-      ruta: '/playlist'
+      ruta: '/cumpleanios-mascota',
+      incluyeSorpresasCumple: true
     },
+    {
+      id: 'generador-nombres',
+      titulo: '¿Buscas el nombre perfecto para tu mascota?',
+      descripcion: `
+        ¡Estás en el lugar correcto! 🐾
+        Nuestro generador de nombres te ayudará a encontrar el nombre ideal para tu nuevo compañero peludo. 
+        Solo dinos si es macho o hembra y te daremos opciones adorables, originales y llenas de personalidad.
+      `,
+      fecha: new Date(2025, 3, 23),
+      autor: 'Dr. Fernando Higuera',
+      imagenes: [
+        'https://www.zooplus.es/magazine/wp-content/uploads/2019/02/feat-768x496.jpeg'
+      ],
+      ruta: '/generador-nombres',
+      incluyeGeneradorNombres: true
+    },
+    {
+    id: 'calculadora-peso',
+    titulo: '¿Tu mascota está en su peso ideal?',
+    descripcion: `
+      ¡Descúbrelo ahora! ⚖️🐶🐱
+      Con nuestra calculadora de peso ideal puedes saber si tu perro o gato está en un rango saludable de peso.
+      Solo ingresa su edad, raza, especie y peso actual, y obtendrás una recomendación útil y fácil de entender.
+      ¡Cuida su salud con solo unos clics!
+    `,
+    fecha: new Date(2025, 4, 24),
+    autor: 'Dra. Camila Suárez',
+    imagenes: [
+      'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2022/03/28/62420b2966e43.jpeg'
+    ],
+    ruta: '/calculadora-peso',
+    incluyeCalculadoraPeso: true
+  },
+  {
+    id: 'publicacion',
+    titulo:'¿Perdiste o encontraste una mascota?',
+    descripcion: `
+      ¡Descúbrelo ahora! ⚖️🐶🐱
+      Con nuestra calculadora de peso ideal puedes saber si tu perro o gato está en un rango saludable de peso.
+      Solo ingresa su edad, raza, especie y peso actual, y obtendrás una recomendación útil y fácil de entender.
+      ¡Cuida su salud con solo unos clics!
+    `,
+    fecha: new Date(2025, 2, 26),
+    autor: 'Equipo BeagleGiggle',
+    imagenes: [
+      'https://media.istockphoto.com/id/1346490163/es/foto/divertido-perro-beagle-mira-atentamente-en-una-lupa.jpg?s=612x612&w=0&k=20&c=wHDUJOoEU_ZjgDMAY9eruZlS8_rF7uTZQ6oxtbK0fF8='
+    ],
+    ruta: '/publicacion',
+    incluyeCalculadoraPeso: true
+    },
+      {
+      id: 'publicacion',
+      titulo:'BeagleStore',
+      descripcion: `
+        ¡Descúbrelo ahora! ⚖️🐶🐱
+        Con nuestra calculadora de peso ideal puedes saber si tu perro o gato está en un rango saludable de peso.
+        Solo ingresa su edad, raza, especie y peso actual, y obtendrás una recomendación útil y fácil de entender.
+        ¡Cuida su salud con solo unos clics!
+      `,
+      fecha: new Date(2025, 10, 18),
+      autor: 'Equipo BeagleGiggle',
+      imagenes: [
+        'https://st5.depositphotos.com/1594920/62593/i/450/depositphotos_625930692-stock-photo-cat-dog-looking-camera-front.jpg'
+      ],
+      ruta: '/productos',
+      incluyeCalculadoraPeso: true
+    }
 
-  ];
+
+
+  ].sort((a, b) => b.fecha.getTime() - a.fecha.getTime()); // Orden descendente por fecha
 
   constructor(private router: Router) {}
 
@@ -72,7 +144,6 @@ export class BlogComponent {
   }
 
   navegar(ruta: string) {
-  this.router.navigate([ruta]);
-}
-
+    this.router.navigate([ruta]);
+  }
 }

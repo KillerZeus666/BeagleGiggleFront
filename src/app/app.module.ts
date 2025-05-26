@@ -68,6 +68,17 @@ import { BlogComponent } from './veterinaria/blog/blog.component';
 import { MostrarArticuloComponent } from './veterinaria/blog/mostrar-articulo/mostrar-articulo.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { PlaylistComponent } from './veterinaria/playlist/playlist.component';
+import { TestSaludMascotaComponent } from './mascota/test-salud-mascota/test-salud-mascota.component';
+import { EdadMascotaComponent } from './mascota/edad-mascota/edad-mascota.component';
+import { RuletaPremiosComponent } from './veterinaria/ruleta-premios/ruleta-premios.component';
+import { CumpleaniosComponent } from './veterinaria/cumpleanios/cumpleanios.component';
+import { GeneradorNombresComponent } from './veterinaria/generador-nombres/generador-nombres.component';
+import { CalculadoraPesoComponent } from './veterinaria/calculadora-peso/calculadora-peso.component';
+import { PublicacionComponent } from './veterinaria/publicacion/publicacion.component';
+import { ProductosComponent } from './veterinaria/productos/productos.component';
+import { PresentacionTiendaComponent } from './landing/presentacion-tienda/presentacion-tienda.component';
+import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
+import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
 
 registerLocaleData(localeEs);
 
@@ -132,7 +143,18 @@ registerLocaleData(localeEs);
     BeaglePageComponent,
     BlogComponent,
     MostrarArticuloComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    TestSaludMascotaComponent,
+    EdadMascotaComponent,
+    RuletaPremiosComponent,
+    CumpleaniosComponent,
+    GeneradorNombresComponent,
+    CalculadoraPesoComponent,
+    PublicacionComponent,
+    ProductosComponent,
+    PresentacionTiendaComponent,
+    TestimoniosComponent,
+    TestimoniosDetailComponent
   ],
   imports: [
     BrowserModule,
