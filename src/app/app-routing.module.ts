@@ -54,6 +54,8 @@ import { PublicacionComponent } from './veterinaria/publicacion/publicacion.comp
 import { ProductosComponent } from './veterinaria/productos/productos.component';
 import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
 import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
+import { ComprarMedicamentosComponent } from './factura/comprar-medicamentos/comprar-medicamentos.component';
+import { ComprarServicioComponent } from './factura/comprar-servicio/comprar-servicio.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -110,6 +112,8 @@ const routes: Routes = [
   {path: 'productos', component: ProductosComponent},
   {path: 'testimonios', component: TestimoniosComponent},
   {path: 'testimonios/:id', component: TestimoniosDetailComponent },
+  {path: 'comprar-medicamentos/:id', component: ComprarMedicamentosComponent, canActivate: [roleGuard], data: { roles: ['Admin', 'Veterinario', 'Cliente'] }},
+  {path: 'comprar-servicio/:id', component:ComprarServicioComponent, canActivate: [roleGuard], data: { roles: ['Admin', 'Veterinario', 'Cliente'] }},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: ErrorsPageComponent}
 ];

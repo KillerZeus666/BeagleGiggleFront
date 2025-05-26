@@ -23,6 +23,10 @@ export class ServicioService {
     );
   }
 
+  obtenerServicioPorId(id: number): Observable<ServicioCL> {
+    return this.http.get<ServicioCL>(`${this.apiUrl}/${id}`)
+  }
+
   obtenerVentasTotales(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/ventas-totales`);
   }

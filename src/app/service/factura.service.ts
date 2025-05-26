@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams , HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FacturaCL } from '../model/factura-cl';
@@ -53,7 +53,8 @@ export class FacturaService {
     idMedicamentos.forEach(id => {
       params = params.append('idMedicamentos', id);
     });
-    return this.http.post<FacturaCL>(`${this.baseUrl}/crear/medicamentos`, factura, { params });
+
+    return this.http.post<FacturaCL>(`${this.baseUrl}/crear/medicamentos`, factura, { params});
   }
 
   pagarFactura(id: number): Observable<FacturaCL> {

@@ -79,6 +79,8 @@ import { ProductosComponent } from './veterinaria/productos/productos.component'
 import { PresentacionTiendaComponent } from './landing/presentacion-tienda/presentacion-tienda.component';
 import { TestimoniosComponent } from './landing/testimonios/testimonios.component';
 import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
+import { ComprarServicioComponent } from './factura/comprar-servicio/comprar-servicio.component';
+import { ComprarMedicamentosComponent } from './factura/comprar-medicamentos/comprar-medicamentos.component';
 
 registerLocaleData(localeEs);
 
@@ -154,7 +156,9 @@ registerLocaleData(localeEs);
     ProductosComponent,
     PresentacionTiendaComponent,
     TestimoniosComponent,
-    TestimoniosDetailComponent
+    TestimoniosDetailComponent,
+    ComprarServicioComponent,
+    ComprarMedicamentosComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,169 @@
+/* tratamiento-crear.component.css */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.medicamentos-container {
+  margin-top: 15px;
+}
+
+.medicamento-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.medicamento-item input {
+  flex: 1;
+}
+
+.btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.btn-add {
+  background-color: #27ae60;
+  margin-top: 10px;
+}
+
+.btn-add:hover {
+  background-color: #219653;
+}
+
+.btn-remove {
+  background-color: #e74c3c;
+  padding: 12px 15px;
+}
+
+.btn-remove:hover {
+  background-color: #c0392b;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .medicamento-item {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .medicamento-item input {
+    width: 100%;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-footer button {
+    width: 100%;
+  }
+}
+
+.small-select {
+  width: 500px; /* más pequeño que antes */
+  padding: 5px;
+}

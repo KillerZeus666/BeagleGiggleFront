@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { FacturaService } from 'src/app/service/factura.service';
 import { FacturaCL } from 'src/app/model/factura-cl';
 
@@ -16,7 +16,8 @@ facturas: FacturaCL[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private facturaService: FacturaService
+    private facturaService: FacturaService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,12 +60,11 @@ facturas: FacturaCL[] = [];
     );
   }
 
-  irAComprar(tipo: string): void {
-    // Reemplaza estas rutas con las reales de tu aplicación
-    if (tipo === 'servicio') {
-      // Lógica para redireccionar a la pantalla de compra de servicios
-    } else {
-      // Lógica para redireccionar a la pantalla de compra de medicamentos
-    }
+  navegarAComprarMedicamentos(): void {
+    this.router.navigate(['/comprar-medicamentos', this.idCliente]);
+  }
+
+  navegarAComprarServicios(): void {
+    this.router.navigate(['/comprar-servicio', this.idCliente]); 
   }
 }

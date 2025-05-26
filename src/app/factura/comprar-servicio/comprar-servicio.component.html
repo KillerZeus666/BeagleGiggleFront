@@ -1,0 +1,23 @@
+<!-- factura.component.html -->
+<div>
+  <label for="servicioSelect">Selecciona un servicio:</label>
+  <select id="servicioSelect" [(ngModel)]="servicioSeleccionadoId" (change)="onServicioChange()">
+    <option [value]="null" disabled selected>-- Elige un servicio --</option>
+    <option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
+        {{ servicio.nombre }}
+    </option>
+  </select>
+</div>
+
+<div *ngIf="servicioSeleccionadoId">
+  <label for="metodoPagoSelect">Método de pago:</label>
+  <select id="metodoPagoSelect" [(ngModel)]="metodoPagoSeleccionado">
+    <option value="efectivo">Efectivo</option>
+    <option value="tarjeta">Tarjeta</option>
+    <option value="transferencias">Transferencias</option>
+  </select>
+</div>
+
+<div *ngIf="servicioSeleccionadoId && metodoPagoSeleccionado">
+  <button (click)="generarFactura()">Generar Factura</button>
+</div>
