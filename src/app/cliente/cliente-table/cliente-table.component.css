@@ -153,26 +153,32 @@ h1 {
   border: 2px solid #1e88e5;
 }
 
-/* ================== BOTONES ACCIONES ================== */
 .btn-detalles,
 .btn-editar,
 .btn-eliminar {
-  padding: 8px 15px;
+  padding: 8px 16px;
   border-radius: 20px;
   border: none;
   color: white;
   font-size: 13px;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  display: inline-block;
+  display: block;
+  width: 100px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .btn-detalles {
   background: #03a9f4;
+  margin-bottom: 8px;
 }
 
 .btn-editar {
   background: #8e24aa;
+  margin-bottom: 8px;
 }
 
 .btn-eliminar {
@@ -182,14 +188,15 @@ h1 {
 .btn-detalles:hover,
 .btn-editar:hover,
 .btn-eliminar:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.acciones-cliente {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
+/* Alineación para el botón "Ver detalles" */
+td > a.btn-detalles {
+  display: inline-block;
+  margin: 4px 0;
+  width: 100px;
 }
 
 /* ================== RESPONSIVE ================== */

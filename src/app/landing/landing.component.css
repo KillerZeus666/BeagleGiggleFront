@@ -413,13 +413,7 @@ p {
   border-radius: 2px;
 }
 
-<<<<<<< HEAD
-
-
-/* Sección de Testimonios - Versión mejorada */
-=======
 /* Sección de Testimonios */
->>>>>>> ecc22a96335518ff5435a6d1764cd523754e2048
 .testimonials-section {
   padding: 3rem 1.5rem;
   background-color: #e0f7fa;
@@ -442,13 +436,7 @@ p {
   gap: 1.8rem;
   max-width: 1200px;
   margin: 0 auto;
-<<<<<<< HEAD
-  padding: 20px 0;
-=======
->>>>>>> ecc22a96335518ff5435a6d1764cd523754e2048
 }
-
-
 
 /* Tarjeta de testimonio */
 .testimonial-card {
