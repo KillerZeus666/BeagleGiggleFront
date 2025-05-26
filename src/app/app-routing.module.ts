@@ -56,6 +56,7 @@ import { TestimoniosComponent } from './landing/testimonios/testimonios.componen
 import { TestimoniosDetailComponent } from './veterinaria/testimonios-detail/testimonios-detail.component';
 import { ComprarMedicamentosComponent } from './factura/comprar-medicamentos/comprar-medicamentos.component';
 import { ComprarServicioComponent } from './factura/comprar-servicio/comprar-servicio.component';
+import { TestimonioFormComponent } from './cliente/testimonio-form/testimonio-form.component';
 
 const routes: Routes = [
   //Correlacionar comportamiento con una URL
@@ -111,6 +112,7 @@ const routes: Routes = [
   {path: 'publicacion', component: PublicacionComponent},
   {path: 'productos', component: ProductosComponent},
   {path: 'testimonios', component: TestimoniosComponent},
+  {path: 'testimonio/crear', component: TestimonioFormComponent, canActivate: [roleGuard], data: { roles: ['Cliente'] }},
   {path: 'testimonios/:id', component: TestimoniosDetailComponent },
   {path: 'comprar-medicamentos/:id', component: ComprarMedicamentosComponent, canActivate: [roleGuard], data: { roles: ['Admin', 'Veterinario', 'Cliente'] }},
   {path: 'comprar-servicio/:id', component:ComprarServicioComponent, canActivate: [roleGuard], data: { roles: ['Admin', 'Veterinario', 'Cliente'] }},
