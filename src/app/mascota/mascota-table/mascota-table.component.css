@@ -5,10 +5,11 @@
   left: 300px;
   width: calc(100% - 300px);
   min-height: 100vh;
-  background: #f8f9fa;
-  transition: all 0.5s ease;
-  padding: 20px;
+  background: #f8fafc; /* Fondo más suave */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 30px;
   box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .main.active {
@@ -16,19 +17,19 @@
   width: calc(100% - 80px);
 }
 
-/* ================== TOPBAR ================== */
+/* ================== TOPBAR PREMIUM ================== */
 .topbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
 }
 
 .toggle {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -36,221 +37,328 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0px 6px 15px rgba(79, 70, 229, 0.3);
   font-size: 24px;
   color: white;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255,255,255,0.2);
 }
 
 .toggle:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0px 10px 20px rgba(79, 70, 229, 0.4);
 }
 
 /* ================== CONTENIDO PRINCIPAL ================== */
 .container-principal {
   width: 100%;
-  padding: 20px;
+  padding: 0;
   box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
-  color: #5cadf4;
-  margin-bottom: 20px;
-  font-size: 2rem;
+  color: #1d95db; /* Azul más intenso */
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-/* ================== BUSCADOR ================== */
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  border-radius: 2px;
+}
+
+/* ================== BUSCADOR PREMIUM ================== */
 .buscador {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  gap: 10px;
+  margin-bottom: 30px;
+  gap: 15px;
   flex-wrap: wrap;
 }
 
 .input-busqueda {
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
   max-width: 600px;
-  padding: 10px 15px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
+  padding: 12px 20px;
+  border: 2px solid #e0e7ff; /* Borde azul claro */
+  border-radius: 30px;
   outline: none;
-  font-size: 14px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.05);
+  background-color: #f8fafc;
+}
+
+.input-busqueda:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
 .btn-buscar {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 12px 25px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-buscar:hover {
-  transform: scale(1.03);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
 }
 
-/* ================== BOTONES ================== */
+/* ================== BOTONES PREMIUM ================== */
 .button-container {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: center;
 }
 
 .btn-agregar {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
-  padding: 10px 30px;
-  border-radius: 20px;
+  padding: 12px 35px;
+  border-radius: 30px;
   border: none;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-agregar:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
 }
 
-/* ================== TABLA ================== */
+/* ================== TABLA  ================== */
 .tabla-container {
   overflow-x: auto;
   background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
   max-width: 100%;
+  border: 1px solid #e0e7ff;
 }
 
 .tabla {
   width: 100%;
   min-width: 900px;
-  border-collapse: collapse;
-}
-
-.tabla th, .tabla td {
-  padding: 12px;
-  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Separación entre filas */
 }
 
 .tabla thead {
-  background-color: #29b6f6;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
   text-transform: uppercase;
   font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
 }
 
-.tabla tr {
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+.tabla th {
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-.tabla tr:last-child {
-  border-bottom: none;
+.tabla td {
+  padding: 14px;
+  text-align: center;
+  transition: all 0.3s ease;
+  color: #475569;
+  font-weight: 500;
+  background: white;
+  position: relative;
 }
 
-.tabla tr:hover {
-  background: #f1f1f1;
+/* Efecto de tarjeta para cada fila */
+.tabla tbody tr {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
+.tabla tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+}
+
+.tabla th:first-child {
+  border-top-left-radius: 16px;
+}
+
+.tabla th:last-child {
+  border-top-right-radius: 16px;
+}
+
+/* Bordes redondeados para las celdas de los extremos */
+.tabla td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.tabla td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Foto de perfil mejorada */
 .foto-tabla {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #1e88e5;
+  border: 3px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
 }
 
-/* ================== BOTONES DE ACCIONES ================== */
+.tabla tr:hover .foto-tabla {
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* EFECTO DE SOMBRAS ESTRATIFICADAS EN FILAS */
+.tabla tbody tr {
+  background: white;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.1),       /* Capa base sutil */
+    0 4px 6px rgba(0,0,0,0.05),       /* Capa intermedia */
+    0 5px 15px rgba(0,0,0,0.08);      /* Sombra exterior más difuminada */
+  position: relative;
+  z-index: 1;
+}
+
+/* EFECTO HOVER MEJORADO */
+.tabla tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.12),
+    0 8px 15px rgba(0,0,0,0.1),
+    0 10px 25px rgba(0,0,0,0.08);
+  z-index: 2;
+}
+
+/* ================== BOTONES DE ACCIONES PREMIUM ================== */
 .btn-detalles,
 .btn-editar,
 .btn-eliminar {
-  margin: 2px 0;
-  padding: 8px 12px;
-  border-radius: 15px;
+  margin: 4px 0;
+  padding: 10px 15px;
+  border-radius: 20px;
   font-size: 13px;
   cursor: pointer;
   border: none;
   color: white;
   white-space: nowrap;
   width: 100px;
-  text-align: center; 
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .btn-detalles {
-  background: #03a9f4;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .btn-editar {
-  background: #8e24aa;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
 }
 
 .btn-eliminar {
-  background: #e53935;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
 .btn-detalles:hover,
 .btn-editar:hover,
 .btn-eliminar:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* ================== RESPONSIVE BREAKPOINTS ================== */
-
-/* Escritorio ancho */
 @media (max-width: 1200px) {
   .main {
     left: 250px;
     width: calc(100% - 250px);
+    padding: 25px;
   }
 
   .main.active {
     left: 80px;
     width: calc(100% - 80px);
   }
+}
 
+@media (max-width: 992px) {
   h1 {
     font-size: 1.8rem;
   }
 
-  .tabla th, .tabla td {
-    padding: 10px;
-  }
-
-  .foto-tabla {
-    width: 45px;
-    height: 45px;
+  .btn-agregar {
+    padding: 10px 25px;
   }
 }
 
-/* Tablet horizontal */
-@media (max-width: 992px) {
-  .main {
-    left: 80px;
-    width: calc(100% - 80px);
+@media (max-width: 768px) {
+  .container-principal {
+    padding: 0;
   }
 
-  .main.active {
-    left: 0;
-    width: 100%;
+  .buscador {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .input-busqueda {
-    max-width: 400px;
+    max-width: 100%;
   }
 
-  .btn-agregar {
-    padding: 8px 20px;
-    font-size: 15px;
-  }
-
-  .tabla-container {
-    padding: 15px;
+  .btn-buscar {
+    width: 100%;
+    justify-content: center;
   }
 
   .tabla {
@@ -258,86 +366,31 @@ h1 {
   }
 }
 
-/* Tablet vertical */
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .main {
-    position: relative;
-    left: 0;
-    width: 100%;
-    padding: 15px;
+    padding: 20px 15px;
   }
 
-  .topbar {
-    justify-content: center;
-  }
-
-  .input-busqueda {
-    width: 100%;
-    max-width: 100%;
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
 
   .tabla th, .tabla td {
-    padding: 8px;
+    padding: 12px 8px;
     font-size: 13px;
+  }
+
+  .foto-tabla {
+    width: 45px;
+    height: 45px;
   }
 
   .btn-detalles,
   .btn-editar,
   .btn-eliminar {
-    padding: 6px 10px;
+    padding: 8px 12px;
     font-size: 12px;
-  }
-
-  .foto-tabla {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* Celulares grandes */
-@media (max-width: 576px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .buscador {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .btn-buscar,
-  .btn-agregar {
-    width: 100%;
-  }
-
-  .tabla-container {
-    padding: 10px;
-  }
-}
-
-/* Celulares pequeños */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  .toggle {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-  }
-
-  .tabla {
-    min-width: 600px;
-  }
-
-  .tabla th, .tabla td {
-    padding: 6px;
-    font-size: 12px;
-  }
-
-  .foto-tabla {
-    width: 35px;
-    height: 35px;
+    width: 80px;
   }
 }

@@ -1,117 +1,244 @@
 /* ================== CONTENEDOR PRINCIPAL ================== */
 .servicios-container {
   margin-left: 300px;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  padding: 2rem 3rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   min-height: calc(100vh - 4rem);
-  background-color: #f5f7fa;
+  background-color: #F9FAFF; /* Fondo azulado muy claro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ================== HEADER ================== */
 .servicios-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .servicios-header h2 {
-  color: #2c3e50;
-  font-size: 1.5rem;
+  color: #1d95db;
+  font-size: 1.75rem;
   margin: 0;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.servicios-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  border-radius: 3px;
 }
 
 /* ================== FILTRO ================== */
 .filtro-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .select-ordenamiento {
-  padding: 0.6rem 1.2rem;
-  border-radius: 30px;
-  border: 1px solid #ddd;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #E1E3EE; /* Borde gris azulado */
   background-color: white;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.12); /* Sombra morada sutil */
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A5A6E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  min-width: 200px;
+  color: #5A5A6E; /* Texto gris oscuro */
+}
+
+.select-ordenamiento:hover {
+  border-color: #E6E4FF; /* Morado muy claro */
 }
 
 .select-ordenamiento:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
 }
 
 /* ================== TABLA ================== */
 .table-responsive {
   overflow-x: auto;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.12);
+  margin-bottom: 2rem;
+  border: 1px solid #E1E3EE;
 }
 
 .servicios-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   min-width: 800px;
 }
 
-.servicios-table th {
-  background-color: #3498db;
-  color: white;
-  padding: 1rem;
-  text-align: left;
-  font-weight: 500;
+.servicios-table thead {
   position: sticky;
   top: 0;
+  z-index: 10;
+}
+
+.servicios-table th {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  color: white;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.servicios-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.servicios-table th:last-child {
+  border-top-right-radius: 12px;
 }
 
 .servicios-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #ecf0f1;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #E1E3EE;
+  color: #5A5A6E; /* Texto gris oscuro */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+.servicios-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.servicios-table tbody tr {
+  background: white;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.1),
+    0 4px 6px rgba(0,0,0,0.05),
+    0 5px 15px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 1;
+}
+
+/* Asegurarse que las celdas hereden el borde redondeado */
+.servicios-table tbody tr td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.servicios-table tbody tr td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Efecto hover mejorado */
 .servicios-table tbody tr:hover {
-  background-color: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.15),
+    0 8px 12px rgba(0,0,0,0.1),
+    0 10px 20px rgba(0,0,0,0.12);
 }
 
-.no-results {
-  text-align: center;
-  padding: 2rem;
-  color: #7f8c8d;
+/* Ajustar el efecto hover existente */
+.servicios-table tbody tr:hover td {
+  transform: none; /* Eliminamos el translateX del td para que no interfiera */
+  background-color: #E6E4FF;
+  color: #2E2E3A;
+
 }
 
 /* ================== PRECIO ================== */
 .servicios-table td:nth-child(4) {
-  font-weight: 600;
-  color: #2ecc71;
+  font-weight: 700;
+  color: #4CC9F0; /* Turquesa para precios */
+}
+
+/* ================== BOTONES ================== */
+.btn-action {
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(to right, #FF6584, #FF8E9E); /* Degradado rosado */
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(255, 101, 132, 0.3);
+}
+
+.btn-action:hover {
+  background: linear-gradient(to right, #FF5579, #FF7B8E); /* Degradado rosado más intenso */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 101, 132, 0.4);
+}
+
+/* ================== SIN RESULTADOS ================== */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #A1A1B5; /* Texto gris claro */
+}
+
+.no-results svg {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  fill: #E6E4FF; /* Morado claro para el icono */
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #5A5A6E; /* Texto gris oscuro */
 }
 
 /* ================== RESPONSIVE ================== */
 @media (max-width: 1200px) {
   .servicios-container {
     margin-left: 80px;
+    padding: 1.5rem 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .servicios-container {
     margin-left: 0;
-    padding: 1rem;
+    padding: 1.25rem;
   }
 
   .servicios-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .filtro-container {
-    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
   }
 
   .select-ordenamiento {
@@ -122,7 +249,11 @@
 @media (max-width: 480px) {
   .servicios-table th,
   .servicios-table td {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.85rem;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .servicios-header h2 {
+    font-size: 1.5rem;
   }
 }

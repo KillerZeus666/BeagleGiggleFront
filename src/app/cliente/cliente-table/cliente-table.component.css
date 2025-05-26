@@ -28,7 +28,7 @@
 }
 
 .toggle {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -49,7 +49,7 @@
 
 h1 {
   text-align: center;
-  color: #5cadf4;
+  color: #1d95db;
   margin-bottom: 20px;
   font-size: 2rem;
 }
@@ -97,7 +97,7 @@ h1 {
 }
 
 .btn-agregar {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
   padding: 10px 30px;
   border-radius: 20px;
@@ -126,7 +126,7 @@ h1 {
 }
 
 .tabla thead {
-  background-color: #29b6f6;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
   text-transform: uppercase;
   font-size: 14px;
@@ -152,6 +152,26 @@ h1 {
   border-radius: 50%;
   border: 2px solid #1e88e5;
 }
+
+.tabla tbody tr {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tabla tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
+}
+
+.tabla th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.tabla th:last-child {
+  border-top-right-radius: 14px;
+}
+
 
 .btn-detalles,
 .btn-editar,
