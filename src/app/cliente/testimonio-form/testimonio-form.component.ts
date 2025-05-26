@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
   templateUrl: './testimonio-form.component.html',
   styleUrls: ['./testimonio-form.component.css']
 })
-
 export class TestimonioFormComponent implements OnInit {
   @ViewChild('testimonioForm') testimonioForm!: NgForm;
   testimonio: TestimonioCreateCL = new TestimonioCreateCL();
   servicios: ServicioCL[] = [];
   idCliente: number = 0;
   errors: string[] = [];
+  hoverValue: number = 0; // Para el efecto hover
 
   constructor(
     private testimonioService: TestimonioService,
@@ -43,6 +43,23 @@ export class TestimonioFormComponent implements OnInit {
     });
   }
 
+  // Métodos para el sistema de estrellas
+  selectStar(value: number): void {
+    this.testimonio.calificacion = value;
+    // Marcar el control como touched para validación
+    if (this.testimonioForm.controls['calificacion']) {
+      this.testimonioForm.controls['calificacion'].markAsTouched();
+    }
+  }
+
+  hoverStar(value: number): void {
+    this.hoverValue = value;
+  }
+
+  resetStars(): void {
+    this.hoverValue = 0;
+  }
+
   onSubmit(): void {
     this.errors = [];
     
@@ -51,8 +68,8 @@ export class TestimonioFormComponent implements OnInit {
       this.errors.push('El testimonio debe tener al menos 10 caracteres');
     }
     
-    if (this.testimonio.calificacion < 1 || this.testimonio.calificacion > 5) {
-      this.errors.push('La calificación debe estar entre 1 y 5');
+    if (!this.testimonio.calificacion || this.testimonio.calificacion < 1 || this.testimonio.calificacion > 5) {
+      this.errors.push('Por favor selecciona una calificación entre 1 y 5 estrellas');
     }
     
     if (!this.testimonio.idServicio) {

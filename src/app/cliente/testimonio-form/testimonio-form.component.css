@@ -1,8 +1,14 @@
+.form-container {
+  padding-top: 30px; /* Espacio arriba sin afectar navegación */
+}
+
 form {
   max-width: 500px;
   text-align: center;
   margin: 2rem auto;
   padding: 2.5rem;
+  margin-top: 0px;
+  padding-top: 0px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -124,9 +130,38 @@ button[type="submit"]:disabled {
   box-shadow: none;
 }
 
+/* Estilos para el sistema de estrellas */
+.star-rating {
+  font-size: 2rem;
+  color: #ddd;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.star-rating span {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.star-rating span:hover {
+  transform: scale(1.2);
+}
+
+.star-rating span.active {
+  color: #FFD700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
 @media (max-width: 576px) {
+  .form-container {
+    padding-top: 20px;
+  }
+  
   form {
     padding: 1.8rem;
+    padding-top: 0px;
     margin: 1.5rem auto;
   }
 
@@ -141,5 +176,9 @@ button[type="submit"]:disabled {
 
   button[type="submit"] {
     padding: 14px;
+  }
+  
+  .star-rating {
+    font-size: 1.7rem;
   }
 }
