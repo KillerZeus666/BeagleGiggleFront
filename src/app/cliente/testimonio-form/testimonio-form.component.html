@@ -8,12 +8,12 @@
       <select
         id="servicio"
         name="servicio"
-        [(ngModel)]="testimonio.idServicio"
+        [(ngModel)]="testimonio.servicio"
         required
         #servicio="ngModel"
       >
         <option value="" disabled selected>Selecciona un servicio</option>
-        <option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
+        <option *ngFor="let servicio of servicios" [ngValue]="servicio">
           {{servicio.nombre}}
         </option>
       </select>
