@@ -38,7 +38,7 @@
           <img [src]="userPhoto" alt="Foto del Veterinario" class="user-img" />
         </button>
         <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a routerLink="/veterinario/mascotas-atendidas">Mascotas Atendidas</a>
+          <a [routerLink]="['/mascotas-atendidas', userId]">Mascotas Atendidas</a>
           <a (click)="logout()">Cerrar sesión</a>
         </div>
       </div>
