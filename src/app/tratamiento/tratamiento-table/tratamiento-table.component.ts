@@ -24,7 +24,7 @@
     clienteseleccionado!:ClienteCL;
     factura!:FacturaCL;
     facturasMap: Map<number, FacturaCL | null> = new Map();
-
+    userType: string = '';
     constructor(
       private facturaService:FacturaService, 
       private clienteService:ClienteService,
@@ -35,31 +35,56 @@
     ) {} 
     
     ngOnInit(): void {
+      this.userType = this.authService.getUserType() ?? '';
+      console.log('Tipo de usuario:', this.userType);
       const state = history.state;
       this.idCliente = state.idCliente ?? null;
       console.log(this.idCliente);
-      const idMascota = Number(this.route.snapshot.paramMap.get('id'));
-      console.log('idVeterinario recibido:', idMascota); // 👈
-    
-      this.tratamientoService.getTratamientosPorMascota(idMascota).subscribe({
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+      console.log('idVeterinario recibido:', id); // 👈
+      
+      if(this.authService.getUserType() === 'Cliente'){
+        this.tratamientoService.getTratamientosPorMascota(id).subscribe({
         next: (data) => {
           this.tratamientos = data;
 
-          // Por cada tratamiento, cargar su factura asociada
-          const observables = this.tratamientos.map(tratamiento => 
-            this.facturaService.obtenerFacturaPorTratamiento(tratamiento.idTratamiento)
-          );
+            // Por cada tratamiento, cargar su factura asociada
+            const observables = this.tratamientos.map(tratamiento => 
+              this.facturaService.obtenerFacturaPorTratamiento(tratamiento.idTratamiento)
+            );
 
-          forkJoin(observables).subscribe(facturas => {
-            facturas.forEach((factura, index) => {
-              this.facturasMap.set(this.tratamientos[index].idTratamiento, factura);
+            forkJoin(observables).subscribe(facturas => {
+              facturas.forEach((factura, index) => {
+                this.facturasMap.set(this.tratamientos[index].idTratamiento, factura);
+              });
             });
-          });
-        },
-        error: (err) => {
-          console.error('Error al obtener tratamientos', err);
-        }
-      });
+          },
+          error: (err) => {
+            console.error('Error al obtener tratamientos', err);
+          }
+        });
+      }else if(this.authService.getUserType() === 'Admin'){
+        this.tratamientoService.findAll().subscribe({
+          next:(data)=>{
+            this.tratamientos = data;
+
+            // Por cada tratamiento, cargar su factura asociada
+            const observables = this.tratamientos.map(tratamiento => 
+              this.facturaService.obtenerFacturaPorTratamiento(tratamiento.idTratamiento)
+            );
+
+            forkJoin(observables).subscribe(facturas => {
+              facturas.forEach((factura, index) => {
+                this.facturasMap.set(this.tratamientos[index].idTratamiento, factura);
+              });
+            });
+          },
+          error: (err) => {
+            console.error('Error al obtener tratamientos', err);
+          }
+        });
+      }
+      
     } 
 
     estadoFactura(tratamiento: TratamientoCL): string {

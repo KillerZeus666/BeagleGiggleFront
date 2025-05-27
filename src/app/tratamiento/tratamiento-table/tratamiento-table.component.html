@@ -9,7 +9,7 @@
     <table class="tratamientos-table">
       <thead>
         <tr>
-          <th width="50px">Sel.</th>
+          <th *ngIf="userType === 'Cliente'" width="50px">Sel.</th>
           <th>Código</th>
           <th>Fecha</th>
           <th>Detalles</th>
@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let tratamiento of tratamientos" class="tratamiento-fila">
-          <td>
+          <td *ngIf="userType === 'Cliente'">
             <label class="checkbox-container">
               <input type="checkbox"
                      [value]="tratamiento.idTratamiento"
