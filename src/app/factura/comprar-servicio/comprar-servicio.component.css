@@ -1,0 +1,262 @@
+/* Estructura principal con sidebar */
+.main-content-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* Contenedor principal (se ajusta al sidebar) */
+.facturacion-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 30px;
+  margin-left: 300px; /* Igual al ancho de tu sidebar */
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f5f9fc 0%, #e6f0f7 100%);
+}
+
+/* Cuando el sidebar está colapsado */
+.sidebar-collapsed .facturacion-container {
+  margin-left: 80px; /* Ancho del sidebar colapsado */
+}
+
+/* Tarjeta de facturación con efecto 3D estilo formulario */
+.facturacion-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 45px;
+  width: 100%;
+  max-width: 650px;
+  font-family: 'Poppins', sans-serif;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease;
+}
+
+/* Efecto hover para levantar la tarjeta */
+.facturacion-card:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Título mejorado */
+.facturacion-title {
+  color: #1d95db;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.facturacion-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, #72c0ea, #529bcb);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(114, 192, 234, 0.3);
+}
+
+.facturacion-title i {
+  font-size: 2rem;
+  color: #529bcb;
+}
+
+/* Grupos de formulario mejorados */
+.form-group {
+  margin-bottom: 30px;
+}
+
+.input-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #4a5a6e;
+  font-weight: 600;
+  font-size: 1rem;
+  gap: 10px;
+}
+
+.input-label i {
+  font-size: 1.1rem;
+  color: #72c0ea;
+}
+
+/* Select premium */
+.select-container {
+  position: relative;
+}
+
+.styled-select {
+  width: 100%;
+  padding: 16px 25px;
+  border: 2px solid #e0e9f2;
+  border-radius: 12px;
+  background-color: #f8fbfe;
+  font-size: 1.05rem;
+  color: #3c4858;
+  appearance: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.styled-select:hover {
+  border-color: #c1d9f0;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: #72c0ea;
+  box-shadow: 0 0 0 4px rgba(114, 192, 234, 0.2);
+  background-color: #fff;
+}
+
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  color: #7b8a9b;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.styled-select:focus + .select-arrow {
+  color: #72c0ea;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Botón premium */
+.generate-button {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  color: white;
+  border: none;
+  padding: 17px 35px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 5px 20px rgba(114, 192, 234, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+
+.generate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(114, 192, 234, 0.4);
+  background: linear-gradient(135deg, #529bcb 0%, #72c0ea 100%);
+}
+
+.generate-button:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(114, 192, 234, 0.3);
+}
+
+.generate-button i {
+  font-size: 1.3rem;
+}
+
+/* Efecto de carga */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(114, 192, 234, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(114, 192, 234, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(114, 192, 234, 0); }
+}
+
+.loading .generate-button {
+  animation: pulse 1.5s infinite;
+  position: relative;
+}
+
+/* Responsive mejorado */
+@media (max-width: 1200px) {
+  .facturacion-container {
+    margin-left: 250px;
+    padding: 35px 25px;
+  }
+
+  .sidebar-collapsed .facturacion-container {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 992px) {
+  .facturacion-container {
+    margin-left: 80px;
+  }
+
+  .facturacion-card {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .facturacion-container {
+    margin-left: 0;
+    padding: 30px 20px;
+    padding-top: 90px; /* Espacio para el header */
+  }
+
+  .facturacion-title {
+    font-size: 1.9rem;
+  }
+
+  .facturacion-title i {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .facturacion-card {
+    padding: 30px 20px;
+    border-radius: 15px;
+  }
+
+  .facturacion-title {
+    font-size: 1.7rem;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .styled-select {
+    padding: 14px 20px;
+  }
+
+  .generate-button {
+    padding: 15px 25px;
+    font-size: 1rem;
+  }
+}
