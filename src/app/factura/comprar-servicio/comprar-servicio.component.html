@@ -1,23 +1,46 @@
-<!-- factura.component.html -->
-<div>
-  <label for="servicioSelect">Selecciona un servicio:</label>
-  <select id="servicioSelect" [(ngModel)]="servicioSeleccionadoId" (change)="onServicioChange()">
-    <option [value]="null" disabled selected>-- Elige un servicio --</option>
-    <option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
-        {{ servicio.nombre }}
-    </option>
-  </select>
-</div>
+<div class="main-content-wrapper">
+  <app-navegacion></app-navegacion>
 
-<div *ngIf="servicioSeleccionadoId">
-  <label for="metodoPagoSelect">Método de pago:</label>
-  <select id="metodoPagoSelect" [(ngModel)]="metodoPagoSeleccionado">
-    <option value="efectivo">Efectivo</option>
-    <option value="tarjeta">Tarjeta</option>
-    <option value="transferencias">Transferencias</option>
-  </select>
-</div>
+  <div class="facturacion-container">
+    <div class="facturacion-card">
+      <h2 class="facturacion-title">
+        <i class="fas fa-file-invoice-dollar"></i> Generar Factura
+      </h2>
 
-<div *ngIf="servicioSeleccionadoId && metodoPagoSeleccionado">
-  <button (click)="generarFactura()">Generar Factura</button>
+      <div class="form-group">
+        <label for="servicioSelect" class="input-label">
+          <i class="fas fa-concierge-bell"></i> Selecciona un servicio
+        </label>
+        <div class="select-container">
+          <select id="servicioSelect" class="styled-select" [(ngModel)]="servicioSeleccionadoId" (change)="onServicioChange()">
+            <option [value]="null" disabled selected>-- Elige un servicio --</option>
+            <option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
+                {{ servicio.nombre }}
+            </option>
+          </select>
+          <i class="select-arrow fas fa-chevron-down"></i>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="servicioSeleccionadoId">
+        <label for="metodoPagoSelect" class="input-label">
+          <i class="fas fa-money-bill-wave"></i> Método de pago
+        </label>
+        <div class="select-container">
+          <select id="metodoPagoSelect" class="styled-select" [(ngModel)]="metodoPagoSeleccionado">
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="transferencias">Transferencia Bancaria</option>
+          </select>
+          <i class="select-arrow fas fa-chevron-down"></i>
+        </div>
+      </div>
+
+      <div class="button-container" *ngIf="servicioSeleccionadoId && metodoPagoSeleccionado">
+        <button class="generate-button" (click)="generarFactura()">
+          <i class="fas fa-file-export"></i> Generar Factura
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
