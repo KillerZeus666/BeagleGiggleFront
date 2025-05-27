@@ -208,6 +208,10 @@ textarea {
 .medicamento-item input {
   flex: 1;
 }
+.medicamento-item select {
+  flex: 1;
+  min-width: 0;
+}
 
 .btn {
   background: linear-gradient(to right, #5cadf4, #7bc1ff);
@@ -248,6 +252,11 @@ textarea {
   border-radius: 50%;
   width: 46px;
   height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-remove:hover {
