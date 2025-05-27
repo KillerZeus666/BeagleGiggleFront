@@ -1,35 +1,75 @@
-<app-navegacion></app-navegacion>
+<div class="dashboard-layout">
+  <app-navegacion></app-navegacion>
 
-<div class="container">
-    <h1>Comprar Medicamentos</h1>
-    <form [formGroup]="FacturaForm" (ngSubmit)="Onsubmit()">
+  <div class="main-content">
+    <div class="container">
+      <h1>Comprar Medicamentos</h1>
+      <form [formGroup]="FacturaForm" (ngSubmit)="Onsubmit()">
         <div class="form-group">
-        <label>Medicamentos:</label>
-        <div class="medicamentos-container" formArrayName="medicamentos">
-            <div class="medicamento-item" *ngFor="let medicamento of medicamentosArray.controls; let i = index" [formGroupName]="i">
-            <select formControlName="idMedicamento" required class="small-select select-medicamento">
+          <label>Medicamentos:</label>
+          <div class="medicamentos-container" formArrayName="medicamentos">
+            <div
+              class="medicamento-item"
+              *ngFor="let medicamento of medicamentosArray.controls; let i = index"
+              [formGroupName]="i"
+            >
+              <select
+                formControlName="idMedicamento"
+                required
+                class="small-select select-medicamento"
+              >
                 <option value="">Seleccione un medicamento</option>
-                <option *ngFor="let med of medicamentosDisponibles" [value]="med.idMedicamento">
-                {{ med.nombre }}
+                <option
+                  *ngFor="let med of medicamentosDisponibles"
+                  [value]="med.idMedicamento"
+                >
+                  {{ med.nombre }}
                 </option>
-            </select>
-            <input type="text" formControlName="dosis" class="input-dosis" placeholder="Dosis" required>
-            <button type="button" class="btn btn-remove" (click)="removeMedicamento(i)">-</button>
+              </select>
+              <input
+                type="text"
+                formControlName="dosis"
+                class="input-dosis"
+                placeholder="Dosis"
+                required
+              />
+              <button
+                type="button"
+                class="btn btn-remove"
+                (click)="removeMedicamento(i)"
+              >
+                -
+              </button>
             </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-add"
+            (click)="addMedicamento()"
+          >
+            + Añadir Medicamento
+          </button>
         </div>
-        <button type="button" class="btn btn-add" (click)="addMedicamento()">+ Añadir Medicamento</button>
-        </div>
+
         <div *ngIf="canGenerateFactura()" class="mt-3">
-            <label>Método de Pago:</label>
-            <select formControlName="metodoPago" class="form-control">
-                <option value="" disabled selected>Seleccione un método</option>
-                <option value="Efectivo">Efectivo</option>
-                <option value="Tarjeta">Tarjeta</option>
-                <option value="Transferencia">Transferencia</option>
-            </select> 
-            <div class="form-group">
-                <button type="submit" class="btn btn-success" *ngIf="canGenerateFactura()">Generar Factura</button>
-            </div>
+          <label>Método de Pago:</label>
+          <select formControlName="metodoPago" class="form-control">
+            <option value="" disabled selected>Seleccione un método</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta">Tarjeta</option>
+            <option value="Transferencia">Transferencia</option>
+          </select>
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-success"
+              *ngIf="canGenerateFactura()"
+            >
+              Generar Factura
+            </button>
+          </div>
         </div>
-    </form>
+      </form>
+    </div>
+  </div>
 </div>
