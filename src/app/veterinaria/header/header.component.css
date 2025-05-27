@@ -53,7 +53,6 @@ header.scrolled {
     height: 50px;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -204,8 +203,9 @@ header.scrolled {
     align-items: center;
     gap: 8px;
     margin-left: 10px;
+    margin-right: 20px;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 30px;
@@ -229,9 +229,9 @@ header.scrolled {
     font-size: 15px;
     color: #fff;
     font-weight: 600;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    text-shadow: none;
 }
-
 .sos-tooltip {
     position: absolute;
     bottom: -80px;
