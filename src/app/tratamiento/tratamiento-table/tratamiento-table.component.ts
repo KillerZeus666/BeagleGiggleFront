@@ -104,7 +104,7 @@
     puedeFacturar(tratamiento: TratamientoCL): boolean {
       const factura = this.facturasMap.get(tratamiento.idTratamiento);
       // Sólo se puede seleccionar si no hay factura o factura está pagada (porque si está pendiente o pagada no se puede generar otra)
-      return !factura || factura.pagada === true;
+      return !factura ;
     }
 
     
