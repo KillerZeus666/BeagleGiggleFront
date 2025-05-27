@@ -3,7 +3,7 @@
       <img src="https://i.postimg.cc/4yjfvPcB/logo2.png" alt="Logo" />
       <span class="logo-text">Beagle Giggle</span>
     </div>
-    
+
     <nav>
       <ul class="nav-links">
         <li><a routerLink="/home">Inicio</a></li>
@@ -11,70 +11,66 @@
         <li><a [routerLink]="['/home']" fragment="conocenos">Conócenos</a></li>
         <li><a [routerLink]="['/home']" fragment="contactanos">Contáctanos</a></li>
         <li><a [routerLink]="['/blog']">Blog</a></li>
-
       </ul>
     </nav>
-    
-   
 
-    
-    <div class="user-menu" [ngSwitch]="userType">
-      <!-- Sección para Cliente -->
-      <div *ngSwitchCase="'Cliente'" class="dropdown" [class.active]="isMenuOpen">
-        <button class="login-btn user-btn" (click)="toggleMenu()">
-          <span>{{ userName }}</span>
-          <img [src]="userPhoto" alt="Foto del Cliente" class="user-img" />
-        </button>
-        <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a [routerLink]="['/mascotas-cliente', userId]">Ver Mascotas</a>
-          <a (click)="logout()">Cerrar sesión</a>
+    <!-- Contenedor unificado para acciones de usuario y SOS -->
+    <div class="user-actions">
+      <!-- Botón SOS (siempre visible) -->
+      <a href="tel:+573154467811" class="sos-btn emergency">
+        <img src="https://i.postimg.cc/CdpKrKD5/viber.png" alt="SOS" />
+        <span class="sos-num">+57 (315) 446-7811</span>
+        <div class="sos-tooltip">
+          <strong>Línea de Emergencia 24/7</strong><br />
+          Haz clic para llamar inmediatamente si tu mascota necesita ayuda urgente.
         </div>
-      </div>
-  
-      <!-- Sección para Veterinario -->
-      <div *ngSwitchCase="'Veterinario'" class="dropdown" [class.active]="isMenuOpen">
-        <button class="login-btn user-btn" (click)="toggleMenu()">
-          <span>{{ userName }}</span>
-          <img [src]="userPhoto" alt="Foto del Veterinario" class="user-img" />
-        </button>
-        <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a [routerLink]="['/mascotas-atendidas', userId]">Mascotas Atendidas</a>
-          <a (click)="logout()">Cerrar sesión</a>
-        </div>
-      </div>
-  
-      <!-- Sección para Administrador -->
-      <div *ngSwitchCase="'Admin'" class="dropdown" [class.active]="isMenuOpen">
-        <button class="login-btn user-btn" (click)="toggleMenu()">
-          <span>Administrador</span>
-        </button>
-        <div class="dropdown-menu" *ngIf="isMenuOpen">
-          <a routerLink="/admin">Panel de Control</a>
-          <a (click)="logout()">Cerrar sesión</a>
-        </div>
-      </div>
-  
-      <!-- Dentro de *ngSwitchDefault*, justo después del botón de inicio de sesión -->
-      <div *ngSwitchDefault class="user-menu">
-          <!-- Botón SOS -->
-        <a class="sos-btn" title="">
-          <img src="https://i.postimg.cc/CdpKrKD5/viber.png" alt="SOS" />
-          <span class="sos-num">+57 (315) 446-7811</span>
-          <div class="sos-tooltip">
-            <strong>Línea de Emergencia</strong><br />
-            Esta es nuestra línea de emergencia. No dudes en llamarnos si tu mascota necesita ayuda.
+      </a>
+
+      <!-- Menú de usuario (condicional) -->
+      <div class="user-menu" [ngSwitch]="userType">
+        <!-- Sección para Cliente -->
+        <div *ngSwitchCase="'Cliente'" class="dropdown" [class.active]="isMenuOpen">
+          <button class="login-btn user-btn" (click)="toggleMenu()">
+            <span>{{ userName }}</span>
+            <img [src]="userPhoto" alt="Foto del Cliente" class="user-img" />
+          </button>
+          <div class="dropdown-menu" *ngIf="isMenuOpen">
+            <a [routerLink]="['/mascotas-cliente', userId]">Ver Mascotas</a>
+            <a (click)="logout()">Cerrar sesión</a>
           </div>
-        </a>
+        </div>
 
+        <!-- Sección para Veterinario -->
+        <div *ngSwitchCase="'Veterinario'" class="dropdown" [class.active]="isMenuOpen">
+          <button class="login-btn user-btn" (click)="toggleMenu()">
+            <span>{{ userName }}</span>
+            <img [src]="userPhoto" alt="Foto del Veterinario" class="user-img" />
+          </button>
+          <div class="dropdown-menu" *ngIf="isMenuOpen">
+            <a [routerLink]="['/mascotas-atendidas', userId]">Mascotas Atendidas</a>
+            <a (click)="logout()">Cerrar sesión</a>
+          </div>
+        </div>
 
+        <!-- Sección para Administrador -->
+        <div *ngSwitchCase="'Admin'" class="dropdown" [class.active]="isMenuOpen">
+          <button class="login-btn user-btn" (click)="toggleMenu()">
+            <span>Administrador</span>
+          </button>
+          <div class="dropdown-menu" *ngIf="isMenuOpen">
+            <a routerLink="/admin">Panel de Control</a>
+            <a (click)="logout()">Cerrar sesión</a>
+          </div>
+        </div>
 
-        <a routerLink="/inicio-sesion" class="login-btn user-btn">
-          <span>Iniciar sesión</span>
-          <img src="https://i.postimg.cc/BvvZDsSr/proximo.png" 
-              alt="Icono de usuario" class="user-img" />
-        </a>
-      
+        <!-- Usuario no logueado -->
+        <div *ngSwitchDefault>
+          <a routerLink="/inicio-sesion" class="login-btn user-btn">
+            <span>Iniciar sesión</span>
+            <img src="https://i.postimg.cc/BvvZDsSr/proximo.png"
+                alt="Icono de usuario" class="user-img" />
+          </a>
+        </div>
       </div>
-
     </div>
-  </header>
+</header>
