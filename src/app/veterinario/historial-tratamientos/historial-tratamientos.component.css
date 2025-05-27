@@ -1,160 +1,197 @@
-/* Estilos principales para la sección de tratamientos (se mantienen iguales) */
+/* ================== CONTENEDOR PRINCIPAL ================== */
 .tratamientos-veterinario {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 0 0 200px; /* Añade margen izquierdo para evitar el nav */
-  min-height: calc(100vh - 140px);
-  width: calc(100% - 200px); /* Ajusta el ancho para compensar el margen */
-}
-
-.tratamientos-veterinario {
-  margin-left: 250px; /* Aumenta este valor según el ancho de tu sidebar */
-  width: calc(100% - 250px); /* Ajusta para coincidir con el margen izquierdo */
-  padding: 20px 3% 40px; /* Reduce el padding superior para más espacio */
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 30px;
   min-height: 100vh;
   position: relative;
-  z-index: 1; /* Asegura que el contenido esté sobre el sidebar */
-}
-
-.tratamientos-veterinario::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(244, 248, 251, 0.7);
-  z-index: 1;
-}
-
-.tratamientos-veterinario > * {
-  position: relative;
-  z-index: 2;
+  background-color: #f8fafc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
 }
 
 .tratamientos-veterinario h2 {
-  font-size: 2rem;
-  color: #3c1f15;
+  font-size: 1.8rem;
+  color: #1d95db;
   text-align: center;
   margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #97d4f5;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-/* Estilos para la tabla */
+.tratamientos-veterinario h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  border-radius: 3px;
+}
+
+/* ================== BOTÓN AGREGAR PREMIUM ================== */
+.acciones-superiores {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.btn-agregar {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-agregar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ================== TABLA PREMIUM ================== */
 .tabla-container {
-  width: 100%;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
   overflow-x: auto;
-  padding: 20px;
+  border: 1px solid #e0e7ff;
 }
 
 .tabla-tratamientos {
   width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0 12px;
 }
 
-.tabla-tratamientos th,
-.tabla-tratamientos td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
+.tabla-tratamientos thead {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .tabla-tratamientos th {
-  background-color: #97d4f5;
-  color: #3c1f15;
-  font-weight: bold;
+  padding: 16px;
+  text-align: left;
+  transition: all 0.3s ease;
 }
 
-.tabla-tratamientos tr:hover {
-  background-color: #f5f5f5;
-}
-
-.tabla-tratamientos tr:last-child td {
-  border-bottom: none;
-}
-
-/* Botones y mensajes (se mantienen iguales) */
-.no-tratamientos-message {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #555;
-  padding: 30px;
+.tabla-tratamientos td {
+  padding: 14px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 500;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  position: relative;
 }
 
-.acciones-superiores {
-  text-align: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
+/* EFECTO DE TARJETA PARA FILAS */
+.tabla-tratamientos tbody tr {
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.1),
+    0 4px 6px rgba(0,0,0,0.05),
+    0 5px 15px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-agregar {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+.tabla-tratamientos tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.12),
+    0 8px 15px rgba(0,0,0,0.1),
+    0 10px 25px rgba(0,0,0,0.08);
 }
 
-.btn-agregar:hover {
-  background-color: #3e8e41;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+/* BORDES REDONDEADOS */
+.tabla-tratamientos th:first-child {
+  border-top-left-radius: 14px;
 }
 
+.tabla-tratamientos th:last-child {
+  border-top-right-radius: 14px;
+}
+
+.tabla-tratamientos td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.tabla-tratamientos td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* BOTÓN DE DETALLES MEJORADO */
 .btn-detalles {
-  display: inline-block;
-  padding: 8px 15px;
-  background-color: #97d4f5;
-  color: #3c1f15;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn-detalles:hover {
-  background-color: #7bc1eb;
-  color: white;
   transform: translateY(-2px);
-}
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 250px; /* Asegúrate que coincide con el margen del contenido */
-  height: 100vh;
-  z-index: 10;
-  overflow-y: auto;
-  background: #f8f9fa; /* Color de fondo para distinguirlo */
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilos responsivos para la tabla */
+/* MENSAJE SIN TRATAMIENTOS */
+.no-tratamientos-message {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 992px) {
+  .tratamientos-veterinario {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    padding: 25px;
+  }
+}
+
 @media (max-width: 768px) {
+  .tratamientos-veterinario {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
   .tabla-tratamientos {
     display: block;
+    overflow-x: auto;
   }
 
   .tabla-tratamientos thead {
@@ -164,22 +201,23 @@
   .tabla-tratamientos tr {
     display: block;
     margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .tabla-tratamientos td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 12px 15px;
     text-align: right;
+    border-bottom: 1px solid #f1f5f9;
   }
 
   .tabla-tratamientos td::before {
     content: attr(data-label);
-    font-weight: bold;
-    color: #3c1f15;
+    font-weight: 600;
+    color: #1e40af;
     margin-right: auto;
     padding-right: 10px;
     text-align: left;
@@ -189,34 +227,24 @@
     border-bottom: none;
     justify-content: flex-end;
   }
-}
 
-@media (max-width: 480px) {
-  .tratamientos-veterinario {
-    padding: 60px 3% 40px;
-  }
-}
-/* Para dispositivos móviles */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 200px;
-  }
-
-  .tratamientos-veterinario {
-    margin-left: 200px;
-    width: calc(100% - 200px);
-    padding: 15px 2% 30px;
+  .btn-detalles {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .sidebar {
-    width: 180px;
+  .tratamientos-veterinario h2 {
+    font-size: 1.5rem;
   }
 
-  .tratamientos-veterinario {
-    margin-left: 180px;
-    width: calc(100% - 180px);
-    padding: 10px 2% 20px;
+  .btn-agregar {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .tabla-container {
+    padding: 15px;
   }
 }

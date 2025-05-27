@@ -1,106 +1,162 @@
-/* CONTENEDOR PRINCIPAL GENERAL */
+/* ================== CONTENEDOR PRINCIPAL ================== */
 .container-principal {
-  padding: 20px;
+  padding: 30px;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* TÍTULOS PRINCIPALES */
+/* ================== TÍTULOS MEJORADOS ================== */
 h1, h2 {
-  font-size: 30px;
-  color: #5cadf4;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #1d95db;
+  margin-bottom: 30px;
   text-align: center;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
 }
 
-/* CONTENEDOR DE BOTONES SUPERIOR */
-.button-container {
-  margin-bottom: 20px;
-  text-align: center;
+h1::after, h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  border-radius: 3px;
 }
 
-/* BOTÓN SUPERIOR (AGREGAR NUEVO) */
+/* ================== BOTÓN AGREGAR PREMIUM ================== */
 .btn-agregar {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
-  padding: 10px 30px;
-  border-radius: 20px;
+  padding: 12px 35px;
+  border-radius: 30px;
   font-size: 16px;
+  font-weight: 500;
   border: none;
-  text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-agregar:hover {
-  transform: scale(1.05);
-  background-position: bottom;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
-/* CONTENEDOR TABLA */
+/* ================== TABLA PREMIUM ================== */
 .tabla-container {
   background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
+  margin-top: 30px;
   overflow-x: auto;
+  border: 1px solid #e0e7ff;
 }
 
-/* TABLAS */
 .tabla {
   width: 100%;
   min-width: 800px;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 10px;
 }
 
 .tabla thead {
-  background: #29b6f6;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
   text-transform: uppercase;
-  font-size: 14px;
-  border-radius: 15px 15px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .tabla th {
-  font-weight: 600;
-  padding: 12px;
+  padding: 16px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .tabla td {
-  padding: 12px;
+  padding: 14px;
   text-align: center;
-  color: #333;
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 500;
+  background: white;
+  position: relative;
 }
 
+/* EFECTO DE TARJETA PARA FILAS */
+.tabla tbody tr {
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.1),
+    0 4px 6px rgba(0,0,0,0.05),
+    0 5px 15px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tabla tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.12),
+    0 8px 15px rgba(0,0,0,0.1),
+    0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* BORDES REDONDEADOS */
+.tabla th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.tabla th:last-child {
+  border-top-right-radius: 14px;
+}
+
+.tabla td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.tabla td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* FOTO DE PERFIL MEJORADA */
 .tabla td img.foto-tabla {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #1e88e5;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
 }
 
-/* FILAS */
-.tabla tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.tabla tr:hover img.foto-tabla {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
-.tabla tr:last-child {
-  border-bottom: none;
-}
-
-.tabla tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* BOTONES ACCIONES */
+/* ================== BOTONES DE ACCIÓN PREMIUM ================== */
 .acciones-cliente {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -109,117 +165,74 @@ h1, h2 {
 .btn-detalles,
 .btn-editar,
 .btn-eliminar {
-  text-align: center;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 15px;
-  font-size: 12px;
-  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  width: auto;
+  border: none;
+  color: white;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 100px;
 }
 
 .btn-detalles {
-  background: #03a9f4;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .btn-editar {
-  background: #8e24aa;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
 }
 
 .btn-eliminar {
-  background: #e53935;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
 .btn-detalles:hover,
 .btn-editar:hover,
 .btn-eliminar:hover {
-  transform: scale(1.05);
-}
-
-/* CONTENIDO PRINCIPAL (Sidebar dinámico mejorado) */
-.contenido-principal {
-  padding: 2rem;
-  transition: all 0.3s ease;
-  width: 100%;
-  margin-left: 0;
-}
-
-.content-container.sidebar-collapsed .contenido-principal {
-  padding-left: 100px;
-}
-
-.content-container:not(.sidebar-collapsed) .contenido-principal {
-  padding-left: 270px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ================== RESPONSIVE ================== */
-
-/* Escritorio medio */
 @media (max-width: 1200px) {
-  .tabla th, .tabla td {
-    padding: 10px;
-    font-size: 14px;
+  .container-principal {
+    padding: 25px;
   }
 
-  .btn-detalles,
-  .btn-editar,
-  .btn-eliminar {
-    font-size: 12px;
+  h1, h2 {
+    font-size: 1.8rem;
   }
 }
 
-/* Tablet horizontal */
 @media (max-width: 992px) {
-  .container-principal {
-    padding: 15px;
-  }
-
-  .tabla-container {
-    padding: 15px;
-  }
-
   .tabla {
     min-width: 700px;
   }
 
-  .acciones-cliente {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .btn-detalles,
-  .btn-editar,
-  .btn-eliminar {
-    width: 100%;
+  .btn-agregar {
+    padding: 12px 25px;
   }
 }
 
-/* Tablet vertical */
 @media (max-width: 768px) {
-  h1, h2 {
-    font-size: 22px;
+  .container-principal {
+    padding: 20px;
   }
 
-  .btn-agregar {
-    width: 100%;
-    font-size: 14px;
+  h1, h2 {
+    font-size: 1.5rem;
   }
 
   .tabla-container {
-    padding: 10px;
-  }
-
-  .tabla {
-    min-width: 100%;
-    display: block;
-    overflow-x: auto;
-  }
-
-  .tabla th, .tabla td {
-    padding: 8px;
-    font-size: 13px;
-    white-space: nowrap;
+    padding: 15px;
   }
 
   .acciones-cliente {
@@ -234,26 +247,25 @@ h1, h2 {
   }
 }
 
-/* Celulares grandes */
 @media (max-width: 576px) {
   h1, h2 {
-    font-size: 20px;
-  }
-
-  .tabla-container {
-    padding: 8px;
+    font-size: 1.3rem;
   }
 
   .tabla th, .tabla td {
-    font-size: 12px;
-    padding: 6px;
+    padding: 12px 8px;
+    font-size: 0.8rem;
+  }
+
+  .tabla td img.foto-tabla {
+    width: 45px;
+    height: 45px;
   }
 }
 
-/* Celulares pequeños */
 @media (max-width: 480px) {
-  h1, h2 {
-    font-size: 18px;
+  .container-principal {
+    padding: 15px;
   }
 
   .tabla {
@@ -261,12 +273,7 @@ h1, h2 {
   }
 
   .btn-agregar {
-    font-size: 13px;
-  }
-
-  .btn-detalles,
-  .btn-editar,
-  .btn-eliminar {
-    font-size: 11px;
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }

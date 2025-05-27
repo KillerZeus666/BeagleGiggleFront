@@ -1,52 +1,94 @@
 /* tratamiento-crear.component.css */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  overflow-y: auto;
+  background-color: #f4f6f8;
+}
 .container {
   max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  font-family: 'Poppins', sans-serif;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.container:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 h1 {
-  color: #2c3e50;
+  color: #1d95db;
   text-align: center;
   margin-bottom: 30px;
+  font-size: 32px;
   font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
+  border-radius: 3px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.8rem;
   font-weight: 500;
-  color: #2c3e50;
+  color: #555;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
-
+a
 input[type="text"],
 input[type="date"],
 input[type="number"],
 textarea,
 select {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border 0.3s;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-input[type="text"]:focus,
-input[type="date"]:focus,
-input[type="number"]:focus,
+input:focus,
 textarea:focus,
 select:focus {
-  border-color: #3498db;
+  border-color: #1d95db;
   outline: none;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  box-shadow: 0 5px 15px rgba(29, 149, 219, 0.2);
+  background-color: #fff;
+  transform: translateY(-2px);
 }
 
 textarea {
@@ -54,6 +96,7 @@ textarea {
   resize: vertical;
 }
 
+/* Medicamento dinámico */
 .medicamentos-container {
   margin-top: 15px;
 }
@@ -69,37 +112,41 @@ textarea {
   flex: 1;
 }
 
+/* Botones */
 .btn {
-  background-color: #3498db;
+  background: linear-gradient(to right, #1d95db, #23a3ed);
   color: white;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 4px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(29, 149, 219, 0.3);
 }
 
 .btn:hover {
-  background-color: #2980b9;
+  background: linear-gradient(to right, #158bbd, #1d95db);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(29, 149, 219, 0.4);
 }
 
 .btn-add {
-  background-color: #27ae60;
-  margin-top: 10px;
+  background: linear-gradient(to right, #27ae60, #2ecc71);
 }
 
 .btn-add:hover {
-  background-color: #219653;
+  background: linear-gradient(to right, #219653, #2ecc71);
 }
 
 .btn-remove {
-  background-color: #e74c3c;
+  background: linear-gradient(to right, #e74c3c, #e67e22);
   padding: 12px 15px;
 }
 
 .btn-remove:hover {
-  background-color: #c0392b;
+  background: linear-gradient(to right, #c0392b, #d35400);
 }
 
 .form-footer {
@@ -111,20 +158,21 @@ textarea {
 .alert {
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .alert-success {
   background-color: #dff0d8;
-  border-color: #d6e9c6;
   color: #3c763d;
+  border: 1px solid #d6e9c6;
 }
 
 .alert-danger {
   background-color: #f2dede;
-  border-color: #ebccd1;
   color: #a94442;
+  border: 1px solid #ebccd1;
 }
 
 .error-message {
@@ -134,23 +182,21 @@ textarea {
 }
 
 button:disabled {
-  opacity: 0.6;
+  background: #cccccc;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Estilos responsivos */
+/* Responsivo */
 @media (max-width: 768px) {
   .container {
-    padding: 20px;
+    padding: 1.8rem;
   }
 
   .medicamento-item {
     flex-direction: column;
     gap: 5px;
-  }
-
-  .medicamento-item input {
-    width: 100%;
   }
 
   .form-footer {
@@ -164,6 +210,9 @@ button:disabled {
 }
 
 .small-select {
-  width: 500px; /* más pequeño que antes */
-  padding: 5px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }

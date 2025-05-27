@@ -1,78 +1,114 @@
 /* ================== CONTENEDOR PRINCIPAL ================== */
 .tratamientos-container {
-  margin-left: 300px; /* Ancho cuando sidebar está expandido */
-  padding: 2rem;
+  margin-left: 300px;
+  padding: 2rem 3rem;
   transition: all 0.3s ease;
   min-height: calc(100vh - 4rem);
-  background-color: #f5f7fa;
-  width: calc(100% - 300px); /* Asegura que el ancho se ajuste */
+  background-color: #F8FAFC; /* Fondo azulado muy suave */
+  width: calc(100% - 300px);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 .tratamientos-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .tratamientos-header h2 {
-  color: #2c3e50;
-  font-size: 1.5rem;
+  color: #1d95db;
+  font-size: 1.75rem;
   margin: 0;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-/* ================== TABLA ================== */
+.tratamientos-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  border-radius: 9px;
+}
+
+/* ================== TABLA MEJORADA ================== */
 .table-responsive {
   overflow-x: auto;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08); /* Sombra morada sutil */
+  margin-bottom: 2rem;
+  border: 1px solid #E2E8F0; /* Borde suave */
 }
 
 .tratamientos-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   min-width: 800px;
 }
 
-.tratamientos-table th {
-  background-color: #3498db;
-  color: white;
-  padding: 1rem;
-  text-align: left;
-  font-weight: 500;
+.tratamientos-table thead {
   position: sticky;
   top: 0;
+  z-index: 10;
+}
+
+.tratamientos-table th {
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
+  color: white;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tratamientos-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.tratamientos-table th:last-child {
+  border-top-right-radius: 12px;
 }
 
 .tratamientos-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #ecf0f1;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #F1F5F9; /* Borde muy suave */
+  color: #475569; /* Texto gris azulado */
+  transition: all 0.2s ease;
 }
 
-.tratamientos-table tbody tr:hover {
-  background-color: #f8f9fa;
+.tratamientos-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
-.no-results {
-  text-align: center;
-  padding: 2rem;
-  color: #7f8c8d;
+.tratamientos-table tbody tr:hover td {
+  background-color: #F5F3FF; /* Morado muy claro */
+  color: #1E293B; /* Texto más oscuro al hacer hover */
+  transform: translateX(2px);
 }
 
-/* ================== CONTENEDOR FACTURACIÓN ================== */
+/* ================== CONTENEDOR FACTURACIÓN MEJORADO ================== */
 .facturar-container {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   background: white;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
   margin-top: 1.5rem;
   flex-wrap: wrap;
+  border: 1px solid #EDE9FE; /* Borde morado claro */
 }
 
 .metodo-pago-container {
@@ -83,58 +119,62 @@
 }
 
 .metodo-pago-container label {
-  font-weight: 500;
-  color: #2c3e50;
+  font-weight: 600;
+  color: #1E293B;
   white-space: nowrap;
+  font-size: 0.95rem;
 }
 
 .select-pago {
-  padding: 0.6rem 1rem;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #E2E8F0;
   background-color: white;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   min-width: 200px;
   transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #475569;
 }
 
 .select-pago:focus {
-  border-color: #3498db;
+  border-color: #6366F1;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
-/* ================== BOTONES ================== */
+/* ================== BOTONES MEJORADOS ================== */
 .btn {
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .btn-success {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  background: linear-gradient(135deg, #10B981, #059669); /* Degradado verde */
   color: white;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* ================== CHECKBOX ================== */
+/* ================== CHECKBOX MEJORADO ================== */
 .checkbox-container {
   display: block;
   position: relative;
   cursor: pointer;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
 }
 
 .checkbox-container input {
@@ -149,19 +189,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #eee;
-  border-radius: 4px;
+  height: 22px;
+  width: 22px;
+  background-color: #F1F5F9;
+  border-radius: 6px;
   transition: all 0.3s;
+  border: 1px solid #E2E8F0;
 }
 
 .checkbox-container:hover input ~ .checkmark {
-  background-color: #ddd;
+  background-color: #E2E8F0;
+  border-color: #CBD5E1;
 }
 
 .checkbox-container input:checked ~ .checkmark {
-  background-color: #3498db;
+  background-color: #6366F1;
+  border-color: #6366F1;
 }
 
 .checkmark:after {
@@ -177,28 +220,40 @@
 .checkbox-container .checkmark:after {
   left: 7px;
   top: 3px;
-  width: 5px;
-  height: 10px;
+  width: 6px;
+  height: 12px;
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
-.navigation.active ~ .main .tratamientos-container {
-  margin-left: 80px; /* Ancho cuando sidebar está colapsado */
-  width: calc(100% - 80px);
+/* ================== SIN RESULTADOS ================== */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #94A3B8;
 }
 
-/* Ajustes responsive */
+.no-results svg {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  fill: #E2E8F0;
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #64748B;
+}
+
+/* ================== RESPONSIVE ================== */
 @media (max-width: 1200px) {
   .tratamientos-container {
     margin-left: 80px;
     width: calc(100% - 80px);
-  }
-
-  .navigation.active ~ .main .tratamientos-container {
-    margin-left: 80px;
-    width: calc(100% - 80px);
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -206,10 +261,33 @@
   .tratamientos-container {
     margin-left: 0;
     width: 100%;
+    padding: 1.25rem;
   }
 
-  .navigation.active ~ .main .tratamientos-container {
-    margin-left: 0;
+  .tratamientos-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .facturar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .select-pago {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tratamientos-table th,
+  .tratamientos-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tratamientos-header h2 {
+    font-size: 1.5rem;
   }
 }

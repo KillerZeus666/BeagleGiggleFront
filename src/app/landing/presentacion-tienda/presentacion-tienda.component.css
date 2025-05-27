@@ -117,14 +117,17 @@ button span {
   margin-bottom: 30px;
   position: relative;
   display: inline-block;
+  text-align: center;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
 }
 
 .right-section h2::after {
   content: '';
   position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 60%;
+  bottom: -10px; /* Ajusta esta posición según necesites */
+  left: 50%; /* Centra el elemento desde el lado izquierdo */
+  transform: translateX(-50%); /* Corrige el centrado exacto */
+  width: 60%; /* Puedes ajustar este porcentaje según el ancho deseado */
   height: 4px;
   background: linear-gradient(90deg, #72c0ea, #a5d8ff);
   border-radius: 2px;

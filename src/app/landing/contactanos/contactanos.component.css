@@ -65,18 +65,40 @@ textarea {
 }
 
 .submit-btn {
-  background: #72c0ea;
+  width: fit-content;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #72c0ea 0%, #529bcb 100%);
   color: white;
-  padding: 12px;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 6px 20px rgba(114, 192, 234, 0.4);
+  transition: all 0.3s ease;
+  text-align: center;
+  letter-spacing: 0.03em;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Efecto hover con animación suave */
 .submit-btn:hover {
-  background: #357abd;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(114, 192, 234, 0.5);
+  background: linear-gradient(135deg, #529bcb 0%, #72c0ea 100%);
+}
+
+/* Efecto al hacer clic */
+.submit-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 15px rgba(114, 192, 234, 0.4);
+}
+
+/* Mejora para accesibilidad en focus */
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(114, 192, 234, 0.3);
 }
 
 @media (max-width: 768px) {
